@@ -153,3 +153,12 @@ healed_native=warm_loaded=1361  native_calls=47007
 - **1800 帧**：25 色，蓝底（进入下一层菜单）
 
 结论：**游戏完整走完 BIOS→logo→标题→菜单**，输入有效。
+
+## 开源整理（本轮）
+
+- 移除自动按键（input_frame），改为纯手动游玩
+- 清理：build*/、旧 src/runtime、CLI generated、调试日志、SDL2 二进制、*.o
+- CMakeLists 去除本机绝对路径
+- 新增 README.md / LICENSE / THIRD_PARTY.md / scripts/generate.ps1 / .gitignore
+- git init（main），初始提交 13 文件
+- ROM / BIOS / generated_official 均已 gitignore，不上传
