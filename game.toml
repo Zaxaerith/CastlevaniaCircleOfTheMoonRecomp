@@ -670,3 +670,488 @@ note = "round-7 miss-log"
 addr = 0x08096EC8
 mode = "thumb"
 note = "round-7 miss-log"
+
+# ── Round-8: remaining cart misses (named) ──
+
+[[extra_func]]
+addr = 0x08001918
+mode = "thumb"
+name = "irq_dispatch_inner"
+note = "round-8 miss-log"
+[[extra_func]]
+addr = 0x08001978
+mode = "thumb"
+name = "irq_dispatch_tail"
+note = "round-8 miss-log"
+[[extra_func]]
+addr = 0x08005AB0
+mode = "thumb"
+name = "scene_transition_a"
+note = "round-8 miss-log"
+[[extra_func]]
+addr = 0x080068D8
+mode = "thumb"
+name = "scene_transition_b"
+note = "round-8 miss-log"
+[[extra_func]]
+addr = 0x08006B8E
+mode = "thumb"
+name = "object_spawn_helper"
+note = "round-8 miss-log"
+[[extra_func]]
+addr = 0x08006BA4
+mode = "thumb"
+name = "object_spawn_tail"
+note = "round-8 miss-log"
+[[extra_func]]
+addr = 0x08006BD0
+mode = "thumb"
+name = "object_update_a"
+note = "round-8 miss-log"
+[[extra_func]]
+addr = 0x08006BE6
+mode = "thumb"
+name = "object_update_b"
+note = "round-8 miss-log"
+[[extra_func]]
+addr = 0x08006BF2
+mode = "thumb"
+name = "object_update_c"
+note = "round-8 miss-log"
+[[extra_func]]
+addr = 0x08006E1E
+mode = "thumb"
+name = "actor_step_a"
+note = "round-8 miss-log"
+[[extra_func]]
+addr = 0x08006F28
+mode = "thumb"
+name = "actor_step_b"
+note = "round-8 miss-log"
+[[extra_func]]
+addr = 0x08006FA0
+mode = "thumb"
+name = "actor_step_main"
+note = "round-8 miss-log"
+[[extra_func]]
+addr = 0x08007484
+mode = "thumb"
+name = "collision_check"
+note = "round-8 miss-log"
+[[extra_func]]
+addr = 0x08008014
+mode = "thumb"
+name = "input_poll_pad"
+note = "round-8 miss-log"
+[[extra_func]]
+addr = 0x080096B4
+mode = "thumb"
+name = "player_state_a"
+note = "round-8 miss-log"
+[[extra_func]]
+addr = 0x0800971C
+mode = "thumb"
+name = "player_state_main"
+note = "round-8 miss-log"
+[[extra_func]]
+addr = 0x080099BC
+mode = "thumb"
+name = "player_state_b"
+note = "round-8 miss-log"
+[[extra_func]]
+addr = 0x08009A34
+mode = "thumb"
+name = "player_state_c"
+note = "round-8 miss-log"
+[[extra_func]]
+addr = 0x080106E8
+mode = "thumb"
+name = "hud_update_a"
+note = "round-8 miss-log"
+[[extra_func]]
+addr = 0x080107EC
+mode = "thumb"
+name = "hud_update_b"
+note = "round-8 miss-log"
+[[extra_func]]
+addr = 0x080108B4
+mode = "thumb"
+name = "hud_update_main"
+note = "round-8 miss-log"
+[[extra_func]]
+addr = 0x080BFC78
+mode = "thumb"
+name = "engine_util_a"
+note = "round-8 miss-log"
+[[extra_func]]
+addr = 0x080BFC7E
+mode = "thumb"
+name = "engine_util_b"
+note = "round-8 miss-log"
+[[extra_func]]
+addr = 0x080BFCDC
+mode = "thumb"
+name = "engine_util_c"
+note = "round-8 miss-log"
+[[extra_func]]
+addr = 0x080BFCE2
+mode = "thumb"
+name = "engine_util_d"
+note = "round-8 miss-log"
+[[extra_func]]
+addr = 0x080BFCF0
+mode = "thumb"
+name = "engine_util_e"
+note = "round-8 miss-log"
+[[extra_func]]
+addr = 0x080BFCF6
+mode = "thumb"
+name = "engine_util_f"
+note = "round-8 miss-log"
+
+# ── Round-9: remaining cart misses ──
+
+[[extra_func]]
+addr = 0x08006920
+mode = "thumb"
+name = "scene_load_hook"
+note = "round-9 miss-log"
+[[extra_func]]
+addr = 0x080069A8
+mode = "thumb"
+name = "scene_load_tail"
+note = "round-9 miss-log"
+[[extra_func]]
+addr = 0x08006B68
+mode = "thumb"
+name = "object_init_helper"
+note = "round-9 miss-log"
+[[extra_func]]
+addr = 0x08006E0C
+mode = "thumb"
+name = "actor_pre_step"
+note = "round-9 miss-log"
+[[extra_func]]
+addr = 0x08006F18
+mode = "thumb"
+name = "actor_post_step"
+note = "round-9 miss-log"
+[[extra_func]]
+addr = 0x08006F78
+mode = "thumb"
+name = "actor_apply_vel"
+note = "round-9 miss-log"
+[[extra_func]]
+addr = 0x08007470
+mode = "thumb"
+name = "collision_resolve"
+note = "round-9 miss-log"
+[[extra_func]]
+addr = 0x08010834
+mode = "thumb"
+name = "hud_render_a"
+note = "round-9 miss-log"
+[[extra_func]]
+addr = 0x0801088C
+mode = "thumb"
+name = "hud_render_b"
+note = "round-9 miss-log"
+[[extra_func]]
+addr = 0x080108FC
+mode = "thumb"
+name = "hud_render_c"
+note = "round-9 miss-log"
+
+# ── IWRAM jump-table cluster (runtime-installed) ──
+# Self-heal/interpreter covers these; source_addr unknown.
+[[extra_func]]
+addr = 0x030041D0
+mode = "thumb"
+name = "iwram_switch_case_a"
+note = "JUMP-TABLE CANDIDATE; self-heal cached"
+[[extra_func]]
+addr = 0x0300421A
+mode = "thumb"
+name = "iwram_switch_case_b"
+note = "JUMP-TABLE CANDIDATE; self-heal cached"
+[[extra_func]]
+addr = 0x03004222
+mode = "thumb"
+name = "iwram_switch_case_c"
+note = "JUMP-TABLE CANDIDATE; self-heal cached"
+[[extra_func]]
+addr = 0x03007D38
+mode = "thumb"
+name = "iwram_vblank_work"
+note = "IWRAM; self-heal cached"
+
+# ── Round-10: deep-path cart misses ──
+
+[[extra_func]]
+addr = 0x080141AC
+mode = "thumb"
+name = "deep_path_001"
+note = "round-10 deep-path miss"
+[[extra_func]]
+addr = 0x0802BF0C
+mode = "thumb"
+name = "deep_path_002"
+note = "round-10 deep-path miss"
+[[extra_func]]
+addr = 0x0802C1B6
+mode = "thumb"
+name = "deep_path_003"
+note = "round-10 deep-path miss"
+[[extra_func]]
+addr = 0x0805CB34
+mode = "thumb"
+name = "deep_path_004"
+note = "round-10 deep-path miss"
+[[extra_func]]
+addr = 0x0805CB44
+mode = "thumb"
+name = "deep_path_005"
+note = "round-10 deep-path miss"
+[[extra_func]]
+addr = 0x0805CCFC
+mode = "thumb"
+name = "deep_path_006"
+note = "round-10 deep-path miss"
+[[extra_func]]
+addr = 0x0805F184
+mode = "thumb"
+name = "deep_path_007"
+note = "round-10 deep-path miss"
+[[extra_func]]
+addr = 0x0805F194
+mode = "thumb"
+name = "deep_path_008"
+note = "round-10 deep-path miss"
+[[extra_func]]
+addr = 0x0805F7BC
+mode = "thumb"
+name = "deep_path_009"
+note = "round-10 deep-path miss"
+[[extra_func]]
+addr = 0x08062818
+mode = "thumb"
+name = "deep_path_010"
+note = "round-10 deep-path miss"
+[[extra_func]]
+addr = 0x08062828
+mode = "thumb"
+name = "deep_path_011"
+note = "round-10 deep-path miss"
+[[extra_func]]
+addr = 0x0806295C
+mode = "thumb"
+name = "deep_path_012"
+note = "round-10 deep-path miss"
+[[extra_func]]
+addr = 0x08062A90
+mode = "thumb"
+name = "deep_path_013"
+note = "round-10 deep-path miss"
+[[extra_func]]
+addr = 0x08062BF8
+mode = "thumb"
+name = "deep_path_014"
+note = "round-10 deep-path miss"
+[[extra_func]]
+addr = 0x08062F10
+mode = "thumb"
+name = "deep_path_015"
+note = "round-10 deep-path miss"
+[[extra_func]]
+addr = 0x080633D8
+mode = "thumb"
+name = "deep_path_016"
+note = "round-10 deep-path miss"
+[[extra_func]]
+addr = 0x0806DEA0
+mode = "thumb"
+name = "deep_path_017"
+note = "round-10 deep-path miss"
+[[extra_func]]
+addr = 0x0806DEB0
+mode = "thumb"
+name = "deep_path_018"
+note = "round-10 deep-path miss"
+[[extra_func]]
+addr = 0x0806E054
+mode = "thumb"
+name = "deep_path_019"
+note = "round-10 deep-path miss"
+[[extra_func]]
+addr = 0x08071B20
+mode = "thumb"
+name = "deep_path_020"
+note = "round-10 deep-path miss"
+[[extra_func]]
+addr = 0x08071B30
+mode = "thumb"
+name = "deep_path_021"
+note = "round-10 deep-path miss"
+[[extra_func]]
+addr = 0x08071BE0
+mode = "thumb"
+name = "deep_path_022"
+note = "round-10 deep-path miss"
+[[extra_func]]
+addr = 0x08071E8C
+mode = "thumb"
+name = "deep_path_023"
+note = "round-10 deep-path miss"
+[[extra_func]]
+addr = 0x08071E9C
+mode = "thumb"
+name = "deep_path_024"
+note = "round-10 deep-path miss"
+[[extra_func]]
+addr = 0x08071EDC
+mode = "thumb"
+name = "deep_path_025"
+note = "round-10 deep-path miss"
+[[extra_func]]
+addr = 0x08086ED8
+mode = "thumb"
+name = "deep_path_026"
+note = "round-10 deep-path miss"
+[[extra_func]]
+addr = 0x08086EE8
+mode = "thumb"
+name = "deep_path_027"
+note = "round-10 deep-path miss"
+[[extra_func]]
+addr = 0x08086F44
+mode = "thumb"
+name = "deep_path_028"
+note = "round-10 deep-path miss"
+[[extra_func]]
+addr = 0x08087D98
+mode = "thumb"
+name = "deep_path_029"
+note = "round-10 deep-path miss"
+[[extra_func]]
+addr = 0x08087DA8
+mode = "thumb"
+name = "deep_path_030"
+note = "round-10 deep-path miss"
+[[extra_func]]
+addr = 0x08087DE8
+mode = "thumb"
+name = "deep_path_031"
+note = "round-10 deep-path miss"
+[[extra_func]]
+addr = 0x0808B2E8
+mode = "thumb"
+name = "deep_path_032"
+note = "round-10 deep-path miss"
+[[extra_func]]
+addr = 0x0808B2F8
+mode = "thumb"
+name = "deep_path_033"
+note = "round-10 deep-path miss"
+[[extra_func]]
+addr = 0x0808B33C
+mode = "thumb"
+name = "deep_path_034"
+note = "round-10 deep-path miss"
+[[extra_func]]
+addr = 0x0808B388
+mode = "thumb"
+name = "deep_path_035"
+note = "round-10 deep-path miss"
+[[extra_func]]
+addr = 0x0808B678
+mode = "thumb"
+name = "deep_path_036"
+note = "round-10 deep-path miss"
+[[extra_func]]
+addr = 0x0808B688
+mode = "thumb"
+name = "deep_path_037"
+note = "round-10 deep-path miss"
+[[extra_func]]
+addr = 0x0808BA78
+mode = "thumb"
+name = "deep_path_038"
+note = "round-10 deep-path miss"
+[[extra_func]]
+addr = 0x0808CC04
+mode = "thumb"
+name = "deep_path_039"
+note = "round-10 deep-path miss"
+[[extra_func]]
+addr = 0x0808CC14
+mode = "thumb"
+name = "deep_path_040"
+note = "round-10 deep-path miss"
+[[extra_func]]
+addr = 0x0808CD00
+mode = "thumb"
+name = "deep_path_041"
+note = "round-10 deep-path miss"
+[[extra_func]]
+addr = 0x08095E68
+mode = "thumb"
+name = "deep_path_042"
+note = "round-10 deep-path miss"
+[[extra_func]]
+addr = 0x08096A48
+mode = "thumb"
+name = "deep_path_043"
+note = "round-10 deep-path miss"
+
+# ── Round-11 ──
+
+[[extra_func]]
+addr = 0x0800377C
+mode = "thumb"
+name = "late_path_01"
+note = "round-11"
+[[extra_func]]
+addr = 0x0805CE24
+mode = "thumb"
+name = "late_path_02"
+note = "round-11"
+[[extra_func]]
+addr = 0x0805F590
+mode = "thumb"
+name = "late_path_03"
+note = "round-11"
+[[extra_func]]
+addr = 0x0805F5B6
+mode = "thumb"
+name = "late_path_04"
+note = "round-11"
+[[extra_func]]
+addr = 0x0806DF88
+mode = "thumb"
+name = "late_path_05"
+note = "round-11"
+[[extra_func]]
+addr = 0x0806E154
+mode = "thumb"
+name = "late_path_06"
+note = "round-11"
+[[extra_func]]
+addr = 0x0808CC80
+mode = "thumb"
+name = "late_path_07"
+note = "round-11"
+[[extra_func]]
+addr = 0x08095F30
+mode = "thumb"
+name = "late_path_08"
+note = "round-11"
+[[extra_func]]
+addr = 0x08096B20
+mode = "thumb"
+name = "late_path_09"
+note = "round-11"
+[[extra_func]]
+addr = 0x08096BF8
+mode = "thumb"
+name = "late_path_10"
+note = "round-11"

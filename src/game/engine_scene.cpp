@@ -1,5 +1,5 @@
 /* Auto-split from gbarecomp shards. Module: engine_scene
- * 284 guest functions. Do not hand-edit function bodies.
+ * 381 guest functions. Do not hand-edit function bodies.
  */
 
 #include "runtime_arm.h"
@@ -21577,7 +21577,7 @@ void gf_tfunc_080057F8(void) {
     return;
 }
 
-/* 0x08005AE8  mode=thumb  end=0x08005AF4  branches=0  indirect */
+/* 0x08005AB0  mode=thumb  end=0x08005AE8  branches=2  indirect */
 
 
 /* 0x08005820 thumb */
@@ -21811,6 +21811,458 @@ void gf_tfunc_08005834(void) {
 }
 
 /* 0x08005AF8  mode=thumb  end=0x08005B7C  branches=12  indirect */
+
+
+/* 0x08005AB0 thumb */
+void gf_scene_transition_a(void) {
+    if (g_runtime_fn_entry_hook) g_runtime_fn_entry_hook(0x08005AB0u);
+    /* 08005AB0  08005ab0 T stm r13!,{r4,r14} */
+    g_cpu.R[15] = 0x08005AB0u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08005AB0 = 1u;
+    _cyc_08005AB0 = 1u;
+    uint32_t _b_08005AB0 = g_cpu.R[13];
+    uint32_t _a_08005AB0 = _b_08005AB0 - 8u;
+    uint32_t _fb_08005AB0 = _b_08005AB0 - 8u;
+    _cyc_08005AB0 += runtime_mem_cycles(_a_08005AB0 & ~3u, 4u, 0u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x08005AB0u, _a_08005AB0 & ~3u, g_cpu.R[4], 4u);
+    bus_write_u32(_a_08005AB0 & ~3u, g_cpu.R[4]);
+    _a_08005AB0 += 4u;
+    _cyc_08005AB0 += runtime_mem_cycles(_a_08005AB0 & ~3u, 4u, 1u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x08005AB0u, _a_08005AB0 & ~3u, g_cpu.R[14], 4u);
+    bus_write_u32(_a_08005AB0 & ~3u, g_cpu.R[14]);
+    _a_08005AB0 += 4u;
+    g_cpu.R[13] = _fb_08005AB0;
+    g_cpu.R[15] = 0x08005AB2u;
+    runtime_tick(_cyc_08005AB0);
+    /* 08005AB2  08005ab2 T adds r4,r0,#0x0 */
+    g_cpu.R[15] = 0x08005AB2u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08005AB2 = 1u;
+    _cyc_08005AB2 = 1u;
+    uint32_t _rn_08005AB2 = g_cpu.R[0];
+    uint32_t _r_08005AB2;
+    _r_08005AB2 = _rn_08005AB2 + 0x00000000u;
+    arm_set_nzcv_add(_rn_08005AB2, 0x00000000u, _r_08005AB2);
+    g_cpu.R[4] = _r_08005AB2;
+    g_cpu.R[15] = 0x08005AB4u;
+    runtime_tick(_cyc_08005AB2);
+    /* 08005AB4  08005ab4 T ldr r0,[r15,#0x3c] */
+    g_cpu.R[15] = 0x08005AB4u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08005AB4 = 1u;
+    _cyc_08005AB4 = 2u;
+    uint32_t _base_08005AB4 = 0x08005AB8u & ~3u;
+    uint32_t _off_08005AB4;
+    _off_08005AB4 = 0x0000003Cu;
+    uint32_t _ea_08005AB4 = _base_08005AB4 + _off_08005AB4;
+    uint32_t _post_08005AB4 = _base_08005AB4 + _off_08005AB4;
+    _cyc_08005AB4 += runtime_mem_cycles(_ea_08005AB4, 4u, 0u);
+    uint32_t _v_08005AB4;
+    { uint32_t _w = bus_read_u32(_ea_08005AB4 & ~3u); uint32_t _rot = (_ea_08005AB4 & 3u) * 8u; _v_08005AB4 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_08005AB4;
+    g_cpu.R[15] = 0x08005AB6u;
+    runtime_tick(_cyc_08005AB4);
+    /* 08005AB6  08005ab6 T str r0,[r4,#0x14] */
+    g_cpu.R[15] = 0x08005AB6u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08005AB6 = 1u;
+    _cyc_08005AB6 = 1u;
+    uint32_t _base_08005AB6 = g_cpu.R[4];
+    uint32_t _off_08005AB6;
+    _off_08005AB6 = 0x00000014u;
+    uint32_t _ea_08005AB6 = _base_08005AB6 + _off_08005AB6;
+    uint32_t _post_08005AB6 = _base_08005AB6 + _off_08005AB6;
+    _cyc_08005AB6 += runtime_mem_cycles(_ea_08005AB6, 4u, 0u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x08005AB6u, _ea_08005AB6 & ~3u, g_cpu.R[0], 4u);
+    bus_write_u32(_ea_08005AB6 & ~3u, g_cpu.R[0]);
+    g_cpu.R[15] = 0x08005AB8u;
+    runtime_tick(_cyc_08005AB6);
+    /* 08005AB8  08005ab8 T ldrh r0,[r4,#0x22] */
+    g_cpu.R[15] = 0x08005AB8u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08005AB8 = 1u;
+    _cyc_08005AB8 = 2u;
+    uint32_t _base_08005AB8 = g_cpu.R[4];
+    uint32_t _off_08005AB8;
+    _off_08005AB8 = 0x00000022u;
+    uint32_t _ea_08005AB8 = _base_08005AB8 + _off_08005AB8;
+    uint32_t _post_08005AB8 = _base_08005AB8 + _off_08005AB8;
+    _cyc_08005AB8 += runtime_mem_cycles(_ea_08005AB8, 2u, 0u);
+    uint32_t _v_08005AB8;
+    { uint32_t _h = bus_read_u16(_ea_08005AB8 & ~1u); if (_ea_08005AB8 & 1u) _v_08005AB8 = ((_h >> 8) | (_h << 24)); else _v_08005AB8 = _h; }
+    g_cpu.R[0] = _v_08005AB8;
+    g_cpu.R[15] = 0x08005ABAu;
+    runtime_tick(_cyc_08005AB8);
+    /* 08005ABA  08005aba T adds r0,r0,#0x1 */
+    g_cpu.R[15] = 0x08005ABAu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08005ABA = 1u;
+    _cyc_08005ABA = 1u;
+    uint32_t _rn_08005ABA = g_cpu.R[0];
+    uint32_t _r_08005ABA;
+    _r_08005ABA = _rn_08005ABA + 0x00000001u;
+    arm_set_nzcv_add(_rn_08005ABA, 0x00000001u, _r_08005ABA);
+    g_cpu.R[0] = _r_08005ABA;
+    g_cpu.R[15] = 0x08005ABCu;
+    runtime_tick(_cyc_08005ABA);
+    /* 08005ABC  08005abc T strh r0,[r4,#0x22] */
+    g_cpu.R[15] = 0x08005ABCu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08005ABC = 1u;
+    _cyc_08005ABC = 1u;
+    uint32_t _base_08005ABC = g_cpu.R[4];
+    uint32_t _off_08005ABC;
+    _off_08005ABC = 0x00000022u;
+    uint32_t _ea_08005ABC = _base_08005ABC + _off_08005ABC;
+    uint32_t _post_08005ABC = _base_08005ABC + _off_08005ABC;
+    _cyc_08005ABC += runtime_mem_cycles(_ea_08005ABC, 2u, 0u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x08005ABCu, _ea_08005ABC & ~1u, (uint32_t)(g_cpu.R[0] & 0xFFFFu), 2u);
+    bus_write_u16(_ea_08005ABC & ~1u, (uint16_t)(g_cpu.R[0] & 0xFFFFu));
+    g_cpu.R[15] = 0x08005ABEu;
+    runtime_tick(_cyc_08005ABC);
+    /* 08005ABE  08005abe T movs r0,#0x22 */
+    g_cpu.R[15] = 0x08005ABEu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08005ABE = 1u;
+    _cyc_08005ABE = 1u;
+    uint32_t _r_08005ABE;
+    _r_08005ABE = 0x00000022u;
+    arm_set_nzc_logic(_r_08005ABE, cpsr_c());
+    g_cpu.R[0] = _r_08005ABE;
+    g_cpu.R[15] = 0x08005AC0u;
+    runtime_tick(_cyc_08005ABE);
+    /* 08005AC0  08005ac0 T ldrsh r1,[r4,+r0] */
+    g_cpu.R[15] = 0x08005AC0u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08005AC0 = 1u;
+    _cyc_08005AC0 = 2u;
+    uint32_t _base_08005AC0 = g_cpu.R[4];
+    uint32_t _off_08005AC0;
+    uint32_t _morm_08005AC0 = g_cpu.R[0];
+    _off_08005AC0 = _morm_08005AC0;
+    uint32_t _ea_08005AC0 = _base_08005AC0 + _off_08005AC0;
+    uint32_t _post_08005AC0 = _base_08005AC0 + _off_08005AC0;
+    _cyc_08005AC0 += runtime_mem_cycles(_ea_08005AC0, 2u, 0u);
+    uint32_t _v_08005AC0;
+    if (_ea_08005AC0 & 1u) _v_08005AC0 = (uint32_t)(int32_t)(int8_t)bus_read_u8(_ea_08005AC0);
+    else _v_08005AC0 = (uint32_t)(int32_t)(int16_t)bus_read_u16(_ea_08005AC0);
+    g_cpu.R[1] = _v_08005AC0;
+    g_cpu.R[15] = 0x08005AC2u;
+    runtime_tick(_cyc_08005AC0);
+    /* 08005AC2  08005ac2 T movs r1,r1,lsl #1 */
+    g_cpu.R[15] = 0x08005AC2u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08005AC2 = 1u;
+    _cyc_08005AC2 = 1u;
+    uint32_t _rm_08005AC2 = g_cpu.R[1];
+    uint32_t _op2_08005AC2;
+    uint32_t _co_08005AC2;
+    _op2_08005AC2 = _rm_08005AC2 << 1;
+    _co_08005AC2 = (_rm_08005AC2 >> 31) & 1u;
+    uint32_t _r_08005AC2;
+    _r_08005AC2 = _op2_08005AC2;
+    arm_set_nzc_logic(_r_08005AC2, _co_08005AC2);
+    g_cpu.R[1] = _r_08005AC2;
+    g_cpu.R[15] = 0x08005AC4u;
+    runtime_tick(_cyc_08005AC2);
+    /* 08005AC4  08005ac4 T adds r1,r1,r4 */
+    g_cpu.R[15] = 0x08005AC4u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08005AC4 = 1u;
+    _cyc_08005AC4 = 1u;
+    uint32_t _rm_08005AC4 = g_cpu.R[4];
+    uint32_t _op2_08005AC4;
+    uint32_t _co_08005AC4;
+    _op2_08005AC4 = _rm_08005AC4;
+    _co_08005AC4 = cpsr_c();
+    uint32_t _rn_08005AC4 = g_cpu.R[1];
+    uint32_t _r_08005AC4;
+    _r_08005AC4 = _rn_08005AC4 + _op2_08005AC4;
+    arm_set_nzcv_add(_rn_08005AC4, _op2_08005AC4, _r_08005AC4);
+    g_cpu.R[1] = _r_08005AC4;
+    g_cpu.R[15] = 0x08005AC6u;
+    runtime_tick(_cyc_08005AC4);
+    /* 08005AC6  08005ac6 T ldrb r0,[r1,#0x19] */
+    g_cpu.R[15] = 0x08005AC6u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08005AC6 = 1u;
+    _cyc_08005AC6 = 2u;
+    uint32_t _base_08005AC6 = g_cpu.R[1];
+    uint32_t _off_08005AC6;
+    _off_08005AC6 = 0x00000019u;
+    uint32_t _ea_08005AC6 = _base_08005AC6 + _off_08005AC6;
+    uint32_t _post_08005AC6 = _base_08005AC6 + _off_08005AC6;
+    _cyc_08005AC6 += runtime_mem_cycles(_ea_08005AC6, 1u, 0u);
+    uint32_t _v_08005AC6;
+    _v_08005AC6 = bus_read_u8(_ea_08005AC6);
+    g_cpu.R[0] = _v_08005AC6;
+    g_cpu.R[15] = 0x08005AC8u;
+    runtime_tick(_cyc_08005AC6);
+    /* 08005AC8  08005ac8 T adds r0,r0,#0x1 */
+    g_cpu.R[15] = 0x08005AC8u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08005AC8 = 1u;
+    _cyc_08005AC8 = 1u;
+    uint32_t _rn_08005AC8 = g_cpu.R[0];
+    uint32_t _r_08005AC8;
+    _r_08005AC8 = _rn_08005AC8 + 0x00000001u;
+    arm_set_nzcv_add(_rn_08005AC8, 0x00000001u, _r_08005AC8);
+    g_cpu.R[0] = _r_08005AC8;
+    g_cpu.R[15] = 0x08005ACAu;
+    runtime_tick(_cyc_08005AC8);
+    /* 08005ACA  08005aca T strb r0,[r1,#0x19] */
+    g_cpu.R[15] = 0x08005ACAu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08005ACA = 1u;
+    _cyc_08005ACA = 1u;
+    uint32_t _base_08005ACA = g_cpu.R[1];
+    uint32_t _off_08005ACA;
+    _off_08005ACA = 0x00000019u;
+    uint32_t _ea_08005ACA = _base_08005ACA + _off_08005ACA;
+    uint32_t _post_08005ACA = _base_08005ACA + _off_08005ACA;
+    _cyc_08005ACA += runtime_mem_cycles(_ea_08005ACA, 1u, 0u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x08005ACAu, _ea_08005ACA, (uint32_t)(g_cpu.R[0] & 0xFFu), 1u);
+    bus_write_u8(_ea_08005ACA, (uint8_t)(g_cpu.R[0] & 0xFFu));
+    g_cpu.R[15] = 0x08005ACCu;
+    runtime_tick(_cyc_08005ACA);
+    /* 08005ACC  08005acc T movs r0,#0x22 */
+    g_cpu.R[15] = 0x08005ACCu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08005ACC = 1u;
+    _cyc_08005ACC = 1u;
+    uint32_t _r_08005ACC;
+    _r_08005ACC = 0x00000022u;
+    arm_set_nzc_logic(_r_08005ACC, cpsr_c());
+    g_cpu.R[0] = _r_08005ACC;
+    g_cpu.R[15] = 0x08005ACEu;
+    runtime_tick(_cyc_08005ACC);
+    /* 08005ACE  08005ace T ldrsh r1,[r4,+r0] */
+    g_cpu.R[15] = 0x08005ACEu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08005ACE = 1u;
+    _cyc_08005ACE = 2u;
+    uint32_t _base_08005ACE = g_cpu.R[4];
+    uint32_t _off_08005ACE;
+    uint32_t _morm_08005ACE = g_cpu.R[0];
+    _off_08005ACE = _morm_08005ACE;
+    uint32_t _ea_08005ACE = _base_08005ACE + _off_08005ACE;
+    uint32_t _post_08005ACE = _base_08005ACE + _off_08005ACE;
+    _cyc_08005ACE += runtime_mem_cycles(_ea_08005ACE, 2u, 0u);
+    uint32_t _v_08005ACE;
+    if (_ea_08005ACE & 1u) _v_08005ACE = (uint32_t)(int32_t)(int8_t)bus_read_u8(_ea_08005ACE);
+    else _v_08005ACE = (uint32_t)(int32_t)(int16_t)bus_read_u16(_ea_08005ACE);
+    g_cpu.R[1] = _v_08005ACE;
+    g_cpu.R[15] = 0x08005AD0u;
+    runtime_tick(_cyc_08005ACE);
+    /* 08005AD0  08005ad0 T movs r1,r1,lsl #1 */
+    g_cpu.R[15] = 0x08005AD0u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08005AD0 = 1u;
+    _cyc_08005AD0 = 1u;
+    uint32_t _rm_08005AD0 = g_cpu.R[1];
+    uint32_t _op2_08005AD0;
+    uint32_t _co_08005AD0;
+    _op2_08005AD0 = _rm_08005AD0 << 1;
+    _co_08005AD0 = (_rm_08005AD0 >> 31) & 1u;
+    uint32_t _r_08005AD0;
+    _r_08005AD0 = _op2_08005AD0;
+    arm_set_nzc_logic(_r_08005AD0, _co_08005AD0);
+    g_cpu.R[1] = _r_08005AD0;
+    g_cpu.R[15] = 0x08005AD2u;
+    runtime_tick(_cyc_08005AD0);
+    /* 08005AD2  08005ad2 T adds r0,r4,#0x0 */
+    g_cpu.R[15] = 0x08005AD2u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08005AD2 = 1u;
+    _cyc_08005AD2 = 1u;
+    uint32_t _rn_08005AD2 = g_cpu.R[4];
+    uint32_t _r_08005AD2;
+    _r_08005AD2 = _rn_08005AD2 + 0x00000000u;
+    arm_set_nzcv_add(_rn_08005AD2, 0x00000000u, _r_08005AD2);
+    g_cpu.R[0] = _r_08005AD2;
+    g_cpu.R[15] = 0x08005AD4u;
+    runtime_tick(_cyc_08005AD2);
+    /* 08005AD4  08005ad4 T adds r0,r0,#0x18 */
+    g_cpu.R[15] = 0x08005AD4u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08005AD4 = 1u;
+    _cyc_08005AD4 = 1u;
+    uint32_t _rn_08005AD4 = g_cpu.R[0];
+    uint32_t _r_08005AD4;
+    _r_08005AD4 = _rn_08005AD4 + 0x00000018u;
+    arm_set_nzcv_add(_rn_08005AD4, 0x00000018u, _r_08005AD4);
+    g_cpu.R[0] = _r_08005AD4;
+    g_cpu.R[15] = 0x08005AD6u;
+    runtime_tick(_cyc_08005AD4);
+    /* 08005AD6  08005ad6 T adds r0,r0,r1 */
+    g_cpu.R[15] = 0x08005AD6u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08005AD6 = 1u;
+    _cyc_08005AD6 = 1u;
+    uint32_t _rm_08005AD6 = g_cpu.R[1];
+    uint32_t _op2_08005AD6;
+    uint32_t _co_08005AD6;
+    _op2_08005AD6 = _rm_08005AD6;
+    _co_08005AD6 = cpsr_c();
+    uint32_t _rn_08005AD6 = g_cpu.R[0];
+    uint32_t _r_08005AD6;
+    _r_08005AD6 = _rn_08005AD6 + _op2_08005AD6;
+    arm_set_nzcv_add(_rn_08005AD6, _op2_08005AD6, _r_08005AD6);
+    g_cpu.R[0] = _r_08005AD6;
+    g_cpu.R[15] = 0x08005AD8u;
+    runtime_tick(_cyc_08005AD6);
+    /* 08005AD8  08005ad8 T ldrb r0,[r0] */
+    g_cpu.R[15] = 0x08005AD8u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08005AD8 = 1u;
+    _cyc_08005AD8 = 2u;
+    uint32_t _base_08005AD8 = g_cpu.R[0];
+    uint32_t _off_08005AD8;
+    _off_08005AD8 = 0x00000000u;
+    uint32_t _ea_08005AD8 = _base_08005AD8 + _off_08005AD8;
+    uint32_t _post_08005AD8 = _base_08005AD8 + _off_08005AD8;
+    _cyc_08005AD8 += runtime_mem_cycles(_ea_08005AD8, 1u, 0u);
+    uint32_t _v_08005AD8;
+    _v_08005AD8 = bus_read_u8(_ea_08005AD8);
+    g_cpu.R[0] = _v_08005AD8;
+    g_cpu.R[15] = 0x08005ADAu;
+    runtime_tick(_cyc_08005AD8);
+    /* 08005ADA  08005ada T ldr r1,[r4,#0x14] */
+    g_cpu.R[15] = 0x08005ADAu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08005ADA = 1u;
+    _cyc_08005ADA = 2u;
+    uint32_t _base_08005ADA = g_cpu.R[4];
+    uint32_t _off_08005ADA;
+    _off_08005ADA = 0x00000014u;
+    uint32_t _ea_08005ADA = _base_08005ADA + _off_08005ADA;
+    uint32_t _post_08005ADA = _base_08005ADA + _off_08005ADA;
+    _cyc_08005ADA += runtime_mem_cycles(_ea_08005ADA, 4u, 0u);
+    uint32_t _v_08005ADA;
+    { uint32_t _w = bus_read_u32(_ea_08005ADA & ~3u); uint32_t _rot = (_ea_08005ADA & 3u) * 8u; _v_08005ADA = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[1] = _v_08005ADA;
+    g_cpu.R[15] = 0x08005ADCu;
+    runtime_tick(_cyc_08005ADA);
+    /* 08005ADC  08005adc T movs r0,r0,lsl #2 */
+    g_cpu.R[15] = 0x08005ADCu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08005ADC = 1u;
+    _cyc_08005ADC = 1u;
+    uint32_t _rm_08005ADC = g_cpu.R[0];
+    uint32_t _op2_08005ADC;
+    uint32_t _co_08005ADC;
+    _op2_08005ADC = _rm_08005ADC << 2;
+    _co_08005ADC = (_rm_08005ADC >> 30) & 1u;
+    uint32_t _r_08005ADC;
+    _r_08005ADC = _op2_08005ADC;
+    arm_set_nzc_logic(_r_08005ADC, _co_08005ADC);
+    g_cpu.R[0] = _r_08005ADC;
+    g_cpu.R[15] = 0x08005ADEu;
+    runtime_tick(_cyc_08005ADC);
+    /* 08005ADE  08005ade T adds r0,r0,r1 */
+    g_cpu.R[15] = 0x08005ADEu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08005ADE = 1u;
+    _cyc_08005ADE = 1u;
+    uint32_t _rm_08005ADE = g_cpu.R[1];
+    uint32_t _op2_08005ADE;
+    uint32_t _co_08005ADE;
+    _op2_08005ADE = _rm_08005ADE;
+    _co_08005ADE = cpsr_c();
+    uint32_t _rn_08005ADE = g_cpu.R[0];
+    uint32_t _r_08005ADE;
+    _r_08005ADE = _rn_08005ADE + _op2_08005ADE;
+    arm_set_nzcv_add(_rn_08005ADE, _op2_08005ADE, _r_08005ADE);
+    g_cpu.R[0] = _r_08005ADE;
+    g_cpu.R[15] = 0x08005AE0u;
+    runtime_tick(_cyc_08005ADE);
+    /* 08005AE0  08005ae0 T ldr r1,[r0] */
+    g_cpu.R[15] = 0x08005AE0u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08005AE0 = 1u;
+    _cyc_08005AE0 = 2u;
+    uint32_t _base_08005AE0 = g_cpu.R[0];
+    uint32_t _off_08005AE0;
+    _off_08005AE0 = 0x00000000u;
+    uint32_t _ea_08005AE0 = _base_08005AE0 + _off_08005AE0;
+    uint32_t _post_08005AE0 = _base_08005AE0 + _off_08005AE0;
+    _cyc_08005AE0 += runtime_mem_cycles(_ea_08005AE0, 4u, 0u);
+    uint32_t _v_08005AE0;
+    { uint32_t _w = bus_read_u32(_ea_08005AE0 & ~3u); uint32_t _rot = (_ea_08005AE0 & 3u) * 8u; _v_08005AE0 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[1] = _v_08005AE0;
+    g_cpu.R[15] = 0x08005AE2u;
+    runtime_tick(_cyc_08005AE0);
+    /* 08005AE2  08005ae2 T adds r0,r4,#0x0 */
+    g_cpu.R[15] = 0x08005AE2u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08005AE2 = 1u;
+    _cyc_08005AE2 = 1u;
+    uint32_t _rn_08005AE2 = g_cpu.R[4];
+    uint32_t _r_08005AE2;
+    _r_08005AE2 = _rn_08005AE2 + 0x00000000u;
+    arm_set_nzcv_add(_rn_08005AE2, 0x00000000u, _r_08005AE2);
+    g_cpu.R[0] = _r_08005AE2;
+    g_cpu.R[15] = 0x08005AE4u;
+    runtime_tick(_cyc_08005AE2);
+    /* 08005AE4  08005ae4 T bl.hi 0x080c2ae8 */
+    g_cpu.R[15] = 0x08005AE4u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08005AE4 = 1u;
+    _cyc_08005AE4 = 1u;
+    g_cpu.R[14] = 0x080C2AE8u;
+    g_cpu.R[15] = 0x08005AE6u;
+    runtime_tick(_cyc_08005AE4);
+    /* 08005AE6  08005ae6 T bl.lo 0x00000000 */
+    g_cpu.R[15] = 0x08005AE6u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08005AE6 = 1u;
+    _cyc_08005AE6 = 3u;
+    uint32_t _blt_08005AE6 = (g_cpu.R[14] + 0x000006F8u) & ~1u;
+    g_cpu.R[14] = 0x08005AE9u;
+    g_cpu.R[15] = _blt_08005AE6;
+    runtime_call_push_return(0x08005AE8u);
+    runtime_tick(_cyc_08005AE6);
+    _cyc_08005AE6 = 0u;
+    runtime_dispatch(_blt_08005AE6);
+    if (g_cpu.R[15] != 0x08005AE8u) { runtime_call_cancel_return(0x08005AE8u); return; }
+    g_cpu.R[15] = 0x08005AE8u;
+    runtime_tick(_cyc_08005AE6);
+    /* fall-through to 0x08005AE8 */
+    g_cpu.R[15] = 0x08005AE8u;
+    runtime_dispatch(0x08005AE8u);
+    return;
+}
+
+/* 0x08005AE8  mode=thumb  end=0x08005AF4  branches=0  indirect */
 
 
 /* 0x08005AE8 thumb */
@@ -30797,7 +31249,7 @@ void gf_tfunc_0800616E(void) {
     return;
 }
 
-/* 0x080061D2  mode=thumb  end=0x080061FA  branches=0  indirect */
+/* 0x0800617C  mode=thumb  end=0x0800618E  branches=6  indirect */
 
 
 /* 0x08006176 thumb */
@@ -30862,6 +31314,554 @@ void gf_tfunc_08006176(void) {
     return;
 }
 
+/* 0x080061AC  mode=thumb  end=0x080061B4  branches=1  indirect */
+
+
+/* 0x0800617C thumb */
+void gf_tfunc_0800617C(void) {
+    if (g_runtime_fn_entry_hook) g_runtime_fn_entry_hook(0x0800617Cu);
+    /* 0800617C  0800617c T stm r13!,{r4,r5,r6,r7,r14} */
+    g_cpu.R[15] = 0x0800617Cu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800617C = 1u;
+    _cyc_0800617C = 1u;
+    uint32_t _b_0800617C = g_cpu.R[13];
+    uint32_t _a_0800617C = _b_0800617C - 20u;
+    uint32_t _fb_0800617C = _b_0800617C - 20u;
+    _cyc_0800617C += runtime_mem_cycles(_a_0800617C & ~3u, 4u, 0u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x0800617Cu, _a_0800617C & ~3u, g_cpu.R[4], 4u);
+    bus_write_u32(_a_0800617C & ~3u, g_cpu.R[4]);
+    _a_0800617C += 4u;
+    _cyc_0800617C += runtime_mem_cycles(_a_0800617C & ~3u, 4u, 1u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x0800617Cu, _a_0800617C & ~3u, g_cpu.R[5], 4u);
+    bus_write_u32(_a_0800617C & ~3u, g_cpu.R[5]);
+    _a_0800617C += 4u;
+    _cyc_0800617C += runtime_mem_cycles(_a_0800617C & ~3u, 4u, 1u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x0800617Cu, _a_0800617C & ~3u, g_cpu.R[6], 4u);
+    bus_write_u32(_a_0800617C & ~3u, g_cpu.R[6]);
+    _a_0800617C += 4u;
+    _cyc_0800617C += runtime_mem_cycles(_a_0800617C & ~3u, 4u, 1u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x0800617Cu, _a_0800617C & ~3u, g_cpu.R[7], 4u);
+    bus_write_u32(_a_0800617C & ~3u, g_cpu.R[7]);
+    _a_0800617C += 4u;
+    _cyc_0800617C += runtime_mem_cycles(_a_0800617C & ~3u, 4u, 1u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x0800617Cu, _a_0800617C & ~3u, g_cpu.R[14], 4u);
+    bus_write_u32(_a_0800617C & ~3u, g_cpu.R[14]);
+    _a_0800617C += 4u;
+    g_cpu.R[13] = _fb_0800617C;
+    g_cpu.R[15] = 0x0800617Eu;
+    runtime_tick(_cyc_0800617C);
+    /* 0800617E  0800617e T movs r5,#0x0 */
+    g_cpu.R[15] = 0x0800617Eu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800617E = 1u;
+    _cyc_0800617E = 1u;
+    uint32_t _r_0800617E;
+    _r_0800617E = 0x00000000u;
+    arm_set_nzc_logic(_r_0800617E, cpsr_c());
+    g_cpu.R[5] = _r_0800617E;
+    g_cpu.R[15] = 0x08006180u;
+    runtime_tick(_cyc_0800617E);
+    /* 08006180  08006180 T ldr r0,[r15,#0x38] */
+    g_cpu.R[15] = 0x08006180u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006180 = 1u;
+    _cyc_08006180 = 2u;
+    uint32_t _base_08006180 = 0x08006184u & ~3u;
+    uint32_t _off_08006180;
+    _off_08006180 = 0x00000038u;
+    uint32_t _ea_08006180 = _base_08006180 + _off_08006180;
+    uint32_t _post_08006180 = _base_08006180 + _off_08006180;
+    _cyc_08006180 += runtime_mem_cycles(_ea_08006180, 4u, 0u);
+    uint32_t _v_08006180;
+    { uint32_t _w = bus_read_u32(_ea_08006180 & ~3u); uint32_t _rot = (_ea_08006180 & 3u) * 8u; _v_08006180 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_08006180;
+    g_cpu.R[15] = 0x08006182u;
+    runtime_tick(_cyc_08006180);
+    /* 08006182  08006182 T movs r0,r0,lsl #16 */
+    g_cpu.R[15] = 0x08006182u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006182 = 1u;
+    _cyc_08006182 = 1u;
+    uint32_t _rm_08006182 = g_cpu.R[0];
+    uint32_t _op2_08006182;
+    uint32_t _co_08006182;
+    _op2_08006182 = _rm_08006182 << 16;
+    _co_08006182 = (_rm_08006182 >> 16) & 1u;
+    uint32_t _r_08006182;
+    _r_08006182 = _op2_08006182;
+    arm_set_nzc_logic(_r_08006182, _co_08006182);
+    g_cpu.R[0] = _r_08006182;
+    g_cpu.R[15] = 0x08006184u;
+    runtime_tick(_cyc_08006182);
+    /* 08006184  08006184 T movs r0,r0,lsr #16 */
+    g_cpu.R[15] = 0x08006184u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006184 = 1u;
+    _cyc_08006184 = 1u;
+    uint32_t _rm_08006184 = g_cpu.R[0];
+    uint32_t _op2_08006184;
+    uint32_t _co_08006184;
+    _op2_08006184 = _rm_08006184 >> 16;
+    _co_08006184 = (_rm_08006184 >> 15) & 1u;
+    uint32_t _r_08006184;
+    _r_08006184 = _op2_08006184;
+    arm_set_nzc_logic(_r_08006184, _co_08006184);
+    g_cpu.R[0] = _r_08006184;
+    g_cpu.R[15] = 0x08006186u;
+    runtime_tick(_cyc_08006184);
+    /* 08006186  08006186 T cmps r5,r0 */
+    g_cpu.R[15] = 0x08006186u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006186 = 1u;
+    _cyc_08006186 = 1u;
+    uint32_t _rm_08006186 = g_cpu.R[0];
+    uint32_t _op2_08006186;
+    uint32_t _co_08006186;
+    _op2_08006186 = _rm_08006186;
+    _co_08006186 = cpsr_c();
+    uint32_t _rn_08006186 = g_cpu.R[5];
+    uint32_t _r_08006186;
+    _r_08006186 = _rn_08006186 - _op2_08006186;
+    arm_set_nzcv_sub(_rn_08006186, _op2_08006186, _r_08006186);
+    g_cpu.R[15] = 0x08006188u;
+    runtime_tick(_cyc_08006186);
+    /* 08006188  08006188 T bcs 0x080061b4 */
+    g_cpu.R[15] = 0x08006188u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006188 = 1u;
+    if (arm_cond_passes(0x2u)) {
+        _cyc_08006188 = 3u;
+        g_cpu.R[15] = 0x080061B4u;
+        runtime_tick(_cyc_08006188);
+        GBARECOMP_TAIL_CALL(gf_tfunc_080061B4);
+    }
+    g_cpu.R[15] = 0x0800618Au;
+    runtime_tick(_cyc_08006188);
+    /* 0800618A  0800618a T adds r7,r0,#0x0 */
+    g_cpu.R[15] = 0x0800618Au;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800618A = 1u;
+    _cyc_0800618A = 1u;
+    uint32_t _rn_0800618A = g_cpu.R[0];
+    uint32_t _r_0800618A;
+    _r_0800618A = _rn_0800618A + 0x00000000u;
+    arm_set_nzcv_add(_rn_0800618A, 0x00000000u, _r_0800618A);
+    g_cpu.R[7] = _r_0800618A;
+    g_cpu.R[15] = 0x0800618Cu;
+    runtime_tick(_cyc_0800618A);
+    /* 0800618C  0800618c T ldr r6,[r15,#0x30] */
+    g_cpu.R[15] = 0x0800618Cu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800618C = 1u;
+    _cyc_0800618C = 2u;
+    uint32_t _base_0800618C = 0x08006190u & ~3u;
+    uint32_t _off_0800618C;
+    _off_0800618C = 0x00000030u;
+    uint32_t _ea_0800618C = _base_0800618C + _off_0800618C;
+    uint32_t _post_0800618C = _base_0800618C + _off_0800618C;
+    _cyc_0800618C += runtime_mem_cycles(_ea_0800618C, 4u, 0u);
+    uint32_t _v_0800618C;
+    { uint32_t _w = bus_read_u32(_ea_0800618C & ~3u); uint32_t _rot = (_ea_0800618C & 3u) * 8u; _v_0800618C = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[6] = _v_0800618C;
+    g_cpu.R[15] = 0x0800618Eu;
+    runtime_tick(_cyc_0800618C);
+    /* fall-through to 0x0800618E */
+    g_cpu.R[15] = 0x0800618Eu;
+    runtime_dispatch(0x0800618Eu);
+    return;
+}
+
+/* 0x0800618E  mode=thumb  end=0x080061A8  branches=5  indirect */
+
+
+/* 0x0800618E thumb */
+void gf_tfunc_0800618E(void) {
+    if (g_runtime_fn_entry_hook) g_runtime_fn_entry_hook(0x0800618Eu);
+    /* 0800618E  0800618e T ldr r0,[r15,#0x34] */
+    g_cpu.R[15] = 0x0800618Eu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800618E = 1u;
+    _cyc_0800618E = 2u;
+    uint32_t _base_0800618E = 0x08006192u & ~3u;
+    uint32_t _off_0800618E;
+    _off_0800618E = 0x00000034u;
+    uint32_t _ea_0800618E = _base_0800618E + _off_0800618E;
+    uint32_t _post_0800618E = _base_0800618E + _off_0800618E;
+    _cyc_0800618E += runtime_mem_cycles(_ea_0800618E, 4u, 0u);
+    uint32_t _v_0800618E;
+    { uint32_t _w = bus_read_u32(_ea_0800618E & ~3u); uint32_t _rot = (_ea_0800618E & 3u) * 8u; _v_0800618E = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_0800618E;
+    g_cpu.R[15] = 0x08006190u;
+    runtime_tick(_cyc_0800618E);
+    /* 08006190  08006190 T adds r0,r5,r0 */
+    g_cpu.R[15] = 0x08006190u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006190 = 1u;
+    _cyc_08006190 = 1u;
+    uint32_t _rm_08006190 = g_cpu.R[0];
+    uint32_t _op2_08006190;
+    uint32_t _co_08006190;
+    _op2_08006190 = _rm_08006190;
+    _co_08006190 = cpsr_c();
+    uint32_t _rn_08006190 = g_cpu.R[5];
+    uint32_t _r_08006190;
+    _r_08006190 = _rn_08006190 + _op2_08006190;
+    arm_set_nzcv_add(_rn_08006190, _op2_08006190, _r_08006190);
+    g_cpu.R[0] = _r_08006190;
+    g_cpu.R[15] = 0x08006192u;
+    runtime_tick(_cyc_08006190);
+    /* 08006192  08006192 T ldrb r0,[r0] */
+    g_cpu.R[15] = 0x08006192u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006192 = 1u;
+    _cyc_08006192 = 2u;
+    uint32_t _base_08006192 = g_cpu.R[0];
+    uint32_t _off_08006192;
+    _off_08006192 = 0x00000000u;
+    uint32_t _ea_08006192 = _base_08006192 + _off_08006192;
+    uint32_t _post_08006192 = _base_08006192 + _off_08006192;
+    _cyc_08006192 += runtime_mem_cycles(_ea_08006192, 1u, 0u);
+    uint32_t _v_08006192;
+    _v_08006192 = bus_read_u8(_ea_08006192);
+    g_cpu.R[0] = _v_08006192;
+    g_cpu.R[15] = 0x08006194u;
+    runtime_tick(_cyc_08006192);
+    /* 08006194  08006194 T cmps r0,#0x0 */
+    g_cpu.R[15] = 0x08006194u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006194 = 1u;
+    _cyc_08006194 = 1u;
+    uint32_t _rn_08006194 = g_cpu.R[0];
+    uint32_t _r_08006194;
+    _r_08006194 = _rn_08006194 - 0x00000000u;
+    arm_set_nzcv_sub(_rn_08006194, 0x00000000u, _r_08006194);
+    g_cpu.R[15] = 0x08006196u;
+    runtime_tick(_cyc_08006194);
+    /* 08006196  08006196 T beq 0x080061ac */
+    g_cpu.R[15] = 0x08006196u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006196 = 1u;
+    if (arm_cond_passes(0x0u)) {
+        _cyc_08006196 = 3u;
+        g_cpu.R[15] = 0x080061ACu;
+        runtime_tick(_cyc_08006196);
+        GBARECOMP_TAIL_CALL(gf_tfunc_080061AC);
+    }
+    g_cpu.R[15] = 0x08006198u;
+    runtime_tick(_cyc_08006196);
+    /* 08006198  08006198 T ldr r0,[r15,#0x2c] */
+    g_cpu.R[15] = 0x08006198u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006198 = 1u;
+    _cyc_08006198 = 2u;
+    uint32_t _base_08006198 = 0x0800619Cu & ~3u;
+    uint32_t _off_08006198;
+    _off_08006198 = 0x0000002Cu;
+    uint32_t _ea_08006198 = _base_08006198 + _off_08006198;
+    uint32_t _post_08006198 = _base_08006198 + _off_08006198;
+    _cyc_08006198 += runtime_mem_cycles(_ea_08006198, 4u, 0u);
+    uint32_t _v_08006198;
+    { uint32_t _w = bus_read_u32(_ea_08006198 & ~3u); uint32_t _rot = (_ea_08006198 & 3u) * 8u; _v_08006198 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_08006198;
+    g_cpu.R[15] = 0x0800619Au;
+    runtime_tick(_cyc_08006198);
+    /* 0800619A  0800619a T adds r4,r5,r0 */
+    g_cpu.R[15] = 0x0800619Au;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800619A = 1u;
+    _cyc_0800619A = 1u;
+    uint32_t _rm_0800619A = g_cpu.R[0];
+    uint32_t _op2_0800619A;
+    uint32_t _co_0800619A;
+    _op2_0800619A = _rm_0800619A;
+    _co_0800619A = cpsr_c();
+    uint32_t _rn_0800619A = g_cpu.R[5];
+    uint32_t _r_0800619A;
+    _r_0800619A = _rn_0800619A + _op2_0800619A;
+    arm_set_nzcv_add(_rn_0800619A, _op2_0800619A, _r_0800619A);
+    g_cpu.R[4] = _r_0800619A;
+    g_cpu.R[15] = 0x0800619Cu;
+    runtime_tick(_cyc_0800619A);
+    /* 0800619C  0800619c T ldrb r0,[r4] */
+    g_cpu.R[15] = 0x0800619Cu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800619C = 1u;
+    _cyc_0800619C = 2u;
+    uint32_t _base_0800619C = g_cpu.R[4];
+    uint32_t _off_0800619C;
+    _off_0800619C = 0x00000000u;
+    uint32_t _ea_0800619C = _base_0800619C + _off_0800619C;
+    uint32_t _post_0800619C = _base_0800619C + _off_0800619C;
+    _cyc_0800619C += runtime_mem_cycles(_ea_0800619C, 1u, 0u);
+    uint32_t _v_0800619C;
+    _v_0800619C = bus_read_u8(_ea_0800619C);
+    g_cpu.R[0] = _v_0800619C;
+    g_cpu.R[15] = 0x0800619Eu;
+    runtime_tick(_cyc_0800619C);
+    /* 0800619E  0800619e T cmps r0,#0x0 */
+    g_cpu.R[15] = 0x0800619Eu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800619E = 1u;
+    _cyc_0800619E = 1u;
+    uint32_t _rn_0800619E = g_cpu.R[0];
+    uint32_t _r_0800619E;
+    _r_0800619E = _rn_0800619E - 0x00000000u;
+    arm_set_nzcv_sub(_rn_0800619E, 0x00000000u, _r_0800619E);
+    g_cpu.R[15] = 0x080061A0u;
+    runtime_tick(_cyc_0800619E);
+    /* 080061A0  080061a0 T beq 0x080061ac */
+    g_cpu.R[15] = 0x080061A0u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080061A0 = 1u;
+    if (arm_cond_passes(0x0u)) {
+        _cyc_080061A0 = 3u;
+        g_cpu.R[15] = 0x080061ACu;
+        runtime_tick(_cyc_080061A0);
+        GBARECOMP_TAIL_CALL(gf_tfunc_080061AC);
+    }
+    g_cpu.R[15] = 0x080061A2u;
+    runtime_tick(_cyc_080061A0);
+    /* 080061A2  080061a2 T ldr r0,[r6] */
+    g_cpu.R[15] = 0x080061A2u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080061A2 = 1u;
+    _cyc_080061A2 = 2u;
+    uint32_t _base_080061A2 = g_cpu.R[6];
+    uint32_t _off_080061A2;
+    _off_080061A2 = 0x00000000u;
+    uint32_t _ea_080061A2 = _base_080061A2 + _off_080061A2;
+    uint32_t _post_080061A2 = _base_080061A2 + _off_080061A2;
+    _cyc_080061A2 += runtime_mem_cycles(_ea_080061A2, 4u, 0u);
+    uint32_t _v_080061A2;
+    { uint32_t _w = bus_read_u32(_ea_080061A2 & ~3u); uint32_t _rot = (_ea_080061A2 & 3u) * 8u; _v_080061A2 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_080061A2;
+    g_cpu.R[15] = 0x080061A4u;
+    runtime_tick(_cyc_080061A2);
+    /* 080061A4  080061a4 T bl.hi 0x080c01a8 */
+    g_cpu.R[15] = 0x080061A4u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080061A4 = 1u;
+    _cyc_080061A4 = 1u;
+    g_cpu.R[14] = 0x080C01A8u;
+    g_cpu.R[15] = 0x080061A6u;
+    runtime_tick(_cyc_080061A4);
+    /* 080061A6  080061a6 T bl.lo 0x00000000 */
+    g_cpu.R[15] = 0x080061A6u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080061A6 = 1u;
+    _cyc_080061A6 = 3u;
+    uint32_t _blt_080061A6 = (g_cpu.R[14] + 0x000001C0u) & ~1u;
+    g_cpu.R[14] = 0x080061A9u;
+    g_cpu.R[15] = _blt_080061A6;
+    runtime_call_push_return(0x080061A8u);
+    runtime_tick(_cyc_080061A6);
+    _cyc_080061A6 = 0u;
+    runtime_dispatch(_blt_080061A6);
+    if (g_cpu.R[15] != 0x080061A8u) { runtime_call_cancel_return(0x080061A8u); return; }
+    g_cpu.R[15] = 0x080061A8u;
+    runtime_tick(_cyc_080061A6);
+    /* fall-through to 0x080061A8 */
+    g_cpu.R[15] = 0x080061A8u;
+    runtime_dispatch(0x080061A8u);
+    return;
+}
+
+/* 0x080061A8  mode=thumb  end=0x080061AC  branches=1  indirect */
+
+
+/* 0x080061A8 thumb */
+void gf_tfunc_080061A8(void) {
+    if (g_runtime_fn_entry_hook) g_runtime_fn_entry_hook(0x080061A8u);
+    /* 080061A8  080061a8 T movs r0,#0x0 */
+    g_cpu.R[15] = 0x080061A8u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080061A8 = 1u;
+    _cyc_080061A8 = 1u;
+    uint32_t _r_080061A8;
+    _r_080061A8 = 0x00000000u;
+    arm_set_nzc_logic(_r_080061A8, cpsr_c());
+    g_cpu.R[0] = _r_080061A8;
+    g_cpu.R[15] = 0x080061AAu;
+    runtime_tick(_cyc_080061A8);
+    /* 080061AA  080061aa T strb r0,[r4] */
+    g_cpu.R[15] = 0x080061AAu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080061AA = 1u;
+    _cyc_080061AA = 1u;
+    uint32_t _base_080061AA = g_cpu.R[4];
+    uint32_t _off_080061AA;
+    _off_080061AA = 0x00000000u;
+    uint32_t _ea_080061AA = _base_080061AA + _off_080061AA;
+    uint32_t _post_080061AA = _base_080061AA + _off_080061AA;
+    _cyc_080061AA += runtime_mem_cycles(_ea_080061AA, 1u, 0u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x080061AAu, _ea_080061AA, (uint32_t)(g_cpu.R[0] & 0xFFu), 1u);
+    bus_write_u8(_ea_080061AA, (uint8_t)(g_cpu.R[0] & 0xFFu));
+    g_cpu.R[15] = 0x080061ACu;
+    runtime_tick(_cyc_080061AA);
+    /* fall-through to 0x080061AC */
+    g_cpu.R[15] = 0x080061ACu;
+    runtime_dispatch(0x080061ACu);
+    return;
+}
+
+/* 0x080061D2  mode=thumb  end=0x080061FA  branches=0  indirect */
+
+
+/* 0x080061AC thumb */
+void gf_tfunc_080061AC(void) {
+    if (g_runtime_fn_entry_hook) g_runtime_fn_entry_hook(0x080061ACu);
+    /* 080061AC  080061ac T adds r6,r6,#0xc */
+    g_cpu.R[15] = 0x080061ACu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080061AC = 1u;
+    _cyc_080061AC = 1u;
+    uint32_t _rn_080061AC = g_cpu.R[6];
+    uint32_t _r_080061AC;
+    _r_080061AC = _rn_080061AC + 0x0000000Cu;
+    arm_set_nzcv_add(_rn_080061AC, 0x0000000Cu, _r_080061AC);
+    g_cpu.R[6] = _r_080061AC;
+    g_cpu.R[15] = 0x080061AEu;
+    runtime_tick(_cyc_080061AC);
+    /* 080061AE  080061ae T adds r5,r5,#0x1 */
+    g_cpu.R[15] = 0x080061AEu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080061AE = 1u;
+    _cyc_080061AE = 1u;
+    uint32_t _rn_080061AE = g_cpu.R[5];
+    uint32_t _r_080061AE;
+    _r_080061AE = _rn_080061AE + 0x00000001u;
+    arm_set_nzcv_add(_rn_080061AE, 0x00000001u, _r_080061AE);
+    g_cpu.R[5] = _r_080061AE;
+    g_cpu.R[15] = 0x080061B0u;
+    runtime_tick(_cyc_080061AE);
+    /* 080061B0  080061b0 T cmps r5,r7 */
+    g_cpu.R[15] = 0x080061B0u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080061B0 = 1u;
+    _cyc_080061B0 = 1u;
+    uint32_t _rm_080061B0 = g_cpu.R[7];
+    uint32_t _op2_080061B0;
+    uint32_t _co_080061B0;
+    _op2_080061B0 = _rm_080061B0;
+    _co_080061B0 = cpsr_c();
+    uint32_t _rn_080061B0 = g_cpu.R[5];
+    uint32_t _r_080061B0;
+    _r_080061B0 = _rn_080061B0 - _op2_080061B0;
+    arm_set_nzcv_sub(_rn_080061B0, _op2_080061B0, _r_080061B0);
+    g_cpu.R[15] = 0x080061B2u;
+    runtime_tick(_cyc_080061B0);
+    /* 080061B2  080061b2 T bcc 0x0800618e */
+    g_cpu.R[15] = 0x080061B2u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080061B2 = 1u;
+    if (arm_cond_passes(0x3u)) {
+        _cyc_080061B2 = 3u;
+        g_cpu.R[15] = 0x0800618Eu;
+        runtime_tick(_cyc_080061B2);
+        GBARECOMP_TAIL_CALL(gf_tfunc_0800618E);
+    }
+    g_cpu.R[15] = 0x080061B4u;
+    runtime_tick(_cyc_080061B2);
+    /* fall-through to 0x080061B4 */
+    g_cpu.R[15] = 0x080061B4u;
+    runtime_dispatch(0x080061B4u);
+    return;
+}
+
+/* 0x080061B4  mode=thumb  end=0x080061BA  branches=0  indirect */
+
+
+/* 0x080061B4 thumb */
+void gf_tfunc_080061B4(void) {
+    if (g_runtime_fn_entry_hook) g_runtime_fn_entry_hook(0x080061B4u);
+    /* 080061B4  080061b4 T ldm r13!,{r4,r5,r6,r7} */
+    g_cpu.R[15] = 0x080061B4u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080061B4 = 1u;
+    _cyc_080061B4 = 2u;
+    uint32_t _b_080061B4 = g_cpu.R[13];
+    uint32_t _a_080061B4 = _b_080061B4;
+    uint32_t _fb_080061B4 = _b_080061B4 + 16u;
+    _cyc_080061B4 += runtime_mem_cycles(_a_080061B4 & ~3u, 4u, 0u);
+    g_cpu.R[4] = bus_read_u32(_a_080061B4 & ~3u);
+    _a_080061B4 += 4u;
+    _cyc_080061B4 += runtime_mem_cycles(_a_080061B4 & ~3u, 4u, 1u);
+    g_cpu.R[5] = bus_read_u32(_a_080061B4 & ~3u);
+    _a_080061B4 += 4u;
+    _cyc_080061B4 += runtime_mem_cycles(_a_080061B4 & ~3u, 4u, 1u);
+    g_cpu.R[6] = bus_read_u32(_a_080061B4 & ~3u);
+    _a_080061B4 += 4u;
+    _cyc_080061B4 += runtime_mem_cycles(_a_080061B4 & ~3u, 4u, 1u);
+    g_cpu.R[7] = bus_read_u32(_a_080061B4 & ~3u);
+    _a_080061B4 += 4u;
+    g_cpu.R[13] = _fb_080061B4;
+    g_cpu.R[15] = 0x080061B6u;
+    runtime_tick(_cyc_080061B4);
+    /* 080061B6  080061b6 T ldm r13!,{r0} */
+    g_cpu.R[15] = 0x080061B6u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080061B6 = 1u;
+    _cyc_080061B6 = 2u;
+    uint32_t _b_080061B6 = g_cpu.R[13];
+    uint32_t _a_080061B6 = _b_080061B6;
+    uint32_t _fb_080061B6 = _b_080061B6 + 4u;
+    _cyc_080061B6 += runtime_mem_cycles(_a_080061B6 & ~3u, 4u, 0u);
+    g_cpu.R[0] = bus_read_u32(_a_080061B6 & ~3u);
+    _a_080061B6 += 4u;
+    g_cpu.R[13] = _fb_080061B6;
+    g_cpu.R[15] = 0x080061B8u;
+    runtime_tick(_cyc_080061B6);
+    /* 080061B8  080061b8 T bx r0 */
+    g_cpu.R[15] = 0x080061B8u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080061B8 = 1u;
+    _cyc_080061B8 = 3u;
+    uint32_t _bxt_080061B8 = g_cpu.R[0];
+    g_cpu.R[15] = _bxt_080061B8 & ~1u;
+    if (_bxt_080061B8 & 1u) g_cpu.cpsr |= CPSR_T_BIT; else g_cpu.cpsr &= ~CPSR_T_BIT;
+    runtime_tick(_cyc_080061B8);
+    if (runtime_call_should_return(g_cpu.R[15])) return;
+    GBARECOMP_TAIL_DISPATCH_WITH_EXCHANGE(_bxt_080061B8);
+    g_cpu.R[15] = 0x080061BAu;
+    runtime_tick(_cyc_080061B8);
+    /* fall-through to 0x080061BA */
+    g_cpu.R[15] = 0x080061BAu;
+    runtime_dispatch(0x080061BAu);
+    return;
+}
+
 /* 0x080061CC  mode=thumb  end=0x080061D2  branches=2  indirect */
 
 
@@ -30915,7 +31915,7 @@ void gf_tfunc_080061CC(void) {
     return;
 }
 
-/* 0x08006390  mode=thumb  end=0x080063C0  branches=0  indirect */
+/* 0x0800623A  mode=thumb  end=0x08006254  branches=0  indirect */
 
 
 /* 0x080061D2 thumb */
@@ -31246,7 +32246,288 @@ void gf_tfunc_080061D2(void) {
     return;
 }
 
+/* 0x08006234  mode=thumb  end=0x0800623A  branches=2  indirect */
+
+
+/* 0x08006234 thumb */
+void gf_tfunc_08006234(void) {
+    if (g_runtime_fn_entry_hook) g_runtime_fn_entry_hook(0x08006234u);
+    /* 08006234  08006234 T stm r13!,{r14} */
+    g_cpu.R[15] = 0x08006234u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006234 = 1u;
+    _cyc_08006234 = 1u;
+    uint32_t _b_08006234 = g_cpu.R[13];
+    uint32_t _a_08006234 = _b_08006234 - 4u;
+    uint32_t _fb_08006234 = _b_08006234 - 4u;
+    _cyc_08006234 += runtime_mem_cycles(_a_08006234 & ~3u, 4u, 0u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x08006234u, _a_08006234 & ~3u, g_cpu.R[14], 4u);
+    bus_write_u32(_a_08006234 & ~3u, g_cpu.R[14]);
+    _a_08006234 += 4u;
+    g_cpu.R[13] = _fb_08006234;
+    g_cpu.R[15] = 0x08006236u;
+    runtime_tick(_cyc_08006234);
+    /* 08006236  08006236 T bl.hi 0x0800523a */
+    g_cpu.R[15] = 0x08006236u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006236 = 1u;
+    _cyc_08006236 = 1u;
+    g_cpu.R[14] = 0x0800523Au;
+    g_cpu.R[15] = 0x08006238u;
+    runtime_tick(_cyc_08006236);
+    /* 08006238  08006238 T bl.lo 0x00000000 */
+    g_cpu.R[15] = 0x08006238u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006238 = 1u;
+    _cyc_08006238 = 3u;
+    uint32_t _blt_08006238 = (g_cpu.R[14] + 0x00000F42u) & ~1u;
+    g_cpu.R[14] = 0x0800623Bu;
+    g_cpu.R[15] = _blt_08006238;
+    runtime_call_push_return(0x0800623Au);
+    runtime_tick(_cyc_08006238);
+    _cyc_08006238 = 0u;
+    runtime_dispatch(_blt_08006238);
+    if (g_cpu.R[15] != 0x0800623Au) { runtime_call_cancel_return(0x0800623Au); return; }
+    g_cpu.R[15] = 0x0800623Au;
+    runtime_tick(_cyc_08006238);
+    /* fall-through to 0x0800623A */
+    g_cpu.R[15] = 0x0800623Au;
+    runtime_dispatch(0x0800623Au);
+    return;
+}
+
 /* 0x08006268  mode=thumb  end=0x080062A0  branches=0  indirect */
+
+
+/* 0x0800623A thumb */
+void gf_tfunc_0800623A(void) {
+    if (g_runtime_fn_entry_hook) g_runtime_fn_entry_hook(0x0800623Au);
+    /* 0800623A  0800623a T ldr r1,[r15,#0x18] */
+    g_cpu.R[15] = 0x0800623Au;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800623A = 1u;
+    _cyc_0800623A = 2u;
+    uint32_t _base_0800623A = 0x0800623Eu & ~3u;
+    uint32_t _off_0800623A;
+    _off_0800623A = 0x00000018u;
+    uint32_t _ea_0800623A = _base_0800623A + _off_0800623A;
+    uint32_t _post_0800623A = _base_0800623A + _off_0800623A;
+    _cyc_0800623A += runtime_mem_cycles(_ea_0800623A, 4u, 0u);
+    uint32_t _v_0800623A;
+    { uint32_t _w = bus_read_u32(_ea_0800623A & ~3u); uint32_t _rot = (_ea_0800623A & 3u) * 8u; _v_0800623A = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[1] = _v_0800623A;
+    g_cpu.R[15] = 0x0800623Cu;
+    runtime_tick(_cyc_0800623A);
+    /* 0800623C  0800623c T ldr r0,[r15,#0x18] */
+    g_cpu.R[15] = 0x0800623Cu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800623C = 1u;
+    _cyc_0800623C = 2u;
+    uint32_t _base_0800623C = 0x08006240u & ~3u;
+    uint32_t _off_0800623C;
+    _off_0800623C = 0x00000018u;
+    uint32_t _ea_0800623C = _base_0800623C + _off_0800623C;
+    uint32_t _post_0800623C = _base_0800623C + _off_0800623C;
+    _cyc_0800623C += runtime_mem_cycles(_ea_0800623C, 4u, 0u);
+    uint32_t _v_0800623C;
+    { uint32_t _w = bus_read_u32(_ea_0800623C & ~3u); uint32_t _rot = (_ea_0800623C & 3u) * 8u; _v_0800623C = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_0800623C;
+    g_cpu.R[15] = 0x0800623Eu;
+    runtime_tick(_cyc_0800623C);
+    /* 0800623E  0800623e T ldrh r2,[r0] */
+    g_cpu.R[15] = 0x0800623Eu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800623E = 1u;
+    _cyc_0800623E = 2u;
+    uint32_t _base_0800623E = g_cpu.R[0];
+    uint32_t _off_0800623E;
+    _off_0800623E = 0x00000000u;
+    uint32_t _ea_0800623E = _base_0800623E + _off_0800623E;
+    uint32_t _post_0800623E = _base_0800623E + _off_0800623E;
+    _cyc_0800623E += runtime_mem_cycles(_ea_0800623E, 2u, 0u);
+    uint32_t _v_0800623E;
+    { uint32_t _h = bus_read_u16(_ea_0800623E & ~1u); if (_ea_0800623E & 1u) _v_0800623E = ((_h >> 8) | (_h << 24)); else _v_0800623E = _h; }
+    g_cpu.R[2] = _v_0800623E;
+    g_cpu.R[15] = 0x08006240u;
+    runtime_tick(_cyc_0800623E);
+    /* 08006240  08006240 T ldr r3,[r15,#0x18] */
+    g_cpu.R[15] = 0x08006240u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006240 = 1u;
+    _cyc_08006240 = 2u;
+    uint32_t _base_08006240 = 0x08006244u & ~3u;
+    uint32_t _off_08006240;
+    _off_08006240 = 0x00000018u;
+    uint32_t _ea_08006240 = _base_08006240 + _off_08006240;
+    uint32_t _post_08006240 = _base_08006240 + _off_08006240;
+    _cyc_08006240 += runtime_mem_cycles(_ea_08006240, 4u, 0u);
+    uint32_t _v_08006240;
+    { uint32_t _w = bus_read_u32(_ea_08006240 & ~3u); uint32_t _rot = (_ea_08006240 & 3u) * 8u; _v_08006240 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[3] = _v_08006240;
+    g_cpu.R[15] = 0x08006242u;
+    runtime_tick(_cyc_08006240);
+    /* 08006242  08006242 T adds r0,r1,r3 */
+    g_cpu.R[15] = 0x08006242u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006242 = 1u;
+    _cyc_08006242 = 1u;
+    uint32_t _rm_08006242 = g_cpu.R[3];
+    uint32_t _op2_08006242;
+    uint32_t _co_08006242;
+    _op2_08006242 = _rm_08006242;
+    _co_08006242 = cpsr_c();
+    uint32_t _rn_08006242 = g_cpu.R[1];
+    uint32_t _r_08006242;
+    _r_08006242 = _rn_08006242 + _op2_08006242;
+    arm_set_nzcv_add(_rn_08006242, _op2_08006242, _r_08006242);
+    g_cpu.R[0] = _r_08006242;
+    g_cpu.R[15] = 0x08006244u;
+    runtime_tick(_cyc_08006242);
+    /* 08006244  08006244 T strh r2,[r0] */
+    g_cpu.R[15] = 0x08006244u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006244 = 1u;
+    _cyc_08006244 = 1u;
+    uint32_t _base_08006244 = g_cpu.R[0];
+    uint32_t _off_08006244;
+    _off_08006244 = 0x00000000u;
+    uint32_t _ea_08006244 = _base_08006244 + _off_08006244;
+    uint32_t _post_08006244 = _base_08006244 + _off_08006244;
+    _cyc_08006244 += runtime_mem_cycles(_ea_08006244, 2u, 0u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x08006244u, _ea_08006244 & ~1u, (uint32_t)(g_cpu.R[2] & 0xFFFFu), 2u);
+    bus_write_u16(_ea_08006244 & ~1u, (uint16_t)(g_cpu.R[2] & 0xFFFFu));
+    g_cpu.R[15] = 0x08006246u;
+    runtime_tick(_cyc_08006244);
+    /* 08006246  08006246 T ldr r0,[r15,#0x18] */
+    g_cpu.R[15] = 0x08006246u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006246 = 1u;
+    _cyc_08006246 = 2u;
+    uint32_t _base_08006246 = 0x0800624Au & ~3u;
+    uint32_t _off_08006246;
+    _off_08006246 = 0x00000018u;
+    uint32_t _ea_08006246 = _base_08006246 + _off_08006246;
+    uint32_t _post_08006246 = _base_08006246 + _off_08006246;
+    _cyc_08006246 += runtime_mem_cycles(_ea_08006246, 4u, 0u);
+    uint32_t _v_08006246;
+    { uint32_t _w = bus_read_u32(_ea_08006246 & ~3u); uint32_t _rot = (_ea_08006246 & 3u) * 8u; _v_08006246 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_08006246;
+    g_cpu.R[15] = 0x08006248u;
+    runtime_tick(_cyc_08006246);
+    /* 08006248  08006248 T ldrh r0,[r0] */
+    g_cpu.R[15] = 0x08006248u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006248 = 1u;
+    _cyc_08006248 = 2u;
+    uint32_t _base_08006248 = g_cpu.R[0];
+    uint32_t _off_08006248;
+    _off_08006248 = 0x00000000u;
+    uint32_t _ea_08006248 = _base_08006248 + _off_08006248;
+    uint32_t _post_08006248 = _base_08006248 + _off_08006248;
+    _cyc_08006248 += runtime_mem_cycles(_ea_08006248, 2u, 0u);
+    uint32_t _v_08006248;
+    { uint32_t _h = bus_read_u16(_ea_08006248 & ~1u); if (_ea_08006248 & 1u) _v_08006248 = ((_h >> 8) | (_h << 24)); else _v_08006248 = _h; }
+    g_cpu.R[0] = _v_08006248;
+    g_cpu.R[15] = 0x0800624Au;
+    runtime_tick(_cyc_08006248);
+    /* 0800624A  0800624a T ldr r2,[r15,#0x18] */
+    g_cpu.R[15] = 0x0800624Au;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800624A = 1u;
+    _cyc_0800624A = 2u;
+    uint32_t _base_0800624A = 0x0800624Eu & ~3u;
+    uint32_t _off_0800624A;
+    _off_0800624A = 0x00000018u;
+    uint32_t _ea_0800624A = _base_0800624A + _off_0800624A;
+    uint32_t _post_0800624A = _base_0800624A + _off_0800624A;
+    _cyc_0800624A += runtime_mem_cycles(_ea_0800624A, 4u, 0u);
+    uint32_t _v_0800624A;
+    { uint32_t _w = bus_read_u32(_ea_0800624A & ~3u); uint32_t _rot = (_ea_0800624A & 3u) * 8u; _v_0800624A = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[2] = _v_0800624A;
+    g_cpu.R[15] = 0x0800624Cu;
+    runtime_tick(_cyc_0800624A);
+    /* 0800624C  0800624c T adds r1,r1,r2 */
+    g_cpu.R[15] = 0x0800624Cu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800624C = 1u;
+    _cyc_0800624C = 1u;
+    uint32_t _rm_0800624C = g_cpu.R[2];
+    uint32_t _op2_0800624C;
+    uint32_t _co_0800624C;
+    _op2_0800624C = _rm_0800624C;
+    _co_0800624C = cpsr_c();
+    uint32_t _rn_0800624C = g_cpu.R[1];
+    uint32_t _r_0800624C;
+    _r_0800624C = _rn_0800624C + _op2_0800624C;
+    arm_set_nzcv_add(_rn_0800624C, _op2_0800624C, _r_0800624C);
+    g_cpu.R[1] = _r_0800624C;
+    g_cpu.R[15] = 0x0800624Eu;
+    runtime_tick(_cyc_0800624C);
+    /* 0800624E  0800624e T strh r0,[r1] */
+    g_cpu.R[15] = 0x0800624Eu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800624E = 1u;
+    _cyc_0800624E = 1u;
+    uint32_t _base_0800624E = g_cpu.R[1];
+    uint32_t _off_0800624E;
+    _off_0800624E = 0x00000000u;
+    uint32_t _ea_0800624E = _base_0800624E + _off_0800624E;
+    uint32_t _post_0800624E = _base_0800624E + _off_0800624E;
+    _cyc_0800624E += runtime_mem_cycles(_ea_0800624E, 2u, 0u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x0800624Eu, _ea_0800624E & ~1u, (uint32_t)(g_cpu.R[0] & 0xFFFFu), 2u);
+    bus_write_u16(_ea_0800624E & ~1u, (uint16_t)(g_cpu.R[0] & 0xFFFFu));
+    g_cpu.R[15] = 0x08006250u;
+    runtime_tick(_cyc_0800624E);
+    /* 08006250  08006250 T ldm r13!,{r0} */
+    g_cpu.R[15] = 0x08006250u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006250 = 1u;
+    _cyc_08006250 = 2u;
+    uint32_t _b_08006250 = g_cpu.R[13];
+    uint32_t _a_08006250 = _b_08006250;
+    uint32_t _fb_08006250 = _b_08006250 + 4u;
+    _cyc_08006250 += runtime_mem_cycles(_a_08006250 & ~3u, 4u, 0u);
+    g_cpu.R[0] = bus_read_u32(_a_08006250 & ~3u);
+    _a_08006250 += 4u;
+    g_cpu.R[13] = _fb_08006250;
+    g_cpu.R[15] = 0x08006252u;
+    runtime_tick(_cyc_08006250);
+    /* 08006252  08006252 T bx r0 */
+    g_cpu.R[15] = 0x08006252u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006252 = 1u;
+    _cyc_08006252 = 3u;
+    uint32_t _bxt_08006252 = g_cpu.R[0];
+    g_cpu.R[15] = _bxt_08006252 & ~1u;
+    if (_bxt_08006252 & 1u) g_cpu.cpsr |= CPSR_T_BIT; else g_cpu.cpsr &= ~CPSR_T_BIT;
+    runtime_tick(_cyc_08006252);
+    if (runtime_call_should_return(g_cpu.R[15])) return;
+    GBARECOMP_TAIL_DISPATCH_WITH_EXCHANGE(_bxt_08006252);
+    g_cpu.R[15] = 0x08006254u;
+    runtime_tick(_cyc_08006252);
+    /* fall-through to 0x08006254 */
+    g_cpu.R[15] = 0x08006254u;
+    runtime_dispatch(0x08006254u);
+    return;
+}
+
+/* 0x08006390  mode=thumb  end=0x080063C0  branches=0  indirect */
 
 
 /* 0x08006268 thumb */
@@ -33789,7 +35070,7 @@ void gf_tfunc_080063D4(void) {
     return;
 }
 
-/* 0x08006966  mode=thumb  end=0x08006984  branches=2  indirect */
+/* 0x080068D8  mode=thumb  end=0x08006910  branches=2  indirect */
 
 
 /* 0x080063E2 thumb */
@@ -33997,7 +35278,1093 @@ void gf_tfunc_080063E2(void) {
     return;
 }
 
+/* 0x08006910  mode=thumb  end=0x0800691C  branches=0  indirect */
+
+
+/* 0x080068D8 thumb */
+void gf_scene_transition_b(void) {
+    if (g_runtime_fn_entry_hook) g_runtime_fn_entry_hook(0x080068D8u);
+    /* 080068D8  080068d8 T stm r13!,{r4,r14} */
+    g_cpu.R[15] = 0x080068D8u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080068D8 = 1u;
+    _cyc_080068D8 = 1u;
+    uint32_t _b_080068D8 = g_cpu.R[13];
+    uint32_t _a_080068D8 = _b_080068D8 - 8u;
+    uint32_t _fb_080068D8 = _b_080068D8 - 8u;
+    _cyc_080068D8 += runtime_mem_cycles(_a_080068D8 & ~3u, 4u, 0u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x080068D8u, _a_080068D8 & ~3u, g_cpu.R[4], 4u);
+    bus_write_u32(_a_080068D8 & ~3u, g_cpu.R[4]);
+    _a_080068D8 += 4u;
+    _cyc_080068D8 += runtime_mem_cycles(_a_080068D8 & ~3u, 4u, 1u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x080068D8u, _a_080068D8 & ~3u, g_cpu.R[14], 4u);
+    bus_write_u32(_a_080068D8 & ~3u, g_cpu.R[14]);
+    _a_080068D8 += 4u;
+    g_cpu.R[13] = _fb_080068D8;
+    g_cpu.R[15] = 0x080068DAu;
+    runtime_tick(_cyc_080068D8);
+    /* 080068DA  080068da T adds r4,r0,#0x0 */
+    g_cpu.R[15] = 0x080068DAu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080068DA = 1u;
+    _cyc_080068DA = 1u;
+    uint32_t _rn_080068DA = g_cpu.R[0];
+    uint32_t _r_080068DA;
+    _r_080068DA = _rn_080068DA + 0x00000000u;
+    arm_set_nzcv_add(_rn_080068DA, 0x00000000u, _r_080068DA);
+    g_cpu.R[4] = _r_080068DA;
+    g_cpu.R[15] = 0x080068DCu;
+    runtime_tick(_cyc_080068DA);
+    /* 080068DC  080068dc T ldr r0,[r15,#0x3c] */
+    g_cpu.R[15] = 0x080068DCu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080068DC = 1u;
+    _cyc_080068DC = 2u;
+    uint32_t _base_080068DC = 0x080068E0u & ~3u;
+    uint32_t _off_080068DC;
+    _off_080068DC = 0x0000003Cu;
+    uint32_t _ea_080068DC = _base_080068DC + _off_080068DC;
+    uint32_t _post_080068DC = _base_080068DC + _off_080068DC;
+    _cyc_080068DC += runtime_mem_cycles(_ea_080068DC, 4u, 0u);
+    uint32_t _v_080068DC;
+    { uint32_t _w = bus_read_u32(_ea_080068DC & ~3u); uint32_t _rot = (_ea_080068DC & 3u) * 8u; _v_080068DC = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_080068DC;
+    g_cpu.R[15] = 0x080068DEu;
+    runtime_tick(_cyc_080068DC);
+    /* 080068DE  080068de T str r0,[r4,#0x14] */
+    g_cpu.R[15] = 0x080068DEu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080068DE = 1u;
+    _cyc_080068DE = 1u;
+    uint32_t _base_080068DE = g_cpu.R[4];
+    uint32_t _off_080068DE;
+    _off_080068DE = 0x00000014u;
+    uint32_t _ea_080068DE = _base_080068DE + _off_080068DE;
+    uint32_t _post_080068DE = _base_080068DE + _off_080068DE;
+    _cyc_080068DE += runtime_mem_cycles(_ea_080068DE, 4u, 0u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x080068DEu, _ea_080068DE & ~3u, g_cpu.R[0], 4u);
+    bus_write_u32(_ea_080068DE & ~3u, g_cpu.R[0]);
+    g_cpu.R[15] = 0x080068E0u;
+    runtime_tick(_cyc_080068DE);
+    /* 080068E0  080068e0 T ldrh r0,[r4,#0x22] */
+    g_cpu.R[15] = 0x080068E0u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080068E0 = 1u;
+    _cyc_080068E0 = 2u;
+    uint32_t _base_080068E0 = g_cpu.R[4];
+    uint32_t _off_080068E0;
+    _off_080068E0 = 0x00000022u;
+    uint32_t _ea_080068E0 = _base_080068E0 + _off_080068E0;
+    uint32_t _post_080068E0 = _base_080068E0 + _off_080068E0;
+    _cyc_080068E0 += runtime_mem_cycles(_ea_080068E0, 2u, 0u);
+    uint32_t _v_080068E0;
+    { uint32_t _h = bus_read_u16(_ea_080068E0 & ~1u); if (_ea_080068E0 & 1u) _v_080068E0 = ((_h >> 8) | (_h << 24)); else _v_080068E0 = _h; }
+    g_cpu.R[0] = _v_080068E0;
+    g_cpu.R[15] = 0x080068E2u;
+    runtime_tick(_cyc_080068E0);
+    /* 080068E2  080068e2 T adds r0,r0,#0x1 */
+    g_cpu.R[15] = 0x080068E2u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080068E2 = 1u;
+    _cyc_080068E2 = 1u;
+    uint32_t _rn_080068E2 = g_cpu.R[0];
+    uint32_t _r_080068E2;
+    _r_080068E2 = _rn_080068E2 + 0x00000001u;
+    arm_set_nzcv_add(_rn_080068E2, 0x00000001u, _r_080068E2);
+    g_cpu.R[0] = _r_080068E2;
+    g_cpu.R[15] = 0x080068E4u;
+    runtime_tick(_cyc_080068E2);
+    /* 080068E4  080068e4 T strh r0,[r4,#0x22] */
+    g_cpu.R[15] = 0x080068E4u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080068E4 = 1u;
+    _cyc_080068E4 = 1u;
+    uint32_t _base_080068E4 = g_cpu.R[4];
+    uint32_t _off_080068E4;
+    _off_080068E4 = 0x00000022u;
+    uint32_t _ea_080068E4 = _base_080068E4 + _off_080068E4;
+    uint32_t _post_080068E4 = _base_080068E4 + _off_080068E4;
+    _cyc_080068E4 += runtime_mem_cycles(_ea_080068E4, 2u, 0u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x080068E4u, _ea_080068E4 & ~1u, (uint32_t)(g_cpu.R[0] & 0xFFFFu), 2u);
+    bus_write_u16(_ea_080068E4 & ~1u, (uint16_t)(g_cpu.R[0] & 0xFFFFu));
+    g_cpu.R[15] = 0x080068E6u;
+    runtime_tick(_cyc_080068E4);
+    /* 080068E6  080068e6 T movs r0,#0x22 */
+    g_cpu.R[15] = 0x080068E6u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080068E6 = 1u;
+    _cyc_080068E6 = 1u;
+    uint32_t _r_080068E6;
+    _r_080068E6 = 0x00000022u;
+    arm_set_nzc_logic(_r_080068E6, cpsr_c());
+    g_cpu.R[0] = _r_080068E6;
+    g_cpu.R[15] = 0x080068E8u;
+    runtime_tick(_cyc_080068E6);
+    /* 080068E8  080068e8 T ldrsh r1,[r4,+r0] */
+    g_cpu.R[15] = 0x080068E8u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080068E8 = 1u;
+    _cyc_080068E8 = 2u;
+    uint32_t _base_080068E8 = g_cpu.R[4];
+    uint32_t _off_080068E8;
+    uint32_t _morm_080068E8 = g_cpu.R[0];
+    _off_080068E8 = _morm_080068E8;
+    uint32_t _ea_080068E8 = _base_080068E8 + _off_080068E8;
+    uint32_t _post_080068E8 = _base_080068E8 + _off_080068E8;
+    _cyc_080068E8 += runtime_mem_cycles(_ea_080068E8, 2u, 0u);
+    uint32_t _v_080068E8;
+    if (_ea_080068E8 & 1u) _v_080068E8 = (uint32_t)(int32_t)(int8_t)bus_read_u8(_ea_080068E8);
+    else _v_080068E8 = (uint32_t)(int32_t)(int16_t)bus_read_u16(_ea_080068E8);
+    g_cpu.R[1] = _v_080068E8;
+    g_cpu.R[15] = 0x080068EAu;
+    runtime_tick(_cyc_080068E8);
+    /* 080068EA  080068ea T movs r1,r1,lsl #1 */
+    g_cpu.R[15] = 0x080068EAu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080068EA = 1u;
+    _cyc_080068EA = 1u;
+    uint32_t _rm_080068EA = g_cpu.R[1];
+    uint32_t _op2_080068EA;
+    uint32_t _co_080068EA;
+    _op2_080068EA = _rm_080068EA << 1;
+    _co_080068EA = (_rm_080068EA >> 31) & 1u;
+    uint32_t _r_080068EA;
+    _r_080068EA = _op2_080068EA;
+    arm_set_nzc_logic(_r_080068EA, _co_080068EA);
+    g_cpu.R[1] = _r_080068EA;
+    g_cpu.R[15] = 0x080068ECu;
+    runtime_tick(_cyc_080068EA);
+    /* 080068EC  080068ec T adds r1,r1,r4 */
+    g_cpu.R[15] = 0x080068ECu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080068EC = 1u;
+    _cyc_080068EC = 1u;
+    uint32_t _rm_080068EC = g_cpu.R[4];
+    uint32_t _op2_080068EC;
+    uint32_t _co_080068EC;
+    _op2_080068EC = _rm_080068EC;
+    _co_080068EC = cpsr_c();
+    uint32_t _rn_080068EC = g_cpu.R[1];
+    uint32_t _r_080068EC;
+    _r_080068EC = _rn_080068EC + _op2_080068EC;
+    arm_set_nzcv_add(_rn_080068EC, _op2_080068EC, _r_080068EC);
+    g_cpu.R[1] = _r_080068EC;
+    g_cpu.R[15] = 0x080068EEu;
+    runtime_tick(_cyc_080068EC);
+    /* 080068EE  080068ee T ldrb r0,[r1,#0x19] */
+    g_cpu.R[15] = 0x080068EEu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080068EE = 1u;
+    _cyc_080068EE = 2u;
+    uint32_t _base_080068EE = g_cpu.R[1];
+    uint32_t _off_080068EE;
+    _off_080068EE = 0x00000019u;
+    uint32_t _ea_080068EE = _base_080068EE + _off_080068EE;
+    uint32_t _post_080068EE = _base_080068EE + _off_080068EE;
+    _cyc_080068EE += runtime_mem_cycles(_ea_080068EE, 1u, 0u);
+    uint32_t _v_080068EE;
+    _v_080068EE = bus_read_u8(_ea_080068EE);
+    g_cpu.R[0] = _v_080068EE;
+    g_cpu.R[15] = 0x080068F0u;
+    runtime_tick(_cyc_080068EE);
+    /* 080068F0  080068f0 T adds r0,r0,#0x1 */
+    g_cpu.R[15] = 0x080068F0u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080068F0 = 1u;
+    _cyc_080068F0 = 1u;
+    uint32_t _rn_080068F0 = g_cpu.R[0];
+    uint32_t _r_080068F0;
+    _r_080068F0 = _rn_080068F0 + 0x00000001u;
+    arm_set_nzcv_add(_rn_080068F0, 0x00000001u, _r_080068F0);
+    g_cpu.R[0] = _r_080068F0;
+    g_cpu.R[15] = 0x080068F2u;
+    runtime_tick(_cyc_080068F0);
+    /* 080068F2  080068f2 T strb r0,[r1,#0x19] */
+    g_cpu.R[15] = 0x080068F2u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080068F2 = 1u;
+    _cyc_080068F2 = 1u;
+    uint32_t _base_080068F2 = g_cpu.R[1];
+    uint32_t _off_080068F2;
+    _off_080068F2 = 0x00000019u;
+    uint32_t _ea_080068F2 = _base_080068F2 + _off_080068F2;
+    uint32_t _post_080068F2 = _base_080068F2 + _off_080068F2;
+    _cyc_080068F2 += runtime_mem_cycles(_ea_080068F2, 1u, 0u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x080068F2u, _ea_080068F2, (uint32_t)(g_cpu.R[0] & 0xFFu), 1u);
+    bus_write_u8(_ea_080068F2, (uint8_t)(g_cpu.R[0] & 0xFFu));
+    g_cpu.R[15] = 0x080068F4u;
+    runtime_tick(_cyc_080068F2);
+    /* 080068F4  080068f4 T movs r0,#0x22 */
+    g_cpu.R[15] = 0x080068F4u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080068F4 = 1u;
+    _cyc_080068F4 = 1u;
+    uint32_t _r_080068F4;
+    _r_080068F4 = 0x00000022u;
+    arm_set_nzc_logic(_r_080068F4, cpsr_c());
+    g_cpu.R[0] = _r_080068F4;
+    g_cpu.R[15] = 0x080068F6u;
+    runtime_tick(_cyc_080068F4);
+    /* 080068F6  080068f6 T ldrsh r1,[r4,+r0] */
+    g_cpu.R[15] = 0x080068F6u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080068F6 = 1u;
+    _cyc_080068F6 = 2u;
+    uint32_t _base_080068F6 = g_cpu.R[4];
+    uint32_t _off_080068F6;
+    uint32_t _morm_080068F6 = g_cpu.R[0];
+    _off_080068F6 = _morm_080068F6;
+    uint32_t _ea_080068F6 = _base_080068F6 + _off_080068F6;
+    uint32_t _post_080068F6 = _base_080068F6 + _off_080068F6;
+    _cyc_080068F6 += runtime_mem_cycles(_ea_080068F6, 2u, 0u);
+    uint32_t _v_080068F6;
+    if (_ea_080068F6 & 1u) _v_080068F6 = (uint32_t)(int32_t)(int8_t)bus_read_u8(_ea_080068F6);
+    else _v_080068F6 = (uint32_t)(int32_t)(int16_t)bus_read_u16(_ea_080068F6);
+    g_cpu.R[1] = _v_080068F6;
+    g_cpu.R[15] = 0x080068F8u;
+    runtime_tick(_cyc_080068F6);
+    /* 080068F8  080068f8 T movs r1,r1,lsl #1 */
+    g_cpu.R[15] = 0x080068F8u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080068F8 = 1u;
+    _cyc_080068F8 = 1u;
+    uint32_t _rm_080068F8 = g_cpu.R[1];
+    uint32_t _op2_080068F8;
+    uint32_t _co_080068F8;
+    _op2_080068F8 = _rm_080068F8 << 1;
+    _co_080068F8 = (_rm_080068F8 >> 31) & 1u;
+    uint32_t _r_080068F8;
+    _r_080068F8 = _op2_080068F8;
+    arm_set_nzc_logic(_r_080068F8, _co_080068F8);
+    g_cpu.R[1] = _r_080068F8;
+    g_cpu.R[15] = 0x080068FAu;
+    runtime_tick(_cyc_080068F8);
+    /* 080068FA  080068fa T adds r0,r4,#0x0 */
+    g_cpu.R[15] = 0x080068FAu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080068FA = 1u;
+    _cyc_080068FA = 1u;
+    uint32_t _rn_080068FA = g_cpu.R[4];
+    uint32_t _r_080068FA;
+    _r_080068FA = _rn_080068FA + 0x00000000u;
+    arm_set_nzcv_add(_rn_080068FA, 0x00000000u, _r_080068FA);
+    g_cpu.R[0] = _r_080068FA;
+    g_cpu.R[15] = 0x080068FCu;
+    runtime_tick(_cyc_080068FA);
+    /* 080068FC  080068fc T adds r0,r0,#0x18 */
+    g_cpu.R[15] = 0x080068FCu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080068FC = 1u;
+    _cyc_080068FC = 1u;
+    uint32_t _rn_080068FC = g_cpu.R[0];
+    uint32_t _r_080068FC;
+    _r_080068FC = _rn_080068FC + 0x00000018u;
+    arm_set_nzcv_add(_rn_080068FC, 0x00000018u, _r_080068FC);
+    g_cpu.R[0] = _r_080068FC;
+    g_cpu.R[15] = 0x080068FEu;
+    runtime_tick(_cyc_080068FC);
+    /* 080068FE  080068fe T adds r0,r0,r1 */
+    g_cpu.R[15] = 0x080068FEu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080068FE = 1u;
+    _cyc_080068FE = 1u;
+    uint32_t _rm_080068FE = g_cpu.R[1];
+    uint32_t _op2_080068FE;
+    uint32_t _co_080068FE;
+    _op2_080068FE = _rm_080068FE;
+    _co_080068FE = cpsr_c();
+    uint32_t _rn_080068FE = g_cpu.R[0];
+    uint32_t _r_080068FE;
+    _r_080068FE = _rn_080068FE + _op2_080068FE;
+    arm_set_nzcv_add(_rn_080068FE, _op2_080068FE, _r_080068FE);
+    g_cpu.R[0] = _r_080068FE;
+    g_cpu.R[15] = 0x08006900u;
+    runtime_tick(_cyc_080068FE);
+    /* 08006900  08006900 T ldrb r0,[r0] */
+    g_cpu.R[15] = 0x08006900u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006900 = 1u;
+    _cyc_08006900 = 2u;
+    uint32_t _base_08006900 = g_cpu.R[0];
+    uint32_t _off_08006900;
+    _off_08006900 = 0x00000000u;
+    uint32_t _ea_08006900 = _base_08006900 + _off_08006900;
+    uint32_t _post_08006900 = _base_08006900 + _off_08006900;
+    _cyc_08006900 += runtime_mem_cycles(_ea_08006900, 1u, 0u);
+    uint32_t _v_08006900;
+    _v_08006900 = bus_read_u8(_ea_08006900);
+    g_cpu.R[0] = _v_08006900;
+    g_cpu.R[15] = 0x08006902u;
+    runtime_tick(_cyc_08006900);
+    /* 08006902  08006902 T ldr r1,[r4,#0x14] */
+    g_cpu.R[15] = 0x08006902u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006902 = 1u;
+    _cyc_08006902 = 2u;
+    uint32_t _base_08006902 = g_cpu.R[4];
+    uint32_t _off_08006902;
+    _off_08006902 = 0x00000014u;
+    uint32_t _ea_08006902 = _base_08006902 + _off_08006902;
+    uint32_t _post_08006902 = _base_08006902 + _off_08006902;
+    _cyc_08006902 += runtime_mem_cycles(_ea_08006902, 4u, 0u);
+    uint32_t _v_08006902;
+    { uint32_t _w = bus_read_u32(_ea_08006902 & ~3u); uint32_t _rot = (_ea_08006902 & 3u) * 8u; _v_08006902 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[1] = _v_08006902;
+    g_cpu.R[15] = 0x08006904u;
+    runtime_tick(_cyc_08006902);
+    /* 08006904  08006904 T movs r0,r0,lsl #2 */
+    g_cpu.R[15] = 0x08006904u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006904 = 1u;
+    _cyc_08006904 = 1u;
+    uint32_t _rm_08006904 = g_cpu.R[0];
+    uint32_t _op2_08006904;
+    uint32_t _co_08006904;
+    _op2_08006904 = _rm_08006904 << 2;
+    _co_08006904 = (_rm_08006904 >> 30) & 1u;
+    uint32_t _r_08006904;
+    _r_08006904 = _op2_08006904;
+    arm_set_nzc_logic(_r_08006904, _co_08006904);
+    g_cpu.R[0] = _r_08006904;
+    g_cpu.R[15] = 0x08006906u;
+    runtime_tick(_cyc_08006904);
+    /* 08006906  08006906 T adds r0,r0,r1 */
+    g_cpu.R[15] = 0x08006906u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006906 = 1u;
+    _cyc_08006906 = 1u;
+    uint32_t _rm_08006906 = g_cpu.R[1];
+    uint32_t _op2_08006906;
+    uint32_t _co_08006906;
+    _op2_08006906 = _rm_08006906;
+    _co_08006906 = cpsr_c();
+    uint32_t _rn_08006906 = g_cpu.R[0];
+    uint32_t _r_08006906;
+    _r_08006906 = _rn_08006906 + _op2_08006906;
+    arm_set_nzcv_add(_rn_08006906, _op2_08006906, _r_08006906);
+    g_cpu.R[0] = _r_08006906;
+    g_cpu.R[15] = 0x08006908u;
+    runtime_tick(_cyc_08006906);
+    /* 08006908  08006908 T ldr r1,[r0] */
+    g_cpu.R[15] = 0x08006908u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006908 = 1u;
+    _cyc_08006908 = 2u;
+    uint32_t _base_08006908 = g_cpu.R[0];
+    uint32_t _off_08006908;
+    _off_08006908 = 0x00000000u;
+    uint32_t _ea_08006908 = _base_08006908 + _off_08006908;
+    uint32_t _post_08006908 = _base_08006908 + _off_08006908;
+    _cyc_08006908 += runtime_mem_cycles(_ea_08006908, 4u, 0u);
+    uint32_t _v_08006908;
+    { uint32_t _w = bus_read_u32(_ea_08006908 & ~3u); uint32_t _rot = (_ea_08006908 & 3u) * 8u; _v_08006908 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[1] = _v_08006908;
+    g_cpu.R[15] = 0x0800690Au;
+    runtime_tick(_cyc_08006908);
+    /* 0800690A  0800690a T adds r0,r4,#0x0 */
+    g_cpu.R[15] = 0x0800690Au;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800690A = 1u;
+    _cyc_0800690A = 1u;
+    uint32_t _rn_0800690A = g_cpu.R[4];
+    uint32_t _r_0800690A;
+    _r_0800690A = _rn_0800690A + 0x00000000u;
+    arm_set_nzcv_add(_rn_0800690A, 0x00000000u, _r_0800690A);
+    g_cpu.R[0] = _r_0800690A;
+    g_cpu.R[15] = 0x0800690Cu;
+    runtime_tick(_cyc_0800690A);
+    /* 0800690C  0800690c T bl.hi 0x080c2910 */
+    g_cpu.R[15] = 0x0800690Cu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800690C = 1u;
+    _cyc_0800690C = 1u;
+    g_cpu.R[14] = 0x080C2910u;
+    g_cpu.R[15] = 0x0800690Eu;
+    runtime_tick(_cyc_0800690C);
+    /* 0800690E  0800690e T bl.lo 0x00000000 */
+    g_cpu.R[15] = 0x0800690Eu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800690E = 1u;
+    _cyc_0800690E = 3u;
+    uint32_t _blt_0800690E = (g_cpu.R[14] + 0x000008D0u) & ~1u;
+    g_cpu.R[14] = 0x08006911u;
+    g_cpu.R[15] = _blt_0800690E;
+    runtime_call_push_return(0x08006910u);
+    runtime_tick(_cyc_0800690E);
+    _cyc_0800690E = 0u;
+    runtime_dispatch(_blt_0800690E);
+    if (g_cpu.R[15] != 0x08006910u) { runtime_call_cancel_return(0x08006910u); return; }
+    g_cpu.R[15] = 0x08006910u;
+    runtime_tick(_cyc_0800690E);
+    /* fall-through to 0x08006910 */
+    g_cpu.R[15] = 0x08006910u;
+    runtime_dispatch(0x08006910u);
+    return;
+}
+
+/* 0x0800694E  mode=thumb  end=0x0800695E  branches=8  indirect */
+
+
+/* 0x08006910 thumb */
+void gf_tfunc_08006910(void) {
+    if (g_runtime_fn_entry_hook) g_runtime_fn_entry_hook(0x08006910u);
+    /* 08006910  08006910 T ldrh r0,[r4,#0x22] */
+    g_cpu.R[15] = 0x08006910u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006910 = 1u;
+    _cyc_08006910 = 2u;
+    uint32_t _base_08006910 = g_cpu.R[4];
+    uint32_t _off_08006910;
+    _off_08006910 = 0x00000022u;
+    uint32_t _ea_08006910 = _base_08006910 + _off_08006910;
+    uint32_t _post_08006910 = _base_08006910 + _off_08006910;
+    _cyc_08006910 += runtime_mem_cycles(_ea_08006910, 2u, 0u);
+    uint32_t _v_08006910;
+    { uint32_t _h = bus_read_u16(_ea_08006910 & ~1u); if (_ea_08006910 & 1u) _v_08006910 = ((_h >> 8) | (_h << 24)); else _v_08006910 = _h; }
+    g_cpu.R[0] = _v_08006910;
+    g_cpu.R[15] = 0x08006912u;
+    runtime_tick(_cyc_08006910);
+    /* 08006912  08006912 T subs r0,r0,#0x1 */
+    g_cpu.R[15] = 0x08006912u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006912 = 1u;
+    _cyc_08006912 = 1u;
+    uint32_t _rn_08006912 = g_cpu.R[0];
+    uint32_t _r_08006912;
+    _r_08006912 = _rn_08006912 - 0x00000001u;
+    arm_set_nzcv_sub(_rn_08006912, 0x00000001u, _r_08006912);
+    g_cpu.R[0] = _r_08006912;
+    g_cpu.R[15] = 0x08006914u;
+    runtime_tick(_cyc_08006912);
+    /* 08006914  08006914 T strh r0,[r4,#0x22] */
+    g_cpu.R[15] = 0x08006914u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006914 = 1u;
+    _cyc_08006914 = 1u;
+    uint32_t _base_08006914 = g_cpu.R[4];
+    uint32_t _off_08006914;
+    _off_08006914 = 0x00000022u;
+    uint32_t _ea_08006914 = _base_08006914 + _off_08006914;
+    uint32_t _post_08006914 = _base_08006914 + _off_08006914;
+    _cyc_08006914 += runtime_mem_cycles(_ea_08006914, 2u, 0u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x08006914u, _ea_08006914 & ~1u, (uint32_t)(g_cpu.R[0] & 0xFFFFu), 2u);
+    bus_write_u16(_ea_08006914 & ~1u, (uint16_t)(g_cpu.R[0] & 0xFFFFu));
+    g_cpu.R[15] = 0x08006916u;
+    runtime_tick(_cyc_08006914);
+    /* 08006916  08006916 T ldm r13!,{r4} */
+    g_cpu.R[15] = 0x08006916u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006916 = 1u;
+    _cyc_08006916 = 2u;
+    uint32_t _b_08006916 = g_cpu.R[13];
+    uint32_t _a_08006916 = _b_08006916;
+    uint32_t _fb_08006916 = _b_08006916 + 4u;
+    _cyc_08006916 += runtime_mem_cycles(_a_08006916 & ~3u, 4u, 0u);
+    g_cpu.R[4] = bus_read_u32(_a_08006916 & ~3u);
+    _a_08006916 += 4u;
+    g_cpu.R[13] = _fb_08006916;
+    g_cpu.R[15] = 0x08006918u;
+    runtime_tick(_cyc_08006916);
+    /* 08006918  08006918 T ldm r13!,{r0} */
+    g_cpu.R[15] = 0x08006918u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006918 = 1u;
+    _cyc_08006918 = 2u;
+    uint32_t _b_08006918 = g_cpu.R[13];
+    uint32_t _a_08006918 = _b_08006918;
+    uint32_t _fb_08006918 = _b_08006918 + 4u;
+    _cyc_08006918 += runtime_mem_cycles(_a_08006918 & ~3u, 4u, 0u);
+    g_cpu.R[0] = bus_read_u32(_a_08006918 & ~3u);
+    _a_08006918 += 4u;
+    g_cpu.R[13] = _fb_08006918;
+    g_cpu.R[15] = 0x0800691Au;
+    runtime_tick(_cyc_08006918);
+    /* 0800691A  0800691a T bx r0 */
+    g_cpu.R[15] = 0x0800691Au;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800691A = 1u;
+    _cyc_0800691A = 3u;
+    uint32_t _bxt_0800691A = g_cpu.R[0];
+    g_cpu.R[15] = _bxt_0800691A & ~1u;
+    if (_bxt_0800691A & 1u) g_cpu.cpsr |= CPSR_T_BIT; else g_cpu.cpsr &= ~CPSR_T_BIT;
+    runtime_tick(_cyc_0800691A);
+    if (runtime_call_should_return(g_cpu.R[15])) return;
+    GBARECOMP_TAIL_DISPATCH_WITH_EXCHANGE(_bxt_0800691A);
+    g_cpu.R[15] = 0x0800691Cu;
+    runtime_tick(_cyc_0800691A);
+    /* fall-through to 0x0800691C */
+    g_cpu.R[15] = 0x0800691Cu;
+    runtime_dispatch(0x0800691Cu);
+    return;
+}
+
+/* 0x08006920  mode=thumb  end=0x0800694E  branches=10  indirect */
+
+
+/* 0x08006920 thumb */
+void gf_scene_load_hook(void) {
+    if (g_runtime_fn_entry_hook) g_runtime_fn_entry_hook(0x08006920u);
+    /* 08006920  08006920 T stm r13!,{r4,r5,r6,r14} */
+    g_cpu.R[15] = 0x08006920u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006920 = 1u;
+    _cyc_08006920 = 1u;
+    uint32_t _b_08006920 = g_cpu.R[13];
+    uint32_t _a_08006920 = _b_08006920 - 16u;
+    uint32_t _fb_08006920 = _b_08006920 - 16u;
+    _cyc_08006920 += runtime_mem_cycles(_a_08006920 & ~3u, 4u, 0u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x08006920u, _a_08006920 & ~3u, g_cpu.R[4], 4u);
+    bus_write_u32(_a_08006920 & ~3u, g_cpu.R[4]);
+    _a_08006920 += 4u;
+    _cyc_08006920 += runtime_mem_cycles(_a_08006920 & ~3u, 4u, 1u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x08006920u, _a_08006920 & ~3u, g_cpu.R[5], 4u);
+    bus_write_u32(_a_08006920 & ~3u, g_cpu.R[5]);
+    _a_08006920 += 4u;
+    _cyc_08006920 += runtime_mem_cycles(_a_08006920 & ~3u, 4u, 1u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x08006920u, _a_08006920 & ~3u, g_cpu.R[6], 4u);
+    bus_write_u32(_a_08006920 & ~3u, g_cpu.R[6]);
+    _a_08006920 += 4u;
+    _cyc_08006920 += runtime_mem_cycles(_a_08006920 & ~3u, 4u, 1u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x08006920u, _a_08006920 & ~3u, g_cpu.R[14], 4u);
+    bus_write_u32(_a_08006920 & ~3u, g_cpu.R[14]);
+    _a_08006920 += 4u;
+    g_cpu.R[13] = _fb_08006920;
+    g_cpu.R[15] = 0x08006922u;
+    runtime_tick(_cyc_08006920);
+    /* 08006922  08006922 T sub r13,r13,#0x4 */
+    g_cpu.R[15] = 0x08006922u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006922 = 1u;
+    _cyc_08006922 = 1u;
+    uint32_t _rn_08006922 = g_cpu.R[13];
+    uint32_t _r_08006922;
+    _r_08006922 = _rn_08006922 - 0x00000004u;
+    g_cpu.R[13] = _r_08006922;
+    g_cpu.R[15] = 0x08006924u;
+    runtime_tick(_cyc_08006922);
+    /* 08006924  08006924 T adds r4,r0,#0x0 */
+    g_cpu.R[15] = 0x08006924u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006924 = 1u;
+    _cyc_08006924 = 1u;
+    uint32_t _rn_08006924 = g_cpu.R[0];
+    uint32_t _r_08006924;
+    _r_08006924 = _rn_08006924 + 0x00000000u;
+    arm_set_nzcv_add(_rn_08006924, 0x00000000u, _r_08006924);
+    g_cpu.R[4] = _r_08006924;
+    g_cpu.R[15] = 0x08006926u;
+    runtime_tick(_cyc_08006924);
+    /* 08006926  08006926 T ldr r2,[r15,#0x64] */
+    g_cpu.R[15] = 0x08006926u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006926 = 1u;
+    _cyc_08006926 = 2u;
+    uint32_t _base_08006926 = 0x0800692Au & ~3u;
+    uint32_t _off_08006926;
+    _off_08006926 = 0x00000064u;
+    uint32_t _ea_08006926 = _base_08006926 + _off_08006926;
+    uint32_t _post_08006926 = _base_08006926 + _off_08006926;
+    _cyc_08006926 += runtime_mem_cycles(_ea_08006926, 4u, 0u);
+    uint32_t _v_08006926;
+    { uint32_t _w = bus_read_u32(_ea_08006926 & ~3u); uint32_t _rot = (_ea_08006926 & 3u) * 8u; _v_08006926 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[2] = _v_08006926;
+    g_cpu.R[15] = 0x08006928u;
+    runtime_tick(_cyc_08006926);
+    /* 08006928  08006928 T ldr r0,[r15,#0x64] */
+    g_cpu.R[15] = 0x08006928u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006928 = 1u;
+    _cyc_08006928 = 2u;
+    uint32_t _base_08006928 = 0x0800692Cu & ~3u;
+    uint32_t _off_08006928;
+    _off_08006928 = 0x00000064u;
+    uint32_t _ea_08006928 = _base_08006928 + _off_08006928;
+    uint32_t _post_08006928 = _base_08006928 + _off_08006928;
+    _cyc_08006928 += runtime_mem_cycles(_ea_08006928, 4u, 0u);
+    uint32_t _v_08006928;
+    { uint32_t _w = bus_read_u32(_ea_08006928 & ~3u); uint32_t _rot = (_ea_08006928 & 3u) * 8u; _v_08006928 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_08006928;
+    g_cpu.R[15] = 0x0800692Au;
+    runtime_tick(_cyc_08006928);
+    /* 0800692A  0800692a T adds r1,r2,r0 */
+    g_cpu.R[15] = 0x0800692Au;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800692A = 1u;
+    _cyc_0800692A = 1u;
+    uint32_t _rm_0800692A = g_cpu.R[0];
+    uint32_t _op2_0800692A;
+    uint32_t _co_0800692A;
+    _op2_0800692A = _rm_0800692A;
+    _co_0800692A = cpsr_c();
+    uint32_t _rn_0800692A = g_cpu.R[2];
+    uint32_t _r_0800692A;
+    _r_0800692A = _rn_0800692A + _op2_0800692A;
+    arm_set_nzcv_add(_rn_0800692A, _op2_0800692A, _r_0800692A);
+    g_cpu.R[1] = _r_0800692A;
+    g_cpu.R[15] = 0x0800692Cu;
+    runtime_tick(_cyc_0800692A);
+    /* 0800692C  0800692c T movs r0,#0x1 */
+    g_cpu.R[15] = 0x0800692Cu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800692C = 1u;
+    _cyc_0800692C = 1u;
+    uint32_t _r_0800692C;
+    _r_0800692C = 0x00000001u;
+    arm_set_nzc_logic(_r_0800692C, cpsr_c());
+    g_cpu.R[0] = _r_0800692C;
+    g_cpu.R[15] = 0x0800692Eu;
+    runtime_tick(_cyc_0800692C);
+    /* 0800692E  0800692e T rsbs r0,r0,#0x0 */
+    g_cpu.R[15] = 0x0800692Eu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800692E = 1u;
+    _cyc_0800692E = 1u;
+    uint32_t _rn_0800692E = g_cpu.R[0];
+    uint32_t _r_0800692E;
+    _r_0800692E = 0x00000000u - _rn_0800692E;
+    arm_set_nzcv_sub(0x00000000u, _rn_0800692E, _r_0800692E);
+    g_cpu.R[0] = _r_0800692E;
+    g_cpu.R[15] = 0x08006930u;
+    runtime_tick(_cyc_0800692E);
+    /* 08006930  08006930 T str r0,[r1] */
+    g_cpu.R[15] = 0x08006930u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006930 = 1u;
+    _cyc_08006930 = 1u;
+    uint32_t _base_08006930 = g_cpu.R[1];
+    uint32_t _off_08006930;
+    _off_08006930 = 0x00000000u;
+    uint32_t _ea_08006930 = _base_08006930 + _off_08006930;
+    uint32_t _post_08006930 = _base_08006930 + _off_08006930;
+    _cyc_08006930 += runtime_mem_cycles(_ea_08006930, 4u, 0u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x08006930u, _ea_08006930 & ~3u, g_cpu.R[0], 4u);
+    bus_write_u32(_ea_08006930 & ~3u, g_cpu.R[0]);
+    g_cpu.R[15] = 0x08006932u;
+    runtime_tick(_cyc_08006930);
+    /* 08006932  08006932 T movs r6,#0x0 */
+    g_cpu.R[15] = 0x08006932u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006932 = 1u;
+    _cyc_08006932 = 1u;
+    uint32_t _r_08006932;
+    _r_08006932 = 0x00000000u;
+    arm_set_nzc_logic(_r_08006932, cpsr_c());
+    g_cpu.R[6] = _r_08006932;
+    g_cpu.R[15] = 0x08006934u;
+    runtime_tick(_cyc_08006932);
+    /* 08006934  08006934 T str r6,[r13] */
+    g_cpu.R[15] = 0x08006934u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006934 = 1u;
+    _cyc_08006934 = 1u;
+    uint32_t _base_08006934 = g_cpu.R[13];
+    uint32_t _off_08006934;
+    _off_08006934 = 0x00000000u;
+    uint32_t _ea_08006934 = _base_08006934 + _off_08006934;
+    uint32_t _post_08006934 = _base_08006934 + _off_08006934;
+    _cyc_08006934 += runtime_mem_cycles(_ea_08006934, 4u, 0u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x08006934u, _ea_08006934 & ~3u, g_cpu.R[6], 4u);
+    bus_write_u32(_ea_08006934 & ~3u, g_cpu.R[6]);
+    g_cpu.R[15] = 0x08006936u;
+    runtime_tick(_cyc_08006934);
+    /* 08006936  08006936 T ldr r1,[r15,#0x5c] */
+    g_cpu.R[15] = 0x08006936u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006936 = 1u;
+    _cyc_08006936 = 2u;
+    uint32_t _base_08006936 = 0x0800693Au & ~3u;
+    uint32_t _off_08006936;
+    _off_08006936 = 0x0000005Cu;
+    uint32_t _ea_08006936 = _base_08006936 + _off_08006936;
+    uint32_t _post_08006936 = _base_08006936 + _off_08006936;
+    _cyc_08006936 += runtime_mem_cycles(_ea_08006936, 4u, 0u);
+    uint32_t _v_08006936;
+    { uint32_t _w = bus_read_u32(_ea_08006936 & ~3u); uint32_t _rot = (_ea_08006936 & 3u) * 8u; _v_08006936 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[1] = _v_08006936;
+    g_cpu.R[15] = 0x08006938u;
+    runtime_tick(_cyc_08006936);
+    /* 08006938  08006938 T mov r0,r13 */
+    g_cpu.R[15] = 0x08006938u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006938 = 1u;
+    _cyc_08006938 = 1u;
+    uint32_t _rm_08006938 = g_cpu.R[13];
+    uint32_t _op2_08006938;
+    uint32_t _co_08006938;
+    _op2_08006938 = _rm_08006938;
+    _co_08006938 = cpsr_c();
+    uint32_t _r_08006938;
+    _r_08006938 = _op2_08006938;
+    g_cpu.R[0] = _r_08006938;
+    g_cpu.R[15] = 0x0800693Au;
+    runtime_tick(_cyc_08006938);
+    /* 0800693A  0800693a T str r0,[r1] */
+    g_cpu.R[15] = 0x0800693Au;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800693A = 1u;
+    _cyc_0800693A = 1u;
+    uint32_t _base_0800693A = g_cpu.R[1];
+    uint32_t _off_0800693A;
+    _off_0800693A = 0x00000000u;
+    uint32_t _ea_0800693A = _base_0800693A + _off_0800693A;
+    uint32_t _post_0800693A = _base_0800693A + _off_0800693A;
+    _cyc_0800693A += runtime_mem_cycles(_ea_0800693A, 4u, 0u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x0800693Au, _ea_0800693A & ~3u, g_cpu.R[0], 4u);
+    bus_write_u32(_ea_0800693A & ~3u, g_cpu.R[0]);
+    g_cpu.R[15] = 0x0800693Cu;
+    runtime_tick(_cyc_0800693A);
+    /* 0800693C  0800693c T movs r0,#0x93 */
+    g_cpu.R[15] = 0x0800693Cu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800693C = 1u;
+    _cyc_0800693C = 1u;
+    uint32_t _r_0800693C;
+    _r_0800693C = 0x00000093u;
+    arm_set_nzc_logic(_r_0800693C, cpsr_c());
+    g_cpu.R[0] = _r_0800693C;
+    g_cpu.R[15] = 0x0800693Eu;
+    runtime_tick(_cyc_0800693C);
+    /* 0800693E  0800693e T movs r0,r0,lsl #5 */
+    g_cpu.R[15] = 0x0800693Eu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800693E = 1u;
+    _cyc_0800693E = 1u;
+    uint32_t _rm_0800693E = g_cpu.R[0];
+    uint32_t _op2_0800693E;
+    uint32_t _co_0800693E;
+    _op2_0800693E = _rm_0800693E << 5;
+    _co_0800693E = (_rm_0800693E >> 27) & 1u;
+    uint32_t _r_0800693E;
+    _r_0800693E = _op2_0800693E;
+    arm_set_nzc_logic(_r_0800693E, _co_0800693E);
+    g_cpu.R[0] = _r_0800693E;
+    g_cpu.R[15] = 0x08006940u;
+    runtime_tick(_cyc_0800693E);
+    /* 08006940  08006940 T adds r2,r2,r0 */
+    g_cpu.R[15] = 0x08006940u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006940 = 1u;
+    _cyc_08006940 = 1u;
+    uint32_t _rm_08006940 = g_cpu.R[0];
+    uint32_t _op2_08006940;
+    uint32_t _co_08006940;
+    _op2_08006940 = _rm_08006940;
+    _co_08006940 = cpsr_c();
+    uint32_t _rn_08006940 = g_cpu.R[2];
+    uint32_t _r_08006940;
+    _r_08006940 = _rn_08006940 + _op2_08006940;
+    arm_set_nzcv_add(_rn_08006940, _op2_08006940, _r_08006940);
+    g_cpu.R[2] = _r_08006940;
+    g_cpu.R[15] = 0x08006942u;
+    runtime_tick(_cyc_08006940);
+    /* 08006942  08006942 T str r2,[r1,#0x4] */
+    g_cpu.R[15] = 0x08006942u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006942 = 1u;
+    _cyc_08006942 = 1u;
+    uint32_t _base_08006942 = g_cpu.R[1];
+    uint32_t _off_08006942;
+    _off_08006942 = 0x00000004u;
+    uint32_t _ea_08006942 = _base_08006942 + _off_08006942;
+    uint32_t _post_08006942 = _base_08006942 + _off_08006942;
+    _cyc_08006942 += runtime_mem_cycles(_ea_08006942, 4u, 0u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x08006942u, _ea_08006942 & ~3u, g_cpu.R[2], 4u);
+    bus_write_u32(_ea_08006942 & ~3u, g_cpu.R[2]);
+    g_cpu.R[15] = 0x08006944u;
+    runtime_tick(_cyc_08006942);
+    /* 08006944  08006944 T ldr r0,[r15,#0x50] */
+    g_cpu.R[15] = 0x08006944u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006944 = 1u;
+    _cyc_08006944 = 2u;
+    uint32_t _base_08006944 = 0x08006948u & ~3u;
+    uint32_t _off_08006944;
+    _off_08006944 = 0x00000050u;
+    uint32_t _ea_08006944 = _base_08006944 + _off_08006944;
+    uint32_t _post_08006944 = _base_08006944 + _off_08006944;
+    _cyc_08006944 += runtime_mem_cycles(_ea_08006944, 4u, 0u);
+    uint32_t _v_08006944;
+    { uint32_t _w = bus_read_u32(_ea_08006944 & ~3u); uint32_t _rot = (_ea_08006944 & 3u) * 8u; _v_08006944 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_08006944;
+    g_cpu.R[15] = 0x08006946u;
+    runtime_tick(_cyc_08006944);
+    /* 08006946  08006946 T str r0,[r1,#0x8] */
+    g_cpu.R[15] = 0x08006946u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006946 = 1u;
+    _cyc_08006946 = 1u;
+    uint32_t _base_08006946 = g_cpu.R[1];
+    uint32_t _off_08006946;
+    _off_08006946 = 0x00000008u;
+    uint32_t _ea_08006946 = _base_08006946 + _off_08006946;
+    uint32_t _post_08006946 = _base_08006946 + _off_08006946;
+    _cyc_08006946 += runtime_mem_cycles(_ea_08006946, 4u, 0u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x08006946u, _ea_08006946 & ~3u, g_cpu.R[0], 4u);
+    bus_write_u32(_ea_08006946 & ~3u, g_cpu.R[0]);
+    g_cpu.R[15] = 0x08006948u;
+    runtime_tick(_cyc_08006946);
+    /* 08006948  08006948 T ldr r0,[r1,#0x8] */
+    g_cpu.R[15] = 0x08006948u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006948 = 1u;
+    _cyc_08006948 = 2u;
+    uint32_t _base_08006948 = g_cpu.R[1];
+    uint32_t _off_08006948;
+    _off_08006948 = 0x00000008u;
+    uint32_t _ea_08006948 = _base_08006948 + _off_08006948;
+    uint32_t _post_08006948 = _base_08006948 + _off_08006948;
+    _cyc_08006948 += runtime_mem_cycles(_ea_08006948, 4u, 0u);
+    uint32_t _v_08006948;
+    { uint32_t _w = bus_read_u32(_ea_08006948 & ~3u); uint32_t _rot = (_ea_08006948 & 3u) * 8u; _v_08006948 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_08006948;
+    g_cpu.R[15] = 0x0800694Au;
+    runtime_tick(_cyc_08006948);
+    /* 0800694A  0800694a T bl.hi 0x0800294e */
+    g_cpu.R[15] = 0x0800694Au;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800694A = 1u;
+    _cyc_0800694A = 1u;
+    g_cpu.R[14] = 0x0800294Eu;
+    g_cpu.R[15] = 0x0800694Cu;
+    runtime_tick(_cyc_0800694A);
+    /* 0800694C  0800694c T bl.lo 0x00000000 */
+    g_cpu.R[15] = 0x0800694Cu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800694C = 1u;
+    _cyc_0800694C = 3u;
+    uint32_t _blt_0800694C = (g_cpu.R[14] + 0x00000C96u) & ~1u;
+    g_cpu.R[14] = 0x0800694Fu;
+    g_cpu.R[15] = _blt_0800694C;
+    runtime_call_push_return(0x0800694Eu);
+    runtime_tick(_cyc_0800694C);
+    _cyc_0800694C = 0u;
+    runtime_dispatch(_blt_0800694C);
+    if (g_cpu.R[15] != 0x0800694Eu) { runtime_call_cancel_return(0x0800694Eu); return; }
+    g_cpu.R[15] = 0x0800694Eu;
+    runtime_tick(_cyc_0800694C);
+    /* fall-through to 0x0800694E */
+    g_cpu.R[15] = 0x0800694Eu;
+    runtime_dispatch(0x0800694Eu);
+    return;
+}
+
 /* 0x08006962  mode=thumb  end=0x08006966  branches=4  indirect */
+
+
+/* 0x0800694E thumb */
+void gf_tfunc_0800694E(void) {
+    if (g_runtime_fn_entry_hook) g_runtime_fn_entry_hook(0x0800694Eu);
+    /* 0800694E  0800694e T ldr r1,[r15,#0x4c] */
+    g_cpu.R[15] = 0x0800694Eu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800694E = 1u;
+    _cyc_0800694E = 2u;
+    uint32_t _base_0800694E = 0x08006952u & ~3u;
+    uint32_t _off_0800694E;
+    _off_0800694E = 0x0000004Cu;
+    uint32_t _ea_0800694E = _base_0800694E + _off_0800694E;
+    uint32_t _post_0800694E = _base_0800694E + _off_0800694E;
+    _cyc_0800694E += runtime_mem_cycles(_ea_0800694E, 4u, 0u);
+    uint32_t _v_0800694E;
+    { uint32_t _w = bus_read_u32(_ea_0800694E & ~3u); uint32_t _rot = (_ea_0800694E & 3u) * 8u; _v_0800694E = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[1] = _v_0800694E;
+    g_cpu.R[15] = 0x08006950u;
+    runtime_tick(_cyc_0800694E);
+    /* 08006950  08006950 T movs r5,#0x0 */
+    g_cpu.R[15] = 0x08006950u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006950 = 1u;
+    _cyc_08006950 = 1u;
+    uint32_t _r_08006950;
+    _r_08006950 = 0x00000000u;
+    arm_set_nzc_logic(_r_08006950, cpsr_c());
+    g_cpu.R[5] = _r_08006950;
+    g_cpu.R[15] = 0x08006952u;
+    runtime_tick(_cyc_08006950);
+    /* 08006952  08006952 T movs r0,#0xff */
+    g_cpu.R[15] = 0x08006952u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006952 = 1u;
+    _cyc_08006952 = 1u;
+    uint32_t _r_08006952;
+    _r_08006952 = 0x000000FFu;
+    arm_set_nzc_logic(_r_08006952, cpsr_c());
+    g_cpu.R[0] = _r_08006952;
+    g_cpu.R[15] = 0x08006954u;
+    runtime_tick(_cyc_08006952);
+    /* 08006954  08006954 T strh r0,[r1,#0x4] */
+    g_cpu.R[15] = 0x08006954u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006954 = 1u;
+    _cyc_08006954 = 1u;
+    uint32_t _base_08006954 = g_cpu.R[1];
+    uint32_t _off_08006954;
+    _off_08006954 = 0x00000004u;
+    uint32_t _ea_08006954 = _base_08006954 + _off_08006954;
+    uint32_t _post_08006954 = _base_08006954 + _off_08006954;
+    _cyc_08006954 += runtime_mem_cycles(_ea_08006954, 2u, 0u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x08006954u, _ea_08006954 & ~1u, (uint32_t)(g_cpu.R[0] & 0xFFFFu), 2u);
+    bus_write_u16(_ea_08006954 & ~1u, (uint16_t)(g_cpu.R[0] & 0xFFFFu));
+    g_cpu.R[15] = 0x08006956u;
+    runtime_tick(_cyc_08006954);
+    /* 08006956  08006956 T movs r0,#0x10 */
+    g_cpu.R[15] = 0x08006956u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006956 = 1u;
+    _cyc_08006956 = 1u;
+    uint32_t _r_08006956;
+    _r_08006956 = 0x00000010u;
+    arm_set_nzc_logic(_r_08006956, cpsr_c());
+    g_cpu.R[0] = _r_08006956;
+    g_cpu.R[15] = 0x08006958u;
+    runtime_tick(_cyc_08006956);
+    /* 08006958  08006958 T strh r0,[r1,#0x8] */
+    g_cpu.R[15] = 0x08006958u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006958 = 1u;
+    _cyc_08006958 = 1u;
+    uint32_t _base_08006958 = g_cpu.R[1];
+    uint32_t _off_08006958;
+    _off_08006958 = 0x00000008u;
+    uint32_t _ea_08006958 = _base_08006958 + _off_08006958;
+    uint32_t _post_08006958 = _base_08006958 + _off_08006958;
+    _cyc_08006958 += runtime_mem_cycles(_ea_08006958, 2u, 0u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x08006958u, _ea_08006958 & ~1u, (uint32_t)(g_cpu.R[0] & 0xFFFFu), 2u);
+    bus_write_u16(_ea_08006958 & ~1u, (uint16_t)(g_cpu.R[0] & 0xFFFFu));
+    g_cpu.R[15] = 0x0800695Au;
+    runtime_tick(_cyc_08006958);
+    /* 0800695A  0800695a T bl.hi 0x0801595e */
+    g_cpu.R[15] = 0x0800695Au;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800695A = 1u;
+    _cyc_0800695A = 1u;
+    g_cpu.R[14] = 0x0801595Eu;
+    g_cpu.R[15] = 0x0800695Cu;
+    runtime_tick(_cyc_0800695A);
+    /* 0800695C  0800695c T bl.lo 0x00000000 */
+    g_cpu.R[15] = 0x0800695Cu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800695C = 1u;
+    _cyc_0800695C = 3u;
+    uint32_t _blt_0800695C = (g_cpu.R[14] + 0x00000802u) & ~1u;
+    g_cpu.R[14] = 0x0800695Fu;
+    g_cpu.R[15] = _blt_0800695C;
+    runtime_call_push_return(0x0800695Eu);
+    runtime_tick(_cyc_0800695C);
+    _cyc_0800695C = 0u;
+    runtime_dispatch(_blt_0800695C);
+    if (g_cpu.R[15] != 0x0800695Eu) { runtime_call_cancel_return(0x0800695Eu); return; }
+    g_cpu.R[15] = 0x0800695Eu;
+    runtime_tick(_cyc_0800695C);
+    /* fall-through to 0x0800695E */
+    g_cpu.R[15] = 0x0800695Eu;
+    runtime_dispatch(0x0800695Eu);
+    return;
+}
+
+/* 0x0800695E  mode=thumb  end=0x08006962  branches=6  indirect */
+
+
+/* 0x0800695E thumb */
+void gf_tfunc_0800695E(void) {
+    if (g_runtime_fn_entry_hook) g_runtime_fn_entry_hook(0x0800695Eu);
+    /* 0800695E  0800695e T bl.hi 0x08014962 */
+    g_cpu.R[15] = 0x0800695Eu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800695E = 1u;
+    _cyc_0800695E = 1u;
+    g_cpu.R[14] = 0x08014962u;
+    g_cpu.R[15] = 0x08006960u;
+    runtime_tick(_cyc_0800695E);
+    /* 08006960  08006960 T bl.lo 0x00000000 */
+    g_cpu.R[15] = 0x08006960u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006960 = 1u;
+    _cyc_08006960 = 3u;
+    uint32_t _blt_08006960 = (g_cpu.R[14] + 0x00000F92u) & ~1u;
+    g_cpu.R[14] = 0x08006963u;
+    g_cpu.R[15] = _blt_08006960;
+    runtime_call_push_return(0x08006962u);
+    runtime_tick(_cyc_08006960);
+    _cyc_08006960 = 0u;
+    runtime_dispatch(_blt_08006960);
+    if (g_cpu.R[15] != 0x08006962u) { runtime_call_cancel_return(0x08006962u); return; }
+    g_cpu.R[15] = 0x08006962u;
+    runtime_tick(_cyc_08006960);
+    /* fall-through to 0x08006962 */
+    g_cpu.R[15] = 0x08006962u;
+    runtime_dispatch(0x08006962u);
+    return;
+}
+
+/* 0x08006966  mode=thumb  end=0x08006984  branches=2  indirect */
 
 
 /* 0x08006962 thumb */
@@ -34034,7 +36401,7 @@ void gf_tfunc_08006962(void) {
     return;
 }
 
-/* 0x08006A08  mode=thumb  end=0x08006A1C  branches=1 */
+/* 0x080069A8  mode=thumb  end=0x080069C0  branches=14 */
 
 
 /* 0x08006966 thumb */
@@ -34346,7 +36713,539 @@ void gf_tfunc_08006984(void) {
     return;
 }
 
+/* 0x080069C0  mode=thumb  end=0x080069CE  branches=11 */
+
+
+/* 0x080069A8 thumb */
+void gf_scene_load_tail(void) {
+    if (g_runtime_fn_entry_hook) g_runtime_fn_entry_hook(0x080069A8u);
+    /* 080069A8  080069a8 T stm r13!,{r4,r5,r6,r14} */
+    g_cpu.R[15] = 0x080069A8u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080069A8 = 1u;
+    _cyc_080069A8 = 1u;
+    uint32_t _b_080069A8 = g_cpu.R[13];
+    uint32_t _a_080069A8 = _b_080069A8 - 16u;
+    uint32_t _fb_080069A8 = _b_080069A8 - 16u;
+    _cyc_080069A8 += runtime_mem_cycles(_a_080069A8 & ~3u, 4u, 0u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x080069A8u, _a_080069A8 & ~3u, g_cpu.R[4], 4u);
+    bus_write_u32(_a_080069A8 & ~3u, g_cpu.R[4]);
+    _a_080069A8 += 4u;
+    _cyc_080069A8 += runtime_mem_cycles(_a_080069A8 & ~3u, 4u, 1u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x080069A8u, _a_080069A8 & ~3u, g_cpu.R[5], 4u);
+    bus_write_u32(_a_080069A8 & ~3u, g_cpu.R[5]);
+    _a_080069A8 += 4u;
+    _cyc_080069A8 += runtime_mem_cycles(_a_080069A8 & ~3u, 4u, 1u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x080069A8u, _a_080069A8 & ~3u, g_cpu.R[6], 4u);
+    bus_write_u32(_a_080069A8 & ~3u, g_cpu.R[6]);
+    _a_080069A8 += 4u;
+    _cyc_080069A8 += runtime_mem_cycles(_a_080069A8 & ~3u, 4u, 1u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x080069A8u, _a_080069A8 & ~3u, g_cpu.R[14], 4u);
+    bus_write_u32(_a_080069A8 & ~3u, g_cpu.R[14]);
+    _a_080069A8 += 4u;
+    g_cpu.R[13] = _fb_080069A8;
+    g_cpu.R[15] = 0x080069AAu;
+    runtime_tick(_cyc_080069A8);
+    /* 080069AA  080069aa T adds r6,r0,#0x0 */
+    g_cpu.R[15] = 0x080069AAu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080069AA = 1u;
+    _cyc_080069AA = 1u;
+    uint32_t _rn_080069AA = g_cpu.R[0];
+    uint32_t _r_080069AA;
+    _r_080069AA = _rn_080069AA + 0x00000000u;
+    arm_set_nzcv_add(_rn_080069AA, 0x00000000u, _r_080069AA);
+    g_cpu.R[6] = _r_080069AA;
+    g_cpu.R[15] = 0x080069ACu;
+    runtime_tick(_cyc_080069AA);
+    /* 080069AC  080069ac T ldr r4,[r15,#0x6c] */
+    g_cpu.R[15] = 0x080069ACu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080069AC = 1u;
+    _cyc_080069AC = 2u;
+    uint32_t _base_080069AC = 0x080069B0u & ~3u;
+    uint32_t _off_080069AC;
+    _off_080069AC = 0x0000006Cu;
+    uint32_t _ea_080069AC = _base_080069AC + _off_080069AC;
+    uint32_t _post_080069AC = _base_080069AC + _off_080069AC;
+    _cyc_080069AC += runtime_mem_cycles(_ea_080069AC, 4u, 0u);
+    uint32_t _v_080069AC;
+    { uint32_t _w = bus_read_u32(_ea_080069AC & ~3u); uint32_t _rot = (_ea_080069AC & 3u) * 8u; _v_080069AC = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[4] = _v_080069AC;
+    g_cpu.R[15] = 0x080069AEu;
+    runtime_tick(_cyc_080069AC);
+    /* 080069AE  080069ae T ldr r1,[r15,#0x70] */
+    g_cpu.R[15] = 0x080069AEu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080069AE = 1u;
+    _cyc_080069AE = 2u;
+    uint32_t _base_080069AE = 0x080069B2u & ~3u;
+    uint32_t _off_080069AE;
+    _off_080069AE = 0x00000070u;
+    uint32_t _ea_080069AE = _base_080069AE + _off_080069AE;
+    uint32_t _post_080069AE = _base_080069AE + _off_080069AE;
+    _cyc_080069AE += runtime_mem_cycles(_ea_080069AE, 4u, 0u);
+    uint32_t _v_080069AE;
+    { uint32_t _w = bus_read_u32(_ea_080069AE & ~3u); uint32_t _rot = (_ea_080069AE & 3u) * 8u; _v_080069AE = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[1] = _v_080069AE;
+    g_cpu.R[15] = 0x080069B0u;
+    runtime_tick(_cyc_080069AE);
+    /* 080069B0  080069b0 T adds r0,r4,r1 */
+    g_cpu.R[15] = 0x080069B0u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080069B0 = 1u;
+    _cyc_080069B0 = 1u;
+    uint32_t _rm_080069B0 = g_cpu.R[1];
+    uint32_t _op2_080069B0;
+    uint32_t _co_080069B0;
+    _op2_080069B0 = _rm_080069B0;
+    _co_080069B0 = cpsr_c();
+    uint32_t _rn_080069B0 = g_cpu.R[4];
+    uint32_t _r_080069B0;
+    _r_080069B0 = _rn_080069B0 + _op2_080069B0;
+    arm_set_nzcv_add(_rn_080069B0, _op2_080069B0, _r_080069B0);
+    g_cpu.R[0] = _r_080069B0;
+    g_cpu.R[15] = 0x080069B2u;
+    runtime_tick(_cyc_080069B0);
+    /* 080069B2  080069b2 T ldr r5,[r0] */
+    g_cpu.R[15] = 0x080069B2u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080069B2 = 1u;
+    _cyc_080069B2 = 2u;
+    uint32_t _base_080069B2 = g_cpu.R[0];
+    uint32_t _off_080069B2;
+    _off_080069B2 = 0x00000000u;
+    uint32_t _ea_080069B2 = _base_080069B2 + _off_080069B2;
+    uint32_t _post_080069B2 = _base_080069B2 + _off_080069B2;
+    _cyc_080069B2 += runtime_mem_cycles(_ea_080069B2, 4u, 0u);
+    uint32_t _v_080069B2;
+    { uint32_t _w = bus_read_u32(_ea_080069B2 & ~3u); uint32_t _rot = (_ea_080069B2 & 3u) * 8u; _v_080069B2 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[5] = _v_080069B2;
+    g_cpu.R[15] = 0x080069B4u;
+    runtime_tick(_cyc_080069B2);
+    /* 080069B4  080069b4 T cmps r5,#0x0 */
+    g_cpu.R[15] = 0x080069B4u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080069B4 = 1u;
+    _cyc_080069B4 = 1u;
+    uint32_t _rn_080069B4 = g_cpu.R[5];
+    uint32_t _r_080069B4;
+    _r_080069B4 = _rn_080069B4 - 0x00000000u;
+    arm_set_nzcv_sub(_rn_080069B4, 0x00000000u, _r_080069B4);
+    g_cpu.R[15] = 0x080069B6u;
+    runtime_tick(_cyc_080069B4);
+    /* 080069B6  080069b6 T bne 0x08006a3c */
+    g_cpu.R[15] = 0x080069B6u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080069B6 = 1u;
+    if (arm_cond_passes(0x1u)) {
+        _cyc_080069B6 = 3u;
+        g_cpu.R[15] = 0x08006A3Cu;
+        runtime_tick(_cyc_080069B6);
+        GBARECOMP_TAIL_CALL(gf_tfunc_08006A3C);
+    }
+    g_cpu.R[15] = 0x080069B8u;
+    runtime_tick(_cyc_080069B6);
+    /* 080069B8  080069b8 T movs r0,#0x0 */
+    g_cpu.R[15] = 0x080069B8u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080069B8 = 1u;
+    _cyc_080069B8 = 1u;
+    uint32_t _r_080069B8;
+    _r_080069B8 = 0x00000000u;
+    arm_set_nzc_logic(_r_080069B8, cpsr_c());
+    g_cpu.R[0] = _r_080069B8;
+    g_cpu.R[15] = 0x080069BAu;
+    runtime_tick(_cyc_080069B8);
+    /* 080069BA  080069ba T movs r1,#0x7 */
+    g_cpu.R[15] = 0x080069BAu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080069BA = 1u;
+    _cyc_080069BA = 1u;
+    uint32_t _r_080069BA;
+    _r_080069BA = 0x00000007u;
+    arm_set_nzc_logic(_r_080069BA, cpsr_c());
+    g_cpu.R[1] = _r_080069BA;
+    g_cpu.R[15] = 0x080069BCu;
+    runtime_tick(_cyc_080069BA);
+    /* 080069BC  080069bc T bl.hi 0x080009c0 */
+    g_cpu.R[15] = 0x080069BCu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080069BC = 1u;
+    _cyc_080069BC = 1u;
+    g_cpu.R[14] = 0x080009C0u;
+    g_cpu.R[15] = 0x080069BEu;
+    runtime_tick(_cyc_080069BC);
+    /* 080069BE  080069be T bl.lo 0x00000000 */
+    g_cpu.R[15] = 0x080069BEu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080069BE = 1u;
+    _cyc_080069BE = 3u;
+    uint32_t _blt_080069BE = (g_cpu.R[14] + 0x00000AC0u) & ~1u;
+    g_cpu.R[14] = 0x080069C1u;
+    g_cpu.R[15] = _blt_080069BE;
+    runtime_call_push_return(0x080069C0u);
+    runtime_tick(_cyc_080069BE);
+    _cyc_080069BE = 0u;
+    runtime_dispatch(_blt_080069BE);
+    if (g_cpu.R[15] != 0x080069C0u) { runtime_call_cancel_return(0x080069C0u); return; }
+    g_cpu.R[15] = 0x080069C0u;
+    runtime_tick(_cyc_080069BE);
+    /* fall-through to 0x080069C0 */
+    g_cpu.R[15] = 0x080069C0u;
+    runtime_dispatch(0x080069C0u);
+    return;
+}
+
+/* 0x080069CE  mode=thumb  end=0x080069DC  branches=9 */
+
+
+/* 0x080069C0 thumb */
+void gf_tfunc_080069C0(void) {
+    if (g_runtime_fn_entry_hook) g_runtime_fn_entry_hook(0x080069C0u);
+    /* 080069C0  080069c0 T ldr r2,[r15,#0x60] */
+    g_cpu.R[15] = 0x080069C0u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080069C0 = 1u;
+    _cyc_080069C0 = 2u;
+    uint32_t _base_080069C0 = 0x080069C4u & ~3u;
+    uint32_t _off_080069C0;
+    _off_080069C0 = 0x00000060u;
+    uint32_t _ea_080069C0 = _base_080069C0 + _off_080069C0;
+    uint32_t _post_080069C0 = _base_080069C0 + _off_080069C0;
+    _cyc_080069C0 += runtime_mem_cycles(_ea_080069C0, 4u, 0u);
+    uint32_t _v_080069C0;
+    { uint32_t _w = bus_read_u32(_ea_080069C0 & ~3u); uint32_t _rot = (_ea_080069C0 & 3u) * 8u; _v_080069C0 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[2] = _v_080069C0;
+    g_cpu.R[15] = 0x080069C2u;
+    runtime_tick(_cyc_080069C0);
+    /* 080069C2  080069c2 T adds r1,r4,r2 */
+    g_cpu.R[15] = 0x080069C2u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080069C2 = 1u;
+    _cyc_080069C2 = 1u;
+    uint32_t _rm_080069C2 = g_cpu.R[2];
+    uint32_t _op2_080069C2;
+    uint32_t _co_080069C2;
+    _op2_080069C2 = _rm_080069C2;
+    _co_080069C2 = cpsr_c();
+    uint32_t _rn_080069C2 = g_cpu.R[4];
+    uint32_t _r_080069C2;
+    _r_080069C2 = _rn_080069C2 + _op2_080069C2;
+    arm_set_nzcv_add(_rn_080069C2, _op2_080069C2, _r_080069C2);
+    g_cpu.R[1] = _r_080069C2;
+    g_cpu.R[15] = 0x080069C4u;
+    runtime_tick(_cyc_080069C2);
+    /* 080069C4  080069c4 T str r0,[r1] */
+    g_cpu.R[15] = 0x080069C4u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080069C4 = 1u;
+    _cyc_080069C4 = 1u;
+    uint32_t _base_080069C4 = g_cpu.R[1];
+    uint32_t _off_080069C4;
+    _off_080069C4 = 0x00000000u;
+    uint32_t _ea_080069C4 = _base_080069C4 + _off_080069C4;
+    uint32_t _post_080069C4 = _base_080069C4 + _off_080069C4;
+    _cyc_080069C4 += runtime_mem_cycles(_ea_080069C4, 4u, 0u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x080069C4u, _ea_080069C4 & ~3u, g_cpu.R[0], 4u);
+    bus_write_u32(_ea_080069C4 & ~3u, g_cpu.R[0]);
+    g_cpu.R[15] = 0x080069C6u;
+    runtime_tick(_cyc_080069C4);
+    /* 080069C6  080069c6 T movs r0,#0x0 */
+    g_cpu.R[15] = 0x080069C6u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080069C6 = 1u;
+    _cyc_080069C6 = 1u;
+    uint32_t _r_080069C6;
+    _r_080069C6 = 0x00000000u;
+    arm_set_nzc_logic(_r_080069C6, cpsr_c());
+    g_cpu.R[0] = _r_080069C6;
+    g_cpu.R[15] = 0x080069C8u;
+    runtime_tick(_cyc_080069C6);
+    /* 080069C8  080069c8 T movs r1,#0x8 */
+    g_cpu.R[15] = 0x080069C8u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080069C8 = 1u;
+    _cyc_080069C8 = 1u;
+    uint32_t _r_080069C8;
+    _r_080069C8 = 0x00000008u;
+    arm_set_nzc_logic(_r_080069C8, cpsr_c());
+    g_cpu.R[1] = _r_080069C8;
+    g_cpu.R[15] = 0x080069CAu;
+    runtime_tick(_cyc_080069C8);
+    /* 080069CA  080069ca T bl.hi 0x080009ce */
+    g_cpu.R[15] = 0x080069CAu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080069CA = 1u;
+    _cyc_080069CA = 1u;
+    g_cpu.R[14] = 0x080009CEu;
+    g_cpu.R[15] = 0x080069CCu;
+    runtime_tick(_cyc_080069CA);
+    /* 080069CC  080069cc T bl.lo 0x00000000 */
+    g_cpu.R[15] = 0x080069CCu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080069CC = 1u;
+    _cyc_080069CC = 3u;
+    uint32_t _blt_080069CC = (g_cpu.R[14] + 0x00000AB2u) & ~1u;
+    g_cpu.R[14] = 0x080069CFu;
+    g_cpu.R[15] = _blt_080069CC;
+    runtime_call_push_return(0x080069CEu);
+    runtime_tick(_cyc_080069CC);
+    _cyc_080069CC = 0u;
+    runtime_dispatch(_blt_080069CC);
+    if (g_cpu.R[15] != 0x080069CEu) { runtime_call_cancel_return(0x080069CEu); return; }
+    g_cpu.R[15] = 0x080069CEu;
+    runtime_tick(_cyc_080069CC);
+    /* fall-through to 0x080069CE */
+    g_cpu.R[15] = 0x080069CEu;
+    runtime_dispatch(0x080069CEu);
+    return;
+}
+
 /* 0x080069EA  mode=thumb  end=0x080069F8  branches=5 */
+
+
+/* 0x080069CE thumb */
+void gf_tfunc_080069CE(void) {
+    if (g_runtime_fn_entry_hook) g_runtime_fn_entry_hook(0x080069CEu);
+    /* 080069CE  080069ce T ldr r2,[r15,#0x58] */
+    g_cpu.R[15] = 0x080069CEu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080069CE = 1u;
+    _cyc_080069CE = 2u;
+    uint32_t _base_080069CE = 0x080069D2u & ~3u;
+    uint32_t _off_080069CE;
+    _off_080069CE = 0x00000058u;
+    uint32_t _ea_080069CE = _base_080069CE + _off_080069CE;
+    uint32_t _post_080069CE = _base_080069CE + _off_080069CE;
+    _cyc_080069CE += runtime_mem_cycles(_ea_080069CE, 4u, 0u);
+    uint32_t _v_080069CE;
+    { uint32_t _w = bus_read_u32(_ea_080069CE & ~3u); uint32_t _rot = (_ea_080069CE & 3u) * 8u; _v_080069CE = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[2] = _v_080069CE;
+    g_cpu.R[15] = 0x080069D0u;
+    runtime_tick(_cyc_080069CE);
+    /* 080069D0  080069d0 T adds r1,r4,r2 */
+    g_cpu.R[15] = 0x080069D0u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080069D0 = 1u;
+    _cyc_080069D0 = 1u;
+    uint32_t _rm_080069D0 = g_cpu.R[2];
+    uint32_t _op2_080069D0;
+    uint32_t _co_080069D0;
+    _op2_080069D0 = _rm_080069D0;
+    _co_080069D0 = cpsr_c();
+    uint32_t _rn_080069D0 = g_cpu.R[4];
+    uint32_t _r_080069D0;
+    _r_080069D0 = _rn_080069D0 + _op2_080069D0;
+    arm_set_nzcv_add(_rn_080069D0, _op2_080069D0, _r_080069D0);
+    g_cpu.R[1] = _r_080069D0;
+    g_cpu.R[15] = 0x080069D2u;
+    runtime_tick(_cyc_080069D0);
+    /* 080069D2  080069d2 T str r0,[r1] */
+    g_cpu.R[15] = 0x080069D2u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080069D2 = 1u;
+    _cyc_080069D2 = 1u;
+    uint32_t _base_080069D2 = g_cpu.R[1];
+    uint32_t _off_080069D2;
+    _off_080069D2 = 0x00000000u;
+    uint32_t _ea_080069D2 = _base_080069D2 + _off_080069D2;
+    uint32_t _post_080069D2 = _base_080069D2 + _off_080069D2;
+    _cyc_080069D2 += runtime_mem_cycles(_ea_080069D2, 4u, 0u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x080069D2u, _ea_080069D2 & ~3u, g_cpu.R[0], 4u);
+    bus_write_u32(_ea_080069D2 & ~3u, g_cpu.R[0]);
+    g_cpu.R[15] = 0x080069D4u;
+    runtime_tick(_cyc_080069D2);
+    /* 080069D4  080069d4 T movs r0,#0x0 */
+    g_cpu.R[15] = 0x080069D4u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080069D4 = 1u;
+    _cyc_080069D4 = 1u;
+    uint32_t _r_080069D4;
+    _r_080069D4 = 0x00000000u;
+    arm_set_nzc_logic(_r_080069D4, cpsr_c());
+    g_cpu.R[0] = _r_080069D4;
+    g_cpu.R[15] = 0x080069D6u;
+    runtime_tick(_cyc_080069D4);
+    /* 080069D6  080069d6 T movs r1,#0x9 */
+    g_cpu.R[15] = 0x080069D6u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080069D6 = 1u;
+    _cyc_080069D6 = 1u;
+    uint32_t _r_080069D6;
+    _r_080069D6 = 0x00000009u;
+    arm_set_nzc_logic(_r_080069D6, cpsr_c());
+    g_cpu.R[1] = _r_080069D6;
+    g_cpu.R[15] = 0x080069D8u;
+    runtime_tick(_cyc_080069D6);
+    /* 080069D8  080069d8 T bl.hi 0x080009dc */
+    g_cpu.R[15] = 0x080069D8u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080069D8 = 1u;
+    _cyc_080069D8 = 1u;
+    g_cpu.R[14] = 0x080009DCu;
+    g_cpu.R[15] = 0x080069DAu;
+    runtime_tick(_cyc_080069D8);
+    /* 080069DA  080069da T bl.lo 0x00000000 */
+    g_cpu.R[15] = 0x080069DAu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080069DA = 1u;
+    _cyc_080069DA = 3u;
+    uint32_t _blt_080069DA = (g_cpu.R[14] + 0x00000AA4u) & ~1u;
+    g_cpu.R[14] = 0x080069DDu;
+    g_cpu.R[15] = _blt_080069DA;
+    runtime_call_push_return(0x080069DCu);
+    runtime_tick(_cyc_080069DA);
+    _cyc_080069DA = 0u;
+    runtime_dispatch(_blt_080069DA);
+    if (g_cpu.R[15] != 0x080069DCu) { runtime_call_cancel_return(0x080069DCu); return; }
+    g_cpu.R[15] = 0x080069DCu;
+    runtime_tick(_cyc_080069DA);
+    /* fall-through to 0x080069DC */
+    g_cpu.R[15] = 0x080069DCu;
+    runtime_dispatch(0x080069DCu);
+    return;
+}
+
+/* 0x080069DC  mode=thumb  end=0x080069EA  branches=7 */
+
+
+/* 0x080069DC thumb */
+void gf_tfunc_080069DC(void) {
+    if (g_runtime_fn_entry_hook) g_runtime_fn_entry_hook(0x080069DCu);
+    /* 080069DC  080069dc T ldr r2,[r15,#0x4c] */
+    g_cpu.R[15] = 0x080069DCu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080069DC = 1u;
+    _cyc_080069DC = 2u;
+    uint32_t _base_080069DC = 0x080069E0u & ~3u;
+    uint32_t _off_080069DC;
+    _off_080069DC = 0x0000004Cu;
+    uint32_t _ea_080069DC = _base_080069DC + _off_080069DC;
+    uint32_t _post_080069DC = _base_080069DC + _off_080069DC;
+    _cyc_080069DC += runtime_mem_cycles(_ea_080069DC, 4u, 0u);
+    uint32_t _v_080069DC;
+    { uint32_t _w = bus_read_u32(_ea_080069DC & ~3u); uint32_t _rot = (_ea_080069DC & 3u) * 8u; _v_080069DC = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[2] = _v_080069DC;
+    g_cpu.R[15] = 0x080069DEu;
+    runtime_tick(_cyc_080069DC);
+    /* 080069DE  080069de T adds r1,r4,r2 */
+    g_cpu.R[15] = 0x080069DEu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080069DE = 1u;
+    _cyc_080069DE = 1u;
+    uint32_t _rm_080069DE = g_cpu.R[2];
+    uint32_t _op2_080069DE;
+    uint32_t _co_080069DE;
+    _op2_080069DE = _rm_080069DE;
+    _co_080069DE = cpsr_c();
+    uint32_t _rn_080069DE = g_cpu.R[4];
+    uint32_t _r_080069DE;
+    _r_080069DE = _rn_080069DE + _op2_080069DE;
+    arm_set_nzcv_add(_rn_080069DE, _op2_080069DE, _r_080069DE);
+    g_cpu.R[1] = _r_080069DE;
+    g_cpu.R[15] = 0x080069E0u;
+    runtime_tick(_cyc_080069DE);
+    /* 080069E0  080069e0 T str r0,[r1] */
+    g_cpu.R[15] = 0x080069E0u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080069E0 = 1u;
+    _cyc_080069E0 = 1u;
+    uint32_t _base_080069E0 = g_cpu.R[1];
+    uint32_t _off_080069E0;
+    _off_080069E0 = 0x00000000u;
+    uint32_t _ea_080069E0 = _base_080069E0 + _off_080069E0;
+    uint32_t _post_080069E0 = _base_080069E0 + _off_080069E0;
+    _cyc_080069E0 += runtime_mem_cycles(_ea_080069E0, 4u, 0u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x080069E0u, _ea_080069E0 & ~3u, g_cpu.R[0], 4u);
+    bus_write_u32(_ea_080069E0 & ~3u, g_cpu.R[0]);
+    g_cpu.R[15] = 0x080069E2u;
+    runtime_tick(_cyc_080069E0);
+    /* 080069E2  080069e2 T movs r0,#0x0 */
+    g_cpu.R[15] = 0x080069E2u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080069E2 = 1u;
+    _cyc_080069E2 = 1u;
+    uint32_t _r_080069E2;
+    _r_080069E2 = 0x00000000u;
+    arm_set_nzc_logic(_r_080069E2, cpsr_c());
+    g_cpu.R[0] = _r_080069E2;
+    g_cpu.R[15] = 0x080069E4u;
+    runtime_tick(_cyc_080069E2);
+    /* 080069E4  080069e4 T movs r1,#0xb */
+    g_cpu.R[15] = 0x080069E4u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080069E4 = 1u;
+    _cyc_080069E4 = 1u;
+    uint32_t _r_080069E4;
+    _r_080069E4 = 0x0000000Bu;
+    arm_set_nzc_logic(_r_080069E4, cpsr_c());
+    g_cpu.R[1] = _r_080069E4;
+    g_cpu.R[15] = 0x080069E6u;
+    runtime_tick(_cyc_080069E4);
+    /* 080069E6  080069e6 T bl.hi 0x080009ea */
+    g_cpu.R[15] = 0x080069E6u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080069E6 = 1u;
+    _cyc_080069E6 = 1u;
+    g_cpu.R[14] = 0x080009EAu;
+    g_cpu.R[15] = 0x080069E8u;
+    runtime_tick(_cyc_080069E6);
+    /* 080069E8  080069e8 T bl.lo 0x00000000 */
+    g_cpu.R[15] = 0x080069E8u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080069E8 = 1u;
+    _cyc_080069E8 = 3u;
+    uint32_t _blt_080069E8 = (g_cpu.R[14] + 0x00000A96u) & ~1u;
+    g_cpu.R[14] = 0x080069EBu;
+    g_cpu.R[15] = _blt_080069E8;
+    runtime_call_push_return(0x080069EAu);
+    runtime_tick(_cyc_080069E8);
+    _cyc_080069E8 = 0u;
+    runtime_dispatch(_blt_080069E8);
+    if (g_cpu.R[15] != 0x080069EAu) { runtime_call_cancel_return(0x080069EAu); return; }
+    g_cpu.R[15] = 0x080069EAu;
+    runtime_tick(_cyc_080069E8);
+    /* fall-through to 0x080069EA */
+    g_cpu.R[15] = 0x080069EAu;
+    runtime_dispatch(0x080069EAu);
+    return;
+}
+
+/* 0x08006A08  mode=thumb  end=0x08006A1C  branches=1 */
 
 
 /* 0x080069EA thumb */
@@ -34751,6 +37650,274 @@ void gf_tfunc_08006A08(void) {
     /* fall-through to 0x08006A1C */
     g_cpu.R[15] = 0x08006A1Cu;
     runtime_dispatch(0x08006A1Cu);
+    return;
+}
+
+/* 0x08006A3C  mode=thumb  end=0x08006A5C  branches=20  indirect */
+
+
+/* 0x08006A3C thumb */
+void gf_tfunc_08006A3C(void) {
+    if (g_runtime_fn_entry_hook) g_runtime_fn_entry_hook(0x08006A3Cu);
+    /* 08006A3C  08006a3c T ldr r0,[r15,#0xf4] */
+    g_cpu.R[15] = 0x08006A3Cu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006A3C = 1u;
+    _cyc_08006A3C = 2u;
+    uint32_t _base_08006A3C = 0x08006A40u & ~3u;
+    uint32_t _off_08006A3C;
+    _off_08006A3C = 0x000000F4u;
+    uint32_t _ea_08006A3C = _base_08006A3C + _off_08006A3C;
+    uint32_t _post_08006A3C = _base_08006A3C + _off_08006A3C;
+    _cyc_08006A3C += runtime_mem_cycles(_ea_08006A3C, 4u, 0u);
+    uint32_t _v_08006A3C;
+    { uint32_t _w = bus_read_u32(_ea_08006A3C & ~3u); uint32_t _rot = (_ea_08006A3C & 3u) * 8u; _v_08006A3C = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_08006A3C;
+    g_cpu.R[15] = 0x08006A3Eu;
+    runtime_tick(_cyc_08006A3C);
+    /* 08006A3E  08006a3e T adds r2,r4,r0 */
+    g_cpu.R[15] = 0x08006A3Eu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006A3E = 1u;
+    _cyc_08006A3E = 1u;
+    uint32_t _rm_08006A3E = g_cpu.R[0];
+    uint32_t _op2_08006A3E;
+    uint32_t _co_08006A3E;
+    _op2_08006A3E = _rm_08006A3E;
+    _co_08006A3E = cpsr_c();
+    uint32_t _rn_08006A3E = g_cpu.R[4];
+    uint32_t _r_08006A3E;
+    _r_08006A3E = _rn_08006A3E + _op2_08006A3E;
+    arm_set_nzcv_add(_rn_08006A3E, _op2_08006A3E, _r_08006A3E);
+    g_cpu.R[2] = _r_08006A3E;
+    g_cpu.R[15] = 0x08006A40u;
+    runtime_tick(_cyc_08006A3E);
+    /* 08006A40  08006a40 T ldr r0,[r2] */
+    g_cpu.R[15] = 0x08006A40u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006A40 = 1u;
+    _cyc_08006A40 = 2u;
+    uint32_t _base_08006A40 = g_cpu.R[2];
+    uint32_t _off_08006A40;
+    _off_08006A40 = 0x00000000u;
+    uint32_t _ea_08006A40 = _base_08006A40 + _off_08006A40;
+    uint32_t _post_08006A40 = _base_08006A40 + _off_08006A40;
+    _cyc_08006A40 += runtime_mem_cycles(_ea_08006A40, 4u, 0u);
+    uint32_t _v_08006A40;
+    { uint32_t _w = bus_read_u32(_ea_08006A40 & ~3u); uint32_t _rot = (_ea_08006A40 & 3u) * 8u; _v_08006A40 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_08006A40;
+    g_cpu.R[15] = 0x08006A42u;
+    runtime_tick(_cyc_08006A40);
+    /* 08006A42  08006a42 T movs r1,#0x80 */
+    g_cpu.R[15] = 0x08006A42u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006A42 = 1u;
+    _cyc_08006A42 = 1u;
+    uint32_t _r_08006A42;
+    _r_08006A42 = 0x00000080u;
+    arm_set_nzc_logic(_r_08006A42, cpsr_c());
+    g_cpu.R[1] = _r_08006A42;
+    g_cpu.R[15] = 0x08006A44u;
+    runtime_tick(_cyc_08006A42);
+    /* 08006A44  08006a44 T movs r1,r1,lsl #23 */
+    g_cpu.R[15] = 0x08006A44u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006A44 = 1u;
+    _cyc_08006A44 = 1u;
+    uint32_t _rm_08006A44 = g_cpu.R[1];
+    uint32_t _op2_08006A44;
+    uint32_t _co_08006A44;
+    _op2_08006A44 = _rm_08006A44 << 23;
+    _co_08006A44 = (_rm_08006A44 >> 9) & 1u;
+    uint32_t _r_08006A44;
+    _r_08006A44 = _op2_08006A44;
+    arm_set_nzc_logic(_r_08006A44, _co_08006A44);
+    g_cpu.R[1] = _r_08006A44;
+    g_cpu.R[15] = 0x08006A46u;
+    runtime_tick(_cyc_08006A44);
+    /* 08006A46  08006a46 T orrs r0,r0,r1 */
+    g_cpu.R[15] = 0x08006A46u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006A46 = 1u;
+    _cyc_08006A46 = 1u;
+    uint32_t _rm_08006A46 = g_cpu.R[1];
+    uint32_t _op2_08006A46;
+    uint32_t _co_08006A46;
+    _op2_08006A46 = _rm_08006A46;
+    _co_08006A46 = cpsr_c();
+    uint32_t _rn_08006A46 = g_cpu.R[0];
+    uint32_t _r_08006A46;
+    _r_08006A46 = _rn_08006A46 | _op2_08006A46;
+    arm_set_nzc_logic(_r_08006A46, _co_08006A46);
+    g_cpu.R[0] = _r_08006A46;
+    g_cpu.R[15] = 0x08006A48u;
+    runtime_tick(_cyc_08006A46);
+    /* 08006A48  08006a48 T movs r1,#0x80 */
+    g_cpu.R[15] = 0x08006A48u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006A48 = 1u;
+    _cyc_08006A48 = 1u;
+    uint32_t _r_08006A48;
+    _r_08006A48 = 0x00000080u;
+    arm_set_nzc_logic(_r_08006A48, cpsr_c());
+    g_cpu.R[1] = _r_08006A48;
+    g_cpu.R[15] = 0x08006A4Au;
+    runtime_tick(_cyc_08006A48);
+    /* 08006A4A  08006a4a T movs r1,r1,lsl #17 */
+    g_cpu.R[15] = 0x08006A4Au;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006A4A = 1u;
+    _cyc_08006A4A = 1u;
+    uint32_t _rm_08006A4A = g_cpu.R[1];
+    uint32_t _op2_08006A4A;
+    uint32_t _co_08006A4A;
+    _op2_08006A4A = _rm_08006A4A << 17;
+    _co_08006A4A = (_rm_08006A4A >> 15) & 1u;
+    uint32_t _r_08006A4A;
+    _r_08006A4A = _op2_08006A4A;
+    arm_set_nzc_logic(_r_08006A4A, _co_08006A4A);
+    g_cpu.R[1] = _r_08006A4A;
+    g_cpu.R[15] = 0x08006A4Cu;
+    runtime_tick(_cyc_08006A4A);
+    /* 08006A4C  08006a4c T orrs r0,r0,r1 */
+    g_cpu.R[15] = 0x08006A4Cu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006A4C = 1u;
+    _cyc_08006A4C = 1u;
+    uint32_t _rm_08006A4C = g_cpu.R[1];
+    uint32_t _op2_08006A4C;
+    uint32_t _co_08006A4C;
+    _op2_08006A4C = _rm_08006A4C;
+    _co_08006A4C = cpsr_c();
+    uint32_t _rn_08006A4C = g_cpu.R[0];
+    uint32_t _r_08006A4C;
+    _r_08006A4C = _rn_08006A4C | _op2_08006A4C;
+    arm_set_nzc_logic(_r_08006A4C, _co_08006A4C);
+    g_cpu.R[0] = _r_08006A4C;
+    g_cpu.R[15] = 0x08006A4Eu;
+    runtime_tick(_cyc_08006A4C);
+    /* 08006A4E  08006a4e T movs r1,#0x80 */
+    g_cpu.R[15] = 0x08006A4Eu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006A4E = 1u;
+    _cyc_08006A4E = 1u;
+    uint32_t _r_08006A4E;
+    _r_08006A4E = 0x00000080u;
+    arm_set_nzc_logic(_r_08006A4E, cpsr_c());
+    g_cpu.R[1] = _r_08006A4E;
+    g_cpu.R[15] = 0x08006A50u;
+    runtime_tick(_cyc_08006A4E);
+    /* 08006A50  08006a50 T movs r1,r1,lsl #22 */
+    g_cpu.R[15] = 0x08006A50u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006A50 = 1u;
+    _cyc_08006A50 = 1u;
+    uint32_t _rm_08006A50 = g_cpu.R[1];
+    uint32_t _op2_08006A50;
+    uint32_t _co_08006A50;
+    _op2_08006A50 = _rm_08006A50 << 22;
+    _co_08006A50 = (_rm_08006A50 >> 10) & 1u;
+    uint32_t _r_08006A50;
+    _r_08006A50 = _op2_08006A50;
+    arm_set_nzc_logic(_r_08006A50, _co_08006A50);
+    g_cpu.R[1] = _r_08006A50;
+    g_cpu.R[15] = 0x08006A52u;
+    runtime_tick(_cyc_08006A50);
+    /* 08006A52  08006a52 T orrs r0,r0,r1 */
+    g_cpu.R[15] = 0x08006A52u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006A52 = 1u;
+    _cyc_08006A52 = 1u;
+    uint32_t _rm_08006A52 = g_cpu.R[1];
+    uint32_t _op2_08006A52;
+    uint32_t _co_08006A52;
+    _op2_08006A52 = _rm_08006A52;
+    _co_08006A52 = cpsr_c();
+    uint32_t _rn_08006A52 = g_cpu.R[0];
+    uint32_t _r_08006A52;
+    _r_08006A52 = _rn_08006A52 | _op2_08006A52;
+    arm_set_nzc_logic(_r_08006A52, _co_08006A52);
+    g_cpu.R[0] = _r_08006A52;
+    g_cpu.R[15] = 0x08006A54u;
+    runtime_tick(_cyc_08006A52);
+    /* 08006A54  08006a54 T movs r1,#0x80 */
+    g_cpu.R[15] = 0x08006A54u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006A54 = 1u;
+    _cyc_08006A54 = 1u;
+    uint32_t _r_08006A54;
+    _r_08006A54 = 0x00000080u;
+    arm_set_nzc_logic(_r_08006A54, cpsr_c());
+    g_cpu.R[1] = _r_08006A54;
+    g_cpu.R[15] = 0x08006A56u;
+    runtime_tick(_cyc_08006A54);
+    /* 08006A56  08006a56 T movs r1,r1,lsl #21 */
+    g_cpu.R[15] = 0x08006A56u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006A56 = 1u;
+    _cyc_08006A56 = 1u;
+    uint32_t _rm_08006A56 = g_cpu.R[1];
+    uint32_t _op2_08006A56;
+    uint32_t _co_08006A56;
+    _op2_08006A56 = _rm_08006A56 << 21;
+    _co_08006A56 = (_rm_08006A56 >> 11) & 1u;
+    uint32_t _r_08006A56;
+    _r_08006A56 = _op2_08006A56;
+    arm_set_nzc_logic(_r_08006A56, _co_08006A56);
+    g_cpu.R[1] = _r_08006A56;
+    g_cpu.R[15] = 0x08006A58u;
+    runtime_tick(_cyc_08006A56);
+    /* 08006A58  08006a58 T orrs r0,r0,r1 */
+    g_cpu.R[15] = 0x08006A58u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006A58 = 1u;
+    _cyc_08006A58 = 1u;
+    uint32_t _rm_08006A58 = g_cpu.R[1];
+    uint32_t _op2_08006A58;
+    uint32_t _co_08006A58;
+    _op2_08006A58 = _rm_08006A58;
+    _co_08006A58 = cpsr_c();
+    uint32_t _rn_08006A58 = g_cpu.R[0];
+    uint32_t _r_08006A58;
+    _r_08006A58 = _rn_08006A58 | _op2_08006A58;
+    arm_set_nzc_logic(_r_08006A58, _co_08006A58);
+    g_cpu.R[0] = _r_08006A58;
+    g_cpu.R[15] = 0x08006A5Au;
+    runtime_tick(_cyc_08006A58);
+    /* 08006A5A  08006a5a T str r0,[r2] */
+    g_cpu.R[15] = 0x08006A5Au;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006A5A = 1u;
+    _cyc_08006A5A = 1u;
+    uint32_t _base_08006A5A = g_cpu.R[2];
+    uint32_t _off_08006A5A;
+    _off_08006A5A = 0x00000000u;
+    uint32_t _ea_08006A5A = _base_08006A5A + _off_08006A5A;
+    uint32_t _post_08006A5A = _base_08006A5A + _off_08006A5A;
+    _cyc_08006A5A += runtime_mem_cycles(_ea_08006A5A, 4u, 0u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x08006A5Au, _ea_08006A5A & ~3u, g_cpu.R[0], 4u);
+    bus_write_u32(_ea_08006A5A & ~3u, g_cpu.R[0]);
+    g_cpu.R[15] = 0x08006A5Cu;
+    runtime_tick(_cyc_08006A5A);
+    /* fall-through to 0x08006A5C */
+    g_cpu.R[15] = 0x08006A5Cu;
+    runtime_dispatch(0x08006A5Cu);
     return;
 }
 
@@ -36429,7 +39596,7 @@ void gf_tfunc_08006AD8(void) {
     return;
 }
 
-/* 0x08006D1E  mode=thumb  end=0x08006D28  branches=17  indirect */
+/* 0x08006BBA  mode=thumb  end=0x08006BD0  branches=52  indirect */
 
 
 /* 0x08006B2E thumb */
@@ -36491,7 +39658,3423 @@ void gf_tfunc_08006B2E(void) {
     return;
 }
 
+/* 0x08006B68  mode=thumb  end=0x08006B8E  branches=61  indirect */
+
+
+/* 0x08006B68 thumb */
+void gf_object_init_helper(void) {
+    if (g_runtime_fn_entry_hook) g_runtime_fn_entry_hook(0x08006B68u);
+    /* 08006B68  08006b68 T stm r13!,{r4,r5,r6,r7,r14} */
+    g_cpu.R[15] = 0x08006B68u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006B68 = 1u;
+    _cyc_08006B68 = 1u;
+    uint32_t _b_08006B68 = g_cpu.R[13];
+    uint32_t _a_08006B68 = _b_08006B68 - 20u;
+    uint32_t _fb_08006B68 = _b_08006B68 - 20u;
+    _cyc_08006B68 += runtime_mem_cycles(_a_08006B68 & ~3u, 4u, 0u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x08006B68u, _a_08006B68 & ~3u, g_cpu.R[4], 4u);
+    bus_write_u32(_a_08006B68 & ~3u, g_cpu.R[4]);
+    _a_08006B68 += 4u;
+    _cyc_08006B68 += runtime_mem_cycles(_a_08006B68 & ~3u, 4u, 1u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x08006B68u, _a_08006B68 & ~3u, g_cpu.R[5], 4u);
+    bus_write_u32(_a_08006B68 & ~3u, g_cpu.R[5]);
+    _a_08006B68 += 4u;
+    _cyc_08006B68 += runtime_mem_cycles(_a_08006B68 & ~3u, 4u, 1u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x08006B68u, _a_08006B68 & ~3u, g_cpu.R[6], 4u);
+    bus_write_u32(_a_08006B68 & ~3u, g_cpu.R[6]);
+    _a_08006B68 += 4u;
+    _cyc_08006B68 += runtime_mem_cycles(_a_08006B68 & ~3u, 4u, 1u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x08006B68u, _a_08006B68 & ~3u, g_cpu.R[7], 4u);
+    bus_write_u32(_a_08006B68 & ~3u, g_cpu.R[7]);
+    _a_08006B68 += 4u;
+    _cyc_08006B68 += runtime_mem_cycles(_a_08006B68 & ~3u, 4u, 1u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x08006B68u, _a_08006B68 & ~3u, g_cpu.R[14], 4u);
+    bus_write_u32(_a_08006B68 & ~3u, g_cpu.R[14]);
+    _a_08006B68 += 4u;
+    g_cpu.R[13] = _fb_08006B68;
+    g_cpu.R[15] = 0x08006B6Au;
+    runtime_tick(_cyc_08006B68);
+    /* 08006B6A  08006b6a T mov r7,r8 */
+    g_cpu.R[15] = 0x08006B6Au;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006B6A = 1u;
+    _cyc_08006B6A = 1u;
+    uint32_t _rm_08006B6A = g_cpu.R[8];
+    uint32_t _op2_08006B6A;
+    uint32_t _co_08006B6A;
+    _op2_08006B6A = _rm_08006B6A;
+    _co_08006B6A = cpsr_c();
+    uint32_t _r_08006B6A;
+    _r_08006B6A = _op2_08006B6A;
+    g_cpu.R[7] = _r_08006B6A;
+    g_cpu.R[15] = 0x08006B6Cu;
+    runtime_tick(_cyc_08006B6A);
+    /* 08006B6C  08006b6c T stm r13!,{r7} */
+    g_cpu.R[15] = 0x08006B6Cu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006B6C = 1u;
+    _cyc_08006B6C = 1u;
+    uint32_t _b_08006B6C = g_cpu.R[13];
+    uint32_t _a_08006B6C = _b_08006B6C - 4u;
+    uint32_t _fb_08006B6C = _b_08006B6C - 4u;
+    _cyc_08006B6C += runtime_mem_cycles(_a_08006B6C & ~3u, 4u, 0u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x08006B6Cu, _a_08006B6C & ~3u, g_cpu.R[7], 4u);
+    bus_write_u32(_a_08006B6C & ~3u, g_cpu.R[7]);
+    _a_08006B6C += 4u;
+    g_cpu.R[13] = _fb_08006B6C;
+    g_cpu.R[15] = 0x08006B6Eu;
+    runtime_tick(_cyc_08006B6C);
+    /* 08006B6E  08006b6e T mov r8,r0 */
+    g_cpu.R[15] = 0x08006B6Eu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006B6E = 1u;
+    _cyc_08006B6E = 1u;
+    uint32_t _rm_08006B6E = g_cpu.R[0];
+    uint32_t _op2_08006B6E;
+    uint32_t _co_08006B6E;
+    _op2_08006B6E = _rm_08006B6E;
+    _co_08006B6E = cpsr_c();
+    uint32_t _r_08006B6E;
+    _r_08006B6E = _op2_08006B6E;
+    g_cpu.R[8] = _r_08006B6E;
+    g_cpu.R[15] = 0x08006B70u;
+    runtime_tick(_cyc_08006B6E);
+    /* 08006B70  08006b70 T ldr r4,[r15,#0x23c] */
+    g_cpu.R[15] = 0x08006B70u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006B70 = 1u;
+    _cyc_08006B70 = 2u;
+    uint32_t _base_08006B70 = 0x08006B74u & ~3u;
+    uint32_t _off_08006B70;
+    _off_08006B70 = 0x0000023Cu;
+    uint32_t _ea_08006B70 = _base_08006B70 + _off_08006B70;
+    uint32_t _post_08006B70 = _base_08006B70 + _off_08006B70;
+    _cyc_08006B70 += runtime_mem_cycles(_ea_08006B70, 4u, 0u);
+    uint32_t _v_08006B70;
+    { uint32_t _w = bus_read_u32(_ea_08006B70 & ~3u); uint32_t _rot = (_ea_08006B70 & 3u) * 8u; _v_08006B70 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[4] = _v_08006B70;
+    g_cpu.R[15] = 0x08006B72u;
+    runtime_tick(_cyc_08006B70);
+    /* 08006B72  08006b72 T ldr r0,[r15,#0x240] */
+    g_cpu.R[15] = 0x08006B72u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006B72 = 1u;
+    _cyc_08006B72 = 2u;
+    uint32_t _base_08006B72 = 0x08006B76u & ~3u;
+    uint32_t _off_08006B72;
+    _off_08006B72 = 0x00000240u;
+    uint32_t _ea_08006B72 = _base_08006B72 + _off_08006B72;
+    uint32_t _post_08006B72 = _base_08006B72 + _off_08006B72;
+    _cyc_08006B72 += runtime_mem_cycles(_ea_08006B72, 4u, 0u);
+    uint32_t _v_08006B72;
+    { uint32_t _w = bus_read_u32(_ea_08006B72 & ~3u); uint32_t _rot = (_ea_08006B72 & 3u) * 8u; _v_08006B72 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_08006B72;
+    g_cpu.R[15] = 0x08006B74u;
+    runtime_tick(_cyc_08006B72);
+    /* 08006B74  08006b74 T adds r5,r4,r0 */
+    g_cpu.R[15] = 0x08006B74u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006B74 = 1u;
+    _cyc_08006B74 = 1u;
+    uint32_t _rm_08006B74 = g_cpu.R[0];
+    uint32_t _op2_08006B74;
+    uint32_t _co_08006B74;
+    _op2_08006B74 = _rm_08006B74;
+    _co_08006B74 = cpsr_c();
+    uint32_t _rn_08006B74 = g_cpu.R[4];
+    uint32_t _r_08006B74;
+    _r_08006B74 = _rn_08006B74 + _op2_08006B74;
+    arm_set_nzcv_add(_rn_08006B74, _op2_08006B74, _r_08006B74);
+    g_cpu.R[5] = _r_08006B74;
+    g_cpu.R[15] = 0x08006B76u;
+    runtime_tick(_cyc_08006B74);
+    /* 08006B76  08006b76 T ldr r0,[r5] */
+    g_cpu.R[15] = 0x08006B76u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006B76 = 1u;
+    _cyc_08006B76 = 2u;
+    uint32_t _base_08006B76 = g_cpu.R[5];
+    uint32_t _off_08006B76;
+    _off_08006B76 = 0x00000000u;
+    uint32_t _ea_08006B76 = _base_08006B76 + _off_08006B76;
+    uint32_t _post_08006B76 = _base_08006B76 + _off_08006B76;
+    _cyc_08006B76 += runtime_mem_cycles(_ea_08006B76, 4u, 0u);
+    uint32_t _v_08006B76;
+    { uint32_t _w = bus_read_u32(_ea_08006B76 & ~3u); uint32_t _rot = (_ea_08006B76 & 3u) * 8u; _v_08006B76 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_08006B76;
+    g_cpu.R[15] = 0x08006B78u;
+    runtime_tick(_cyc_08006B76);
+    /* 08006B78  08006b78 T ldr r1,[r15,#0x23c] */
+    g_cpu.R[15] = 0x08006B78u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006B78 = 1u;
+    _cyc_08006B78 = 2u;
+    uint32_t _base_08006B78 = 0x08006B7Cu & ~3u;
+    uint32_t _off_08006B78;
+    _off_08006B78 = 0x0000023Cu;
+    uint32_t _ea_08006B78 = _base_08006B78 + _off_08006B78;
+    uint32_t _post_08006B78 = _base_08006B78 + _off_08006B78;
+    _cyc_08006B78 += runtime_mem_cycles(_ea_08006B78, 4u, 0u);
+    uint32_t _v_08006B78;
+    { uint32_t _w = bus_read_u32(_ea_08006B78 & ~3u); uint32_t _rot = (_ea_08006B78 & 3u) * 8u; _v_08006B78 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[1] = _v_08006B78;
+    g_cpu.R[15] = 0x08006B7Au;
+    runtime_tick(_cyc_08006B78);
+    /* 08006B7A  08006b7a T ands r0,r0,r1 */
+    g_cpu.R[15] = 0x08006B7Au;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006B7A = 1u;
+    _cyc_08006B7A = 1u;
+    uint32_t _rm_08006B7A = g_cpu.R[1];
+    uint32_t _op2_08006B7A;
+    uint32_t _co_08006B7A;
+    _op2_08006B7A = _rm_08006B7A;
+    _co_08006B7A = cpsr_c();
+    uint32_t _rn_08006B7A = g_cpu.R[0];
+    uint32_t _r_08006B7A;
+    _r_08006B7A = _rn_08006B7A & _op2_08006B7A;
+    arm_set_nzc_logic(_r_08006B7A, _co_08006B7A);
+    g_cpu.R[0] = _r_08006B7A;
+    g_cpu.R[15] = 0x08006B7Cu;
+    runtime_tick(_cyc_08006B7A);
+    /* 08006B7C  08006b7c T movs r1,#0x80 */
+    g_cpu.R[15] = 0x08006B7Cu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006B7C = 1u;
+    _cyc_08006B7C = 1u;
+    uint32_t _r_08006B7C;
+    _r_08006B7C = 0x00000080u;
+    arm_set_nzc_logic(_r_08006B7C, cpsr_c());
+    g_cpu.R[1] = _r_08006B7C;
+    g_cpu.R[15] = 0x08006B7Eu;
+    runtime_tick(_cyc_08006B7C);
+    /* 08006B7E  08006b7e T movs r1,r1,lsl #14 */
+    g_cpu.R[15] = 0x08006B7Eu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006B7E = 1u;
+    _cyc_08006B7E = 1u;
+    uint32_t _rm_08006B7E = g_cpu.R[1];
+    uint32_t _op2_08006B7E;
+    uint32_t _co_08006B7E;
+    _op2_08006B7E = _rm_08006B7E << 14;
+    _co_08006B7E = (_rm_08006B7E >> 18) & 1u;
+    uint32_t _r_08006B7E;
+    _r_08006B7E = _op2_08006B7E;
+    arm_set_nzc_logic(_r_08006B7E, _co_08006B7E);
+    g_cpu.R[1] = _r_08006B7E;
+    g_cpu.R[15] = 0x08006B80u;
+    runtime_tick(_cyc_08006B7E);
+    /* 08006B80  08006b80 T cmps r0,r1 */
+    g_cpu.R[15] = 0x08006B80u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006B80 = 1u;
+    _cyc_08006B80 = 1u;
+    uint32_t _rm_08006B80 = g_cpu.R[1];
+    uint32_t _op2_08006B80;
+    uint32_t _co_08006B80;
+    _op2_08006B80 = _rm_08006B80;
+    _co_08006B80 = cpsr_c();
+    uint32_t _rn_08006B80 = g_cpu.R[0];
+    uint32_t _r_08006B80;
+    _r_08006B80 = _rn_08006B80 - _op2_08006B80;
+    arm_set_nzcv_sub(_rn_08006B80, _op2_08006B80, _r_08006B80);
+    g_cpu.R[15] = 0x08006B82u;
+    runtime_tick(_cyc_08006B80);
+    /* 08006B82  08006b82 T bne 0x08006b8e */
+    g_cpu.R[15] = 0x08006B82u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006B82 = 1u;
+    if (arm_cond_passes(0x1u)) {
+        _cyc_08006B82 = 3u;
+        g_cpu.R[15] = 0x08006B8Eu;
+        runtime_tick(_cyc_08006B82);
+        GBARECOMP_TAIL_CALL(gf_object_spawn_helper);
+    }
+    g_cpu.R[15] = 0x08006B84u;
+    runtime_tick(_cyc_08006B82);
+    /* 08006B84  08006b84 T ldr r1,[r15,#0x234] */
+    g_cpu.R[15] = 0x08006B84u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006B84 = 1u;
+    _cyc_08006B84 = 2u;
+    uint32_t _base_08006B84 = 0x08006B88u & ~3u;
+    uint32_t _off_08006B84;
+    _off_08006B84 = 0x00000234u;
+    uint32_t _ea_08006B84 = _base_08006B84 + _off_08006B84;
+    uint32_t _post_08006B84 = _base_08006B84 + _off_08006B84;
+    _cyc_08006B84 += runtime_mem_cycles(_ea_08006B84, 4u, 0u);
+    uint32_t _v_08006B84;
+    { uint32_t _w = bus_read_u32(_ea_08006B84 & ~3u); uint32_t _rot = (_ea_08006B84 & 3u) * 8u; _v_08006B84 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[1] = _v_08006B84;
+    g_cpu.R[15] = 0x08006B86u;
+    runtime_tick(_cyc_08006B84);
+    /* 08006B86  08006b86 T adds r0,r4,r1 */
+    g_cpu.R[15] = 0x08006B86u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006B86 = 1u;
+    _cyc_08006B86 = 1u;
+    uint32_t _rm_08006B86 = g_cpu.R[1];
+    uint32_t _op2_08006B86;
+    uint32_t _co_08006B86;
+    _op2_08006B86 = _rm_08006B86;
+    _co_08006B86 = cpsr_c();
+    uint32_t _rn_08006B86 = g_cpu.R[4];
+    uint32_t _r_08006B86;
+    _r_08006B86 = _rn_08006B86 + _op2_08006B86;
+    arm_set_nzcv_add(_rn_08006B86, _op2_08006B86, _r_08006B86);
+    g_cpu.R[0] = _r_08006B86;
+    g_cpu.R[15] = 0x08006B88u;
+    runtime_tick(_cyc_08006B86);
+    /* 08006B88  08006b88 T ldr r0,[r0] */
+    g_cpu.R[15] = 0x08006B88u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006B88 = 1u;
+    _cyc_08006B88 = 2u;
+    uint32_t _base_08006B88 = g_cpu.R[0];
+    uint32_t _off_08006B88;
+    _off_08006B88 = 0x00000000u;
+    uint32_t _ea_08006B88 = _base_08006B88 + _off_08006B88;
+    uint32_t _post_08006B88 = _base_08006B88 + _off_08006B88;
+    _cyc_08006B88 += runtime_mem_cycles(_ea_08006B88, 4u, 0u);
+    uint32_t _v_08006B88;
+    { uint32_t _w = bus_read_u32(_ea_08006B88 & ~3u); uint32_t _rot = (_ea_08006B88 & 3u) * 8u; _v_08006B88 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_08006B88;
+    g_cpu.R[15] = 0x08006B8Au;
+    runtime_tick(_cyc_08006B88);
+    /* 08006B8A  08006b8a T bl.hi 0x08000b8e */
+    g_cpu.R[15] = 0x08006B8Au;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006B8A = 1u;
+    _cyc_08006B8A = 1u;
+    g_cpu.R[14] = 0x08000B8Eu;
+    g_cpu.R[15] = 0x08006B8Cu;
+    runtime_tick(_cyc_08006B8A);
+    /* 08006B8C  08006b8c T bl.lo 0x00000000 */
+    g_cpu.R[15] = 0x08006B8Cu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006B8C = 1u;
+    _cyc_08006B8C = 3u;
+    uint32_t _blt_08006B8C = (g_cpu.R[14] + 0x00000BAAu) & ~1u;
+    g_cpu.R[14] = 0x08006B8Fu;
+    g_cpu.R[15] = _blt_08006B8C;
+    runtime_call_push_return(0x08006B8Eu);
+    runtime_tick(_cyc_08006B8C);
+    _cyc_08006B8C = 0u;
+    runtime_dispatch(_blt_08006B8C);
+    if (g_cpu.R[15] != 0x08006B8Eu) { runtime_call_cancel_return(0x08006B8Eu); return; }
+    g_cpu.R[15] = 0x08006B8Eu;
+    runtime_tick(_cyc_08006B8C);
+    /* fall-through to 0x08006B8E */
+    g_cpu.R[15] = 0x08006B8Eu;
+    runtime_dispatch(0x08006B8Eu);
+    return;
+}
+
+/* 0x08006B8E  mode=thumb  end=0x08006BA4  branches=58  indirect */
+
+
+/* 0x08006B8E thumb */
+void gf_object_spawn_helper(void) {
+    if (g_runtime_fn_entry_hook) g_runtime_fn_entry_hook(0x08006B8Eu);
+    /* 08006B8E  08006b8e T ldr r0,[r5] */
+    g_cpu.R[15] = 0x08006B8Eu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006B8E = 1u;
+    _cyc_08006B8E = 2u;
+    uint32_t _base_08006B8E = g_cpu.R[5];
+    uint32_t _off_08006B8E;
+    _off_08006B8E = 0x00000000u;
+    uint32_t _ea_08006B8E = _base_08006B8E + _off_08006B8E;
+    uint32_t _post_08006B8E = _base_08006B8E + _off_08006B8E;
+    _cyc_08006B8E += runtime_mem_cycles(_ea_08006B8E, 4u, 0u);
+    uint32_t _v_08006B8E;
+    { uint32_t _w = bus_read_u32(_ea_08006B8E & ~3u); uint32_t _rot = (_ea_08006B8E & 3u) * 8u; _v_08006B8E = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_08006B8E;
+    g_cpu.R[15] = 0x08006B90u;
+    runtime_tick(_cyc_08006B8E);
+    /* 08006B90  08006b90 T movs r1,#0x80 */
+    g_cpu.R[15] = 0x08006B90u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006B90 = 1u;
+    _cyc_08006B90 = 1u;
+    uint32_t _r_08006B90;
+    _r_08006B90 = 0x00000080u;
+    arm_set_nzc_logic(_r_08006B90, cpsr_c());
+    g_cpu.R[1] = _r_08006B90;
+    g_cpu.R[15] = 0x08006B92u;
+    runtime_tick(_cyc_08006B90);
+    /* 08006B92  08006b92 T movs r1,r1,lsl #22 */
+    g_cpu.R[15] = 0x08006B92u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006B92 = 1u;
+    _cyc_08006B92 = 1u;
+    uint32_t _rm_08006B92 = g_cpu.R[1];
+    uint32_t _op2_08006B92;
+    uint32_t _co_08006B92;
+    _op2_08006B92 = _rm_08006B92 << 22;
+    _co_08006B92 = (_rm_08006B92 >> 10) & 1u;
+    uint32_t _r_08006B92;
+    _r_08006B92 = _op2_08006B92;
+    arm_set_nzc_logic(_r_08006B92, _co_08006B92);
+    g_cpu.R[1] = _r_08006B92;
+    g_cpu.R[15] = 0x08006B94u;
+    runtime_tick(_cyc_08006B92);
+    /* 08006B94  08006b94 T ands r0,r0,r1 */
+    g_cpu.R[15] = 0x08006B94u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006B94 = 1u;
+    _cyc_08006B94 = 1u;
+    uint32_t _rm_08006B94 = g_cpu.R[1];
+    uint32_t _op2_08006B94;
+    uint32_t _co_08006B94;
+    _op2_08006B94 = _rm_08006B94;
+    _co_08006B94 = cpsr_c();
+    uint32_t _rn_08006B94 = g_cpu.R[0];
+    uint32_t _r_08006B94;
+    _r_08006B94 = _rn_08006B94 & _op2_08006B94;
+    arm_set_nzc_logic(_r_08006B94, _co_08006B94);
+    g_cpu.R[0] = _r_08006B94;
+    g_cpu.R[15] = 0x08006B96u;
+    runtime_tick(_cyc_08006B94);
+    /* 08006B96  08006b96 T cmps r0,#0x0 */
+    g_cpu.R[15] = 0x08006B96u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006B96 = 1u;
+    _cyc_08006B96 = 1u;
+    uint32_t _rn_08006B96 = g_cpu.R[0];
+    uint32_t _r_08006B96;
+    _r_08006B96 = _rn_08006B96 - 0x00000000u;
+    arm_set_nzcv_sub(_rn_08006B96, 0x00000000u, _r_08006B96);
+    g_cpu.R[15] = 0x08006B98u;
+    runtime_tick(_cyc_08006B96);
+    /* 08006B98  08006b98 T bne 0x08006ba4 */
+    g_cpu.R[15] = 0x08006B98u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006B98 = 1u;
+    if (arm_cond_passes(0x1u)) {
+        _cyc_08006B98 = 3u;
+        g_cpu.R[15] = 0x08006BA4u;
+        runtime_tick(_cyc_08006B98);
+        GBARECOMP_TAIL_CALL(gf_object_spawn_tail);
+    }
+    g_cpu.R[15] = 0x08006B9Au;
+    runtime_tick(_cyc_08006B98);
+    /* 08006B9A  08006b9a T ldr r2,[r15,#0x224] */
+    g_cpu.R[15] = 0x08006B9Au;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006B9A = 1u;
+    _cyc_08006B9A = 2u;
+    uint32_t _base_08006B9A = 0x08006B9Eu & ~3u;
+    uint32_t _off_08006B9A;
+    _off_08006B9A = 0x00000224u;
+    uint32_t _ea_08006B9A = _base_08006B9A + _off_08006B9A;
+    uint32_t _post_08006B9A = _base_08006B9A + _off_08006B9A;
+    _cyc_08006B9A += runtime_mem_cycles(_ea_08006B9A, 4u, 0u);
+    uint32_t _v_08006B9A;
+    { uint32_t _w = bus_read_u32(_ea_08006B9A & ~3u); uint32_t _rot = (_ea_08006B9A & 3u) * 8u; _v_08006B9A = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[2] = _v_08006B9A;
+    g_cpu.R[15] = 0x08006B9Cu;
+    runtime_tick(_cyc_08006B9A);
+    /* 08006B9C  08006b9c T adds r0,r4,r2 */
+    g_cpu.R[15] = 0x08006B9Cu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006B9C = 1u;
+    _cyc_08006B9C = 1u;
+    uint32_t _rm_08006B9C = g_cpu.R[2];
+    uint32_t _op2_08006B9C;
+    uint32_t _co_08006B9C;
+    _op2_08006B9C = _rm_08006B9C;
+    _co_08006B9C = cpsr_c();
+    uint32_t _rn_08006B9C = g_cpu.R[4];
+    uint32_t _r_08006B9C;
+    _r_08006B9C = _rn_08006B9C + _op2_08006B9C;
+    arm_set_nzcv_add(_rn_08006B9C, _op2_08006B9C, _r_08006B9C);
+    g_cpu.R[0] = _r_08006B9C;
+    g_cpu.R[15] = 0x08006B9Eu;
+    runtime_tick(_cyc_08006B9C);
+    /* 08006B9E  08006b9e T ldr r0,[r0] */
+    g_cpu.R[15] = 0x08006B9Eu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006B9E = 1u;
+    _cyc_08006B9E = 2u;
+    uint32_t _base_08006B9E = g_cpu.R[0];
+    uint32_t _off_08006B9E;
+    _off_08006B9E = 0x00000000u;
+    uint32_t _ea_08006B9E = _base_08006B9E + _off_08006B9E;
+    uint32_t _post_08006B9E = _base_08006B9E + _off_08006B9E;
+    _cyc_08006B9E += runtime_mem_cycles(_ea_08006B9E, 4u, 0u);
+    uint32_t _v_08006B9E;
+    { uint32_t _w = bus_read_u32(_ea_08006B9E & ~3u); uint32_t _rot = (_ea_08006B9E & 3u) * 8u; _v_08006B9E = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_08006B9E;
+    g_cpu.R[15] = 0x08006BA0u;
+    runtime_tick(_cyc_08006B9E);
+    /* 08006BA0  08006ba0 T bl.hi 0x08000ba4 */
+    g_cpu.R[15] = 0x08006BA0u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006BA0 = 1u;
+    _cyc_08006BA0 = 1u;
+    g_cpu.R[14] = 0x08000BA4u;
+    g_cpu.R[15] = 0x08006BA2u;
+    runtime_tick(_cyc_08006BA0);
+    /* 08006BA2  08006ba2 T bl.lo 0x00000000 */
+    g_cpu.R[15] = 0x08006BA2u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006BA2 = 1u;
+    _cyc_08006BA2 = 3u;
+    uint32_t _blt_08006BA2 = (g_cpu.R[14] + 0x00000B94u) & ~1u;
+    g_cpu.R[14] = 0x08006BA5u;
+    g_cpu.R[15] = _blt_08006BA2;
+    runtime_call_push_return(0x08006BA4u);
+    runtime_tick(_cyc_08006BA2);
+    _cyc_08006BA2 = 0u;
+    runtime_dispatch(_blt_08006BA2);
+    if (g_cpu.R[15] != 0x08006BA4u) { runtime_call_cancel_return(0x08006BA4u); return; }
+    g_cpu.R[15] = 0x08006BA4u;
+    runtime_tick(_cyc_08006BA2);
+    /* fall-through to 0x08006BA4 */
+    g_cpu.R[15] = 0x08006BA4u;
+    runtime_dispatch(0x08006BA4u);
+    return;
+}
+
+/* 0x08006BA4  mode=thumb  end=0x08006BBA  branches=55  indirect */
+
+
+/* 0x08006BA4 thumb */
+void gf_object_spawn_tail(void) {
+    if (g_runtime_fn_entry_hook) g_runtime_fn_entry_hook(0x08006BA4u);
+    /* 08006BA4  08006ba4 T ldr r0,[r5] */
+    g_cpu.R[15] = 0x08006BA4u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006BA4 = 1u;
+    _cyc_08006BA4 = 2u;
+    uint32_t _base_08006BA4 = g_cpu.R[5];
+    uint32_t _off_08006BA4;
+    _off_08006BA4 = 0x00000000u;
+    uint32_t _ea_08006BA4 = _base_08006BA4 + _off_08006BA4;
+    uint32_t _post_08006BA4 = _base_08006BA4 + _off_08006BA4;
+    _cyc_08006BA4 += runtime_mem_cycles(_ea_08006BA4, 4u, 0u);
+    uint32_t _v_08006BA4;
+    { uint32_t _w = bus_read_u32(_ea_08006BA4 & ~3u); uint32_t _rot = (_ea_08006BA4 & 3u) * 8u; _v_08006BA4 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_08006BA4;
+    g_cpu.R[15] = 0x08006BA6u;
+    runtime_tick(_cyc_08006BA4);
+    /* 08006BA6  08006ba6 T movs r1,#0x80 */
+    g_cpu.R[15] = 0x08006BA6u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006BA6 = 1u;
+    _cyc_08006BA6 = 1u;
+    uint32_t _r_08006BA6;
+    _r_08006BA6 = 0x00000080u;
+    arm_set_nzc_logic(_r_08006BA6, cpsr_c());
+    g_cpu.R[1] = _r_08006BA6;
+    g_cpu.R[15] = 0x08006BA8u;
+    runtime_tick(_cyc_08006BA6);
+    /* 08006BA8  08006ba8 T movs r1,r1,lsl #21 */
+    g_cpu.R[15] = 0x08006BA8u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006BA8 = 1u;
+    _cyc_08006BA8 = 1u;
+    uint32_t _rm_08006BA8 = g_cpu.R[1];
+    uint32_t _op2_08006BA8;
+    uint32_t _co_08006BA8;
+    _op2_08006BA8 = _rm_08006BA8 << 21;
+    _co_08006BA8 = (_rm_08006BA8 >> 11) & 1u;
+    uint32_t _r_08006BA8;
+    _r_08006BA8 = _op2_08006BA8;
+    arm_set_nzc_logic(_r_08006BA8, _co_08006BA8);
+    g_cpu.R[1] = _r_08006BA8;
+    g_cpu.R[15] = 0x08006BAAu;
+    runtime_tick(_cyc_08006BA8);
+    /* 08006BAA  08006baa T ands r0,r0,r1 */
+    g_cpu.R[15] = 0x08006BAAu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006BAA = 1u;
+    _cyc_08006BAA = 1u;
+    uint32_t _rm_08006BAA = g_cpu.R[1];
+    uint32_t _op2_08006BAA;
+    uint32_t _co_08006BAA;
+    _op2_08006BAA = _rm_08006BAA;
+    _co_08006BAA = cpsr_c();
+    uint32_t _rn_08006BAA = g_cpu.R[0];
+    uint32_t _r_08006BAA;
+    _r_08006BAA = _rn_08006BAA & _op2_08006BAA;
+    arm_set_nzc_logic(_r_08006BAA, _co_08006BAA);
+    g_cpu.R[0] = _r_08006BAA;
+    g_cpu.R[15] = 0x08006BACu;
+    runtime_tick(_cyc_08006BAA);
+    /* 08006BAC  08006bac T cmps r0,#0x0 */
+    g_cpu.R[15] = 0x08006BACu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006BAC = 1u;
+    _cyc_08006BAC = 1u;
+    uint32_t _rn_08006BAC = g_cpu.R[0];
+    uint32_t _r_08006BAC;
+    _r_08006BAC = _rn_08006BAC - 0x00000000u;
+    arm_set_nzcv_sub(_rn_08006BAC, 0x00000000u, _r_08006BAC);
+    g_cpu.R[15] = 0x08006BAEu;
+    runtime_tick(_cyc_08006BAC);
+    /* 08006BAE  08006bae T bne 0x08006bba */
+    g_cpu.R[15] = 0x08006BAEu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006BAE = 1u;
+    if (arm_cond_passes(0x1u)) {
+        _cyc_08006BAE = 3u;
+        g_cpu.R[15] = 0x08006BBAu;
+        runtime_tick(_cyc_08006BAE);
+        GBARECOMP_TAIL_CALL(gf_tfunc_08006BBA);
+    }
+    g_cpu.R[15] = 0x08006BB0u;
+    runtime_tick(_cyc_08006BAE);
+    /* 08006BB0  08006bb0 T ldr r1,[r15,#0x210] */
+    g_cpu.R[15] = 0x08006BB0u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006BB0 = 1u;
+    _cyc_08006BB0 = 2u;
+    uint32_t _base_08006BB0 = 0x08006BB4u & ~3u;
+    uint32_t _off_08006BB0;
+    _off_08006BB0 = 0x00000210u;
+    uint32_t _ea_08006BB0 = _base_08006BB0 + _off_08006BB0;
+    uint32_t _post_08006BB0 = _base_08006BB0 + _off_08006BB0;
+    _cyc_08006BB0 += runtime_mem_cycles(_ea_08006BB0, 4u, 0u);
+    uint32_t _v_08006BB0;
+    { uint32_t _w = bus_read_u32(_ea_08006BB0 & ~3u); uint32_t _rot = (_ea_08006BB0 & 3u) * 8u; _v_08006BB0 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[1] = _v_08006BB0;
+    g_cpu.R[15] = 0x08006BB2u;
+    runtime_tick(_cyc_08006BB0);
+    /* 08006BB2  08006bb2 T adds r0,r4,r1 */
+    g_cpu.R[15] = 0x08006BB2u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006BB2 = 1u;
+    _cyc_08006BB2 = 1u;
+    uint32_t _rm_08006BB2 = g_cpu.R[1];
+    uint32_t _op2_08006BB2;
+    uint32_t _co_08006BB2;
+    _op2_08006BB2 = _rm_08006BB2;
+    _co_08006BB2 = cpsr_c();
+    uint32_t _rn_08006BB2 = g_cpu.R[4];
+    uint32_t _r_08006BB2;
+    _r_08006BB2 = _rn_08006BB2 + _op2_08006BB2;
+    arm_set_nzcv_add(_rn_08006BB2, _op2_08006BB2, _r_08006BB2);
+    g_cpu.R[0] = _r_08006BB2;
+    g_cpu.R[15] = 0x08006BB4u;
+    runtime_tick(_cyc_08006BB2);
+    /* 08006BB4  08006bb4 T ldr r0,[r0] */
+    g_cpu.R[15] = 0x08006BB4u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006BB4 = 1u;
+    _cyc_08006BB4 = 2u;
+    uint32_t _base_08006BB4 = g_cpu.R[0];
+    uint32_t _off_08006BB4;
+    _off_08006BB4 = 0x00000000u;
+    uint32_t _ea_08006BB4 = _base_08006BB4 + _off_08006BB4;
+    uint32_t _post_08006BB4 = _base_08006BB4 + _off_08006BB4;
+    _cyc_08006BB4 += runtime_mem_cycles(_ea_08006BB4, 4u, 0u);
+    uint32_t _v_08006BB4;
+    { uint32_t _w = bus_read_u32(_ea_08006BB4 & ~3u); uint32_t _rot = (_ea_08006BB4 & 3u) * 8u; _v_08006BB4 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_08006BB4;
+    g_cpu.R[15] = 0x08006BB6u;
+    runtime_tick(_cyc_08006BB4);
+    /* 08006BB6  08006bb6 T bl.hi 0x08000bba */
+    g_cpu.R[15] = 0x08006BB6u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006BB6 = 1u;
+    _cyc_08006BB6 = 1u;
+    g_cpu.R[14] = 0x08000BBAu;
+    g_cpu.R[15] = 0x08006BB8u;
+    runtime_tick(_cyc_08006BB6);
+    /* 08006BB8  08006bb8 T bl.lo 0x00000000 */
+    g_cpu.R[15] = 0x08006BB8u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006BB8 = 1u;
+    _cyc_08006BB8 = 3u;
+    uint32_t _blt_08006BB8 = (g_cpu.R[14] + 0x00000B7Eu) & ~1u;
+    g_cpu.R[14] = 0x08006BBBu;
+    g_cpu.R[15] = _blt_08006BB8;
+    runtime_call_push_return(0x08006BBAu);
+    runtime_tick(_cyc_08006BB8);
+    _cyc_08006BB8 = 0u;
+    runtime_dispatch(_blt_08006BB8);
+    if (g_cpu.R[15] != 0x08006BBAu) { runtime_call_cancel_return(0x08006BBAu); return; }
+    g_cpu.R[15] = 0x08006BBAu;
+    runtime_tick(_cyc_08006BB8);
+    /* fall-through to 0x08006BBA */
+    g_cpu.R[15] = 0x08006BBAu;
+    runtime_dispatch(0x08006BBAu);
+    return;
+}
+
+/* 0x08006BF2  mode=thumb  end=0x08006C16  branches=44  indirect */
+
+
+/* 0x08006BBA thumb */
+void gf_tfunc_08006BBA(void) {
+    if (g_runtime_fn_entry_hook) g_runtime_fn_entry_hook(0x08006BBAu);
+    /* 08006BBA  08006bba T ldr r0,[r5] */
+    g_cpu.R[15] = 0x08006BBAu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006BBA = 1u;
+    _cyc_08006BBA = 2u;
+    uint32_t _base_08006BBA = g_cpu.R[5];
+    uint32_t _off_08006BBA;
+    _off_08006BBA = 0x00000000u;
+    uint32_t _ea_08006BBA = _base_08006BBA + _off_08006BBA;
+    uint32_t _post_08006BBA = _base_08006BBA + _off_08006BBA;
+    _cyc_08006BBA += runtime_mem_cycles(_ea_08006BBA, 4u, 0u);
+    uint32_t _v_08006BBA;
+    { uint32_t _w = bus_read_u32(_ea_08006BBA & ~3u); uint32_t _rot = (_ea_08006BBA & 3u) * 8u; _v_08006BBA = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_08006BBA;
+    g_cpu.R[15] = 0x08006BBCu;
+    runtime_tick(_cyc_08006BBA);
+    /* 08006BBC  08006bbc T movs r1,#0x80 */
+    g_cpu.R[15] = 0x08006BBCu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006BBC = 1u;
+    _cyc_08006BBC = 1u;
+    uint32_t _r_08006BBC;
+    _r_08006BBC = 0x00000080u;
+    arm_set_nzc_logic(_r_08006BBC, cpsr_c());
+    g_cpu.R[1] = _r_08006BBC;
+    g_cpu.R[15] = 0x08006BBEu;
+    runtime_tick(_cyc_08006BBC);
+    /* 08006BBE  08006bbe T movs r1,r1,lsl #20 */
+    g_cpu.R[15] = 0x08006BBEu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006BBE = 1u;
+    _cyc_08006BBE = 1u;
+    uint32_t _rm_08006BBE = g_cpu.R[1];
+    uint32_t _op2_08006BBE;
+    uint32_t _co_08006BBE;
+    _op2_08006BBE = _rm_08006BBE << 20;
+    _co_08006BBE = (_rm_08006BBE >> 12) & 1u;
+    uint32_t _r_08006BBE;
+    _r_08006BBE = _op2_08006BBE;
+    arm_set_nzc_logic(_r_08006BBE, _co_08006BBE);
+    g_cpu.R[1] = _r_08006BBE;
+    g_cpu.R[15] = 0x08006BC0u;
+    runtime_tick(_cyc_08006BBE);
+    /* 08006BC0  08006bc0 T ands r0,r0,r1 */
+    g_cpu.R[15] = 0x08006BC0u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006BC0 = 1u;
+    _cyc_08006BC0 = 1u;
+    uint32_t _rm_08006BC0 = g_cpu.R[1];
+    uint32_t _op2_08006BC0;
+    uint32_t _co_08006BC0;
+    _op2_08006BC0 = _rm_08006BC0;
+    _co_08006BC0 = cpsr_c();
+    uint32_t _rn_08006BC0 = g_cpu.R[0];
+    uint32_t _r_08006BC0;
+    _r_08006BC0 = _rn_08006BC0 & _op2_08006BC0;
+    arm_set_nzc_logic(_r_08006BC0, _co_08006BC0);
+    g_cpu.R[0] = _r_08006BC0;
+    g_cpu.R[15] = 0x08006BC2u;
+    runtime_tick(_cyc_08006BC0);
+    /* 08006BC2  08006bc2 T cmps r0,#0x0 */
+    g_cpu.R[15] = 0x08006BC2u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006BC2 = 1u;
+    _cyc_08006BC2 = 1u;
+    uint32_t _rn_08006BC2 = g_cpu.R[0];
+    uint32_t _r_08006BC2;
+    _r_08006BC2 = _rn_08006BC2 - 0x00000000u;
+    arm_set_nzcv_sub(_rn_08006BC2, 0x00000000u, _r_08006BC2);
+    g_cpu.R[15] = 0x08006BC4u;
+    runtime_tick(_cyc_08006BC2);
+    /* 08006BC4  08006bc4 T bne 0x08006bd0 */
+    g_cpu.R[15] = 0x08006BC4u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006BC4 = 1u;
+    if (arm_cond_passes(0x1u)) {
+        _cyc_08006BC4 = 3u;
+        g_cpu.R[15] = 0x08006BD0u;
+        runtime_tick(_cyc_08006BC4);
+        GBARECOMP_TAIL_CALL(gf_object_update_a);
+    }
+    g_cpu.R[15] = 0x08006BC6u;
+    runtime_tick(_cyc_08006BC4);
+    /* 08006BC6  08006bc6 T ldr r2,[r15,#0x200] */
+    g_cpu.R[15] = 0x08006BC6u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006BC6 = 1u;
+    _cyc_08006BC6 = 2u;
+    uint32_t _base_08006BC6 = 0x08006BCAu & ~3u;
+    uint32_t _off_08006BC6;
+    _off_08006BC6 = 0x00000200u;
+    uint32_t _ea_08006BC6 = _base_08006BC6 + _off_08006BC6;
+    uint32_t _post_08006BC6 = _base_08006BC6 + _off_08006BC6;
+    _cyc_08006BC6 += runtime_mem_cycles(_ea_08006BC6, 4u, 0u);
+    uint32_t _v_08006BC6;
+    { uint32_t _w = bus_read_u32(_ea_08006BC6 & ~3u); uint32_t _rot = (_ea_08006BC6 & 3u) * 8u; _v_08006BC6 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[2] = _v_08006BC6;
+    g_cpu.R[15] = 0x08006BC8u;
+    runtime_tick(_cyc_08006BC6);
+    /* 08006BC8  08006bc8 T adds r0,r4,r2 */
+    g_cpu.R[15] = 0x08006BC8u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006BC8 = 1u;
+    _cyc_08006BC8 = 1u;
+    uint32_t _rm_08006BC8 = g_cpu.R[2];
+    uint32_t _op2_08006BC8;
+    uint32_t _co_08006BC8;
+    _op2_08006BC8 = _rm_08006BC8;
+    _co_08006BC8 = cpsr_c();
+    uint32_t _rn_08006BC8 = g_cpu.R[4];
+    uint32_t _r_08006BC8;
+    _r_08006BC8 = _rn_08006BC8 + _op2_08006BC8;
+    arm_set_nzcv_add(_rn_08006BC8, _op2_08006BC8, _r_08006BC8);
+    g_cpu.R[0] = _r_08006BC8;
+    g_cpu.R[15] = 0x08006BCAu;
+    runtime_tick(_cyc_08006BC8);
+    /* 08006BCA  08006bca T ldr r0,[r0] */
+    g_cpu.R[15] = 0x08006BCAu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006BCA = 1u;
+    _cyc_08006BCA = 2u;
+    uint32_t _base_08006BCA = g_cpu.R[0];
+    uint32_t _off_08006BCA;
+    _off_08006BCA = 0x00000000u;
+    uint32_t _ea_08006BCA = _base_08006BCA + _off_08006BCA;
+    uint32_t _post_08006BCA = _base_08006BCA + _off_08006BCA;
+    _cyc_08006BCA += runtime_mem_cycles(_ea_08006BCA, 4u, 0u);
+    uint32_t _v_08006BCA;
+    { uint32_t _w = bus_read_u32(_ea_08006BCA & ~3u); uint32_t _rot = (_ea_08006BCA & 3u) * 8u; _v_08006BCA = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_08006BCA;
+    g_cpu.R[15] = 0x08006BCCu;
+    runtime_tick(_cyc_08006BCA);
+    /* 08006BCC  08006bcc T bl.hi 0x08000bd0 */
+    g_cpu.R[15] = 0x08006BCCu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006BCC = 1u;
+    _cyc_08006BCC = 1u;
+    g_cpu.R[14] = 0x08000BD0u;
+    g_cpu.R[15] = 0x08006BCEu;
+    runtime_tick(_cyc_08006BCC);
+    /* 08006BCE  08006bce T bl.lo 0x00000000 */
+    g_cpu.R[15] = 0x08006BCEu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006BCE = 1u;
+    _cyc_08006BCE = 3u;
+    uint32_t _blt_08006BCE = (g_cpu.R[14] + 0x00000B68u) & ~1u;
+    g_cpu.R[14] = 0x08006BD1u;
+    g_cpu.R[15] = _blt_08006BCE;
+    runtime_call_push_return(0x08006BD0u);
+    runtime_tick(_cyc_08006BCE);
+    _cyc_08006BCE = 0u;
+    runtime_dispatch(_blt_08006BCE);
+    if (g_cpu.R[15] != 0x08006BD0u) { runtime_call_cancel_return(0x08006BD0u); return; }
+    g_cpu.R[15] = 0x08006BD0u;
+    runtime_tick(_cyc_08006BCE);
+    /* fall-through to 0x08006BD0 */
+    g_cpu.R[15] = 0x08006BD0u;
+    runtime_dispatch(0x08006BD0u);
+    return;
+}
+
+/* 0x08006BD0  mode=thumb  end=0x08006BE6  branches=49  indirect */
+
+
+/* 0x08006BD0 thumb */
+void gf_object_update_a(void) {
+    if (g_runtime_fn_entry_hook) g_runtime_fn_entry_hook(0x08006BD0u);
+    /* 08006BD0  08006bd0 T ldr r0,[r5] */
+    g_cpu.R[15] = 0x08006BD0u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006BD0 = 1u;
+    _cyc_08006BD0 = 2u;
+    uint32_t _base_08006BD0 = g_cpu.R[5];
+    uint32_t _off_08006BD0;
+    _off_08006BD0 = 0x00000000u;
+    uint32_t _ea_08006BD0 = _base_08006BD0 + _off_08006BD0;
+    uint32_t _post_08006BD0 = _base_08006BD0 + _off_08006BD0;
+    _cyc_08006BD0 += runtime_mem_cycles(_ea_08006BD0, 4u, 0u);
+    uint32_t _v_08006BD0;
+    { uint32_t _w = bus_read_u32(_ea_08006BD0 & ~3u); uint32_t _rot = (_ea_08006BD0 & 3u) * 8u; _v_08006BD0 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_08006BD0;
+    g_cpu.R[15] = 0x08006BD2u;
+    runtime_tick(_cyc_08006BD0);
+    /* 08006BD2  08006bd2 T movs r1,#0x80 */
+    g_cpu.R[15] = 0x08006BD2u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006BD2 = 1u;
+    _cyc_08006BD2 = 1u;
+    uint32_t _r_08006BD2;
+    _r_08006BD2 = 0x00000080u;
+    arm_set_nzc_logic(_r_08006BD2, cpsr_c());
+    g_cpu.R[1] = _r_08006BD2;
+    g_cpu.R[15] = 0x08006BD4u;
+    runtime_tick(_cyc_08006BD2);
+    /* 08006BD4  08006bd4 T movs r1,r1,lsl #19 */
+    g_cpu.R[15] = 0x08006BD4u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006BD4 = 1u;
+    _cyc_08006BD4 = 1u;
+    uint32_t _rm_08006BD4 = g_cpu.R[1];
+    uint32_t _op2_08006BD4;
+    uint32_t _co_08006BD4;
+    _op2_08006BD4 = _rm_08006BD4 << 19;
+    _co_08006BD4 = (_rm_08006BD4 >> 13) & 1u;
+    uint32_t _r_08006BD4;
+    _r_08006BD4 = _op2_08006BD4;
+    arm_set_nzc_logic(_r_08006BD4, _co_08006BD4);
+    g_cpu.R[1] = _r_08006BD4;
+    g_cpu.R[15] = 0x08006BD6u;
+    runtime_tick(_cyc_08006BD4);
+    /* 08006BD6  08006bd6 T ands r0,r0,r1 */
+    g_cpu.R[15] = 0x08006BD6u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006BD6 = 1u;
+    _cyc_08006BD6 = 1u;
+    uint32_t _rm_08006BD6 = g_cpu.R[1];
+    uint32_t _op2_08006BD6;
+    uint32_t _co_08006BD6;
+    _op2_08006BD6 = _rm_08006BD6;
+    _co_08006BD6 = cpsr_c();
+    uint32_t _rn_08006BD6 = g_cpu.R[0];
+    uint32_t _r_08006BD6;
+    _r_08006BD6 = _rn_08006BD6 & _op2_08006BD6;
+    arm_set_nzc_logic(_r_08006BD6, _co_08006BD6);
+    g_cpu.R[0] = _r_08006BD6;
+    g_cpu.R[15] = 0x08006BD8u;
+    runtime_tick(_cyc_08006BD6);
+    /* 08006BD8  08006bd8 T cmps r0,#0x0 */
+    g_cpu.R[15] = 0x08006BD8u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006BD8 = 1u;
+    _cyc_08006BD8 = 1u;
+    uint32_t _rn_08006BD8 = g_cpu.R[0];
+    uint32_t _r_08006BD8;
+    _r_08006BD8 = _rn_08006BD8 - 0x00000000u;
+    arm_set_nzcv_sub(_rn_08006BD8, 0x00000000u, _r_08006BD8);
+    g_cpu.R[15] = 0x08006BDAu;
+    runtime_tick(_cyc_08006BD8);
+    /* 08006BDA  08006bda T bne 0x08006be6 */
+    g_cpu.R[15] = 0x08006BDAu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006BDA = 1u;
+    if (arm_cond_passes(0x1u)) {
+        _cyc_08006BDA = 3u;
+        g_cpu.R[15] = 0x08006BE6u;
+        runtime_tick(_cyc_08006BDA);
+        GBARECOMP_TAIL_CALL(gf_object_update_b);
+    }
+    g_cpu.R[15] = 0x08006BDCu;
+    runtime_tick(_cyc_08006BDA);
+    /* 08006BDC  08006bdc T ldr r1,[r15,#0x1ec] */
+    g_cpu.R[15] = 0x08006BDCu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006BDC = 1u;
+    _cyc_08006BDC = 2u;
+    uint32_t _base_08006BDC = 0x08006BE0u & ~3u;
+    uint32_t _off_08006BDC;
+    _off_08006BDC = 0x000001ECu;
+    uint32_t _ea_08006BDC = _base_08006BDC + _off_08006BDC;
+    uint32_t _post_08006BDC = _base_08006BDC + _off_08006BDC;
+    _cyc_08006BDC += runtime_mem_cycles(_ea_08006BDC, 4u, 0u);
+    uint32_t _v_08006BDC;
+    { uint32_t _w = bus_read_u32(_ea_08006BDC & ~3u); uint32_t _rot = (_ea_08006BDC & 3u) * 8u; _v_08006BDC = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[1] = _v_08006BDC;
+    g_cpu.R[15] = 0x08006BDEu;
+    runtime_tick(_cyc_08006BDC);
+    /* 08006BDE  08006bde T adds r0,r4,r1 */
+    g_cpu.R[15] = 0x08006BDEu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006BDE = 1u;
+    _cyc_08006BDE = 1u;
+    uint32_t _rm_08006BDE = g_cpu.R[1];
+    uint32_t _op2_08006BDE;
+    uint32_t _co_08006BDE;
+    _op2_08006BDE = _rm_08006BDE;
+    _co_08006BDE = cpsr_c();
+    uint32_t _rn_08006BDE = g_cpu.R[4];
+    uint32_t _r_08006BDE;
+    _r_08006BDE = _rn_08006BDE + _op2_08006BDE;
+    arm_set_nzcv_add(_rn_08006BDE, _op2_08006BDE, _r_08006BDE);
+    g_cpu.R[0] = _r_08006BDE;
+    g_cpu.R[15] = 0x08006BE0u;
+    runtime_tick(_cyc_08006BDE);
+    /* 08006BE0  08006be0 T ldr r0,[r0] */
+    g_cpu.R[15] = 0x08006BE0u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006BE0 = 1u;
+    _cyc_08006BE0 = 2u;
+    uint32_t _base_08006BE0 = g_cpu.R[0];
+    uint32_t _off_08006BE0;
+    _off_08006BE0 = 0x00000000u;
+    uint32_t _ea_08006BE0 = _base_08006BE0 + _off_08006BE0;
+    uint32_t _post_08006BE0 = _base_08006BE0 + _off_08006BE0;
+    _cyc_08006BE0 += runtime_mem_cycles(_ea_08006BE0, 4u, 0u);
+    uint32_t _v_08006BE0;
+    { uint32_t _w = bus_read_u32(_ea_08006BE0 & ~3u); uint32_t _rot = (_ea_08006BE0 & 3u) * 8u; _v_08006BE0 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_08006BE0;
+    g_cpu.R[15] = 0x08006BE2u;
+    runtime_tick(_cyc_08006BE0);
+    /* 08006BE2  08006be2 T bl.hi 0x08000be6 */
+    g_cpu.R[15] = 0x08006BE2u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006BE2 = 1u;
+    _cyc_08006BE2 = 1u;
+    g_cpu.R[14] = 0x08000BE6u;
+    g_cpu.R[15] = 0x08006BE4u;
+    runtime_tick(_cyc_08006BE2);
+    /* 08006BE4  08006be4 T bl.lo 0x00000000 */
+    g_cpu.R[15] = 0x08006BE4u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006BE4 = 1u;
+    _cyc_08006BE4 = 3u;
+    uint32_t _blt_08006BE4 = (g_cpu.R[14] + 0x00000B52u) & ~1u;
+    g_cpu.R[14] = 0x08006BE7u;
+    g_cpu.R[15] = _blt_08006BE4;
+    runtime_call_push_return(0x08006BE6u);
+    runtime_tick(_cyc_08006BE4);
+    _cyc_08006BE4 = 0u;
+    runtime_dispatch(_blt_08006BE4);
+    if (g_cpu.R[15] != 0x08006BE6u) { runtime_call_cancel_return(0x08006BE6u); return; }
+    g_cpu.R[15] = 0x08006BE6u;
+    runtime_tick(_cyc_08006BE4);
+    /* fall-through to 0x08006BE6 */
+    g_cpu.R[15] = 0x08006BE6u;
+    runtime_dispatch(0x08006BE6u);
+    return;
+}
+
+/* 0x08006BE6  mode=thumb  end=0x08006BF2  branches=46  indirect */
+
+
+/* 0x08006BE6 thumb */
+void gf_object_update_b(void) {
+    if (g_runtime_fn_entry_hook) g_runtime_fn_entry_hook(0x08006BE6u);
+    /* 08006BE6  08006be6 T movs r2,#0xc3 */
+    g_cpu.R[15] = 0x08006BE6u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006BE6 = 1u;
+    _cyc_08006BE6 = 1u;
+    uint32_t _r_08006BE6;
+    _r_08006BE6 = 0x000000C3u;
+    arm_set_nzc_logic(_r_08006BE6, cpsr_c());
+    g_cpu.R[2] = _r_08006BE6;
+    g_cpu.R[15] = 0x08006BE8u;
+    runtime_tick(_cyc_08006BE6);
+    /* 08006BE8  08006be8 T movs r2,r2,lsl #5 */
+    g_cpu.R[15] = 0x08006BE8u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006BE8 = 1u;
+    _cyc_08006BE8 = 1u;
+    uint32_t _rm_08006BE8 = g_cpu.R[2];
+    uint32_t _op2_08006BE8;
+    uint32_t _co_08006BE8;
+    _op2_08006BE8 = _rm_08006BE8 << 5;
+    _co_08006BE8 = (_rm_08006BE8 >> 27) & 1u;
+    uint32_t _r_08006BE8;
+    _r_08006BE8 = _op2_08006BE8;
+    arm_set_nzc_logic(_r_08006BE8, _co_08006BE8);
+    g_cpu.R[2] = _r_08006BE8;
+    g_cpu.R[15] = 0x08006BEAu;
+    runtime_tick(_cyc_08006BE8);
+    /* 08006BEA  08006bea T adds r0,r4,r2 */
+    g_cpu.R[15] = 0x08006BEAu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006BEA = 1u;
+    _cyc_08006BEA = 1u;
+    uint32_t _rm_08006BEA = g_cpu.R[2];
+    uint32_t _op2_08006BEA;
+    uint32_t _co_08006BEA;
+    _op2_08006BEA = _rm_08006BEA;
+    _co_08006BEA = cpsr_c();
+    uint32_t _rn_08006BEA = g_cpu.R[4];
+    uint32_t _r_08006BEA;
+    _r_08006BEA = _rn_08006BEA + _op2_08006BEA;
+    arm_set_nzcv_add(_rn_08006BEA, _op2_08006BEA, _r_08006BEA);
+    g_cpu.R[0] = _r_08006BEA;
+    g_cpu.R[15] = 0x08006BECu;
+    runtime_tick(_cyc_08006BEA);
+    /* 08006BEC  08006bec T ldr r0,[r0] */
+    g_cpu.R[15] = 0x08006BECu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006BEC = 1u;
+    _cyc_08006BEC = 2u;
+    uint32_t _base_08006BEC = g_cpu.R[0];
+    uint32_t _off_08006BEC;
+    _off_08006BEC = 0x00000000u;
+    uint32_t _ea_08006BEC = _base_08006BEC + _off_08006BEC;
+    uint32_t _post_08006BEC = _base_08006BEC + _off_08006BEC;
+    _cyc_08006BEC += runtime_mem_cycles(_ea_08006BEC, 4u, 0u);
+    uint32_t _v_08006BEC;
+    { uint32_t _w = bus_read_u32(_ea_08006BEC & ~3u); uint32_t _rot = (_ea_08006BEC & 3u) * 8u; _v_08006BEC = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_08006BEC;
+    g_cpu.R[15] = 0x08006BEEu;
+    runtime_tick(_cyc_08006BEC);
+    /* 08006BEE  08006bee T bl.hi 0x08000bf2 */
+    g_cpu.R[15] = 0x08006BEEu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006BEE = 1u;
+    _cyc_08006BEE = 1u;
+    g_cpu.R[14] = 0x08000BF2u;
+    g_cpu.R[15] = 0x08006BF0u;
+    runtime_tick(_cyc_08006BEE);
+    /* 08006BF0  08006bf0 T bl.lo 0x00000000 */
+    g_cpu.R[15] = 0x08006BF0u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006BF0 = 1u;
+    _cyc_08006BF0 = 3u;
+    uint32_t _blt_08006BF0 = (g_cpu.R[14] + 0x00000B46u) & ~1u;
+    g_cpu.R[14] = 0x08006BF3u;
+    g_cpu.R[15] = _blt_08006BF0;
+    runtime_call_push_return(0x08006BF2u);
+    runtime_tick(_cyc_08006BF0);
+    _cyc_08006BF0 = 0u;
+    runtime_dispatch(_blt_08006BF0);
+    if (g_cpu.R[15] != 0x08006BF2u) { runtime_call_cancel_return(0x08006BF2u); return; }
+    g_cpu.R[15] = 0x08006BF2u;
+    runtime_tick(_cyc_08006BF0);
+    /* fall-through to 0x08006BF2 */
+    g_cpu.R[15] = 0x08006BF2u;
+    runtime_dispatch(0x08006BF2u);
+    return;
+}
+
+/* 0x08006C16  mode=thumb  end=0x08006C30  branches=41  indirect */
+
+
+/* 0x08006BF2 thumb */
+void gf_object_update_c(void) {
+    if (g_runtime_fn_entry_hook) g_runtime_fn_entry_hook(0x08006BF2u);
+    /* 08006BF2  08006bf2 T ldr r0,[r15,#0x1dc] */
+    g_cpu.R[15] = 0x08006BF2u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006BF2 = 1u;
+    _cyc_08006BF2 = 2u;
+    uint32_t _base_08006BF2 = 0x08006BF6u & ~3u;
+    uint32_t _off_08006BF2;
+    _off_08006BF2 = 0x000001DCu;
+    uint32_t _ea_08006BF2 = _base_08006BF2 + _off_08006BF2;
+    uint32_t _post_08006BF2 = _base_08006BF2 + _off_08006BF2;
+    _cyc_08006BF2 += runtime_mem_cycles(_ea_08006BF2, 4u, 0u);
+    uint32_t _v_08006BF2;
+    { uint32_t _w = bus_read_u32(_ea_08006BF2 & ~3u); uint32_t _rot = (_ea_08006BF2 & 3u) * 8u; _v_08006BF2 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_08006BF2;
+    g_cpu.R[15] = 0x08006BF4u;
+    runtime_tick(_cyc_08006BF2);
+    /* 08006BF4  08006bf4 T adds r1,r4,r0 */
+    g_cpu.R[15] = 0x08006BF4u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006BF4 = 1u;
+    _cyc_08006BF4 = 1u;
+    uint32_t _rm_08006BF4 = g_cpu.R[0];
+    uint32_t _op2_08006BF4;
+    uint32_t _co_08006BF4;
+    _op2_08006BF4 = _rm_08006BF4;
+    _co_08006BF4 = cpsr_c();
+    uint32_t _rn_08006BF4 = g_cpu.R[4];
+    uint32_t _r_08006BF4;
+    _r_08006BF4 = _rn_08006BF4 + _op2_08006BF4;
+    arm_set_nzcv_add(_rn_08006BF4, _op2_08006BF4, _r_08006BF4);
+    g_cpu.R[1] = _r_08006BF4;
+    g_cpu.R[15] = 0x08006BF6u;
+    runtime_tick(_cyc_08006BF4);
+    /* 08006BF6  08006bf6 T ldr r0,[r1] */
+    g_cpu.R[15] = 0x08006BF6u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006BF6 = 1u;
+    _cyc_08006BF6 = 2u;
+    uint32_t _base_08006BF6 = g_cpu.R[1];
+    uint32_t _off_08006BF6;
+    _off_08006BF6 = 0x00000000u;
+    uint32_t _ea_08006BF6 = _base_08006BF6 + _off_08006BF6;
+    uint32_t _post_08006BF6 = _base_08006BF6 + _off_08006BF6;
+    _cyc_08006BF6 += runtime_mem_cycles(_ea_08006BF6, 4u, 0u);
+    uint32_t _v_08006BF6;
+    { uint32_t _w = bus_read_u32(_ea_08006BF6 & ~3u); uint32_t _rot = (_ea_08006BF6 & 3u) * 8u; _v_08006BF6 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_08006BF6;
+    g_cpu.R[15] = 0x08006BF8u;
+    runtime_tick(_cyc_08006BF6);
+    /* 08006BF8  08006bf8 T adds r0,r0,#0x1 */
+    g_cpu.R[15] = 0x08006BF8u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006BF8 = 1u;
+    _cyc_08006BF8 = 1u;
+    uint32_t _rn_08006BF8 = g_cpu.R[0];
+    uint32_t _r_08006BF8;
+    _r_08006BF8 = _rn_08006BF8 + 0x00000001u;
+    arm_set_nzcv_add(_rn_08006BF8, 0x00000001u, _r_08006BF8);
+    g_cpu.R[0] = _r_08006BF8;
+    g_cpu.R[15] = 0x08006BFAu;
+    runtime_tick(_cyc_08006BF8);
+    /* 08006BFA  08006bfa T str r0,[r1] */
+    g_cpu.R[15] = 0x08006BFAu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006BFA = 1u;
+    _cyc_08006BFA = 1u;
+    uint32_t _base_08006BFA = g_cpu.R[1];
+    uint32_t _off_08006BFA;
+    _off_08006BFA = 0x00000000u;
+    uint32_t _ea_08006BFA = _base_08006BFA + _off_08006BFA;
+    uint32_t _post_08006BFA = _base_08006BFA + _off_08006BFA;
+    _cyc_08006BFA += runtime_mem_cycles(_ea_08006BFA, 4u, 0u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x08006BFAu, _ea_08006BFA & ~3u, g_cpu.R[0], 4u);
+    bus_write_u32(_ea_08006BFA & ~3u, g_cpu.R[0]);
+    g_cpu.R[15] = 0x08006BFCu;
+    runtime_tick(_cyc_08006BFA);
+    /* 08006BFC  08006bfc T ldr r0,[r5] */
+    g_cpu.R[15] = 0x08006BFCu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006BFC = 1u;
+    _cyc_08006BFC = 2u;
+    uint32_t _base_08006BFC = g_cpu.R[5];
+    uint32_t _off_08006BFC;
+    _off_08006BFC = 0x00000000u;
+    uint32_t _ea_08006BFC = _base_08006BFC + _off_08006BFC;
+    uint32_t _post_08006BFC = _base_08006BFC + _off_08006BFC;
+    _cyc_08006BFC += runtime_mem_cycles(_ea_08006BFC, 4u, 0u);
+    uint32_t _v_08006BFC;
+    { uint32_t _w = bus_read_u32(_ea_08006BFC & ~3u); uint32_t _rot = (_ea_08006BFC & 3u) * 8u; _v_08006BFC = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_08006BFC;
+    g_cpu.R[15] = 0x08006BFEu;
+    runtime_tick(_cyc_08006BFC);
+    /* 08006BFE  08006bfe T movs r1,#0x82 */
+    g_cpu.R[15] = 0x08006BFEu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006BFE = 1u;
+    _cyc_08006BFE = 1u;
+    uint32_t _r_08006BFE;
+    _r_08006BFE = 0x00000082u;
+    arm_set_nzc_logic(_r_08006BFE, cpsr_c());
+    g_cpu.R[1] = _r_08006BFE;
+    g_cpu.R[15] = 0x08006C00u;
+    runtime_tick(_cyc_08006BFE);
+    /* 08006C00  08006c00 T movs r1,r1,lsl #23 */
+    g_cpu.R[15] = 0x08006C00u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006C00 = 1u;
+    _cyc_08006C00 = 1u;
+    uint32_t _rm_08006C00 = g_cpu.R[1];
+    uint32_t _op2_08006C00;
+    uint32_t _co_08006C00;
+    _op2_08006C00 = _rm_08006C00 << 23;
+    _co_08006C00 = (_rm_08006C00 >> 9) & 1u;
+    uint32_t _r_08006C00;
+    _r_08006C00 = _op2_08006C00;
+    arm_set_nzc_logic(_r_08006C00, _co_08006C00);
+    g_cpu.R[1] = _r_08006C00;
+    g_cpu.R[15] = 0x08006C02u;
+    runtime_tick(_cyc_08006C00);
+    /* 08006C02  08006c02 T ands r0,r0,r1 */
+    g_cpu.R[15] = 0x08006C02u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006C02 = 1u;
+    _cyc_08006C02 = 1u;
+    uint32_t _rm_08006C02 = g_cpu.R[1];
+    uint32_t _op2_08006C02;
+    uint32_t _co_08006C02;
+    _op2_08006C02 = _rm_08006C02;
+    _co_08006C02 = cpsr_c();
+    uint32_t _rn_08006C02 = g_cpu.R[0];
+    uint32_t _r_08006C02;
+    _r_08006C02 = _rn_08006C02 & _op2_08006C02;
+    arm_set_nzc_logic(_r_08006C02, _co_08006C02);
+    g_cpu.R[0] = _r_08006C02;
+    g_cpu.R[15] = 0x08006C04u;
+    runtime_tick(_cyc_08006C02);
+    /* 08006C04  08006c04 T movs r1,#0x80 */
+    g_cpu.R[15] = 0x08006C04u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006C04 = 1u;
+    _cyc_08006C04 = 1u;
+    uint32_t _r_08006C04;
+    _r_08006C04 = 0x00000080u;
+    arm_set_nzc_logic(_r_08006C04, cpsr_c());
+    g_cpu.R[1] = _r_08006C04;
+    g_cpu.R[15] = 0x08006C06u;
+    runtime_tick(_cyc_08006C04);
+    /* 08006C06  08006c06 T movs r1,r1,lsl #23 */
+    g_cpu.R[15] = 0x08006C06u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006C06 = 1u;
+    _cyc_08006C06 = 1u;
+    uint32_t _rm_08006C06 = g_cpu.R[1];
+    uint32_t _op2_08006C06;
+    uint32_t _co_08006C06;
+    _op2_08006C06 = _rm_08006C06 << 23;
+    _co_08006C06 = (_rm_08006C06 >> 9) & 1u;
+    uint32_t _r_08006C06;
+    _r_08006C06 = _op2_08006C06;
+    arm_set_nzc_logic(_r_08006C06, _co_08006C06);
+    g_cpu.R[1] = _r_08006C06;
+    g_cpu.R[15] = 0x08006C08u;
+    runtime_tick(_cyc_08006C06);
+    /* 08006C08  08006c08 T cmps r0,r1 */
+    g_cpu.R[15] = 0x08006C08u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006C08 = 1u;
+    _cyc_08006C08 = 1u;
+    uint32_t _rm_08006C08 = g_cpu.R[1];
+    uint32_t _op2_08006C08;
+    uint32_t _co_08006C08;
+    _op2_08006C08 = _rm_08006C08;
+    _co_08006C08 = cpsr_c();
+    uint32_t _rn_08006C08 = g_cpu.R[0];
+    uint32_t _r_08006C08;
+    _r_08006C08 = _rn_08006C08 - _op2_08006C08;
+    arm_set_nzcv_sub(_rn_08006C08, _op2_08006C08, _r_08006C08);
+    g_cpu.R[15] = 0x08006C0Au;
+    runtime_tick(_cyc_08006C08);
+    /* 08006C0A  08006c0a T bne 0x08006c16 */
+    g_cpu.R[15] = 0x08006C0Au;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006C0A = 1u;
+    if (arm_cond_passes(0x1u)) {
+        _cyc_08006C0A = 3u;
+        g_cpu.R[15] = 0x08006C16u;
+        runtime_tick(_cyc_08006C0A);
+        GBARECOMP_TAIL_CALL(gf_tfunc_08006C16);
+    }
+    g_cpu.R[15] = 0x08006C0Cu;
+    runtime_tick(_cyc_08006C0A);
+    /* 08006C0C  08006c0c T ldr r1,[r15,#0x1c4] */
+    g_cpu.R[15] = 0x08006C0Cu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006C0C = 1u;
+    _cyc_08006C0C = 2u;
+    uint32_t _base_08006C0C = 0x08006C10u & ~3u;
+    uint32_t _off_08006C0C;
+    _off_08006C0C = 0x000001C4u;
+    uint32_t _ea_08006C0C = _base_08006C0C + _off_08006C0C;
+    uint32_t _post_08006C0C = _base_08006C0C + _off_08006C0C;
+    _cyc_08006C0C += runtime_mem_cycles(_ea_08006C0C, 4u, 0u);
+    uint32_t _v_08006C0C;
+    { uint32_t _w = bus_read_u32(_ea_08006C0C & ~3u); uint32_t _rot = (_ea_08006C0C & 3u) * 8u; _v_08006C0C = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[1] = _v_08006C0C;
+    g_cpu.R[15] = 0x08006C0Eu;
+    runtime_tick(_cyc_08006C0C);
+    /* 08006C0E  08006c0e T adds r0,r4,r1 */
+    g_cpu.R[15] = 0x08006C0Eu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006C0E = 1u;
+    _cyc_08006C0E = 1u;
+    uint32_t _rm_08006C0E = g_cpu.R[1];
+    uint32_t _op2_08006C0E;
+    uint32_t _co_08006C0E;
+    _op2_08006C0E = _rm_08006C0E;
+    _co_08006C0E = cpsr_c();
+    uint32_t _rn_08006C0E = g_cpu.R[4];
+    uint32_t _r_08006C0E;
+    _r_08006C0E = _rn_08006C0E + _op2_08006C0E;
+    arm_set_nzcv_add(_rn_08006C0E, _op2_08006C0E, _r_08006C0E);
+    g_cpu.R[0] = _r_08006C0E;
+    g_cpu.R[15] = 0x08006C10u;
+    runtime_tick(_cyc_08006C0E);
+    /* 08006C10  08006c10 T ldr r0,[r0] */
+    g_cpu.R[15] = 0x08006C10u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006C10 = 1u;
+    _cyc_08006C10 = 2u;
+    uint32_t _base_08006C10 = g_cpu.R[0];
+    uint32_t _off_08006C10;
+    _off_08006C10 = 0x00000000u;
+    uint32_t _ea_08006C10 = _base_08006C10 + _off_08006C10;
+    uint32_t _post_08006C10 = _base_08006C10 + _off_08006C10;
+    _cyc_08006C10 += runtime_mem_cycles(_ea_08006C10, 4u, 0u);
+    uint32_t _v_08006C10;
+    { uint32_t _w = bus_read_u32(_ea_08006C10 & ~3u); uint32_t _rot = (_ea_08006C10 & 3u) * 8u; _v_08006C10 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_08006C10;
+    g_cpu.R[15] = 0x08006C12u;
+    runtime_tick(_cyc_08006C10);
+    /* 08006C12  08006c12 T bl.hi 0x08000c16 */
+    g_cpu.R[15] = 0x08006C12u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006C12 = 1u;
+    _cyc_08006C12 = 1u;
+    g_cpu.R[14] = 0x08000C16u;
+    g_cpu.R[15] = 0x08006C14u;
+    runtime_tick(_cyc_08006C12);
+    /* 08006C14  08006c14 T bl.lo 0x00000000 */
+    g_cpu.R[15] = 0x08006C14u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006C14 = 1u;
+    _cyc_08006C14 = 3u;
+    uint32_t _blt_08006C14 = (g_cpu.R[14] + 0x00000B22u) & ~1u;
+    g_cpu.R[14] = 0x08006C17u;
+    g_cpu.R[15] = _blt_08006C14;
+    runtime_call_push_return(0x08006C16u);
+    runtime_tick(_cyc_08006C14);
+    _cyc_08006C14 = 0u;
+    runtime_dispatch(_blt_08006C14);
+    if (g_cpu.R[15] != 0x08006C16u) { runtime_call_cancel_return(0x08006C16u); return; }
+    g_cpu.R[15] = 0x08006C16u;
+    runtime_tick(_cyc_08006C14);
+    /* fall-through to 0x08006C16 */
+    g_cpu.R[15] = 0x08006C16u;
+    runtime_dispatch(0x08006C16u);
+    return;
+}
+
+/* 0x08006C48  mode=thumb  end=0x08006C68  branches=37  indirect */
+
+
+/* 0x08006C16 thumb */
+void gf_tfunc_08006C16(void) {
+    if (g_runtime_fn_entry_hook) g_runtime_fn_entry_hook(0x08006C16u);
+    /* 08006C16  08006c16 T ldr r0,[r5] */
+    g_cpu.R[15] = 0x08006C16u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006C16 = 1u;
+    _cyc_08006C16 = 2u;
+    uint32_t _base_08006C16 = g_cpu.R[5];
+    uint32_t _off_08006C16;
+    _off_08006C16 = 0x00000000u;
+    uint32_t _ea_08006C16 = _base_08006C16 + _off_08006C16;
+    uint32_t _post_08006C16 = _base_08006C16 + _off_08006C16;
+    _cyc_08006C16 += runtime_mem_cycles(_ea_08006C16, 4u, 0u);
+    uint32_t _v_08006C16;
+    { uint32_t _w = bus_read_u32(_ea_08006C16 & ~3u); uint32_t _rot = (_ea_08006C16 & 3u) * 8u; _v_08006C16 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_08006C16;
+    g_cpu.R[15] = 0x08006C18u;
+    runtime_tick(_cyc_08006C16);
+    /* 08006C18  08006c18 T movs r1,#0xc0 */
+    g_cpu.R[15] = 0x08006C18u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006C18 = 1u;
+    _cyc_08006C18 = 1u;
+    uint32_t _r_08006C18;
+    _r_08006C18 = 0x000000C0u;
+    arm_set_nzc_logic(_r_08006C18, cpsr_c());
+    g_cpu.R[1] = _r_08006C18;
+    g_cpu.R[15] = 0x08006C1Au;
+    runtime_tick(_cyc_08006C18);
+    /* 08006C1A  08006c1a T movs r1,r1,lsl #16 */
+    g_cpu.R[15] = 0x08006C1Au;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006C1A = 1u;
+    _cyc_08006C1A = 1u;
+    uint32_t _rm_08006C1A = g_cpu.R[1];
+    uint32_t _op2_08006C1A;
+    uint32_t _co_08006C1A;
+    _op2_08006C1A = _rm_08006C1A << 16;
+    _co_08006C1A = (_rm_08006C1A >> 16) & 1u;
+    uint32_t _r_08006C1A;
+    _r_08006C1A = _op2_08006C1A;
+    arm_set_nzc_logic(_r_08006C1A, _co_08006C1A);
+    g_cpu.R[1] = _r_08006C1A;
+    g_cpu.R[15] = 0x08006C1Cu;
+    runtime_tick(_cyc_08006C1A);
+    /* 08006C1C  08006c1c T ands r0,r0,r1 */
+    g_cpu.R[15] = 0x08006C1Cu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006C1C = 1u;
+    _cyc_08006C1C = 1u;
+    uint32_t _rm_08006C1C = g_cpu.R[1];
+    uint32_t _op2_08006C1C;
+    uint32_t _co_08006C1C;
+    _op2_08006C1C = _rm_08006C1C;
+    _co_08006C1C = cpsr_c();
+    uint32_t _rn_08006C1C = g_cpu.R[0];
+    uint32_t _r_08006C1C;
+    _r_08006C1C = _rn_08006C1C & _op2_08006C1C;
+    arm_set_nzc_logic(_r_08006C1C, _co_08006C1C);
+    g_cpu.R[0] = _r_08006C1C;
+    g_cpu.R[15] = 0x08006C1Eu;
+    runtime_tick(_cyc_08006C1C);
+    /* 08006C1E  08006c1e T movs r1,#0x80 */
+    g_cpu.R[15] = 0x08006C1Eu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006C1E = 1u;
+    _cyc_08006C1E = 1u;
+    uint32_t _r_08006C1E;
+    _r_08006C1E = 0x00000080u;
+    arm_set_nzc_logic(_r_08006C1E, cpsr_c());
+    g_cpu.R[1] = _r_08006C1E;
+    g_cpu.R[15] = 0x08006C20u;
+    runtime_tick(_cyc_08006C1E);
+    /* 08006C20  08006c20 T movs r1,r1,lsl #15 */
+    g_cpu.R[15] = 0x08006C20u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006C20 = 1u;
+    _cyc_08006C20 = 1u;
+    uint32_t _rm_08006C20 = g_cpu.R[1];
+    uint32_t _op2_08006C20;
+    uint32_t _co_08006C20;
+    _op2_08006C20 = _rm_08006C20 << 15;
+    _co_08006C20 = (_rm_08006C20 >> 17) & 1u;
+    uint32_t _r_08006C20;
+    _r_08006C20 = _op2_08006C20;
+    arm_set_nzc_logic(_r_08006C20, _co_08006C20);
+    g_cpu.R[1] = _r_08006C20;
+    g_cpu.R[15] = 0x08006C22u;
+    runtime_tick(_cyc_08006C20);
+    /* 08006C22  08006c22 T cmps r0,r1 */
+    g_cpu.R[15] = 0x08006C22u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006C22 = 1u;
+    _cyc_08006C22 = 1u;
+    uint32_t _rm_08006C22 = g_cpu.R[1];
+    uint32_t _op2_08006C22;
+    uint32_t _co_08006C22;
+    _op2_08006C22 = _rm_08006C22;
+    _co_08006C22 = cpsr_c();
+    uint32_t _rn_08006C22 = g_cpu.R[0];
+    uint32_t _r_08006C22;
+    _r_08006C22 = _rn_08006C22 - _op2_08006C22;
+    arm_set_nzcv_sub(_rn_08006C22, _op2_08006C22, _r_08006C22);
+    g_cpu.R[15] = 0x08006C24u;
+    runtime_tick(_cyc_08006C22);
+    /* 08006C24  08006c24 T bne 0x08006c48 */
+    g_cpu.R[15] = 0x08006C24u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006C24 = 1u;
+    if (arm_cond_passes(0x1u)) {
+        _cyc_08006C24 = 3u;
+        g_cpu.R[15] = 0x08006C48u;
+        runtime_tick(_cyc_08006C24);
+        GBARECOMP_TAIL_CALL(gf_tfunc_08006C48);
+    }
+    g_cpu.R[15] = 0x08006C26u;
+    runtime_tick(_cyc_08006C24);
+    /* 08006C26  08006c26 T ldr r2,[r15,#0x1b0] */
+    g_cpu.R[15] = 0x08006C26u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006C26 = 1u;
+    _cyc_08006C26 = 2u;
+    uint32_t _base_08006C26 = 0x08006C2Au & ~3u;
+    uint32_t _off_08006C26;
+    _off_08006C26 = 0x000001B0u;
+    uint32_t _ea_08006C26 = _base_08006C26 + _off_08006C26;
+    uint32_t _post_08006C26 = _base_08006C26 + _off_08006C26;
+    _cyc_08006C26 += runtime_mem_cycles(_ea_08006C26, 4u, 0u);
+    uint32_t _v_08006C26;
+    { uint32_t _w = bus_read_u32(_ea_08006C26 & ~3u); uint32_t _rot = (_ea_08006C26 & 3u) * 8u; _v_08006C26 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[2] = _v_08006C26;
+    g_cpu.R[15] = 0x08006C28u;
+    runtime_tick(_cyc_08006C26);
+    /* 08006C28  08006c28 T adds r0,r4,r2 */
+    g_cpu.R[15] = 0x08006C28u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006C28 = 1u;
+    _cyc_08006C28 = 1u;
+    uint32_t _rm_08006C28 = g_cpu.R[2];
+    uint32_t _op2_08006C28;
+    uint32_t _co_08006C28;
+    _op2_08006C28 = _rm_08006C28;
+    _co_08006C28 = cpsr_c();
+    uint32_t _rn_08006C28 = g_cpu.R[4];
+    uint32_t _r_08006C28;
+    _r_08006C28 = _rn_08006C28 + _op2_08006C28;
+    arm_set_nzcv_add(_rn_08006C28, _op2_08006C28, _r_08006C28);
+    g_cpu.R[0] = _r_08006C28;
+    g_cpu.R[15] = 0x08006C2Au;
+    runtime_tick(_cyc_08006C28);
+    /* 08006C2A  08006c2a T ldr r0,[r0] */
+    g_cpu.R[15] = 0x08006C2Au;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006C2A = 1u;
+    _cyc_08006C2A = 2u;
+    uint32_t _base_08006C2A = g_cpu.R[0];
+    uint32_t _off_08006C2A;
+    _off_08006C2A = 0x00000000u;
+    uint32_t _ea_08006C2A = _base_08006C2A + _off_08006C2A;
+    uint32_t _post_08006C2A = _base_08006C2A + _off_08006C2A;
+    _cyc_08006C2A += runtime_mem_cycles(_ea_08006C2A, 4u, 0u);
+    uint32_t _v_08006C2A;
+    { uint32_t _w = bus_read_u32(_ea_08006C2A & ~3u); uint32_t _rot = (_ea_08006C2A & 3u) * 8u; _v_08006C2A = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_08006C2A;
+    g_cpu.R[15] = 0x08006C2Cu;
+    runtime_tick(_cyc_08006C2A);
+    /* 08006C2C  08006c2c T bl.hi 0x08000c30 */
+    g_cpu.R[15] = 0x08006C2Cu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006C2C = 1u;
+    _cyc_08006C2C = 1u;
+    g_cpu.R[14] = 0x08000C30u;
+    g_cpu.R[15] = 0x08006C2Eu;
+    runtime_tick(_cyc_08006C2C);
+    /* 08006C2E  08006c2e T bl.lo 0x00000000 */
+    g_cpu.R[15] = 0x08006C2Eu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006C2E = 1u;
+    _cyc_08006C2E = 3u;
+    uint32_t _blt_08006C2E = (g_cpu.R[14] + 0x00000B08u) & ~1u;
+    g_cpu.R[14] = 0x08006C31u;
+    g_cpu.R[15] = _blt_08006C2E;
+    runtime_call_push_return(0x08006C30u);
+    runtime_tick(_cyc_08006C2E);
+    _cyc_08006C2E = 0u;
+    runtime_dispatch(_blt_08006C2E);
+    if (g_cpu.R[15] != 0x08006C30u) { runtime_call_cancel_return(0x08006C30u); return; }
+    g_cpu.R[15] = 0x08006C30u;
+    runtime_tick(_cyc_08006C2E);
+    /* fall-through to 0x08006C30 */
+    g_cpu.R[15] = 0x08006C30u;
+    runtime_dispatch(0x08006C30u);
+    return;
+}
+
+/* 0x08006C30  mode=thumb  end=0x08006C48  branches=38  indirect */
+
+
+/* 0x08006C30 thumb */
+void gf_tfunc_08006C30(void) {
+    if (g_runtime_fn_entry_hook) g_runtime_fn_entry_hook(0x08006C30u);
+    /* 08006C30  08006c30 T ldr r0,[r15,#0x1a8] */
+    g_cpu.R[15] = 0x08006C30u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006C30 = 1u;
+    _cyc_08006C30 = 2u;
+    uint32_t _base_08006C30 = 0x08006C34u & ~3u;
+    uint32_t _off_08006C30;
+    _off_08006C30 = 0x000001A8u;
+    uint32_t _ea_08006C30 = _base_08006C30 + _off_08006C30;
+    uint32_t _post_08006C30 = _base_08006C30 + _off_08006C30;
+    _cyc_08006C30 += runtime_mem_cycles(_ea_08006C30, 4u, 0u);
+    uint32_t _v_08006C30;
+    { uint32_t _w = bus_read_u32(_ea_08006C30 & ~3u); uint32_t _rot = (_ea_08006C30 & 3u) * 8u; _v_08006C30 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_08006C30;
+    g_cpu.R[15] = 0x08006C32u;
+    runtime_tick(_cyc_08006C30);
+    /* 08006C32  08006c32 T adds r1,r4,r0 */
+    g_cpu.R[15] = 0x08006C32u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006C32 = 1u;
+    _cyc_08006C32 = 1u;
+    uint32_t _rm_08006C32 = g_cpu.R[0];
+    uint32_t _op2_08006C32;
+    uint32_t _co_08006C32;
+    _op2_08006C32 = _rm_08006C32;
+    _co_08006C32 = cpsr_c();
+    uint32_t _rn_08006C32 = g_cpu.R[4];
+    uint32_t _r_08006C32;
+    _r_08006C32 = _rn_08006C32 + _op2_08006C32;
+    arm_set_nzcv_add(_rn_08006C32, _op2_08006C32, _r_08006C32);
+    g_cpu.R[1] = _r_08006C32;
+    g_cpu.R[15] = 0x08006C34u;
+    runtime_tick(_cyc_08006C32);
+    /* 08006C34  08006c34 T ldr r0,[r1] */
+    g_cpu.R[15] = 0x08006C34u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006C34 = 1u;
+    _cyc_08006C34 = 2u;
+    uint32_t _base_08006C34 = g_cpu.R[1];
+    uint32_t _off_08006C34;
+    _off_08006C34 = 0x00000000u;
+    uint32_t _ea_08006C34 = _base_08006C34 + _off_08006C34;
+    uint32_t _post_08006C34 = _base_08006C34 + _off_08006C34;
+    _cyc_08006C34 += runtime_mem_cycles(_ea_08006C34, 4u, 0u);
+    uint32_t _v_08006C34;
+    { uint32_t _w = bus_read_u32(_ea_08006C34 & ~3u); uint32_t _rot = (_ea_08006C34 & 3u) * 8u; _v_08006C34 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_08006C34;
+    g_cpu.R[15] = 0x08006C36u;
+    runtime_tick(_cyc_08006C34);
+    /* 08006C36  08006c36 T adds r0,r0,#0x1 */
+    g_cpu.R[15] = 0x08006C36u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006C36 = 1u;
+    _cyc_08006C36 = 1u;
+    uint32_t _rn_08006C36 = g_cpu.R[0];
+    uint32_t _r_08006C36;
+    _r_08006C36 = _rn_08006C36 + 0x00000001u;
+    arm_set_nzcv_add(_rn_08006C36, 0x00000001u, _r_08006C36);
+    g_cpu.R[0] = _r_08006C36;
+    g_cpu.R[15] = 0x08006C38u;
+    runtime_tick(_cyc_08006C36);
+    /* 08006C38  08006c38 T str r0,[r1] */
+    g_cpu.R[15] = 0x08006C38u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006C38 = 1u;
+    _cyc_08006C38 = 1u;
+    uint32_t _base_08006C38 = g_cpu.R[1];
+    uint32_t _off_08006C38;
+    _off_08006C38 = 0x00000000u;
+    uint32_t _ea_08006C38 = _base_08006C38 + _off_08006C38;
+    uint32_t _post_08006C38 = _base_08006C38 + _off_08006C38;
+    _cyc_08006C38 += runtime_mem_cycles(_ea_08006C38, 4u, 0u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x08006C38u, _ea_08006C38 & ~3u, g_cpu.R[0], 4u);
+    bus_write_u32(_ea_08006C38 & ~3u, g_cpu.R[0]);
+    g_cpu.R[15] = 0x08006C3Au;
+    runtime_tick(_cyc_08006C38);
+    /* 08006C3A  08006c3a T cmps r0,#0x1 */
+    g_cpu.R[15] = 0x08006C3Au;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006C3A = 1u;
+    _cyc_08006C3A = 1u;
+    uint32_t _rn_08006C3A = g_cpu.R[0];
+    uint32_t _r_08006C3A;
+    _r_08006C3A = _rn_08006C3A - 0x00000001u;
+    arm_set_nzcv_sub(_rn_08006C3A, 0x00000001u, _r_08006C3A);
+    g_cpu.R[15] = 0x08006C3Cu;
+    runtime_tick(_cyc_08006C3A);
+    /* 08006C3C  08006c3c T ble 0x08006c48 */
+    g_cpu.R[15] = 0x08006C3Cu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006C3C = 1u;
+    if (arm_cond_passes(0xdu)) {
+        _cyc_08006C3C = 3u;
+        g_cpu.R[15] = 0x08006C48u;
+        runtime_tick(_cyc_08006C3C);
+        GBARECOMP_TAIL_CALL(gf_tfunc_08006C48);
+    }
+    g_cpu.R[15] = 0x08006C3Eu;
+    runtime_tick(_cyc_08006C3C);
+    /* 08006C3E  08006c3e T ldr r0,[r5] */
+    g_cpu.R[15] = 0x08006C3Eu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006C3E = 1u;
+    _cyc_08006C3E = 2u;
+    uint32_t _base_08006C3E = g_cpu.R[5];
+    uint32_t _off_08006C3E;
+    _off_08006C3E = 0x00000000u;
+    uint32_t _ea_08006C3E = _base_08006C3E + _off_08006C3E;
+    uint32_t _post_08006C3E = _base_08006C3E + _off_08006C3E;
+    _cyc_08006C3E += runtime_mem_cycles(_ea_08006C3E, 4u, 0u);
+    uint32_t _v_08006C3E;
+    { uint32_t _w = bus_read_u32(_ea_08006C3E & ~3u); uint32_t _rot = (_ea_08006C3E & 3u) * 8u; _v_08006C3E = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_08006C3E;
+    g_cpu.R[15] = 0x08006C40u;
+    runtime_tick(_cyc_08006C3E);
+    /* 08006C40  08006c40 T movs r1,#0x80 */
+    g_cpu.R[15] = 0x08006C40u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006C40 = 1u;
+    _cyc_08006C40 = 1u;
+    uint32_t _r_08006C40;
+    _r_08006C40 = 0x00000080u;
+    arm_set_nzc_logic(_r_08006C40, cpsr_c());
+    g_cpu.R[1] = _r_08006C40;
+    g_cpu.R[15] = 0x08006C42u;
+    runtime_tick(_cyc_08006C40);
+    /* 08006C42  08006c42 T movs r1,r1,lsl #16 */
+    g_cpu.R[15] = 0x08006C42u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006C42 = 1u;
+    _cyc_08006C42 = 1u;
+    uint32_t _rm_08006C42 = g_cpu.R[1];
+    uint32_t _op2_08006C42;
+    uint32_t _co_08006C42;
+    _op2_08006C42 = _rm_08006C42 << 16;
+    _co_08006C42 = (_rm_08006C42 >> 16) & 1u;
+    uint32_t _r_08006C42;
+    _r_08006C42 = _op2_08006C42;
+    arm_set_nzc_logic(_r_08006C42, _co_08006C42);
+    g_cpu.R[1] = _r_08006C42;
+    g_cpu.R[15] = 0x08006C44u;
+    runtime_tick(_cyc_08006C42);
+    /* 08006C44  08006c44 T orrs r0,r0,r1 */
+    g_cpu.R[15] = 0x08006C44u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006C44 = 1u;
+    _cyc_08006C44 = 1u;
+    uint32_t _rm_08006C44 = g_cpu.R[1];
+    uint32_t _op2_08006C44;
+    uint32_t _co_08006C44;
+    _op2_08006C44 = _rm_08006C44;
+    _co_08006C44 = cpsr_c();
+    uint32_t _rn_08006C44 = g_cpu.R[0];
+    uint32_t _r_08006C44;
+    _r_08006C44 = _rn_08006C44 | _op2_08006C44;
+    arm_set_nzc_logic(_r_08006C44, _co_08006C44);
+    g_cpu.R[0] = _r_08006C44;
+    g_cpu.R[15] = 0x08006C46u;
+    runtime_tick(_cyc_08006C44);
+    /* 08006C46  08006c46 T str r0,[r5] */
+    g_cpu.R[15] = 0x08006C46u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006C46 = 1u;
+    _cyc_08006C46 = 1u;
+    uint32_t _base_08006C46 = g_cpu.R[5];
+    uint32_t _off_08006C46;
+    _off_08006C46 = 0x00000000u;
+    uint32_t _ea_08006C46 = _base_08006C46 + _off_08006C46;
+    uint32_t _post_08006C46 = _base_08006C46 + _off_08006C46;
+    _cyc_08006C46 += runtime_mem_cycles(_ea_08006C46, 4u, 0u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x08006C46u, _ea_08006C46 & ~3u, g_cpu.R[0], 4u);
+    bus_write_u32(_ea_08006C46 & ~3u, g_cpu.R[0]);
+    g_cpu.R[15] = 0x08006C48u;
+    runtime_tick(_cyc_08006C46);
+    /* fall-through to 0x08006C48 */
+    g_cpu.R[15] = 0x08006C48u;
+    runtime_dispatch(0x08006C48u);
+    return;
+}
+
+/* 0x08006C68  mode=thumb  end=0x08006C82  branches=34  indirect */
+
+
+/* 0x08006C48 thumb */
+void gf_tfunc_08006C48(void) {
+    if (g_runtime_fn_entry_hook) g_runtime_fn_entry_hook(0x08006C48u);
+    /* 08006C48  08006c48 T ldr r4,[r15,#0x164] */
+    g_cpu.R[15] = 0x08006C48u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006C48 = 1u;
+    _cyc_08006C48 = 2u;
+    uint32_t _base_08006C48 = 0x08006C4Cu & ~3u;
+    uint32_t _off_08006C48;
+    _off_08006C48 = 0x00000164u;
+    uint32_t _ea_08006C48 = _base_08006C48 + _off_08006C48;
+    uint32_t _post_08006C48 = _base_08006C48 + _off_08006C48;
+    _cyc_08006C48 += runtime_mem_cycles(_ea_08006C48, 4u, 0u);
+    uint32_t _v_08006C48;
+    { uint32_t _w = bus_read_u32(_ea_08006C48 & ~3u); uint32_t _rot = (_ea_08006C48 & 3u) * 8u; _v_08006C48 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[4] = _v_08006C48;
+    g_cpu.R[15] = 0x08006C4Au;
+    runtime_tick(_cyc_08006C48);
+    /* 08006C4A  08006c4a T ldr r1,[r15,#0x168] */
+    g_cpu.R[15] = 0x08006C4Au;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006C4A = 1u;
+    _cyc_08006C4A = 2u;
+    uint32_t _base_08006C4A = 0x08006C4Eu & ~3u;
+    uint32_t _off_08006C4A;
+    _off_08006C4A = 0x00000168u;
+    uint32_t _ea_08006C4A = _base_08006C4A + _off_08006C4A;
+    uint32_t _post_08006C4A = _base_08006C4A + _off_08006C4A;
+    _cyc_08006C4A += runtime_mem_cycles(_ea_08006C4A, 4u, 0u);
+    uint32_t _v_08006C4A;
+    { uint32_t _w = bus_read_u32(_ea_08006C4A & ~3u); uint32_t _rot = (_ea_08006C4A & 3u) * 8u; _v_08006C4A = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[1] = _v_08006C4A;
+    g_cpu.R[15] = 0x08006C4Cu;
+    runtime_tick(_cyc_08006C4A);
+    /* 08006C4C  08006c4c T adds r5,r4,r1 */
+    g_cpu.R[15] = 0x08006C4Cu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006C4C = 1u;
+    _cyc_08006C4C = 1u;
+    uint32_t _rm_08006C4C = g_cpu.R[1];
+    uint32_t _op2_08006C4C;
+    uint32_t _co_08006C4C;
+    _op2_08006C4C = _rm_08006C4C;
+    _co_08006C4C = cpsr_c();
+    uint32_t _rn_08006C4C = g_cpu.R[4];
+    uint32_t _r_08006C4C;
+    _r_08006C4C = _rn_08006C4C + _op2_08006C4C;
+    arm_set_nzcv_add(_rn_08006C4C, _op2_08006C4C, _r_08006C4C);
+    g_cpu.R[5] = _r_08006C4C;
+    g_cpu.R[15] = 0x08006C4Eu;
+    runtime_tick(_cyc_08006C4C);
+    /* 08006C4E  08006c4e T ldr r0,[r5] */
+    g_cpu.R[15] = 0x08006C4Eu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006C4E = 1u;
+    _cyc_08006C4E = 2u;
+    uint32_t _base_08006C4E = g_cpu.R[5];
+    uint32_t _off_08006C4E;
+    _off_08006C4E = 0x00000000u;
+    uint32_t _ea_08006C4E = _base_08006C4E + _off_08006C4E;
+    uint32_t _post_08006C4E = _base_08006C4E + _off_08006C4E;
+    _cyc_08006C4E += runtime_mem_cycles(_ea_08006C4E, 4u, 0u);
+    uint32_t _v_08006C4E;
+    { uint32_t _w = bus_read_u32(_ea_08006C4E & ~3u); uint32_t _rot = (_ea_08006C4E & 3u) * 8u; _v_08006C4E = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_08006C4E;
+    g_cpu.R[15] = 0x08006C50u;
+    runtime_tick(_cyc_08006C4E);
+    /* 08006C50  08006c50 T movs r1,#0x88 */
+    g_cpu.R[15] = 0x08006C50u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006C50 = 1u;
+    _cyc_08006C50 = 1u;
+    uint32_t _r_08006C50;
+    _r_08006C50 = 0x00000088u;
+    arm_set_nzc_logic(_r_08006C50, cpsr_c());
+    g_cpu.R[1] = _r_08006C50;
+    g_cpu.R[15] = 0x08006C52u;
+    runtime_tick(_cyc_08006C50);
+    /* 08006C52  08006c52 T movs r1,r1,lsl #19 */
+    g_cpu.R[15] = 0x08006C52u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006C52 = 1u;
+    _cyc_08006C52 = 1u;
+    uint32_t _rm_08006C52 = g_cpu.R[1];
+    uint32_t _op2_08006C52;
+    uint32_t _co_08006C52;
+    _op2_08006C52 = _rm_08006C52 << 19;
+    _co_08006C52 = (_rm_08006C52 >> 13) & 1u;
+    uint32_t _r_08006C52;
+    _r_08006C52 = _op2_08006C52;
+    arm_set_nzc_logic(_r_08006C52, _co_08006C52);
+    g_cpu.R[1] = _r_08006C52;
+    g_cpu.R[15] = 0x08006C54u;
+    runtime_tick(_cyc_08006C52);
+    /* 08006C54  08006c54 T ands r0,r0,r1 */
+    g_cpu.R[15] = 0x08006C54u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006C54 = 1u;
+    _cyc_08006C54 = 1u;
+    uint32_t _rm_08006C54 = g_cpu.R[1];
+    uint32_t _op2_08006C54;
+    uint32_t _co_08006C54;
+    _op2_08006C54 = _rm_08006C54;
+    _co_08006C54 = cpsr_c();
+    uint32_t _rn_08006C54 = g_cpu.R[0];
+    uint32_t _r_08006C54;
+    _r_08006C54 = _rn_08006C54 & _op2_08006C54;
+    arm_set_nzc_logic(_r_08006C54, _co_08006C54);
+    g_cpu.R[0] = _r_08006C54;
+    g_cpu.R[15] = 0x08006C56u;
+    runtime_tick(_cyc_08006C54);
+    /* 08006C56  08006c56 T movs r1,#0x80 */
+    g_cpu.R[15] = 0x08006C56u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006C56 = 1u;
+    _cyc_08006C56 = 1u;
+    uint32_t _r_08006C56;
+    _r_08006C56 = 0x00000080u;
+    arm_set_nzc_logic(_r_08006C56, cpsr_c());
+    g_cpu.R[1] = _r_08006C56;
+    g_cpu.R[15] = 0x08006C58u;
+    runtime_tick(_cyc_08006C56);
+    /* 08006C58  08006c58 T movs r1,r1,lsl #19 */
+    g_cpu.R[15] = 0x08006C58u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006C58 = 1u;
+    _cyc_08006C58 = 1u;
+    uint32_t _rm_08006C58 = g_cpu.R[1];
+    uint32_t _op2_08006C58;
+    uint32_t _co_08006C58;
+    _op2_08006C58 = _rm_08006C58 << 19;
+    _co_08006C58 = (_rm_08006C58 >> 13) & 1u;
+    uint32_t _r_08006C58;
+    _r_08006C58 = _op2_08006C58;
+    arm_set_nzc_logic(_r_08006C58, _co_08006C58);
+    g_cpu.R[1] = _r_08006C58;
+    g_cpu.R[15] = 0x08006C5Au;
+    runtime_tick(_cyc_08006C58);
+    /* 08006C5A  08006c5a T cmps r0,r1 */
+    g_cpu.R[15] = 0x08006C5Au;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006C5A = 1u;
+    _cyc_08006C5A = 1u;
+    uint32_t _rm_08006C5A = g_cpu.R[1];
+    uint32_t _op2_08006C5A;
+    uint32_t _co_08006C5A;
+    _op2_08006C5A = _rm_08006C5A;
+    _co_08006C5A = cpsr_c();
+    uint32_t _rn_08006C5A = g_cpu.R[0];
+    uint32_t _r_08006C5A;
+    _r_08006C5A = _rn_08006C5A - _op2_08006C5A;
+    arm_set_nzcv_sub(_rn_08006C5A, _op2_08006C5A, _r_08006C5A);
+    g_cpu.R[15] = 0x08006C5Cu;
+    runtime_tick(_cyc_08006C5A);
+    /* 08006C5C  08006c5c T bne 0x08006c68 */
+    g_cpu.R[15] = 0x08006C5Cu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006C5C = 1u;
+    if (arm_cond_passes(0x1u)) {
+        _cyc_08006C5C = 3u;
+        g_cpu.R[15] = 0x08006C68u;
+        runtime_tick(_cyc_08006C5C);
+        GBARECOMP_TAIL_CALL(gf_tfunc_08006C68);
+    }
+    g_cpu.R[15] = 0x08006C5Eu;
+    runtime_tick(_cyc_08006C5C);
+    /* 08006C5E  08006c5e T ldr r2,[r15,#0x180] */
+    g_cpu.R[15] = 0x08006C5Eu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006C5E = 1u;
+    _cyc_08006C5E = 2u;
+    uint32_t _base_08006C5E = 0x08006C62u & ~3u;
+    uint32_t _off_08006C5E;
+    _off_08006C5E = 0x00000180u;
+    uint32_t _ea_08006C5E = _base_08006C5E + _off_08006C5E;
+    uint32_t _post_08006C5E = _base_08006C5E + _off_08006C5E;
+    _cyc_08006C5E += runtime_mem_cycles(_ea_08006C5E, 4u, 0u);
+    uint32_t _v_08006C5E;
+    { uint32_t _w = bus_read_u32(_ea_08006C5E & ~3u); uint32_t _rot = (_ea_08006C5E & 3u) * 8u; _v_08006C5E = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[2] = _v_08006C5E;
+    g_cpu.R[15] = 0x08006C60u;
+    runtime_tick(_cyc_08006C5E);
+    /* 08006C60  08006c60 T adds r0,r4,r2 */
+    g_cpu.R[15] = 0x08006C60u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006C60 = 1u;
+    _cyc_08006C60 = 1u;
+    uint32_t _rm_08006C60 = g_cpu.R[2];
+    uint32_t _op2_08006C60;
+    uint32_t _co_08006C60;
+    _op2_08006C60 = _rm_08006C60;
+    _co_08006C60 = cpsr_c();
+    uint32_t _rn_08006C60 = g_cpu.R[4];
+    uint32_t _r_08006C60;
+    _r_08006C60 = _rn_08006C60 + _op2_08006C60;
+    arm_set_nzcv_add(_rn_08006C60, _op2_08006C60, _r_08006C60);
+    g_cpu.R[0] = _r_08006C60;
+    g_cpu.R[15] = 0x08006C62u;
+    runtime_tick(_cyc_08006C60);
+    /* 08006C62  08006c62 T ldr r0,[r0] */
+    g_cpu.R[15] = 0x08006C62u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006C62 = 1u;
+    _cyc_08006C62 = 2u;
+    uint32_t _base_08006C62 = g_cpu.R[0];
+    uint32_t _off_08006C62;
+    _off_08006C62 = 0x00000000u;
+    uint32_t _ea_08006C62 = _base_08006C62 + _off_08006C62;
+    uint32_t _post_08006C62 = _base_08006C62 + _off_08006C62;
+    _cyc_08006C62 += runtime_mem_cycles(_ea_08006C62, 4u, 0u);
+    uint32_t _v_08006C62;
+    { uint32_t _w = bus_read_u32(_ea_08006C62 & ~3u); uint32_t _rot = (_ea_08006C62 & 3u) * 8u; _v_08006C62 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_08006C62;
+    g_cpu.R[15] = 0x08006C64u;
+    runtime_tick(_cyc_08006C62);
+    /* 08006C64  08006c64 T bl.hi 0x08000c68 */
+    g_cpu.R[15] = 0x08006C64u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006C64 = 1u;
+    _cyc_08006C64 = 1u;
+    g_cpu.R[14] = 0x08000C68u;
+    g_cpu.R[15] = 0x08006C66u;
+    runtime_tick(_cyc_08006C64);
+    /* 08006C66  08006c66 T bl.lo 0x00000000 */
+    g_cpu.R[15] = 0x08006C66u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006C66 = 1u;
+    _cyc_08006C66 = 3u;
+    uint32_t _blt_08006C66 = (g_cpu.R[14] + 0x00000AD0u) & ~1u;
+    g_cpu.R[14] = 0x08006C69u;
+    g_cpu.R[15] = _blt_08006C66;
+    runtime_call_push_return(0x08006C68u);
+    runtime_tick(_cyc_08006C66);
+    _cyc_08006C66 = 0u;
+    runtime_dispatch(_blt_08006C66);
+    if (g_cpu.R[15] != 0x08006C68u) { runtime_call_cancel_return(0x08006C68u); return; }
+    g_cpu.R[15] = 0x08006C68u;
+    runtime_tick(_cyc_08006C66);
+    /* fall-through to 0x08006C68 */
+    g_cpu.R[15] = 0x08006C68u;
+    runtime_dispatch(0x08006C68u);
+    return;
+}
+
+/* 0x08006C82  mode=thumb  end=0x08006C9A  branches=31  indirect */
+
+
+/* 0x08006C68 thumb */
+void gf_tfunc_08006C68(void) {
+    if (g_runtime_fn_entry_hook) g_runtime_fn_entry_hook(0x08006C68u);
+    /* 08006C68  08006c68 T ldr r0,[r5] */
+    g_cpu.R[15] = 0x08006C68u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006C68 = 1u;
+    _cyc_08006C68 = 2u;
+    uint32_t _base_08006C68 = g_cpu.R[5];
+    uint32_t _off_08006C68;
+    _off_08006C68 = 0x00000000u;
+    uint32_t _ea_08006C68 = _base_08006C68 + _off_08006C68;
+    uint32_t _post_08006C68 = _base_08006C68 + _off_08006C68;
+    _cyc_08006C68 += runtime_mem_cycles(_ea_08006C68, 4u, 0u);
+    uint32_t _v_08006C68;
+    { uint32_t _w = bus_read_u32(_ea_08006C68 & ~3u); uint32_t _rot = (_ea_08006C68 & 3u) * 8u; _v_08006C68 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_08006C68;
+    g_cpu.R[15] = 0x08006C6Au;
+    runtime_tick(_cyc_08006C68);
+    /* 08006C6A  08006c6a T movs r1,#0xc0 */
+    g_cpu.R[15] = 0x08006C6Au;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006C6A = 1u;
+    _cyc_08006C6A = 1u;
+    uint32_t _r_08006C6A;
+    _r_08006C6A = 0x000000C0u;
+    arm_set_nzc_logic(_r_08006C6A, cpsr_c());
+    g_cpu.R[1] = _r_08006C6A;
+    g_cpu.R[15] = 0x08006C6Cu;
+    runtime_tick(_cyc_08006C6A);
+    /* 08006C6C  08006c6c T movs r1,r1,lsl #15 */
+    g_cpu.R[15] = 0x08006C6Cu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006C6C = 1u;
+    _cyc_08006C6C = 1u;
+    uint32_t _rm_08006C6C = g_cpu.R[1];
+    uint32_t _op2_08006C6C;
+    uint32_t _co_08006C6C;
+    _op2_08006C6C = _rm_08006C6C << 15;
+    _co_08006C6C = (_rm_08006C6C >> 17) & 1u;
+    uint32_t _r_08006C6C;
+    _r_08006C6C = _op2_08006C6C;
+    arm_set_nzc_logic(_r_08006C6C, _co_08006C6C);
+    g_cpu.R[1] = _r_08006C6C;
+    g_cpu.R[15] = 0x08006C6Eu;
+    runtime_tick(_cyc_08006C6C);
+    /* 08006C6E  08006c6e T ands r0,r0,r1 */
+    g_cpu.R[15] = 0x08006C6Eu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006C6E = 1u;
+    _cyc_08006C6E = 1u;
+    uint32_t _rm_08006C6E = g_cpu.R[1];
+    uint32_t _op2_08006C6E;
+    uint32_t _co_08006C6E;
+    _op2_08006C6E = _rm_08006C6E;
+    _co_08006C6E = cpsr_c();
+    uint32_t _rn_08006C6E = g_cpu.R[0];
+    uint32_t _r_08006C6E;
+    _r_08006C6E = _rn_08006C6E & _op2_08006C6E;
+    arm_set_nzc_logic(_r_08006C6E, _co_08006C6E);
+    g_cpu.R[0] = _r_08006C6E;
+    g_cpu.R[15] = 0x08006C70u;
+    runtime_tick(_cyc_08006C6E);
+    /* 08006C70  08006c70 T movs r1,#0x80 */
+    g_cpu.R[15] = 0x08006C70u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006C70 = 1u;
+    _cyc_08006C70 = 1u;
+    uint32_t _r_08006C70;
+    _r_08006C70 = 0x00000080u;
+    arm_set_nzc_logic(_r_08006C70, cpsr_c());
+    g_cpu.R[1] = _r_08006C70;
+    g_cpu.R[15] = 0x08006C72u;
+    runtime_tick(_cyc_08006C70);
+    /* 08006C72  08006c72 T movs r1,r1,lsl #15 */
+    g_cpu.R[15] = 0x08006C72u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006C72 = 1u;
+    _cyc_08006C72 = 1u;
+    uint32_t _rm_08006C72 = g_cpu.R[1];
+    uint32_t _op2_08006C72;
+    uint32_t _co_08006C72;
+    _op2_08006C72 = _rm_08006C72 << 15;
+    _co_08006C72 = (_rm_08006C72 >> 17) & 1u;
+    uint32_t _r_08006C72;
+    _r_08006C72 = _op2_08006C72;
+    arm_set_nzc_logic(_r_08006C72, _co_08006C72);
+    g_cpu.R[1] = _r_08006C72;
+    g_cpu.R[15] = 0x08006C74u;
+    runtime_tick(_cyc_08006C72);
+    /* 08006C74  08006c74 T cmps r0,r1 */
+    g_cpu.R[15] = 0x08006C74u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006C74 = 1u;
+    _cyc_08006C74 = 1u;
+    uint32_t _rm_08006C74 = g_cpu.R[1];
+    uint32_t _op2_08006C74;
+    uint32_t _co_08006C74;
+    _op2_08006C74 = _rm_08006C74;
+    _co_08006C74 = cpsr_c();
+    uint32_t _rn_08006C74 = g_cpu.R[0];
+    uint32_t _r_08006C74;
+    _r_08006C74 = _rn_08006C74 - _op2_08006C74;
+    arm_set_nzcv_sub(_rn_08006C74, _op2_08006C74, _r_08006C74);
+    g_cpu.R[15] = 0x08006C76u;
+    runtime_tick(_cyc_08006C74);
+    /* 08006C76  08006c76 T bne 0x08006c9a */
+    g_cpu.R[15] = 0x08006C76u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006C76 = 1u;
+    if (arm_cond_passes(0x1u)) {
+        _cyc_08006C76 = 3u;
+        g_cpu.R[15] = 0x08006C9Au;
+        runtime_tick(_cyc_08006C76);
+        GBARECOMP_TAIL_CALL(gf_tfunc_08006C9A);
+    }
+    g_cpu.R[15] = 0x08006C78u;
+    runtime_tick(_cyc_08006C76);
+    /* 08006C78  08006c78 T ldr r1,[r15,#0x168] */
+    g_cpu.R[15] = 0x08006C78u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006C78 = 1u;
+    _cyc_08006C78 = 2u;
+    uint32_t _base_08006C78 = 0x08006C7Cu & ~3u;
+    uint32_t _off_08006C78;
+    _off_08006C78 = 0x00000168u;
+    uint32_t _ea_08006C78 = _base_08006C78 + _off_08006C78;
+    uint32_t _post_08006C78 = _base_08006C78 + _off_08006C78;
+    _cyc_08006C78 += runtime_mem_cycles(_ea_08006C78, 4u, 0u);
+    uint32_t _v_08006C78;
+    { uint32_t _w = bus_read_u32(_ea_08006C78 & ~3u); uint32_t _rot = (_ea_08006C78 & 3u) * 8u; _v_08006C78 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[1] = _v_08006C78;
+    g_cpu.R[15] = 0x08006C7Au;
+    runtime_tick(_cyc_08006C78);
+    /* 08006C7A  08006c7a T adds r0,r4,r1 */
+    g_cpu.R[15] = 0x08006C7Au;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006C7A = 1u;
+    _cyc_08006C7A = 1u;
+    uint32_t _rm_08006C7A = g_cpu.R[1];
+    uint32_t _op2_08006C7A;
+    uint32_t _co_08006C7A;
+    _op2_08006C7A = _rm_08006C7A;
+    _co_08006C7A = cpsr_c();
+    uint32_t _rn_08006C7A = g_cpu.R[4];
+    uint32_t _r_08006C7A;
+    _r_08006C7A = _rn_08006C7A + _op2_08006C7A;
+    arm_set_nzcv_add(_rn_08006C7A, _op2_08006C7A, _r_08006C7A);
+    g_cpu.R[0] = _r_08006C7A;
+    g_cpu.R[15] = 0x08006C7Cu;
+    runtime_tick(_cyc_08006C7A);
+    /* 08006C7C  08006c7c T ldr r0,[r0] */
+    g_cpu.R[15] = 0x08006C7Cu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006C7C = 1u;
+    _cyc_08006C7C = 2u;
+    uint32_t _base_08006C7C = g_cpu.R[0];
+    uint32_t _off_08006C7C;
+    _off_08006C7C = 0x00000000u;
+    uint32_t _ea_08006C7C = _base_08006C7C + _off_08006C7C;
+    uint32_t _post_08006C7C = _base_08006C7C + _off_08006C7C;
+    _cyc_08006C7C += runtime_mem_cycles(_ea_08006C7C, 4u, 0u);
+    uint32_t _v_08006C7C;
+    { uint32_t _w = bus_read_u32(_ea_08006C7C & ~3u); uint32_t _rot = (_ea_08006C7C & 3u) * 8u; _v_08006C7C = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_08006C7C;
+    g_cpu.R[15] = 0x08006C7Eu;
+    runtime_tick(_cyc_08006C7C);
+    /* 08006C7E  08006c7e T bl.hi 0x08000c82 */
+    g_cpu.R[15] = 0x08006C7Eu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006C7E = 1u;
+    _cyc_08006C7E = 1u;
+    g_cpu.R[14] = 0x08000C82u;
+    g_cpu.R[15] = 0x08006C80u;
+    runtime_tick(_cyc_08006C7E);
+    /* 08006C80  08006c80 T bl.lo 0x00000000 */
+    g_cpu.R[15] = 0x08006C80u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006C80 = 1u;
+    _cyc_08006C80 = 3u;
+    uint32_t _blt_08006C80 = (g_cpu.R[14] + 0x00000AB6u) & ~1u;
+    g_cpu.R[14] = 0x08006C83u;
+    g_cpu.R[15] = _blt_08006C80;
+    runtime_call_push_return(0x08006C82u);
+    runtime_tick(_cyc_08006C80);
+    _cyc_08006C80 = 0u;
+    runtime_dispatch(_blt_08006C80);
+    if (g_cpu.R[15] != 0x08006C82u) { runtime_call_cancel_return(0x08006C82u); return; }
+    g_cpu.R[15] = 0x08006C82u;
+    runtime_tick(_cyc_08006C80);
+    /* fall-through to 0x08006C82 */
+    g_cpu.R[15] = 0x08006C82u;
+    runtime_dispatch(0x08006C82u);
+    return;
+}
+
+/* 0x08006CD6  mode=thumb  end=0x08006CF2  branches=26  indirect */
+
+
+/* 0x08006C82 thumb */
+void gf_tfunc_08006C82(void) {
+    if (g_runtime_fn_entry_hook) g_runtime_fn_entry_hook(0x08006C82u);
+    /* 08006C82  08006c82 T ldr r2,[r15,#0x164] */
+    g_cpu.R[15] = 0x08006C82u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006C82 = 1u;
+    _cyc_08006C82 = 2u;
+    uint32_t _base_08006C82 = 0x08006C86u & ~3u;
+    uint32_t _off_08006C82;
+    _off_08006C82 = 0x00000164u;
+    uint32_t _ea_08006C82 = _base_08006C82 + _off_08006C82;
+    uint32_t _post_08006C82 = _base_08006C82 + _off_08006C82;
+    _cyc_08006C82 += runtime_mem_cycles(_ea_08006C82, 4u, 0u);
+    uint32_t _v_08006C82;
+    { uint32_t _w = bus_read_u32(_ea_08006C82 & ~3u); uint32_t _rot = (_ea_08006C82 & 3u) * 8u; _v_08006C82 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[2] = _v_08006C82;
+    g_cpu.R[15] = 0x08006C84u;
+    runtime_tick(_cyc_08006C82);
+    /* 08006C84  08006c84 T adds r1,r4,r2 */
+    g_cpu.R[15] = 0x08006C84u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006C84 = 1u;
+    _cyc_08006C84 = 1u;
+    uint32_t _rm_08006C84 = g_cpu.R[2];
+    uint32_t _op2_08006C84;
+    uint32_t _co_08006C84;
+    _op2_08006C84 = _rm_08006C84;
+    _co_08006C84 = cpsr_c();
+    uint32_t _rn_08006C84 = g_cpu.R[4];
+    uint32_t _r_08006C84;
+    _r_08006C84 = _rn_08006C84 + _op2_08006C84;
+    arm_set_nzcv_add(_rn_08006C84, _op2_08006C84, _r_08006C84);
+    g_cpu.R[1] = _r_08006C84;
+    g_cpu.R[15] = 0x08006C86u;
+    runtime_tick(_cyc_08006C84);
+    /* 08006C86  08006c86 T ldr r0,[r1] */
+    g_cpu.R[15] = 0x08006C86u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006C86 = 1u;
+    _cyc_08006C86 = 2u;
+    uint32_t _base_08006C86 = g_cpu.R[1];
+    uint32_t _off_08006C86;
+    _off_08006C86 = 0x00000000u;
+    uint32_t _ea_08006C86 = _base_08006C86 + _off_08006C86;
+    uint32_t _post_08006C86 = _base_08006C86 + _off_08006C86;
+    _cyc_08006C86 += runtime_mem_cycles(_ea_08006C86, 4u, 0u);
+    uint32_t _v_08006C86;
+    { uint32_t _w = bus_read_u32(_ea_08006C86 & ~3u); uint32_t _rot = (_ea_08006C86 & 3u) * 8u; _v_08006C86 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_08006C86;
+    g_cpu.R[15] = 0x08006C88u;
+    runtime_tick(_cyc_08006C86);
+    /* 08006C88  08006c88 T adds r0,r0,#0x1 */
+    g_cpu.R[15] = 0x08006C88u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006C88 = 1u;
+    _cyc_08006C88 = 1u;
+    uint32_t _rn_08006C88 = g_cpu.R[0];
+    uint32_t _r_08006C88;
+    _r_08006C88 = _rn_08006C88 + 0x00000001u;
+    arm_set_nzcv_add(_rn_08006C88, 0x00000001u, _r_08006C88);
+    g_cpu.R[0] = _r_08006C88;
+    g_cpu.R[15] = 0x08006C8Au;
+    runtime_tick(_cyc_08006C88);
+    /* 08006C8A  08006c8a T str r0,[r1] */
+    g_cpu.R[15] = 0x08006C8Au;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006C8A = 1u;
+    _cyc_08006C8A = 1u;
+    uint32_t _base_08006C8A = g_cpu.R[1];
+    uint32_t _off_08006C8A;
+    _off_08006C8A = 0x00000000u;
+    uint32_t _ea_08006C8A = _base_08006C8A + _off_08006C8A;
+    uint32_t _post_08006C8A = _base_08006C8A + _off_08006C8A;
+    _cyc_08006C8A += runtime_mem_cycles(_ea_08006C8A, 4u, 0u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x08006C8Au, _ea_08006C8A & ~3u, g_cpu.R[0], 4u);
+    bus_write_u32(_ea_08006C8A & ~3u, g_cpu.R[0]);
+    g_cpu.R[15] = 0x08006C8Cu;
+    runtime_tick(_cyc_08006C8A);
+    /* 08006C8C  08006c8c T cmps r0,#0x1 */
+    g_cpu.R[15] = 0x08006C8Cu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006C8C = 1u;
+    _cyc_08006C8C = 1u;
+    uint32_t _rn_08006C8C = g_cpu.R[0];
+    uint32_t _r_08006C8C;
+    _r_08006C8C = _rn_08006C8C - 0x00000001u;
+    arm_set_nzcv_sub(_rn_08006C8C, 0x00000001u, _r_08006C8C);
+    g_cpu.R[15] = 0x08006C8Eu;
+    runtime_tick(_cyc_08006C8C);
+    /* 08006C8E  08006c8e T ble 0x08006c9a */
+    g_cpu.R[15] = 0x08006C8Eu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006C8E = 1u;
+    if (arm_cond_passes(0xdu)) {
+        _cyc_08006C8E = 3u;
+        g_cpu.R[15] = 0x08006C9Au;
+        runtime_tick(_cyc_08006C8E);
+        GBARECOMP_TAIL_CALL(gf_tfunc_08006C9A);
+    }
+    g_cpu.R[15] = 0x08006C90u;
+    runtime_tick(_cyc_08006C8E);
+    /* 08006C90  08006c90 T ldr r0,[r5] */
+    g_cpu.R[15] = 0x08006C90u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006C90 = 1u;
+    _cyc_08006C90 = 2u;
+    uint32_t _base_08006C90 = g_cpu.R[5];
+    uint32_t _off_08006C90;
+    _off_08006C90 = 0x00000000u;
+    uint32_t _ea_08006C90 = _base_08006C90 + _off_08006C90;
+    uint32_t _post_08006C90 = _base_08006C90 + _off_08006C90;
+    _cyc_08006C90 += runtime_mem_cycles(_ea_08006C90, 4u, 0u);
+    uint32_t _v_08006C90;
+    { uint32_t _w = bus_read_u32(_ea_08006C90 & ~3u); uint32_t _rot = (_ea_08006C90 & 3u) * 8u; _v_08006C90 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_08006C90;
+    g_cpu.R[15] = 0x08006C92u;
+    runtime_tick(_cyc_08006C90);
+    /* 08006C92  08006c92 T movs r1,#0x80 */
+    g_cpu.R[15] = 0x08006C92u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006C92 = 1u;
+    _cyc_08006C92 = 1u;
+    uint32_t _r_08006C92;
+    _r_08006C92 = 0x00000080u;
+    arm_set_nzc_logic(_r_08006C92, cpsr_c());
+    g_cpu.R[1] = _r_08006C92;
+    g_cpu.R[15] = 0x08006C94u;
+    runtime_tick(_cyc_08006C92);
+    /* 08006C94  08006c94 T movs r1,r1,lsl #14 */
+    g_cpu.R[15] = 0x08006C94u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006C94 = 1u;
+    _cyc_08006C94 = 1u;
+    uint32_t _rm_08006C94 = g_cpu.R[1];
+    uint32_t _op2_08006C94;
+    uint32_t _co_08006C94;
+    _op2_08006C94 = _rm_08006C94 << 14;
+    _co_08006C94 = (_rm_08006C94 >> 18) & 1u;
+    uint32_t _r_08006C94;
+    _r_08006C94 = _op2_08006C94;
+    arm_set_nzc_logic(_r_08006C94, _co_08006C94);
+    g_cpu.R[1] = _r_08006C94;
+    g_cpu.R[15] = 0x08006C96u;
+    runtime_tick(_cyc_08006C94);
+    /* 08006C96  08006c96 T orrs r0,r0,r1 */
+    g_cpu.R[15] = 0x08006C96u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006C96 = 1u;
+    _cyc_08006C96 = 1u;
+    uint32_t _rm_08006C96 = g_cpu.R[1];
+    uint32_t _op2_08006C96;
+    uint32_t _co_08006C96;
+    _op2_08006C96 = _rm_08006C96;
+    _co_08006C96 = cpsr_c();
+    uint32_t _rn_08006C96 = g_cpu.R[0];
+    uint32_t _r_08006C96;
+    _r_08006C96 = _rn_08006C96 | _op2_08006C96;
+    arm_set_nzc_logic(_r_08006C96, _co_08006C96);
+    g_cpu.R[0] = _r_08006C96;
+    g_cpu.R[15] = 0x08006C98u;
+    runtime_tick(_cyc_08006C96);
+    /* 08006C98  08006c98 T str r0,[r5] */
+    g_cpu.R[15] = 0x08006C98u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006C98 = 1u;
+    _cyc_08006C98 = 1u;
+    uint32_t _base_08006C98 = g_cpu.R[5];
+    uint32_t _off_08006C98;
+    _off_08006C98 = 0x00000000u;
+    uint32_t _ea_08006C98 = _base_08006C98 + _off_08006C98;
+    uint32_t _post_08006C98 = _base_08006C98 + _off_08006C98;
+    _cyc_08006C98 += runtime_mem_cycles(_ea_08006C98, 4u, 0u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x08006C98u, _ea_08006C98 & ~3u, g_cpu.R[0], 4u);
+    bus_write_u32(_ea_08006C98 & ~3u, g_cpu.R[0]);
+    g_cpu.R[15] = 0x08006C9Au;
+    runtime_tick(_cyc_08006C98);
+    /* fall-through to 0x08006C9A */
+    g_cpu.R[15] = 0x08006C9Au;
+    runtime_dispatch(0x08006C9Au);
+    return;
+}
+
+/* 0x08006C9A  mode=thumb  end=0x08006CBC  branches=30  indirect */
+
+
+/* 0x08006C9A thumb */
+void gf_tfunc_08006C9A(void) {
+    if (g_runtime_fn_entry_hook) g_runtime_fn_entry_hook(0x08006C9Au);
+    /* 08006C9A  08006c9a T ldr r4,[r15,#0x114] */
+    g_cpu.R[15] = 0x08006C9Au;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006C9A = 1u;
+    _cyc_08006C9A = 2u;
+    uint32_t _base_08006C9A = 0x08006C9Eu & ~3u;
+    uint32_t _off_08006C9A;
+    _off_08006C9A = 0x00000114u;
+    uint32_t _ea_08006C9A = _base_08006C9A + _off_08006C9A;
+    uint32_t _post_08006C9A = _base_08006C9A + _off_08006C9A;
+    _cyc_08006C9A += runtime_mem_cycles(_ea_08006C9A, 4u, 0u);
+    uint32_t _v_08006C9A;
+    { uint32_t _w = bus_read_u32(_ea_08006C9A & ~3u); uint32_t _rot = (_ea_08006C9A & 3u) * 8u; _v_08006C9A = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[4] = _v_08006C9A;
+    g_cpu.R[15] = 0x08006C9Cu;
+    runtime_tick(_cyc_08006C9A);
+    /* 08006C9C  08006c9c T ldr r0,[r15,#0x114] */
+    g_cpu.R[15] = 0x08006C9Cu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006C9C = 1u;
+    _cyc_08006C9C = 2u;
+    uint32_t _base_08006C9C = 0x08006CA0u & ~3u;
+    uint32_t _off_08006C9C;
+    _off_08006C9C = 0x00000114u;
+    uint32_t _ea_08006C9C = _base_08006C9C + _off_08006C9C;
+    uint32_t _post_08006C9C = _base_08006C9C + _off_08006C9C;
+    _cyc_08006C9C += runtime_mem_cycles(_ea_08006C9C, 4u, 0u);
+    uint32_t _v_08006C9C;
+    { uint32_t _w = bus_read_u32(_ea_08006C9C & ~3u); uint32_t _rot = (_ea_08006C9C & 3u) * 8u; _v_08006C9C = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_08006C9C;
+    g_cpu.R[15] = 0x08006C9Eu;
+    runtime_tick(_cyc_08006C9C);
+    /* 08006C9E  08006c9e T adds r5,r4,r0 */
+    g_cpu.R[15] = 0x08006C9Eu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006C9E = 1u;
+    _cyc_08006C9E = 1u;
+    uint32_t _rm_08006C9E = g_cpu.R[0];
+    uint32_t _op2_08006C9E;
+    uint32_t _co_08006C9E;
+    _op2_08006C9E = _rm_08006C9E;
+    _co_08006C9E = cpsr_c();
+    uint32_t _rn_08006C9E = g_cpu.R[4];
+    uint32_t _r_08006C9E;
+    _r_08006C9E = _rn_08006C9E + _op2_08006C9E;
+    arm_set_nzcv_add(_rn_08006C9E, _op2_08006C9E, _r_08006C9E);
+    g_cpu.R[5] = _r_08006C9E;
+    g_cpu.R[15] = 0x08006CA0u;
+    runtime_tick(_cyc_08006C9E);
+    /* 08006CA0  08006ca0 T ldr r0,[r5] */
+    g_cpu.R[15] = 0x08006CA0u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006CA0 = 1u;
+    _cyc_08006CA0 = 2u;
+    uint32_t _base_08006CA0 = g_cpu.R[5];
+    uint32_t _off_08006CA0;
+    _off_08006CA0 = 0x00000000u;
+    uint32_t _ea_08006CA0 = _base_08006CA0 + _off_08006CA0;
+    uint32_t _post_08006CA0 = _base_08006CA0 + _off_08006CA0;
+    _cyc_08006CA0 += runtime_mem_cycles(_ea_08006CA0, 4u, 0u);
+    uint32_t _v_08006CA0;
+    { uint32_t _w = bus_read_u32(_ea_08006CA0 & ~3u); uint32_t _rot = (_ea_08006CA0 & 3u) * 8u; _v_08006CA0 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_08006CA0;
+    g_cpu.R[15] = 0x08006CA2u;
+    runtime_tick(_cyc_08006CA0);
+    /* 08006CA2  08006ca2 T movs r1,#0x84 */
+    g_cpu.R[15] = 0x08006CA2u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006CA2 = 1u;
+    _cyc_08006CA2 = 1u;
+    uint32_t _r_08006CA2;
+    _r_08006CA2 = 0x00000084u;
+    arm_set_nzc_logic(_r_08006CA2, cpsr_c());
+    g_cpu.R[1] = _r_08006CA2;
+    g_cpu.R[15] = 0x08006CA4u;
+    runtime_tick(_cyc_08006CA2);
+    /* 08006CA4  08006ca4 T movs r1,r1,lsl #15 */
+    g_cpu.R[15] = 0x08006CA4u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006CA4 = 1u;
+    _cyc_08006CA4 = 1u;
+    uint32_t _rm_08006CA4 = g_cpu.R[1];
+    uint32_t _op2_08006CA4;
+    uint32_t _co_08006CA4;
+    _op2_08006CA4 = _rm_08006CA4 << 15;
+    _co_08006CA4 = (_rm_08006CA4 >> 17) & 1u;
+    uint32_t _r_08006CA4;
+    _r_08006CA4 = _op2_08006CA4;
+    arm_set_nzc_logic(_r_08006CA4, _co_08006CA4);
+    g_cpu.R[1] = _r_08006CA4;
+    g_cpu.R[15] = 0x08006CA6u;
+    runtime_tick(_cyc_08006CA4);
+    /* 08006CA6  08006ca6 T ands r0,r0,r1 */
+    g_cpu.R[15] = 0x08006CA6u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006CA6 = 1u;
+    _cyc_08006CA6 = 1u;
+    uint32_t _rm_08006CA6 = g_cpu.R[1];
+    uint32_t _op2_08006CA6;
+    uint32_t _co_08006CA6;
+    _op2_08006CA6 = _rm_08006CA6;
+    _co_08006CA6 = cpsr_c();
+    uint32_t _rn_08006CA6 = g_cpu.R[0];
+    uint32_t _r_08006CA6;
+    _r_08006CA6 = _rn_08006CA6 & _op2_08006CA6;
+    arm_set_nzc_logic(_r_08006CA6, _co_08006CA6);
+    g_cpu.R[0] = _r_08006CA6;
+    g_cpu.R[15] = 0x08006CA8u;
+    runtime_tick(_cyc_08006CA6);
+    /* 08006CA8  08006ca8 T movs r1,#0x80 */
+    g_cpu.R[15] = 0x08006CA8u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006CA8 = 1u;
+    _cyc_08006CA8 = 1u;
+    uint32_t _r_08006CA8;
+    _r_08006CA8 = 0x00000080u;
+    arm_set_nzc_logic(_r_08006CA8, cpsr_c());
+    g_cpu.R[1] = _r_08006CA8;
+    g_cpu.R[15] = 0x08006CAAu;
+    runtime_tick(_cyc_08006CA8);
+    /* 08006CAA  08006caa T movs r1,r1,lsl #15 */
+    g_cpu.R[15] = 0x08006CAAu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006CAA = 1u;
+    _cyc_08006CAA = 1u;
+    uint32_t _rm_08006CAA = g_cpu.R[1];
+    uint32_t _op2_08006CAA;
+    uint32_t _co_08006CAA;
+    _op2_08006CAA = _rm_08006CAA << 15;
+    _co_08006CAA = (_rm_08006CAA >> 17) & 1u;
+    uint32_t _r_08006CAA;
+    _r_08006CAA = _op2_08006CAA;
+    arm_set_nzc_logic(_r_08006CAA, _co_08006CAA);
+    g_cpu.R[1] = _r_08006CAA;
+    g_cpu.R[15] = 0x08006CACu;
+    runtime_tick(_cyc_08006CAA);
+    /* 08006CAC  08006cac T cmps r0,r1 */
+    g_cpu.R[15] = 0x08006CACu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006CAC = 1u;
+    _cyc_08006CAC = 1u;
+    uint32_t _rm_08006CAC = g_cpu.R[1];
+    uint32_t _op2_08006CAC;
+    uint32_t _co_08006CAC;
+    _op2_08006CAC = _rm_08006CAC;
+    _co_08006CAC = cpsr_c();
+    uint32_t _rn_08006CAC = g_cpu.R[0];
+    uint32_t _r_08006CAC;
+    _r_08006CAC = _rn_08006CAC - _op2_08006CAC;
+    arm_set_nzcv_sub(_rn_08006CAC, _op2_08006CAC, _r_08006CAC);
+    g_cpu.R[15] = 0x08006CAEu;
+    runtime_tick(_cyc_08006CAC);
+    /* 08006CAE  08006cae T bne 0x08006cd6 */
+    g_cpu.R[15] = 0x08006CAEu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006CAE = 1u;
+    if (arm_cond_passes(0x1u)) {
+        _cyc_08006CAE = 3u;
+        g_cpu.R[15] = 0x08006CD6u;
+        runtime_tick(_cyc_08006CAE);
+        GBARECOMP_TAIL_CALL(gf_tfunc_08006CD6);
+    }
+    g_cpu.R[15] = 0x08006CB0u;
+    runtime_tick(_cyc_08006CAE);
+    /* 08006CB0  08006cb0 T movs r1,#0xc4 */
+    g_cpu.R[15] = 0x08006CB0u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006CB0 = 1u;
+    _cyc_08006CB0 = 1u;
+    uint32_t _r_08006CB0;
+    _r_08006CB0 = 0x000000C4u;
+    arm_set_nzc_logic(_r_08006CB0, cpsr_c());
+    g_cpu.R[1] = _r_08006CB0;
+    g_cpu.R[15] = 0x08006CB2u;
+    runtime_tick(_cyc_08006CB0);
+    /* 08006CB2  08006cb2 T movs r1,r1,lsl #5 */
+    g_cpu.R[15] = 0x08006CB2u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006CB2 = 1u;
+    _cyc_08006CB2 = 1u;
+    uint32_t _rm_08006CB2 = g_cpu.R[1];
+    uint32_t _op2_08006CB2;
+    uint32_t _co_08006CB2;
+    _op2_08006CB2 = _rm_08006CB2 << 5;
+    _co_08006CB2 = (_rm_08006CB2 >> 27) & 1u;
+    uint32_t _r_08006CB2;
+    _r_08006CB2 = _op2_08006CB2;
+    arm_set_nzc_logic(_r_08006CB2, _co_08006CB2);
+    g_cpu.R[1] = _r_08006CB2;
+    g_cpu.R[15] = 0x08006CB4u;
+    runtime_tick(_cyc_08006CB2);
+    /* 08006CB4  08006cb4 T adds r0,r4,r1 */
+    g_cpu.R[15] = 0x08006CB4u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006CB4 = 1u;
+    _cyc_08006CB4 = 1u;
+    uint32_t _rm_08006CB4 = g_cpu.R[1];
+    uint32_t _op2_08006CB4;
+    uint32_t _co_08006CB4;
+    _op2_08006CB4 = _rm_08006CB4;
+    _co_08006CB4 = cpsr_c();
+    uint32_t _rn_08006CB4 = g_cpu.R[4];
+    uint32_t _r_08006CB4;
+    _r_08006CB4 = _rn_08006CB4 + _op2_08006CB4;
+    arm_set_nzcv_add(_rn_08006CB4, _op2_08006CB4, _r_08006CB4);
+    g_cpu.R[0] = _r_08006CB4;
+    g_cpu.R[15] = 0x08006CB6u;
+    runtime_tick(_cyc_08006CB4);
+    /* 08006CB6  08006cb6 T ldr r0,[r0] */
+    g_cpu.R[15] = 0x08006CB6u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006CB6 = 1u;
+    _cyc_08006CB6 = 2u;
+    uint32_t _base_08006CB6 = g_cpu.R[0];
+    uint32_t _off_08006CB6;
+    _off_08006CB6 = 0x00000000u;
+    uint32_t _ea_08006CB6 = _base_08006CB6 + _off_08006CB6;
+    uint32_t _post_08006CB6 = _base_08006CB6 + _off_08006CB6;
+    _cyc_08006CB6 += runtime_mem_cycles(_ea_08006CB6, 4u, 0u);
+    uint32_t _v_08006CB6;
+    { uint32_t _w = bus_read_u32(_ea_08006CB6 & ~3u); uint32_t _rot = (_ea_08006CB6 & 3u) * 8u; _v_08006CB6 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_08006CB6;
+    g_cpu.R[15] = 0x08006CB8u;
+    runtime_tick(_cyc_08006CB6);
+    /* 08006CB8  08006cb8 T bl.hi 0x08000cbc */
+    g_cpu.R[15] = 0x08006CB8u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006CB8 = 1u;
+    _cyc_08006CB8 = 1u;
+    g_cpu.R[14] = 0x08000CBCu;
+    g_cpu.R[15] = 0x08006CBAu;
+    runtime_tick(_cyc_08006CB8);
+    /* 08006CBA  08006cba T bl.lo 0x00000000 */
+    g_cpu.R[15] = 0x08006CBAu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006CBA = 1u;
+    _cyc_08006CBA = 3u;
+    uint32_t _blt_08006CBA = (g_cpu.R[14] + 0x00000A7Cu) & ~1u;
+    g_cpu.R[14] = 0x08006CBDu;
+    g_cpu.R[15] = _blt_08006CBA;
+    runtime_call_push_return(0x08006CBCu);
+    runtime_tick(_cyc_08006CBA);
+    _cyc_08006CBA = 0u;
+    runtime_dispatch(_blt_08006CBA);
+    if (g_cpu.R[15] != 0x08006CBCu) { runtime_call_cancel_return(0x08006CBCu); return; }
+    g_cpu.R[15] = 0x08006CBCu;
+    runtime_tick(_cyc_08006CBA);
+    /* fall-through to 0x08006CBC */
+    g_cpu.R[15] = 0x08006CBCu;
+    runtime_dispatch(0x08006CBCu);
+    return;
+}
+
+/* 0x08006CBC  mode=thumb  end=0x08006CD6  branches=27  indirect */
+
+
+/* 0x08006CBC thumb */
+void gf_tfunc_08006CBC(void) {
+    if (g_runtime_fn_entry_hook) g_runtime_fn_entry_hook(0x08006CBCu);
+    /* 08006CBC  08006cbc T movs r2,#0xc5 */
+    g_cpu.R[15] = 0x08006CBCu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006CBC = 1u;
+    _cyc_08006CBC = 1u;
+    uint32_t _r_08006CBC;
+    _r_08006CBC = 0x000000C5u;
+    arm_set_nzc_logic(_r_08006CBC, cpsr_c());
+    g_cpu.R[2] = _r_08006CBC;
+    g_cpu.R[15] = 0x08006CBEu;
+    runtime_tick(_cyc_08006CBC);
+    /* 08006CBE  08006cbe T movs r2,r2,lsl #5 */
+    g_cpu.R[15] = 0x08006CBEu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006CBE = 1u;
+    _cyc_08006CBE = 1u;
+    uint32_t _rm_08006CBE = g_cpu.R[2];
+    uint32_t _op2_08006CBE;
+    uint32_t _co_08006CBE;
+    _op2_08006CBE = _rm_08006CBE << 5;
+    _co_08006CBE = (_rm_08006CBE >> 27) & 1u;
+    uint32_t _r_08006CBE;
+    _r_08006CBE = _op2_08006CBE;
+    arm_set_nzc_logic(_r_08006CBE, _co_08006CBE);
+    g_cpu.R[2] = _r_08006CBE;
+    g_cpu.R[15] = 0x08006CC0u;
+    runtime_tick(_cyc_08006CBE);
+    /* 08006CC0  08006cc0 T adds r1,r4,r2 */
+    g_cpu.R[15] = 0x08006CC0u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006CC0 = 1u;
+    _cyc_08006CC0 = 1u;
+    uint32_t _rm_08006CC0 = g_cpu.R[2];
+    uint32_t _op2_08006CC0;
+    uint32_t _co_08006CC0;
+    _op2_08006CC0 = _rm_08006CC0;
+    _co_08006CC0 = cpsr_c();
+    uint32_t _rn_08006CC0 = g_cpu.R[4];
+    uint32_t _r_08006CC0;
+    _r_08006CC0 = _rn_08006CC0 + _op2_08006CC0;
+    arm_set_nzcv_add(_rn_08006CC0, _op2_08006CC0, _r_08006CC0);
+    g_cpu.R[1] = _r_08006CC0;
+    g_cpu.R[15] = 0x08006CC2u;
+    runtime_tick(_cyc_08006CC0);
+    /* 08006CC2  08006cc2 T ldr r0,[r1] */
+    g_cpu.R[15] = 0x08006CC2u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006CC2 = 1u;
+    _cyc_08006CC2 = 2u;
+    uint32_t _base_08006CC2 = g_cpu.R[1];
+    uint32_t _off_08006CC2;
+    _off_08006CC2 = 0x00000000u;
+    uint32_t _ea_08006CC2 = _base_08006CC2 + _off_08006CC2;
+    uint32_t _post_08006CC2 = _base_08006CC2 + _off_08006CC2;
+    _cyc_08006CC2 += runtime_mem_cycles(_ea_08006CC2, 4u, 0u);
+    uint32_t _v_08006CC2;
+    { uint32_t _w = bus_read_u32(_ea_08006CC2 & ~3u); uint32_t _rot = (_ea_08006CC2 & 3u) * 8u; _v_08006CC2 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_08006CC2;
+    g_cpu.R[15] = 0x08006CC4u;
+    runtime_tick(_cyc_08006CC2);
+    /* 08006CC4  08006cc4 T adds r0,r0,#0x1 */
+    g_cpu.R[15] = 0x08006CC4u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006CC4 = 1u;
+    _cyc_08006CC4 = 1u;
+    uint32_t _rn_08006CC4 = g_cpu.R[0];
+    uint32_t _r_08006CC4;
+    _r_08006CC4 = _rn_08006CC4 + 0x00000001u;
+    arm_set_nzcv_add(_rn_08006CC4, 0x00000001u, _r_08006CC4);
+    g_cpu.R[0] = _r_08006CC4;
+    g_cpu.R[15] = 0x08006CC6u;
+    runtime_tick(_cyc_08006CC4);
+    /* 08006CC6  08006cc6 T str r0,[r1] */
+    g_cpu.R[15] = 0x08006CC6u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006CC6 = 1u;
+    _cyc_08006CC6 = 1u;
+    uint32_t _base_08006CC6 = g_cpu.R[1];
+    uint32_t _off_08006CC6;
+    _off_08006CC6 = 0x00000000u;
+    uint32_t _ea_08006CC6 = _base_08006CC6 + _off_08006CC6;
+    uint32_t _post_08006CC6 = _base_08006CC6 + _off_08006CC6;
+    _cyc_08006CC6 += runtime_mem_cycles(_ea_08006CC6, 4u, 0u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x08006CC6u, _ea_08006CC6 & ~3u, g_cpu.R[0], 4u);
+    bus_write_u32(_ea_08006CC6 & ~3u, g_cpu.R[0]);
+    g_cpu.R[15] = 0x08006CC8u;
+    runtime_tick(_cyc_08006CC6);
+    /* 08006CC8  08006cc8 T cmps r0,#0x1 */
+    g_cpu.R[15] = 0x08006CC8u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006CC8 = 1u;
+    _cyc_08006CC8 = 1u;
+    uint32_t _rn_08006CC8 = g_cpu.R[0];
+    uint32_t _r_08006CC8;
+    _r_08006CC8 = _rn_08006CC8 - 0x00000001u;
+    arm_set_nzcv_sub(_rn_08006CC8, 0x00000001u, _r_08006CC8);
+    g_cpu.R[15] = 0x08006CCAu;
+    runtime_tick(_cyc_08006CC8);
+    /* 08006CCA  08006cca T ble 0x08006cd6 */
+    g_cpu.R[15] = 0x08006CCAu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006CCA = 1u;
+    if (arm_cond_passes(0xdu)) {
+        _cyc_08006CCA = 3u;
+        g_cpu.R[15] = 0x08006CD6u;
+        runtime_tick(_cyc_08006CCA);
+        GBARECOMP_TAIL_CALL(gf_tfunc_08006CD6);
+    }
+    g_cpu.R[15] = 0x08006CCCu;
+    runtime_tick(_cyc_08006CCA);
+    /* 08006CCC  08006ccc T ldr r0,[r5] */
+    g_cpu.R[15] = 0x08006CCCu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006CCC = 1u;
+    _cyc_08006CCC = 2u;
+    uint32_t _base_08006CCC = g_cpu.R[5];
+    uint32_t _off_08006CCC;
+    _off_08006CCC = 0x00000000u;
+    uint32_t _ea_08006CCC = _base_08006CCC + _off_08006CCC;
+    uint32_t _post_08006CCC = _base_08006CCC + _off_08006CCC;
+    _cyc_08006CCC += runtime_mem_cycles(_ea_08006CCC, 4u, 0u);
+    uint32_t _v_08006CCC;
+    { uint32_t _w = bus_read_u32(_ea_08006CCC & ~3u); uint32_t _rot = (_ea_08006CCC & 3u) * 8u; _v_08006CCC = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_08006CCC;
+    g_cpu.R[15] = 0x08006CCEu;
+    runtime_tick(_cyc_08006CCC);
+    /* 08006CCE  08006cce T movs r1,#0x80 */
+    g_cpu.R[15] = 0x08006CCEu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006CCE = 1u;
+    _cyc_08006CCE = 1u;
+    uint32_t _r_08006CCE;
+    _r_08006CCE = 0x00000080u;
+    arm_set_nzc_logic(_r_08006CCE, cpsr_c());
+    g_cpu.R[1] = _r_08006CCE;
+    g_cpu.R[15] = 0x08006CD0u;
+    runtime_tick(_cyc_08006CCE);
+    /* 08006CD0  08006cd0 T movs r1,r1,lsl #10 */
+    g_cpu.R[15] = 0x08006CD0u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006CD0 = 1u;
+    _cyc_08006CD0 = 1u;
+    uint32_t _rm_08006CD0 = g_cpu.R[1];
+    uint32_t _op2_08006CD0;
+    uint32_t _co_08006CD0;
+    _op2_08006CD0 = _rm_08006CD0 << 10;
+    _co_08006CD0 = (_rm_08006CD0 >> 22) & 1u;
+    uint32_t _r_08006CD0;
+    _r_08006CD0 = _op2_08006CD0;
+    arm_set_nzc_logic(_r_08006CD0, _co_08006CD0);
+    g_cpu.R[1] = _r_08006CD0;
+    g_cpu.R[15] = 0x08006CD2u;
+    runtime_tick(_cyc_08006CD0);
+    /* 08006CD2  08006cd2 T orrs r0,r0,r1 */
+    g_cpu.R[15] = 0x08006CD2u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006CD2 = 1u;
+    _cyc_08006CD2 = 1u;
+    uint32_t _rm_08006CD2 = g_cpu.R[1];
+    uint32_t _op2_08006CD2;
+    uint32_t _co_08006CD2;
+    _op2_08006CD2 = _rm_08006CD2;
+    _co_08006CD2 = cpsr_c();
+    uint32_t _rn_08006CD2 = g_cpu.R[0];
+    uint32_t _r_08006CD2;
+    _r_08006CD2 = _rn_08006CD2 | _op2_08006CD2;
+    arm_set_nzc_logic(_r_08006CD2, _co_08006CD2);
+    g_cpu.R[0] = _r_08006CD2;
+    g_cpu.R[15] = 0x08006CD4u;
+    runtime_tick(_cyc_08006CD2);
+    /* 08006CD4  08006cd4 T str r0,[r5] */
+    g_cpu.R[15] = 0x08006CD4u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006CD4 = 1u;
+    _cyc_08006CD4 = 1u;
+    uint32_t _base_08006CD4 = g_cpu.R[5];
+    uint32_t _off_08006CD4;
+    _off_08006CD4 = 0x00000000u;
+    uint32_t _ea_08006CD4 = _base_08006CD4 + _off_08006CD4;
+    uint32_t _post_08006CD4 = _base_08006CD4 + _off_08006CD4;
+    _cyc_08006CD4 += runtime_mem_cycles(_ea_08006CD4, 4u, 0u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x08006CD4u, _ea_08006CD4 & ~3u, g_cpu.R[0], 4u);
+    bus_write_u32(_ea_08006CD4 & ~3u, g_cpu.R[0]);
+    g_cpu.R[15] = 0x08006CD6u;
+    runtime_tick(_cyc_08006CD4);
+    /* fall-through to 0x08006CD6 */
+    g_cpu.R[15] = 0x08006CD6u;
+    runtime_dispatch(0x08006CD6u);
+    return;
+}
+
 /* 0x08006D08  mode=thumb  end=0x08006D1E  branches=20  indirect */
+
+
+/* 0x08006CD6 thumb */
+void gf_tfunc_08006CD6(void) {
+    if (g_runtime_fn_entry_hook) g_runtime_fn_entry_hook(0x08006CD6u);
+    /* 08006CD6  08006cd6 T ldr r7,[r15,#0xd8] */
+    g_cpu.R[15] = 0x08006CD6u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006CD6 = 1u;
+    _cyc_08006CD6 = 2u;
+    uint32_t _base_08006CD6 = 0x08006CDAu & ~3u;
+    uint32_t _off_08006CD6;
+    _off_08006CD6 = 0x000000D8u;
+    uint32_t _ea_08006CD6 = _base_08006CD6 + _off_08006CD6;
+    uint32_t _post_08006CD6 = _base_08006CD6 + _off_08006CD6;
+    _cyc_08006CD6 += runtime_mem_cycles(_ea_08006CD6, 4u, 0u);
+    uint32_t _v_08006CD6;
+    { uint32_t _w = bus_read_u32(_ea_08006CD6 & ~3u); uint32_t _rot = (_ea_08006CD6 & 3u) * 8u; _v_08006CD6 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[7] = _v_08006CD6;
+    g_cpu.R[15] = 0x08006CD8u;
+    runtime_tick(_cyc_08006CD6);
+    /* 08006CD8  08006cd8 T ldr r0,[r15,#0xd8] */
+    g_cpu.R[15] = 0x08006CD8u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006CD8 = 1u;
+    _cyc_08006CD8 = 2u;
+    uint32_t _base_08006CD8 = 0x08006CDCu & ~3u;
+    uint32_t _off_08006CD8;
+    _off_08006CD8 = 0x000000D8u;
+    uint32_t _ea_08006CD8 = _base_08006CD8 + _off_08006CD8;
+    uint32_t _post_08006CD8 = _base_08006CD8 + _off_08006CD8;
+    _cyc_08006CD8 += runtime_mem_cycles(_ea_08006CD8, 4u, 0u);
+    uint32_t _v_08006CD8;
+    { uint32_t _w = bus_read_u32(_ea_08006CD8 & ~3u); uint32_t _rot = (_ea_08006CD8 & 3u) * 8u; _v_08006CD8 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_08006CD8;
+    g_cpu.R[15] = 0x08006CDAu;
+    runtime_tick(_cyc_08006CD8);
+    /* 08006CDA  08006cda T adds r5,r7,r0 */
+    g_cpu.R[15] = 0x08006CDAu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006CDA = 1u;
+    _cyc_08006CDA = 1u;
+    uint32_t _rm_08006CDA = g_cpu.R[0];
+    uint32_t _op2_08006CDA;
+    uint32_t _co_08006CDA;
+    _op2_08006CDA = _rm_08006CDA;
+    _co_08006CDA = cpsr_c();
+    uint32_t _rn_08006CDA = g_cpu.R[7];
+    uint32_t _r_08006CDA;
+    _r_08006CDA = _rn_08006CDA + _op2_08006CDA;
+    arm_set_nzcv_add(_rn_08006CDA, _op2_08006CDA, _r_08006CDA);
+    g_cpu.R[5] = _r_08006CDA;
+    g_cpu.R[15] = 0x08006CDCu;
+    runtime_tick(_cyc_08006CDA);
+    /* 08006CDC  08006cdc T ldr r0,[r5] */
+    g_cpu.R[15] = 0x08006CDCu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006CDC = 1u;
+    _cyc_08006CDC = 2u;
+    uint32_t _base_08006CDC = g_cpu.R[5];
+    uint32_t _off_08006CDC;
+    _off_08006CDC = 0x00000000u;
+    uint32_t _ea_08006CDC = _base_08006CDC + _off_08006CDC;
+    uint32_t _post_08006CDC = _base_08006CDC + _off_08006CDC;
+    _cyc_08006CDC += runtime_mem_cycles(_ea_08006CDC, 4u, 0u);
+    uint32_t _v_08006CDC;
+    { uint32_t _w = bus_read_u32(_ea_08006CDC & ~3u); uint32_t _rot = (_ea_08006CDC & 3u) * 8u; _v_08006CDC = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_08006CDC;
+    g_cpu.R[15] = 0x08006CDEu;
+    runtime_tick(_cyc_08006CDC);
+    /* 08006CDE  08006cde T movs r1,#0x80 */
+    g_cpu.R[15] = 0x08006CDEu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006CDE = 1u;
+    _cyc_08006CDE = 1u;
+    uint32_t _r_08006CDE;
+    _r_08006CDE = 0x00000080u;
+    arm_set_nzc_logic(_r_08006CDE, cpsr_c());
+    g_cpu.R[1] = _r_08006CDE;
+    g_cpu.R[15] = 0x08006CE0u;
+    runtime_tick(_cyc_08006CDE);
+    /* 08006CE0  08006ce0 T movs r1,r1,lsl #13 */
+    g_cpu.R[15] = 0x08006CE0u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006CE0 = 1u;
+    _cyc_08006CE0 = 1u;
+    uint32_t _rm_08006CE0 = g_cpu.R[1];
+    uint32_t _op2_08006CE0;
+    uint32_t _co_08006CE0;
+    _op2_08006CE0 = _rm_08006CE0 << 13;
+    _co_08006CE0 = (_rm_08006CE0 >> 19) & 1u;
+    uint32_t _r_08006CE0;
+    _r_08006CE0 = _op2_08006CE0;
+    arm_set_nzc_logic(_r_08006CE0, _co_08006CE0);
+    g_cpu.R[1] = _r_08006CE0;
+    g_cpu.R[15] = 0x08006CE2u;
+    runtime_tick(_cyc_08006CE0);
+    /* 08006CE2  08006ce2 T ands r0,r0,r1 */
+    g_cpu.R[15] = 0x08006CE2u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006CE2 = 1u;
+    _cyc_08006CE2 = 1u;
+    uint32_t _rm_08006CE2 = g_cpu.R[1];
+    uint32_t _op2_08006CE2;
+    uint32_t _co_08006CE2;
+    _op2_08006CE2 = _rm_08006CE2;
+    _co_08006CE2 = cpsr_c();
+    uint32_t _rn_08006CE2 = g_cpu.R[0];
+    uint32_t _r_08006CE2;
+    _r_08006CE2 = _rn_08006CE2 & _op2_08006CE2;
+    arm_set_nzc_logic(_r_08006CE2, _co_08006CE2);
+    g_cpu.R[0] = _r_08006CE2;
+    g_cpu.R[15] = 0x08006CE4u;
+    runtime_tick(_cyc_08006CE2);
+    /* 08006CE4  08006ce4 T cmps r0,#0x0 */
+    g_cpu.R[15] = 0x08006CE4u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006CE4 = 1u;
+    _cyc_08006CE4 = 1u;
+    uint32_t _rn_08006CE4 = g_cpu.R[0];
+    uint32_t _r_08006CE4;
+    _r_08006CE4 = _rn_08006CE4 - 0x00000000u;
+    arm_set_nzcv_sub(_rn_08006CE4, 0x00000000u, _r_08006CE4);
+    g_cpu.R[15] = 0x08006CE6u;
+    runtime_tick(_cyc_08006CE4);
+    /* 08006CE6  08006ce6 T bne 0x08006cf2 */
+    g_cpu.R[15] = 0x08006CE6u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006CE6 = 1u;
+    if (arm_cond_passes(0x1u)) {
+        _cyc_08006CE6 = 3u;
+        g_cpu.R[15] = 0x08006CF2u;
+        runtime_tick(_cyc_08006CE6);
+        GBARECOMP_TAIL_CALL(gf_tfunc_08006CF2);
+    }
+    g_cpu.R[15] = 0x08006CE8u;
+    runtime_tick(_cyc_08006CE6);
+    /* 08006CE8  08006ce8 T ldr r1,[r15,#0x100] */
+    g_cpu.R[15] = 0x08006CE8u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006CE8 = 1u;
+    _cyc_08006CE8 = 2u;
+    uint32_t _base_08006CE8 = 0x08006CECu & ~3u;
+    uint32_t _off_08006CE8;
+    _off_08006CE8 = 0x00000100u;
+    uint32_t _ea_08006CE8 = _base_08006CE8 + _off_08006CE8;
+    uint32_t _post_08006CE8 = _base_08006CE8 + _off_08006CE8;
+    _cyc_08006CE8 += runtime_mem_cycles(_ea_08006CE8, 4u, 0u);
+    uint32_t _v_08006CE8;
+    { uint32_t _w = bus_read_u32(_ea_08006CE8 & ~3u); uint32_t _rot = (_ea_08006CE8 & 3u) * 8u; _v_08006CE8 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[1] = _v_08006CE8;
+    g_cpu.R[15] = 0x08006CEAu;
+    runtime_tick(_cyc_08006CE8);
+    /* 08006CEA  08006cea T adds r0,r7,r1 */
+    g_cpu.R[15] = 0x08006CEAu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006CEA = 1u;
+    _cyc_08006CEA = 1u;
+    uint32_t _rm_08006CEA = g_cpu.R[1];
+    uint32_t _op2_08006CEA;
+    uint32_t _co_08006CEA;
+    _op2_08006CEA = _rm_08006CEA;
+    _co_08006CEA = cpsr_c();
+    uint32_t _rn_08006CEA = g_cpu.R[7];
+    uint32_t _r_08006CEA;
+    _r_08006CEA = _rn_08006CEA + _op2_08006CEA;
+    arm_set_nzcv_add(_rn_08006CEA, _op2_08006CEA, _r_08006CEA);
+    g_cpu.R[0] = _r_08006CEA;
+    g_cpu.R[15] = 0x08006CECu;
+    runtime_tick(_cyc_08006CEA);
+    /* 08006CEC  08006cec T ldr r0,[r0] */
+    g_cpu.R[15] = 0x08006CECu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006CEC = 1u;
+    _cyc_08006CEC = 2u;
+    uint32_t _base_08006CEC = g_cpu.R[0];
+    uint32_t _off_08006CEC;
+    _off_08006CEC = 0x00000000u;
+    uint32_t _ea_08006CEC = _base_08006CEC + _off_08006CEC;
+    uint32_t _post_08006CEC = _base_08006CEC + _off_08006CEC;
+    _cyc_08006CEC += runtime_mem_cycles(_ea_08006CEC, 4u, 0u);
+    uint32_t _v_08006CEC;
+    { uint32_t _w = bus_read_u32(_ea_08006CEC & ~3u); uint32_t _rot = (_ea_08006CEC & 3u) * 8u; _v_08006CEC = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_08006CEC;
+    g_cpu.R[15] = 0x08006CEEu;
+    runtime_tick(_cyc_08006CEC);
+    /* 08006CEE  08006cee T bl.hi 0x08000cf2 */
+    g_cpu.R[15] = 0x08006CEEu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006CEE = 1u;
+    _cyc_08006CEE = 1u;
+    g_cpu.R[14] = 0x08000CF2u;
+    g_cpu.R[15] = 0x08006CF0u;
+    runtime_tick(_cyc_08006CEE);
+    /* 08006CF0  08006cf0 T bl.lo 0x00000000 */
+    g_cpu.R[15] = 0x08006CF0u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006CF0 = 1u;
+    _cyc_08006CF0 = 3u;
+    uint32_t _blt_08006CF0 = (g_cpu.R[14] + 0x00000A46u) & ~1u;
+    g_cpu.R[14] = 0x08006CF3u;
+    g_cpu.R[15] = _blt_08006CF0;
+    runtime_call_push_return(0x08006CF2u);
+    runtime_tick(_cyc_08006CF0);
+    _cyc_08006CF0 = 0u;
+    runtime_dispatch(_blt_08006CF0);
+    if (g_cpu.R[15] != 0x08006CF2u) { runtime_call_cancel_return(0x08006CF2u); return; }
+    g_cpu.R[15] = 0x08006CF2u;
+    runtime_tick(_cyc_08006CF0);
+    /* fall-through to 0x08006CF2 */
+    g_cpu.R[15] = 0x08006CF2u;
+    runtime_dispatch(0x08006CF2u);
+    return;
+}
+
+/* 0x08006CF2  mode=thumb  end=0x08006D08  branches=23  indirect */
+
+
+/* 0x08006CF2 thumb */
+void gf_tfunc_08006CF2(void) {
+    if (g_runtime_fn_entry_hook) g_runtime_fn_entry_hook(0x08006CF2u);
+    /* 08006CF2  08006cf2 T ldr r0,[r5] */
+    g_cpu.R[15] = 0x08006CF2u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006CF2 = 1u;
+    _cyc_08006CF2 = 2u;
+    uint32_t _base_08006CF2 = g_cpu.R[5];
+    uint32_t _off_08006CF2;
+    _off_08006CF2 = 0x00000000u;
+    uint32_t _ea_08006CF2 = _base_08006CF2 + _off_08006CF2;
+    uint32_t _post_08006CF2 = _base_08006CF2 + _off_08006CF2;
+    _cyc_08006CF2 += runtime_mem_cycles(_ea_08006CF2, 4u, 0u);
+    uint32_t _v_08006CF2;
+    { uint32_t _w = bus_read_u32(_ea_08006CF2 & ~3u); uint32_t _rot = (_ea_08006CF2 & 3u) * 8u; _v_08006CF2 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_08006CF2;
+    g_cpu.R[15] = 0x08006CF4u;
+    runtime_tick(_cyc_08006CF2);
+    /* 08006CF4  08006cf4 T movs r1,#0x80 */
+    g_cpu.R[15] = 0x08006CF4u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006CF4 = 1u;
+    _cyc_08006CF4 = 1u;
+    uint32_t _r_08006CF4;
+    _r_08006CF4 = 0x00000080u;
+    arm_set_nzc_logic(_r_08006CF4, cpsr_c());
+    g_cpu.R[1] = _r_08006CF4;
+    g_cpu.R[15] = 0x08006CF6u;
+    runtime_tick(_cyc_08006CF4);
+    /* 08006CF6  08006cf6 T movs r1,r1,lsl #12 */
+    g_cpu.R[15] = 0x08006CF6u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006CF6 = 1u;
+    _cyc_08006CF6 = 1u;
+    uint32_t _rm_08006CF6 = g_cpu.R[1];
+    uint32_t _op2_08006CF6;
+    uint32_t _co_08006CF6;
+    _op2_08006CF6 = _rm_08006CF6 << 12;
+    _co_08006CF6 = (_rm_08006CF6 >> 20) & 1u;
+    uint32_t _r_08006CF6;
+    _r_08006CF6 = _op2_08006CF6;
+    arm_set_nzc_logic(_r_08006CF6, _co_08006CF6);
+    g_cpu.R[1] = _r_08006CF6;
+    g_cpu.R[15] = 0x08006CF8u;
+    runtime_tick(_cyc_08006CF6);
+    /* 08006CF8  08006cf8 T ands r0,r0,r1 */
+    g_cpu.R[15] = 0x08006CF8u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006CF8 = 1u;
+    _cyc_08006CF8 = 1u;
+    uint32_t _rm_08006CF8 = g_cpu.R[1];
+    uint32_t _op2_08006CF8;
+    uint32_t _co_08006CF8;
+    _op2_08006CF8 = _rm_08006CF8;
+    _co_08006CF8 = cpsr_c();
+    uint32_t _rn_08006CF8 = g_cpu.R[0];
+    uint32_t _r_08006CF8;
+    _r_08006CF8 = _rn_08006CF8 & _op2_08006CF8;
+    arm_set_nzc_logic(_r_08006CF8, _co_08006CF8);
+    g_cpu.R[0] = _r_08006CF8;
+    g_cpu.R[15] = 0x08006CFAu;
+    runtime_tick(_cyc_08006CF8);
+    /* 08006CFA  08006cfa T cmps r0,#0x0 */
+    g_cpu.R[15] = 0x08006CFAu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006CFA = 1u;
+    _cyc_08006CFA = 1u;
+    uint32_t _rn_08006CFA = g_cpu.R[0];
+    uint32_t _r_08006CFA;
+    _r_08006CFA = _rn_08006CFA - 0x00000000u;
+    arm_set_nzcv_sub(_rn_08006CFA, 0x00000000u, _r_08006CFA);
+    g_cpu.R[15] = 0x08006CFCu;
+    runtime_tick(_cyc_08006CFA);
+    /* 08006CFC  08006cfc T bne 0x08006d08 */
+    g_cpu.R[15] = 0x08006CFCu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006CFC = 1u;
+    if (arm_cond_passes(0x1u)) {
+        _cyc_08006CFC = 3u;
+        g_cpu.R[15] = 0x08006D08u;
+        runtime_tick(_cyc_08006CFC);
+        GBARECOMP_TAIL_CALL(gf_tfunc_08006D08);
+    }
+    g_cpu.R[15] = 0x08006CFEu;
+    runtime_tick(_cyc_08006CFC);
+    /* 08006CFE  08006cfe T ldr r2,[r15,#0xf0] */
+    g_cpu.R[15] = 0x08006CFEu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006CFE = 1u;
+    _cyc_08006CFE = 2u;
+    uint32_t _base_08006CFE = 0x08006D02u & ~3u;
+    uint32_t _off_08006CFE;
+    _off_08006CFE = 0x000000F0u;
+    uint32_t _ea_08006CFE = _base_08006CFE + _off_08006CFE;
+    uint32_t _post_08006CFE = _base_08006CFE + _off_08006CFE;
+    _cyc_08006CFE += runtime_mem_cycles(_ea_08006CFE, 4u, 0u);
+    uint32_t _v_08006CFE;
+    { uint32_t _w = bus_read_u32(_ea_08006CFE & ~3u); uint32_t _rot = (_ea_08006CFE & 3u) * 8u; _v_08006CFE = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[2] = _v_08006CFE;
+    g_cpu.R[15] = 0x08006D00u;
+    runtime_tick(_cyc_08006CFE);
+    /* 08006D00  08006d00 T adds r0,r7,r2 */
+    g_cpu.R[15] = 0x08006D00u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006D00 = 1u;
+    _cyc_08006D00 = 1u;
+    uint32_t _rm_08006D00 = g_cpu.R[2];
+    uint32_t _op2_08006D00;
+    uint32_t _co_08006D00;
+    _op2_08006D00 = _rm_08006D00;
+    _co_08006D00 = cpsr_c();
+    uint32_t _rn_08006D00 = g_cpu.R[7];
+    uint32_t _r_08006D00;
+    _r_08006D00 = _rn_08006D00 + _op2_08006D00;
+    arm_set_nzcv_add(_rn_08006D00, _op2_08006D00, _r_08006D00);
+    g_cpu.R[0] = _r_08006D00;
+    g_cpu.R[15] = 0x08006D02u;
+    runtime_tick(_cyc_08006D00);
+    /* 08006D02  08006d02 T ldr r0,[r0] */
+    g_cpu.R[15] = 0x08006D02u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006D02 = 1u;
+    _cyc_08006D02 = 2u;
+    uint32_t _base_08006D02 = g_cpu.R[0];
+    uint32_t _off_08006D02;
+    _off_08006D02 = 0x00000000u;
+    uint32_t _ea_08006D02 = _base_08006D02 + _off_08006D02;
+    uint32_t _post_08006D02 = _base_08006D02 + _off_08006D02;
+    _cyc_08006D02 += runtime_mem_cycles(_ea_08006D02, 4u, 0u);
+    uint32_t _v_08006D02;
+    { uint32_t _w = bus_read_u32(_ea_08006D02 & ~3u); uint32_t _rot = (_ea_08006D02 & 3u) * 8u; _v_08006D02 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_08006D02;
+    g_cpu.R[15] = 0x08006D04u;
+    runtime_tick(_cyc_08006D02);
+    /* 08006D04  08006d04 T bl.hi 0x08000d08 */
+    g_cpu.R[15] = 0x08006D04u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006D04 = 1u;
+    _cyc_08006D04 = 1u;
+    g_cpu.R[14] = 0x08000D08u;
+    g_cpu.R[15] = 0x08006D06u;
+    runtime_tick(_cyc_08006D04);
+    /* 08006D06  08006d06 T bl.lo 0x00000000 */
+    g_cpu.R[15] = 0x08006D06u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006D06 = 1u;
+    _cyc_08006D06 = 3u;
+    uint32_t _blt_08006D06 = (g_cpu.R[14] + 0x00000A30u) & ~1u;
+    g_cpu.R[14] = 0x08006D09u;
+    g_cpu.R[15] = _blt_08006D06;
+    runtime_call_push_return(0x08006D08u);
+    runtime_tick(_cyc_08006D06);
+    _cyc_08006D06 = 0u;
+    runtime_dispatch(_blt_08006D06);
+    if (g_cpu.R[15] != 0x08006D08u) { runtime_call_cancel_return(0x08006D08u); return; }
+    g_cpu.R[15] = 0x08006D08u;
+    runtime_tick(_cyc_08006D06);
+    /* fall-through to 0x08006D08 */
+    g_cpu.R[15] = 0x08006D08u;
+    runtime_dispatch(0x08006D08u);
+    return;
+}
+
+/* 0x08006D1E  mode=thumb  end=0x08006D28  branches=17  indirect */
 
 
 /* 0x08006D08 thumb */
@@ -37536,7 +44119,7 @@ void gf_tfunc_08006D70(void) {
     return;
 }
 
-/* 0x080071D4  mode=thumb  end=0x080071DE  branches=5 */
+/* 0x08006E0C  mode=thumb  end=0x08006E1E  branches=10 */
 
 
 /* 0x08006D84 thumb */
@@ -37890,7 +44473,6756 @@ void gf_tfunc_08006DA4(void) {
     return;
 }
 
-/* 0x0800731A  mode=thumb  end=0x0800734A  branches=10 */
+/* 0x08006E2A  mode=thumb  end=0x08006E3E  branches=6 */
+
+
+/* 0x08006E0C thumb */
+void gf_actor_pre_step(void) {
+    if (g_runtime_fn_entry_hook) g_runtime_fn_entry_hook(0x08006E0Cu);
+    /* 08006E0C  08006e0c T stm r13!,{r4,r5,r6,r7,r14} */
+    g_cpu.R[15] = 0x08006E0Cu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006E0C = 1u;
+    _cyc_08006E0C = 1u;
+    uint32_t _b_08006E0C = g_cpu.R[13];
+    uint32_t _a_08006E0C = _b_08006E0C - 20u;
+    uint32_t _fb_08006E0C = _b_08006E0C - 20u;
+    _cyc_08006E0C += runtime_mem_cycles(_a_08006E0C & ~3u, 4u, 0u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x08006E0Cu, _a_08006E0C & ~3u, g_cpu.R[4], 4u);
+    bus_write_u32(_a_08006E0C & ~3u, g_cpu.R[4]);
+    _a_08006E0C += 4u;
+    _cyc_08006E0C += runtime_mem_cycles(_a_08006E0C & ~3u, 4u, 1u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x08006E0Cu, _a_08006E0C & ~3u, g_cpu.R[5], 4u);
+    bus_write_u32(_a_08006E0C & ~3u, g_cpu.R[5]);
+    _a_08006E0C += 4u;
+    _cyc_08006E0C += runtime_mem_cycles(_a_08006E0C & ~3u, 4u, 1u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x08006E0Cu, _a_08006E0C & ~3u, g_cpu.R[6], 4u);
+    bus_write_u32(_a_08006E0C & ~3u, g_cpu.R[6]);
+    _a_08006E0C += 4u;
+    _cyc_08006E0C += runtime_mem_cycles(_a_08006E0C & ~3u, 4u, 1u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x08006E0Cu, _a_08006E0C & ~3u, g_cpu.R[7], 4u);
+    bus_write_u32(_a_08006E0C & ~3u, g_cpu.R[7]);
+    _a_08006E0C += 4u;
+    _cyc_08006E0C += runtime_mem_cycles(_a_08006E0C & ~3u, 4u, 1u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x08006E0Cu, _a_08006E0C & ~3u, g_cpu.R[14], 4u);
+    bus_write_u32(_a_08006E0C & ~3u, g_cpu.R[14]);
+    _a_08006E0C += 4u;
+    g_cpu.R[13] = _fb_08006E0C;
+    g_cpu.R[15] = 0x08006E0Eu;
+    runtime_tick(_cyc_08006E0C);
+    /* 08006E0E  08006e0e T adds r6,r0,#0x0 */
+    g_cpu.R[15] = 0x08006E0Eu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006E0E = 1u;
+    _cyc_08006E0E = 1u;
+    uint32_t _rn_08006E0E = g_cpu.R[0];
+    uint32_t _r_08006E0E;
+    _r_08006E0E = _rn_08006E0E + 0x00000000u;
+    arm_set_nzcv_add(_rn_08006E0E, 0x00000000u, _r_08006E0E);
+    g_cpu.R[6] = _r_08006E0E;
+    g_cpu.R[15] = 0x08006E10u;
+    runtime_tick(_cyc_08006E0E);
+    /* 08006E10  08006e10 T ldr r7,[r15,#0x6c] */
+    g_cpu.R[15] = 0x08006E10u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006E10 = 1u;
+    _cyc_08006E10 = 2u;
+    uint32_t _base_08006E10 = 0x08006E14u & ~3u;
+    uint32_t _off_08006E10;
+    _off_08006E10 = 0x0000006Cu;
+    uint32_t _ea_08006E10 = _base_08006E10 + _off_08006E10;
+    uint32_t _post_08006E10 = _base_08006E10 + _off_08006E10;
+    _cyc_08006E10 += runtime_mem_cycles(_ea_08006E10, 4u, 0u);
+    uint32_t _v_08006E10;
+    { uint32_t _w = bus_read_u32(_ea_08006E10 & ~3u); uint32_t _rot = (_ea_08006E10 & 3u) * 8u; _v_08006E10 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[7] = _v_08006E10;
+    g_cpu.R[15] = 0x08006E12u;
+    runtime_tick(_cyc_08006E10);
+    /* 08006E12  08006e12 T ldr r4,[r15,#0x70] */
+    g_cpu.R[15] = 0x08006E12u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006E12 = 1u;
+    _cyc_08006E12 = 2u;
+    uint32_t _base_08006E12 = 0x08006E16u & ~3u;
+    uint32_t _off_08006E12;
+    _off_08006E12 = 0x00000070u;
+    uint32_t _ea_08006E12 = _base_08006E12 + _off_08006E12;
+    uint32_t _post_08006E12 = _base_08006E12 + _off_08006E12;
+    _cyc_08006E12 += runtime_mem_cycles(_ea_08006E12, 4u, 0u);
+    uint32_t _v_08006E12;
+    { uint32_t _w = bus_read_u32(_ea_08006E12 & ~3u); uint32_t _rot = (_ea_08006E12 & 3u) * 8u; _v_08006E12 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[4] = _v_08006E12;
+    g_cpu.R[15] = 0x08006E14u;
+    runtime_tick(_cyc_08006E12);
+    /* 08006E14  08006e14 T ldr r1,[r15,#0x70] */
+    g_cpu.R[15] = 0x08006E14u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006E14 = 1u;
+    _cyc_08006E14 = 2u;
+    uint32_t _base_08006E14 = 0x08006E18u & ~3u;
+    uint32_t _off_08006E14;
+    _off_08006E14 = 0x00000070u;
+    uint32_t _ea_08006E14 = _base_08006E14 + _off_08006E14;
+    uint32_t _post_08006E14 = _base_08006E14 + _off_08006E14;
+    _cyc_08006E14 += runtime_mem_cycles(_ea_08006E14, 4u, 0u);
+    uint32_t _v_08006E14;
+    { uint32_t _w = bus_read_u32(_ea_08006E14 & ~3u); uint32_t _rot = (_ea_08006E14 & 3u) * 8u; _v_08006E14 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[1] = _v_08006E14;
+    g_cpu.R[15] = 0x08006E16u;
+    runtime_tick(_cyc_08006E14);
+    /* 08006E16  08006e16 T adds r0,r4,r1 */
+    g_cpu.R[15] = 0x08006E16u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006E16 = 1u;
+    _cyc_08006E16 = 1u;
+    uint32_t _rm_08006E16 = g_cpu.R[1];
+    uint32_t _op2_08006E16;
+    uint32_t _co_08006E16;
+    _op2_08006E16 = _rm_08006E16;
+    _co_08006E16 = cpsr_c();
+    uint32_t _rn_08006E16 = g_cpu.R[4];
+    uint32_t _r_08006E16;
+    _r_08006E16 = _rn_08006E16 + _op2_08006E16;
+    arm_set_nzcv_add(_rn_08006E16, _op2_08006E16, _r_08006E16);
+    g_cpu.R[0] = _r_08006E16;
+    g_cpu.R[15] = 0x08006E18u;
+    runtime_tick(_cyc_08006E16);
+    /* 08006E18  08006e18 T ldr r0,[r0] */
+    g_cpu.R[15] = 0x08006E18u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006E18 = 1u;
+    _cyc_08006E18 = 2u;
+    uint32_t _base_08006E18 = g_cpu.R[0];
+    uint32_t _off_08006E18;
+    _off_08006E18 = 0x00000000u;
+    uint32_t _ea_08006E18 = _base_08006E18 + _off_08006E18;
+    uint32_t _post_08006E18 = _base_08006E18 + _off_08006E18;
+    _cyc_08006E18 += runtime_mem_cycles(_ea_08006E18, 4u, 0u);
+    uint32_t _v_08006E18;
+    { uint32_t _w = bus_read_u32(_ea_08006E18 & ~3u); uint32_t _rot = (_ea_08006E18 & 3u) * 8u; _v_08006E18 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_08006E18;
+    g_cpu.R[15] = 0x08006E1Au;
+    runtime_tick(_cyc_08006E18);
+    /* 08006E1A  08006e1a T bl.hi 0x08000e1e */
+    g_cpu.R[15] = 0x08006E1Au;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006E1A = 1u;
+    _cyc_08006E1A = 1u;
+    g_cpu.R[14] = 0x08000E1Eu;
+    g_cpu.R[15] = 0x08006E1Cu;
+    runtime_tick(_cyc_08006E1A);
+    /* 08006E1C  08006e1c T bl.lo 0x00000000 */
+    g_cpu.R[15] = 0x08006E1Cu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006E1C = 1u;
+    _cyc_08006E1C = 3u;
+    uint32_t _blt_08006E1C = (g_cpu.R[14] + 0x0000091Au) & ~1u;
+    g_cpu.R[14] = 0x08006E1Fu;
+    g_cpu.R[15] = _blt_08006E1C;
+    runtime_call_push_return(0x08006E1Eu);
+    runtime_tick(_cyc_08006E1C);
+    _cyc_08006E1C = 0u;
+    runtime_dispatch(_blt_08006E1C);
+    if (g_cpu.R[15] != 0x08006E1Eu) { runtime_call_cancel_return(0x08006E1Eu); return; }
+    g_cpu.R[15] = 0x08006E1Eu;
+    runtime_tick(_cyc_08006E1C);
+    /* fall-through to 0x08006E1E */
+    g_cpu.R[15] = 0x08006E1Eu;
+    runtime_dispatch(0x08006E1Eu);
+    return;
+}
+
+/* 0x08006E1E  mode=thumb  end=0x08006E2A  branches=8 */
+
+
+/* 0x08006E1E thumb */
+void gf_actor_step_a(void) {
+    if (g_runtime_fn_entry_hook) g_runtime_fn_entry_hook(0x08006E1Eu);
+    /* 08006E1E  08006e1e T movs r2,#0xc3 */
+    g_cpu.R[15] = 0x08006E1Eu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006E1E = 1u;
+    _cyc_08006E1E = 1u;
+    uint32_t _r_08006E1E;
+    _r_08006E1E = 0x000000C3u;
+    arm_set_nzc_logic(_r_08006E1E, cpsr_c());
+    g_cpu.R[2] = _r_08006E1E;
+    g_cpu.R[15] = 0x08006E20u;
+    runtime_tick(_cyc_08006E1E);
+    /* 08006E20  08006e20 T movs r2,r2,lsl #5 */
+    g_cpu.R[15] = 0x08006E20u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006E20 = 1u;
+    _cyc_08006E20 = 1u;
+    uint32_t _rm_08006E20 = g_cpu.R[2];
+    uint32_t _op2_08006E20;
+    uint32_t _co_08006E20;
+    _op2_08006E20 = _rm_08006E20 << 5;
+    _co_08006E20 = (_rm_08006E20 >> 27) & 1u;
+    uint32_t _r_08006E20;
+    _r_08006E20 = _op2_08006E20;
+    arm_set_nzc_logic(_r_08006E20, _co_08006E20);
+    g_cpu.R[2] = _r_08006E20;
+    g_cpu.R[15] = 0x08006E22u;
+    runtime_tick(_cyc_08006E20);
+    /* 08006E22  08006e22 T adds r0,r4,r2 */
+    g_cpu.R[15] = 0x08006E22u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006E22 = 1u;
+    _cyc_08006E22 = 1u;
+    uint32_t _rm_08006E22 = g_cpu.R[2];
+    uint32_t _op2_08006E22;
+    uint32_t _co_08006E22;
+    _op2_08006E22 = _rm_08006E22;
+    _co_08006E22 = cpsr_c();
+    uint32_t _rn_08006E22 = g_cpu.R[4];
+    uint32_t _r_08006E22;
+    _r_08006E22 = _rn_08006E22 + _op2_08006E22;
+    arm_set_nzcv_add(_rn_08006E22, _op2_08006E22, _r_08006E22);
+    g_cpu.R[0] = _r_08006E22;
+    g_cpu.R[15] = 0x08006E24u;
+    runtime_tick(_cyc_08006E22);
+    /* 08006E24  08006e24 T ldr r0,[r0] */
+    g_cpu.R[15] = 0x08006E24u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006E24 = 1u;
+    _cyc_08006E24 = 2u;
+    uint32_t _base_08006E24 = g_cpu.R[0];
+    uint32_t _off_08006E24;
+    _off_08006E24 = 0x00000000u;
+    uint32_t _ea_08006E24 = _base_08006E24 + _off_08006E24;
+    uint32_t _post_08006E24 = _base_08006E24 + _off_08006E24;
+    _cyc_08006E24 += runtime_mem_cycles(_ea_08006E24, 4u, 0u);
+    uint32_t _v_08006E24;
+    { uint32_t _w = bus_read_u32(_ea_08006E24 & ~3u); uint32_t _rot = (_ea_08006E24 & 3u) * 8u; _v_08006E24 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_08006E24;
+    g_cpu.R[15] = 0x08006E26u;
+    runtime_tick(_cyc_08006E24);
+    /* 08006E26  08006e26 T bl.hi 0x08000e2a */
+    g_cpu.R[15] = 0x08006E26u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006E26 = 1u;
+    _cyc_08006E26 = 1u;
+    g_cpu.R[14] = 0x08000E2Au;
+    g_cpu.R[15] = 0x08006E28u;
+    runtime_tick(_cyc_08006E26);
+    /* 08006E28  08006e28 T bl.lo 0x00000000 */
+    g_cpu.R[15] = 0x08006E28u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006E28 = 1u;
+    _cyc_08006E28 = 3u;
+    uint32_t _blt_08006E28 = (g_cpu.R[14] + 0x0000090Eu) & ~1u;
+    g_cpu.R[14] = 0x08006E2Bu;
+    g_cpu.R[15] = _blt_08006E28;
+    runtime_call_push_return(0x08006E2Au);
+    runtime_tick(_cyc_08006E28);
+    _cyc_08006E28 = 0u;
+    runtime_dispatch(_blt_08006E28);
+    if (g_cpu.R[15] != 0x08006E2Au) { runtime_call_cancel_return(0x08006E2Au); return; }
+    g_cpu.R[15] = 0x08006E2Au;
+    runtime_tick(_cyc_08006E28);
+    /* fall-through to 0x08006E2A */
+    g_cpu.R[15] = 0x08006E2Au;
+    runtime_dispatch(0x08006E2Au);
+    return;
+}
+
+/* 0x08006E3E  mode=thumb  end=0x08006E5E  branches=4 */
+
+
+/* 0x08006E2A thumb */
+void gf_tfunc_08006E2A(void) {
+    if (g_runtime_fn_entry_hook) g_runtime_fn_entry_hook(0x08006E2Au);
+    /* 08006E2A  08006e2a T ldr r0,[r15,#0x60] */
+    g_cpu.R[15] = 0x08006E2Au;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006E2A = 1u;
+    _cyc_08006E2A = 2u;
+    uint32_t _base_08006E2A = 0x08006E2Eu & ~3u;
+    uint32_t _off_08006E2A;
+    _off_08006E2A = 0x00000060u;
+    uint32_t _ea_08006E2A = _base_08006E2A + _off_08006E2A;
+    uint32_t _post_08006E2A = _base_08006E2A + _off_08006E2A;
+    _cyc_08006E2A += runtime_mem_cycles(_ea_08006E2A, 4u, 0u);
+    uint32_t _v_08006E2A;
+    { uint32_t _w = bus_read_u32(_ea_08006E2A & ~3u); uint32_t _rot = (_ea_08006E2A & 3u) * 8u; _v_08006E2A = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_08006E2A;
+    g_cpu.R[15] = 0x08006E2Cu;
+    runtime_tick(_cyc_08006E2A);
+    /* 08006E2C  08006e2c T adds r1,r4,r0 */
+    g_cpu.R[15] = 0x08006E2Cu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006E2C = 1u;
+    _cyc_08006E2C = 1u;
+    uint32_t _rm_08006E2C = g_cpu.R[0];
+    uint32_t _op2_08006E2C;
+    uint32_t _co_08006E2C;
+    _op2_08006E2C = _rm_08006E2C;
+    _co_08006E2C = cpsr_c();
+    uint32_t _rn_08006E2C = g_cpu.R[4];
+    uint32_t _r_08006E2C;
+    _r_08006E2C = _rn_08006E2C + _op2_08006E2C;
+    arm_set_nzcv_add(_rn_08006E2C, _op2_08006E2C, _r_08006E2C);
+    g_cpu.R[1] = _r_08006E2C;
+    g_cpu.R[15] = 0x08006E2Eu;
+    runtime_tick(_cyc_08006E2C);
+    /* 08006E2E  08006e2e T ldr r0,[r1] */
+    g_cpu.R[15] = 0x08006E2Eu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006E2E = 1u;
+    _cyc_08006E2E = 2u;
+    uint32_t _base_08006E2E = g_cpu.R[1];
+    uint32_t _off_08006E2E;
+    _off_08006E2E = 0x00000000u;
+    uint32_t _ea_08006E2E = _base_08006E2E + _off_08006E2E;
+    uint32_t _post_08006E2E = _base_08006E2E + _off_08006E2E;
+    _cyc_08006E2E += runtime_mem_cycles(_ea_08006E2E, 4u, 0u);
+    uint32_t _v_08006E2E;
+    { uint32_t _w = bus_read_u32(_ea_08006E2E & ~3u); uint32_t _rot = (_ea_08006E2E & 3u) * 8u; _v_08006E2E = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_08006E2E;
+    g_cpu.R[15] = 0x08006E30u;
+    runtime_tick(_cyc_08006E2E);
+    /* 08006E30  08006e30 T adds r0,r0,#0x1 */
+    g_cpu.R[15] = 0x08006E30u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006E30 = 1u;
+    _cyc_08006E30 = 1u;
+    uint32_t _rn_08006E30 = g_cpu.R[0];
+    uint32_t _r_08006E30;
+    _r_08006E30 = _rn_08006E30 + 0x00000001u;
+    arm_set_nzcv_add(_rn_08006E30, 0x00000001u, _r_08006E30);
+    g_cpu.R[0] = _r_08006E30;
+    g_cpu.R[15] = 0x08006E32u;
+    runtime_tick(_cyc_08006E30);
+    /* 08006E32  08006e32 T str r0,[r1] */
+    g_cpu.R[15] = 0x08006E32u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006E32 = 1u;
+    _cyc_08006E32 = 1u;
+    uint32_t _base_08006E32 = g_cpu.R[1];
+    uint32_t _off_08006E32;
+    _off_08006E32 = 0x00000000u;
+    uint32_t _ea_08006E32 = _base_08006E32 + _off_08006E32;
+    uint32_t _post_08006E32 = _base_08006E32 + _off_08006E32;
+    _cyc_08006E32 += runtime_mem_cycles(_ea_08006E32, 4u, 0u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x08006E32u, _ea_08006E32 & ~3u, g_cpu.R[0], 4u);
+    bus_write_u32(_ea_08006E32 & ~3u, g_cpu.R[0]);
+    g_cpu.R[15] = 0x08006E34u;
+    runtime_tick(_cyc_08006E32);
+    /* 08006E34  08006e34 T ldr r1,[r15,#0x58] */
+    g_cpu.R[15] = 0x08006E34u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006E34 = 1u;
+    _cyc_08006E34 = 2u;
+    uint32_t _base_08006E34 = 0x08006E38u & ~3u;
+    uint32_t _off_08006E34;
+    _off_08006E34 = 0x00000058u;
+    uint32_t _ea_08006E34 = _base_08006E34 + _off_08006E34;
+    uint32_t _post_08006E34 = _base_08006E34 + _off_08006E34;
+    _cyc_08006E34 += runtime_mem_cycles(_ea_08006E34, 4u, 0u);
+    uint32_t _v_08006E34;
+    { uint32_t _w = bus_read_u32(_ea_08006E34 & ~3u); uint32_t _rot = (_ea_08006E34 & 3u) * 8u; _v_08006E34 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[1] = _v_08006E34;
+    g_cpu.R[15] = 0x08006E36u;
+    runtime_tick(_cyc_08006E34);
+    /* 08006E36  08006e36 T adds r0,r4,r1 */
+    g_cpu.R[15] = 0x08006E36u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006E36 = 1u;
+    _cyc_08006E36 = 1u;
+    uint32_t _rm_08006E36 = g_cpu.R[1];
+    uint32_t _op2_08006E36;
+    uint32_t _co_08006E36;
+    _op2_08006E36 = _rm_08006E36;
+    _co_08006E36 = cpsr_c();
+    uint32_t _rn_08006E36 = g_cpu.R[4];
+    uint32_t _r_08006E36;
+    _r_08006E36 = _rn_08006E36 + _op2_08006E36;
+    arm_set_nzcv_add(_rn_08006E36, _op2_08006E36, _r_08006E36);
+    g_cpu.R[0] = _r_08006E36;
+    g_cpu.R[15] = 0x08006E38u;
+    runtime_tick(_cyc_08006E36);
+    /* 08006E38  08006e38 T ldr r0,[r0] */
+    g_cpu.R[15] = 0x08006E38u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006E38 = 1u;
+    _cyc_08006E38 = 2u;
+    uint32_t _base_08006E38 = g_cpu.R[0];
+    uint32_t _off_08006E38;
+    _off_08006E38 = 0x00000000u;
+    uint32_t _ea_08006E38 = _base_08006E38 + _off_08006E38;
+    uint32_t _post_08006E38 = _base_08006E38 + _off_08006E38;
+    _cyc_08006E38 += runtime_mem_cycles(_ea_08006E38, 4u, 0u);
+    uint32_t _v_08006E38;
+    { uint32_t _w = bus_read_u32(_ea_08006E38 & ~3u); uint32_t _rot = (_ea_08006E38 & 3u) * 8u; _v_08006E38 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_08006E38;
+    g_cpu.R[15] = 0x08006E3Au;
+    runtime_tick(_cyc_08006E38);
+    /* 08006E3A  08006e3a T bl.hi 0x08000e3e */
+    g_cpu.R[15] = 0x08006E3Au;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006E3A = 1u;
+    _cyc_08006E3A = 1u;
+    g_cpu.R[14] = 0x08000E3Eu;
+    g_cpu.R[15] = 0x08006E3Cu;
+    runtime_tick(_cyc_08006E3A);
+    /* 08006E3C  08006e3c T bl.lo 0x00000000 */
+    g_cpu.R[15] = 0x08006E3Cu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006E3C = 1u;
+    _cyc_08006E3C = 3u;
+    uint32_t _blt_08006E3C = (g_cpu.R[14] + 0x000008FAu) & ~1u;
+    g_cpu.R[14] = 0x08006E3Fu;
+    g_cpu.R[15] = _blt_08006E3C;
+    runtime_call_push_return(0x08006E3Eu);
+    runtime_tick(_cyc_08006E3C);
+    _cyc_08006E3C = 0u;
+    runtime_dispatch(_blt_08006E3C);
+    if (g_cpu.R[15] != 0x08006E3Eu) { runtime_call_cancel_return(0x08006E3Eu); return; }
+    g_cpu.R[15] = 0x08006E3Eu;
+    runtime_tick(_cyc_08006E3C);
+    /* fall-through to 0x08006E3E */
+    g_cpu.R[15] = 0x08006E3Eu;
+    runtime_dispatch(0x08006E3Eu);
+    return;
+}
+
+/* 0x08006E9C  mode=thumb  end=0x08006EAE  branches=13  indirect */
+
+
+/* 0x08006E3E thumb */
+void gf_tfunc_08006E3E(void) {
+    if (g_runtime_fn_entry_hook) g_runtime_fn_entry_hook(0x08006E3Eu);
+    /* 08006E3E  08006e3e T movs r0,#0xa6 */
+    g_cpu.R[15] = 0x08006E3Eu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006E3E = 1u;
+    _cyc_08006E3E = 1u;
+    uint32_t _r_08006E3E;
+    _r_08006E3E = 0x000000A6u;
+    arm_set_nzc_logic(_r_08006E3E, cpsr_c());
+    g_cpu.R[0] = _r_08006E3E;
+    g_cpu.R[15] = 0x08006E40u;
+    runtime_tick(_cyc_08006E3E);
+    /* 08006E40  08006e40 T movs r0,r0,lsl #5 */
+    g_cpu.R[15] = 0x08006E40u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006E40 = 1u;
+    _cyc_08006E40 = 1u;
+    uint32_t _rm_08006E40 = g_cpu.R[0];
+    uint32_t _op2_08006E40;
+    uint32_t _co_08006E40;
+    _op2_08006E40 = _rm_08006E40 << 5;
+    _co_08006E40 = (_rm_08006E40 >> 27) & 1u;
+    uint32_t _r_08006E40;
+    _r_08006E40 = _op2_08006E40;
+    arm_set_nzc_logic(_r_08006E40, _co_08006E40);
+    g_cpu.R[0] = _r_08006E40;
+    g_cpu.R[15] = 0x08006E42u;
+    runtime_tick(_cyc_08006E40);
+    /* 08006E42  08006e42 T adds r2,r4,r0 */
+    g_cpu.R[15] = 0x08006E42u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006E42 = 1u;
+    _cyc_08006E42 = 1u;
+    uint32_t _rm_08006E42 = g_cpu.R[0];
+    uint32_t _op2_08006E42;
+    uint32_t _co_08006E42;
+    _op2_08006E42 = _rm_08006E42;
+    _co_08006E42 = cpsr_c();
+    uint32_t _rn_08006E42 = g_cpu.R[4];
+    uint32_t _r_08006E42;
+    _r_08006E42 = _rn_08006E42 + _op2_08006E42;
+    arm_set_nzcv_add(_rn_08006E42, _op2_08006E42, _r_08006E42);
+    g_cpu.R[2] = _r_08006E42;
+    g_cpu.R[15] = 0x08006E44u;
+    runtime_tick(_cyc_08006E42);
+    /* 08006E44  08006e44 T ldr r0,[r2] */
+    g_cpu.R[15] = 0x08006E44u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006E44 = 1u;
+    _cyc_08006E44 = 2u;
+    uint32_t _base_08006E44 = g_cpu.R[2];
+    uint32_t _off_08006E44;
+    _off_08006E44 = 0x00000000u;
+    uint32_t _ea_08006E44 = _base_08006E44 + _off_08006E44;
+    uint32_t _post_08006E44 = _base_08006E44 + _off_08006E44;
+    _cyc_08006E44 += runtime_mem_cycles(_ea_08006E44, 4u, 0u);
+    uint32_t _v_08006E44;
+    { uint32_t _w = bus_read_u32(_ea_08006E44 & ~3u); uint32_t _rot = (_ea_08006E44 & 3u) * 8u; _v_08006E44 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_08006E44;
+    g_cpu.R[15] = 0x08006E46u;
+    runtime_tick(_cyc_08006E44);
+    /* 08006E46  08006e46 T movs r1,#0x80 */
+    g_cpu.R[15] = 0x08006E46u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006E46 = 1u;
+    _cyc_08006E46 = 1u;
+    uint32_t _r_08006E46;
+    _r_08006E46 = 0x00000080u;
+    arm_set_nzc_logic(_r_08006E46, cpsr_c());
+    g_cpu.R[1] = _r_08006E46;
+    g_cpu.R[15] = 0x08006E48u;
+    runtime_tick(_cyc_08006E46);
+    /* 08006E48  08006e48 T movs r1,r1,lsl #23 */
+    g_cpu.R[15] = 0x08006E48u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006E48 = 1u;
+    _cyc_08006E48 = 1u;
+    uint32_t _rm_08006E48 = g_cpu.R[1];
+    uint32_t _op2_08006E48;
+    uint32_t _co_08006E48;
+    _op2_08006E48 = _rm_08006E48 << 23;
+    _co_08006E48 = (_rm_08006E48 >> 9) & 1u;
+    uint32_t _r_08006E48;
+    _r_08006E48 = _op2_08006E48;
+    arm_set_nzc_logic(_r_08006E48, _co_08006E48);
+    g_cpu.R[1] = _r_08006E48;
+    g_cpu.R[15] = 0x08006E4Au;
+    runtime_tick(_cyc_08006E48);
+    /* 08006E4A  08006e4a T ands r0,r0,r1 */
+    g_cpu.R[15] = 0x08006E4Au;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006E4A = 1u;
+    _cyc_08006E4A = 1u;
+    uint32_t _rm_08006E4A = g_cpu.R[1];
+    uint32_t _op2_08006E4A;
+    uint32_t _co_08006E4A;
+    _op2_08006E4A = _rm_08006E4A;
+    _co_08006E4A = cpsr_c();
+    uint32_t _rn_08006E4A = g_cpu.R[0];
+    uint32_t _r_08006E4A;
+    _r_08006E4A = _rn_08006E4A & _op2_08006E4A;
+    arm_set_nzc_logic(_r_08006E4A, _co_08006E4A);
+    g_cpu.R[0] = _r_08006E4A;
+    g_cpu.R[15] = 0x08006E4Cu;
+    runtime_tick(_cyc_08006E4A);
+    /* 08006E4C  08006e4c T cmps r0,#0x0 */
+    g_cpu.R[15] = 0x08006E4Cu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006E4C = 1u;
+    _cyc_08006E4C = 1u;
+    uint32_t _rn_08006E4C = g_cpu.R[0];
+    uint32_t _r_08006E4C;
+    _r_08006E4C = _rn_08006E4C - 0x00000000u;
+    arm_set_nzcv_sub(_rn_08006E4C, 0x00000000u, _r_08006E4C);
+    g_cpu.R[15] = 0x08006E4Eu;
+    runtime_tick(_cyc_08006E4C);
+    /* 08006E4E  08006e4e T bne 0x08006e5e */
+    g_cpu.R[15] = 0x08006E4Eu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006E4E = 1u;
+    if (arm_cond_passes(0x1u)) {
+        _cyc_08006E4E = 3u;
+        g_cpu.R[15] = 0x08006E5Eu;
+        runtime_tick(_cyc_08006E4E);
+        GBARECOMP_TAIL_CALL(gf_tfunc_08006E5E);
+    }
+    g_cpu.R[15] = 0x08006E50u;
+    runtime_tick(_cyc_08006E4E);
+    /* 08006E50  08006e50 T ldr r1,[r15,#0x40] */
+    g_cpu.R[15] = 0x08006E50u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006E50 = 1u;
+    _cyc_08006E50 = 2u;
+    uint32_t _base_08006E50 = 0x08006E54u & ~3u;
+    uint32_t _off_08006E50;
+    _off_08006E50 = 0x00000040u;
+    uint32_t _ea_08006E50 = _base_08006E50 + _off_08006E50;
+    uint32_t _post_08006E50 = _base_08006E50 + _off_08006E50;
+    _cyc_08006E50 += runtime_mem_cycles(_ea_08006E50, 4u, 0u);
+    uint32_t _v_08006E50;
+    { uint32_t _w = bus_read_u32(_ea_08006E50 & ~3u); uint32_t _rot = (_ea_08006E50 & 3u) * 8u; _v_08006E50 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[1] = _v_08006E50;
+    g_cpu.R[15] = 0x08006E52u;
+    runtime_tick(_cyc_08006E50);
+    /* 08006E52  08006e52 T ldrh r0,[r1,#0x8] */
+    g_cpu.R[15] = 0x08006E52u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006E52 = 1u;
+    _cyc_08006E52 = 2u;
+    uint32_t _base_08006E52 = g_cpu.R[1];
+    uint32_t _off_08006E52;
+    _off_08006E52 = 0x00000008u;
+    uint32_t _ea_08006E52 = _base_08006E52 + _off_08006E52;
+    uint32_t _post_08006E52 = _base_08006E52 + _off_08006E52;
+    _cyc_08006E52 += runtime_mem_cycles(_ea_08006E52, 2u, 0u);
+    uint32_t _v_08006E52;
+    { uint32_t _h = bus_read_u16(_ea_08006E52 & ~1u); if (_ea_08006E52 & 1u) _v_08006E52 = ((_h >> 8) | (_h << 24)); else _v_08006E52 = _h; }
+    g_cpu.R[0] = _v_08006E52;
+    g_cpu.R[15] = 0x08006E54u;
+    runtime_tick(_cyc_08006E52);
+    /* 08006E54  08006e54 T subs r0,r0,#0x2 */
+    g_cpu.R[15] = 0x08006E54u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006E54 = 1u;
+    _cyc_08006E54 = 1u;
+    uint32_t _rn_08006E54 = g_cpu.R[0];
+    uint32_t _r_08006E54;
+    _r_08006E54 = _rn_08006E54 - 0x00000002u;
+    arm_set_nzcv_sub(_rn_08006E54, 0x00000002u, _r_08006E54);
+    g_cpu.R[0] = _r_08006E54;
+    g_cpu.R[15] = 0x08006E56u;
+    runtime_tick(_cyc_08006E54);
+    /* 08006E56  08006e56 T strh r0,[r1,#0x8] */
+    g_cpu.R[15] = 0x08006E56u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006E56 = 1u;
+    _cyc_08006E56 = 1u;
+    uint32_t _base_08006E56 = g_cpu.R[1];
+    uint32_t _off_08006E56;
+    _off_08006E56 = 0x00000008u;
+    uint32_t _ea_08006E56 = _base_08006E56 + _off_08006E56;
+    uint32_t _post_08006E56 = _base_08006E56 + _off_08006E56;
+    _cyc_08006E56 += runtime_mem_cycles(_ea_08006E56, 2u, 0u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x08006E56u, _ea_08006E56 & ~1u, (uint32_t)(g_cpu.R[0] & 0xFFFFu), 2u);
+    bus_write_u16(_ea_08006E56 & ~1u, (uint16_t)(g_cpu.R[0] & 0xFFFFu));
+    g_cpu.R[15] = 0x08006E58u;
+    runtime_tick(_cyc_08006E56);
+    /* 08006E58  08006e58 T movs r0,r0,lsl #16 */
+    g_cpu.R[15] = 0x08006E58u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006E58 = 1u;
+    _cyc_08006E58 = 1u;
+    uint32_t _rm_08006E58 = g_cpu.R[0];
+    uint32_t _op2_08006E58;
+    uint32_t _co_08006E58;
+    _op2_08006E58 = _rm_08006E58 << 16;
+    _co_08006E58 = (_rm_08006E58 >> 16) & 1u;
+    uint32_t _r_08006E58;
+    _r_08006E58 = _op2_08006E58;
+    arm_set_nzc_logic(_r_08006E58, _co_08006E58);
+    g_cpu.R[0] = _r_08006E58;
+    g_cpu.R[15] = 0x08006E5Au;
+    runtime_tick(_cyc_08006E58);
+    /* 08006E5A  08006e5a T cmps r0,#0x0 */
+    g_cpu.R[15] = 0x08006E5Au;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006E5A = 1u;
+    _cyc_08006E5A = 1u;
+    uint32_t _rn_08006E5A = g_cpu.R[0];
+    uint32_t _r_08006E5A;
+    _r_08006E5A = _rn_08006E5A - 0x00000000u;
+    arm_set_nzcv_sub(_rn_08006E5A, 0x00000000u, _r_08006E5A);
+    g_cpu.R[15] = 0x08006E5Cu;
+    runtime_tick(_cyc_08006E5A);
+    /* 08006E5C  08006e5c T bne 0x08006f04 */
+    g_cpu.R[15] = 0x08006E5Cu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006E5C = 1u;
+    if (arm_cond_passes(0x1u)) {
+        _cyc_08006E5C = 3u;
+        g_cpu.R[15] = 0x08006F04u;
+        runtime_tick(_cyc_08006E5C);
+        GBARECOMP_TAIL_CALL(gf_tfunc_08006F04);
+    }
+    g_cpu.R[15] = 0x08006E5Eu;
+    runtime_tick(_cyc_08006E5C);
+    /* fall-through to 0x08006E5E */
+    g_cpu.R[15] = 0x08006E5Eu;
+    runtime_dispatch(0x08006E5Eu);
+    return;
+}
+
+/* 0x08006E5E  mode=thumb  end=0x08006E80  branches=2 */
+
+
+/* 0x08006E5E thumb */
+void gf_tfunc_08006E5E(void) {
+    if (g_runtime_fn_entry_hook) g_runtime_fn_entry_hook(0x08006E5Eu);
+    /* 08006E5E  08006e5e T ldr r0,[r2] */
+    g_cpu.R[15] = 0x08006E5Eu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006E5E = 1u;
+    _cyc_08006E5E = 2u;
+    uint32_t _base_08006E5E = g_cpu.R[2];
+    uint32_t _off_08006E5E;
+    _off_08006E5E = 0x00000000u;
+    uint32_t _ea_08006E5E = _base_08006E5E + _off_08006E5E;
+    uint32_t _post_08006E5E = _base_08006E5E + _off_08006E5E;
+    _cyc_08006E5E += runtime_mem_cycles(_ea_08006E5E, 4u, 0u);
+    uint32_t _v_08006E5E;
+    { uint32_t _w = bus_read_u32(_ea_08006E5E & ~3u); uint32_t _rot = (_ea_08006E5E & 3u) * 8u; _v_08006E5E = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_08006E5E;
+    g_cpu.R[15] = 0x08006E60u;
+    runtime_tick(_cyc_08006E5E);
+    /* 08006E60  08006e60 T cmps r0,#0x0 */
+    g_cpu.R[15] = 0x08006E60u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006E60 = 1u;
+    _cyc_08006E60 = 1u;
+    uint32_t _rn_08006E60 = g_cpu.R[0];
+    uint32_t _r_08006E60;
+    _r_08006E60 = _rn_08006E60 - 0x00000000u;
+    arm_set_nzcv_sub(_rn_08006E60, 0x00000000u, _r_08006E60);
+    g_cpu.R[15] = 0x08006E62u;
+    runtime_tick(_cyc_08006E60);
+    /* 08006E62  08006e62 T bne 0x08006e9c */
+    g_cpu.R[15] = 0x08006E62u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006E62 = 1u;
+    if (arm_cond_passes(0x1u)) {
+        _cyc_08006E62 = 3u;
+        g_cpu.R[15] = 0x08006E9Cu;
+        runtime_tick(_cyc_08006E62);
+        GBARECOMP_TAIL_CALL(gf_tfunc_08006E9C);
+    }
+    g_cpu.R[15] = 0x08006E64u;
+    runtime_tick(_cyc_08006E62);
+    /* 08006E64  08006e64 T ldr r1,[r15,#0x2c] */
+    g_cpu.R[15] = 0x08006E64u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006E64 = 1u;
+    _cyc_08006E64 = 2u;
+    uint32_t _base_08006E64 = 0x08006E68u & ~3u;
+    uint32_t _off_08006E64;
+    _off_08006E64 = 0x0000002Cu;
+    uint32_t _ea_08006E64 = _base_08006E64 + _off_08006E64;
+    uint32_t _post_08006E64 = _base_08006E64 + _off_08006E64;
+    _cyc_08006E64 += runtime_mem_cycles(_ea_08006E64, 4u, 0u);
+    uint32_t _v_08006E64;
+    { uint32_t _w = bus_read_u32(_ea_08006E64 & ~3u); uint32_t _rot = (_ea_08006E64 & 3u) * 8u; _v_08006E64 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[1] = _v_08006E64;
+    g_cpu.R[15] = 0x08006E66u;
+    runtime_tick(_cyc_08006E64);
+    /* 08006E66  08006e66 T ldr r2,[r15,#0x30] */
+    g_cpu.R[15] = 0x08006E66u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006E66 = 1u;
+    _cyc_08006E66 = 2u;
+    uint32_t _base_08006E66 = 0x08006E6Au & ~3u;
+    uint32_t _off_08006E66;
+    _off_08006E66 = 0x00000030u;
+    uint32_t _ea_08006E66 = _base_08006E66 + _off_08006E66;
+    uint32_t _post_08006E66 = _base_08006E66 + _off_08006E66;
+    _cyc_08006E66 += runtime_mem_cycles(_ea_08006E66, 4u, 0u);
+    uint32_t _v_08006E66;
+    { uint32_t _w = bus_read_u32(_ea_08006E66 & ~3u); uint32_t _rot = (_ea_08006E66 & 3u) * 8u; _v_08006E66 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[2] = _v_08006E66;
+    g_cpu.R[15] = 0x08006E68u;
+    runtime_tick(_cyc_08006E66);
+    /* 08006E68  08006e68 T adds r0,r4,r2 */
+    g_cpu.R[15] = 0x08006E68u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006E68 = 1u;
+    _cyc_08006E68 = 1u;
+    uint32_t _rm_08006E68 = g_cpu.R[2];
+    uint32_t _op2_08006E68;
+    uint32_t _co_08006E68;
+    _op2_08006E68 = _rm_08006E68;
+    _co_08006E68 = cpsr_c();
+    uint32_t _rn_08006E68 = g_cpu.R[4];
+    uint32_t _r_08006E68;
+    _r_08006E68 = _rn_08006E68 + _op2_08006E68;
+    arm_set_nzcv_add(_rn_08006E68, _op2_08006E68, _r_08006E68);
+    g_cpu.R[0] = _r_08006E68;
+    g_cpu.R[15] = 0x08006E6Au;
+    runtime_tick(_cyc_08006E68);
+    /* 08006E6A  08006e6a T ldrh r0,[r0] */
+    g_cpu.R[15] = 0x08006E6Au;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006E6A = 1u;
+    _cyc_08006E6A = 2u;
+    uint32_t _base_08006E6A = g_cpu.R[0];
+    uint32_t _off_08006E6A;
+    _off_08006E6A = 0x00000000u;
+    uint32_t _ea_08006E6A = _base_08006E6A + _off_08006E6A;
+    uint32_t _post_08006E6A = _base_08006E6A + _off_08006E6A;
+    _cyc_08006E6A += runtime_mem_cycles(_ea_08006E6A, 2u, 0u);
+    uint32_t _v_08006E6A;
+    { uint32_t _h = bus_read_u16(_ea_08006E6A & ~1u); if (_ea_08006E6A & 1u) _v_08006E6A = ((_h >> 8) | (_h << 24)); else _v_08006E6A = _h; }
+    g_cpu.R[0] = _v_08006E6A;
+    g_cpu.R[15] = 0x08006E6Cu;
+    runtime_tick(_cyc_08006E6A);
+    /* 08006E6C  08006e6c T strh r0,[r1,#0x4] */
+    g_cpu.R[15] = 0x08006E6Cu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006E6C = 1u;
+    _cyc_08006E6C = 1u;
+    uint32_t _base_08006E6C = g_cpu.R[1];
+    uint32_t _off_08006E6C;
+    _off_08006E6C = 0x00000004u;
+    uint32_t _ea_08006E6C = _base_08006E6C + _off_08006E6C;
+    uint32_t _post_08006E6C = _base_08006E6C + _off_08006E6C;
+    _cyc_08006E6C += runtime_mem_cycles(_ea_08006E6C, 2u, 0u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x08006E6Cu, _ea_08006E6C & ~1u, (uint32_t)(g_cpu.R[0] & 0xFFFFu), 2u);
+    bus_write_u16(_ea_08006E6C & ~1u, (uint16_t)(g_cpu.R[0] & 0xFFFFu));
+    g_cpu.R[15] = 0x08006E6Eu;
+    runtime_tick(_cyc_08006E6C);
+    /* 08006E6E  08006e6e T adds r2,r2,#0x2 */
+    g_cpu.R[15] = 0x08006E6Eu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006E6E = 1u;
+    _cyc_08006E6E = 1u;
+    uint32_t _rn_08006E6E = g_cpu.R[2];
+    uint32_t _r_08006E6E;
+    _r_08006E6E = _rn_08006E6E + 0x00000002u;
+    arm_set_nzcv_add(_rn_08006E6E, 0x00000002u, _r_08006E6E);
+    g_cpu.R[2] = _r_08006E6E;
+    g_cpu.R[15] = 0x08006E70u;
+    runtime_tick(_cyc_08006E6E);
+    /* 08006E70  08006e70 T adds r0,r4,r2 */
+    g_cpu.R[15] = 0x08006E70u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006E70 = 1u;
+    _cyc_08006E70 = 1u;
+    uint32_t _rm_08006E70 = g_cpu.R[2];
+    uint32_t _op2_08006E70;
+    uint32_t _co_08006E70;
+    _op2_08006E70 = _rm_08006E70;
+    _co_08006E70 = cpsr_c();
+    uint32_t _rn_08006E70 = g_cpu.R[4];
+    uint32_t _r_08006E70;
+    _r_08006E70 = _rn_08006E70 + _op2_08006E70;
+    arm_set_nzcv_add(_rn_08006E70, _op2_08006E70, _r_08006E70);
+    g_cpu.R[0] = _r_08006E70;
+    g_cpu.R[15] = 0x08006E72u;
+    runtime_tick(_cyc_08006E70);
+    /* 08006E72  08006e72 T ldrh r0,[r0] */
+    g_cpu.R[15] = 0x08006E72u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006E72 = 1u;
+    _cyc_08006E72 = 2u;
+    uint32_t _base_08006E72 = g_cpu.R[0];
+    uint32_t _off_08006E72;
+    _off_08006E72 = 0x00000000u;
+    uint32_t _ea_08006E72 = _base_08006E72 + _off_08006E72;
+    uint32_t _post_08006E72 = _base_08006E72 + _off_08006E72;
+    _cyc_08006E72 += runtime_mem_cycles(_ea_08006E72, 2u, 0u);
+    uint32_t _v_08006E72;
+    { uint32_t _h = bus_read_u16(_ea_08006E72 & ~1u); if (_ea_08006E72 & 1u) _v_08006E72 = ((_h >> 8) | (_h << 24)); else _v_08006E72 = _h; }
+    g_cpu.R[0] = _v_08006E72;
+    g_cpu.R[15] = 0x08006E74u;
+    runtime_tick(_cyc_08006E72);
+    /* 08006E74  08006e74 T strh r0,[r1,#0x6] */
+    g_cpu.R[15] = 0x08006E74u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006E74 = 1u;
+    _cyc_08006E74 = 1u;
+    uint32_t _base_08006E74 = g_cpu.R[1];
+    uint32_t _off_08006E74;
+    _off_08006E74 = 0x00000006u;
+    uint32_t _ea_08006E74 = _base_08006E74 + _off_08006E74;
+    uint32_t _post_08006E74 = _base_08006E74 + _off_08006E74;
+    _cyc_08006E74 += runtime_mem_cycles(_ea_08006E74, 2u, 0u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x08006E74u, _ea_08006E74 & ~1u, (uint32_t)(g_cpu.R[0] & 0xFFFFu), 2u);
+    bus_write_u16(_ea_08006E74 & ~1u, (uint16_t)(g_cpu.R[0] & 0xFFFFu));
+    g_cpu.R[15] = 0x08006E76u;
+    runtime_tick(_cyc_08006E74);
+    /* 08006E76  08006e76 T adds r2,r2,#0x2 */
+    g_cpu.R[15] = 0x08006E76u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006E76 = 1u;
+    _cyc_08006E76 = 1u;
+    uint32_t _rn_08006E76 = g_cpu.R[2];
+    uint32_t _r_08006E76;
+    _r_08006E76 = _rn_08006E76 + 0x00000002u;
+    arm_set_nzcv_add(_rn_08006E76, 0x00000002u, _r_08006E76);
+    g_cpu.R[2] = _r_08006E76;
+    g_cpu.R[15] = 0x08006E78u;
+    runtime_tick(_cyc_08006E76);
+    /* 08006E78  08006e78 T adds r0,r4,r2 */
+    g_cpu.R[15] = 0x08006E78u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006E78 = 1u;
+    _cyc_08006E78 = 1u;
+    uint32_t _rm_08006E78 = g_cpu.R[2];
+    uint32_t _op2_08006E78;
+    uint32_t _co_08006E78;
+    _op2_08006E78 = _rm_08006E78;
+    _co_08006E78 = cpsr_c();
+    uint32_t _rn_08006E78 = g_cpu.R[4];
+    uint32_t _r_08006E78;
+    _r_08006E78 = _rn_08006E78 + _op2_08006E78;
+    arm_set_nzcv_add(_rn_08006E78, _op2_08006E78, _r_08006E78);
+    g_cpu.R[0] = _r_08006E78;
+    g_cpu.R[15] = 0x08006E7Au;
+    runtime_tick(_cyc_08006E78);
+    /* 08006E7A  08006e7a T ldrh r0,[r0] */
+    g_cpu.R[15] = 0x08006E7Au;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006E7A = 1u;
+    _cyc_08006E7A = 2u;
+    uint32_t _base_08006E7A = g_cpu.R[0];
+    uint32_t _off_08006E7A;
+    _off_08006E7A = 0x00000000u;
+    uint32_t _ea_08006E7A = _base_08006E7A + _off_08006E7A;
+    uint32_t _post_08006E7A = _base_08006E7A + _off_08006E7A;
+    _cyc_08006E7A += runtime_mem_cycles(_ea_08006E7A, 2u, 0u);
+    uint32_t _v_08006E7A;
+    { uint32_t _h = bus_read_u16(_ea_08006E7A & ~1u); if (_ea_08006E7A & 1u) _v_08006E7A = ((_h >> 8) | (_h << 24)); else _v_08006E7A = _h; }
+    g_cpu.R[0] = _v_08006E7A;
+    g_cpu.R[15] = 0x08006E7Cu;
+    runtime_tick(_cyc_08006E7A);
+    /* 08006E7C  08006e7c T strh r0,[r1,#0x8] */
+    g_cpu.R[15] = 0x08006E7Cu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006E7C = 1u;
+    _cyc_08006E7C = 1u;
+    uint32_t _base_08006E7C = g_cpu.R[1];
+    uint32_t _off_08006E7C;
+    _off_08006E7C = 0x00000008u;
+    uint32_t _ea_08006E7C = _base_08006E7C + _off_08006E7C;
+    uint32_t _post_08006E7C = _base_08006E7C + _off_08006E7C;
+    _cyc_08006E7C += runtime_mem_cycles(_ea_08006E7C, 2u, 0u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x08006E7Cu, _ea_08006E7C & ~1u, (uint32_t)(g_cpu.R[0] & 0xFFFFu), 2u);
+    bus_write_u16(_ea_08006E7C & ~1u, (uint16_t)(g_cpu.R[0] & 0xFFFFu));
+    g_cpu.R[15] = 0x08006E7Eu;
+    runtime_tick(_cyc_08006E7C);
+    /* 08006E7E  08006e7e T b 0x08006eae */
+    g_cpu.R[15] = 0x08006E7Eu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006E7E = 1u;
+    _cyc_08006E7E = 3u;
+    g_cpu.R[15] = 0x08006EAEu;
+    runtime_tick(_cyc_08006E7E);
+    GBARECOMP_TAIL_CALL(gf_tfunc_08006EAE);
+    g_cpu.R[15] = 0x08006E80u;
+    runtime_tick(_cyc_08006E7E);
+    /* fall-through to 0x08006E80 */
+    g_cpu.R[15] = 0x08006E80u;
+    runtime_dispatch(0x08006E80u);
+    return;
+}
+
+/* 0x08006EAE  mode=thumb  end=0x08006EC8  branches=10  indirect */
+
+
+/* 0x08006E9C thumb */
+void gf_tfunc_08006E9C(void) {
+    if (g_runtime_fn_entry_hook) g_runtime_fn_entry_hook(0x08006E9Cu);
+    /* 08006E9C  08006e9c T adds r0,r7,#0x0 */
+    g_cpu.R[15] = 0x08006E9Cu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006E9C = 1u;
+    _cyc_08006E9C = 1u;
+    uint32_t _rn_08006E9C = g_cpu.R[7];
+    uint32_t _r_08006E9C;
+    _r_08006E9C = _rn_08006E9C + 0x00000000u;
+    arm_set_nzcv_add(_rn_08006E9C, 0x00000000u, _r_08006E9C);
+    g_cpu.R[0] = _r_08006E9C;
+    g_cpu.R[15] = 0x08006E9Eu;
+    runtime_tick(_cyc_08006E9C);
+    /* 08006E9E  08006e9e T adds r0,r0,#0x94 */
+    g_cpu.R[15] = 0x08006E9Eu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006E9E = 1u;
+    _cyc_08006E9E = 1u;
+    uint32_t _rn_08006E9E = g_cpu.R[0];
+    uint32_t _r_08006E9E;
+    _r_08006E9E = _rn_08006E9E + 0x00000094u;
+    arm_set_nzcv_add(_rn_08006E9E, 0x00000094u, _r_08006E9E);
+    g_cpu.R[0] = _r_08006E9E;
+    g_cpu.R[15] = 0x08006EA0u;
+    runtime_tick(_cyc_08006E9E);
+    /* 08006EA0  08006ea0 T ldrh r1,[r0] */
+    g_cpu.R[15] = 0x08006EA0u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006EA0 = 1u;
+    _cyc_08006EA0 = 2u;
+    uint32_t _base_08006EA0 = g_cpu.R[0];
+    uint32_t _off_08006EA0;
+    _off_08006EA0 = 0x00000000u;
+    uint32_t _ea_08006EA0 = _base_08006EA0 + _off_08006EA0;
+    uint32_t _post_08006EA0 = _base_08006EA0 + _off_08006EA0;
+    _cyc_08006EA0 += runtime_mem_cycles(_ea_08006EA0, 2u, 0u);
+    uint32_t _v_08006EA0;
+    { uint32_t _h = bus_read_u16(_ea_08006EA0 & ~1u); if (_ea_08006EA0 & 1u) _v_08006EA0 = ((_h >> 8) | (_h << 24)); else _v_08006EA0 = _h; }
+    g_cpu.R[1] = _v_08006EA0;
+    g_cpu.R[15] = 0x08006EA2u;
+    runtime_tick(_cyc_08006EA0);
+    /* 08006EA2  08006ea2 T movs r0,#0x80 */
+    g_cpu.R[15] = 0x08006EA2u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006EA2 = 1u;
+    _cyc_08006EA2 = 1u;
+    uint32_t _r_08006EA2;
+    _r_08006EA2 = 0x00000080u;
+    arm_set_nzc_logic(_r_08006EA2, cpsr_c());
+    g_cpu.R[0] = _r_08006EA2;
+    g_cpu.R[15] = 0x08006EA4u;
+    runtime_tick(_cyc_08006EA2);
+    /* 08006EA4  08006ea4 T movs r0,r0,lsl #2 */
+    g_cpu.R[15] = 0x08006EA4u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006EA4 = 1u;
+    _cyc_08006EA4 = 1u;
+    uint32_t _rm_08006EA4 = g_cpu.R[0];
+    uint32_t _op2_08006EA4;
+    uint32_t _co_08006EA4;
+    _op2_08006EA4 = _rm_08006EA4 << 2;
+    _co_08006EA4 = (_rm_08006EA4 >> 30) & 1u;
+    uint32_t _r_08006EA4;
+    _r_08006EA4 = _op2_08006EA4;
+    arm_set_nzc_logic(_r_08006EA4, _co_08006EA4);
+    g_cpu.R[0] = _r_08006EA4;
+    g_cpu.R[15] = 0x08006EA6u;
+    runtime_tick(_cyc_08006EA4);
+    /* 08006EA6  08006ea6 T cmps r1,r0 */
+    g_cpu.R[15] = 0x08006EA6u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006EA6 = 1u;
+    _cyc_08006EA6 = 1u;
+    uint32_t _rm_08006EA6 = g_cpu.R[0];
+    uint32_t _op2_08006EA6;
+    uint32_t _co_08006EA6;
+    _op2_08006EA6 = _rm_08006EA6;
+    _co_08006EA6 = cpsr_c();
+    uint32_t _rn_08006EA6 = g_cpu.R[1];
+    uint32_t _r_08006EA6;
+    _r_08006EA6 = _rn_08006EA6 - _op2_08006EA6;
+    arm_set_nzcv_sub(_rn_08006EA6, _op2_08006EA6, _r_08006EA6);
+    g_cpu.R[15] = 0x08006EA8u;
+    runtime_tick(_cyc_08006EA6);
+    /* 08006EA8  08006ea8 T bne 0x08006eae */
+    g_cpu.R[15] = 0x08006EA8u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006EA8 = 1u;
+    if (arm_cond_passes(0x1u)) {
+        _cyc_08006EA8 = 3u;
+        g_cpu.R[15] = 0x08006EAEu;
+        runtime_tick(_cyc_08006EA8);
+        GBARECOMP_TAIL_CALL(gf_tfunc_08006EAE);
+    }
+    g_cpu.R[15] = 0x08006EAAu;
+    runtime_tick(_cyc_08006EA8);
+    /* 08006EAA  08006eaa T bl.hi 0x0808aeae */
+    g_cpu.R[15] = 0x08006EAAu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006EAA = 1u;
+    _cyc_08006EAA = 1u;
+    g_cpu.R[14] = 0x0808AEAEu;
+    g_cpu.R[15] = 0x08006EACu;
+    runtime_tick(_cyc_08006EAA);
+    /* 08006EAC  08006eac T bl.lo 0x00000000 */
+    g_cpu.R[15] = 0x08006EACu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006EAC = 1u;
+    _cyc_08006EAC = 3u;
+    uint32_t _blt_08006EAC = (g_cpu.R[14] + 0x00000CA6u) & ~1u;
+    g_cpu.R[14] = 0x08006EAFu;
+    g_cpu.R[15] = _blt_08006EAC;
+    runtime_call_push_return(0x08006EAEu);
+    runtime_tick(_cyc_08006EAC);
+    _cyc_08006EAC = 0u;
+    runtime_dispatch(_blt_08006EAC);
+    if (g_cpu.R[15] != 0x08006EAEu) { runtime_call_cancel_return(0x08006EAEu); return; }
+    g_cpu.R[15] = 0x08006EAEu;
+    runtime_tick(_cyc_08006EAC);
+    /* fall-through to 0x08006EAE */
+    g_cpu.R[15] = 0x08006EAEu;
+    runtime_dispatch(0x08006EAEu);
+    return;
+}
+
+/* 0x08006ECA  mode=thumb  end=0x08006ECE  branches=7  indirect */
+
+
+/* 0x08006EAE thumb */
+void gf_tfunc_08006EAE(void) {
+    if (g_runtime_fn_entry_hook) g_runtime_fn_entry_hook(0x08006EAEu);
+    /* 08006EAE  08006eae T ldr r1,[r15,#0x5c] */
+    g_cpu.R[15] = 0x08006EAEu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006EAE = 1u;
+    _cyc_08006EAE = 2u;
+    uint32_t _base_08006EAE = 0x08006EB2u & ~3u;
+    uint32_t _off_08006EAE;
+    _off_08006EAE = 0x0000005Cu;
+    uint32_t _ea_08006EAE = _base_08006EAE + _off_08006EAE;
+    uint32_t _post_08006EAE = _base_08006EAE + _off_08006EAE;
+    _cyc_08006EAE += runtime_mem_cycles(_ea_08006EAE, 4u, 0u);
+    uint32_t _v_08006EAE;
+    { uint32_t _w = bus_read_u32(_ea_08006EAE & ~3u); uint32_t _rot = (_ea_08006EAE & 3u) * 8u; _v_08006EAE = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[1] = _v_08006EAE;
+    g_cpu.R[15] = 0x08006EB0u;
+    runtime_tick(_cyc_08006EAE);
+    /* 08006EB0  08006eb0 T movs r2,#0xa6 */
+    g_cpu.R[15] = 0x08006EB0u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006EB0 = 1u;
+    _cyc_08006EB0 = 1u;
+    uint32_t _r_08006EB0;
+    _r_08006EB0 = 0x000000A6u;
+    arm_set_nzc_logic(_r_08006EB0, cpsr_c());
+    g_cpu.R[2] = _r_08006EB0;
+    g_cpu.R[15] = 0x08006EB2u;
+    runtime_tick(_cyc_08006EB0);
+    /* 08006EB2  08006eb2 T movs r2,r2,lsl #5 */
+    g_cpu.R[15] = 0x08006EB2u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006EB2 = 1u;
+    _cyc_08006EB2 = 1u;
+    uint32_t _rm_08006EB2 = g_cpu.R[2];
+    uint32_t _op2_08006EB2;
+    uint32_t _co_08006EB2;
+    _op2_08006EB2 = _rm_08006EB2 << 5;
+    _co_08006EB2 = (_rm_08006EB2 >> 27) & 1u;
+    uint32_t _r_08006EB2;
+    _r_08006EB2 = _op2_08006EB2;
+    arm_set_nzc_logic(_r_08006EB2, _co_08006EB2);
+    g_cpu.R[2] = _r_08006EB2;
+    g_cpu.R[15] = 0x08006EB4u;
+    runtime_tick(_cyc_08006EB2);
+    /* 08006EB4  08006eb4 T adds r0,r1,r2 */
+    g_cpu.R[15] = 0x08006EB4u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006EB4 = 1u;
+    _cyc_08006EB4 = 1u;
+    uint32_t _rm_08006EB4 = g_cpu.R[2];
+    uint32_t _op2_08006EB4;
+    uint32_t _co_08006EB4;
+    _op2_08006EB4 = _rm_08006EB4;
+    _co_08006EB4 = cpsr_c();
+    uint32_t _rn_08006EB4 = g_cpu.R[1];
+    uint32_t _r_08006EB4;
+    _r_08006EB4 = _rn_08006EB4 + _op2_08006EB4;
+    arm_set_nzcv_add(_rn_08006EB4, _op2_08006EB4, _r_08006EB4);
+    g_cpu.R[0] = _r_08006EB4;
+    g_cpu.R[15] = 0x08006EB6u;
+    runtime_tick(_cyc_08006EB4);
+    /* 08006EB6  08006eb6 T movs r5,#0x0 */
+    g_cpu.R[15] = 0x08006EB6u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006EB6 = 1u;
+    _cyc_08006EB6 = 1u;
+    uint32_t _r_08006EB6;
+    _r_08006EB6 = 0x00000000u;
+    arm_set_nzc_logic(_r_08006EB6, cpsr_c());
+    g_cpu.R[5] = _r_08006EB6;
+    g_cpu.R[15] = 0x08006EB8u;
+    runtime_tick(_cyc_08006EB6);
+    /* 08006EB8  08006eb8 T str r5,[r0] */
+    g_cpu.R[15] = 0x08006EB8u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006EB8 = 1u;
+    _cyc_08006EB8 = 1u;
+    uint32_t _base_08006EB8 = g_cpu.R[0];
+    uint32_t _off_08006EB8;
+    _off_08006EB8 = 0x00000000u;
+    uint32_t _ea_08006EB8 = _base_08006EB8 + _off_08006EB8;
+    uint32_t _post_08006EB8 = _base_08006EB8 + _off_08006EB8;
+    _cyc_08006EB8 += runtime_mem_cycles(_ea_08006EB8, 4u, 0u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x08006EB8u, _ea_08006EB8 & ~3u, g_cpu.R[5], 4u);
+    bus_write_u32(_ea_08006EB8 & ~3u, g_cpu.R[5]);
+    g_cpu.R[15] = 0x08006EBAu;
+    runtime_tick(_cyc_08006EB8);
+    /* 08006EBA  08006eba T ldr r0,[r15,#0x54] */
+    g_cpu.R[15] = 0x08006EBAu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006EBA = 1u;
+    _cyc_08006EBA = 2u;
+    uint32_t _base_08006EBA = 0x08006EBEu & ~3u;
+    uint32_t _off_08006EBA;
+    _off_08006EBA = 0x00000054u;
+    uint32_t _ea_08006EBA = _base_08006EBA + _off_08006EBA;
+    uint32_t _post_08006EBA = _base_08006EBA + _off_08006EBA;
+    _cyc_08006EBA += runtime_mem_cycles(_ea_08006EBA, 4u, 0u);
+    uint32_t _v_08006EBA;
+    { uint32_t _w = bus_read_u32(_ea_08006EBA & ~3u); uint32_t _rot = (_ea_08006EBA & 3u) * 8u; _v_08006EBA = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_08006EBA;
+    g_cpu.R[15] = 0x08006EBCu;
+    runtime_tick(_cyc_08006EBA);
+    /* 08006EBC  08006ebc T adds r4,r1,r0 */
+    g_cpu.R[15] = 0x08006EBCu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006EBC = 1u;
+    _cyc_08006EBC = 1u;
+    uint32_t _rm_08006EBC = g_cpu.R[0];
+    uint32_t _op2_08006EBC;
+    uint32_t _co_08006EBC;
+    _op2_08006EBC = _rm_08006EBC;
+    _co_08006EBC = cpsr_c();
+    uint32_t _rn_08006EBC = g_cpu.R[1];
+    uint32_t _r_08006EBC;
+    _r_08006EBC = _rn_08006EBC + _op2_08006EBC;
+    arm_set_nzcv_add(_rn_08006EBC, _op2_08006EBC, _r_08006EBC);
+    g_cpu.R[4] = _r_08006EBC;
+    g_cpu.R[15] = 0x08006EBEu;
+    runtime_tick(_cyc_08006EBC);
+    /* 08006EBE  08006ebe T ldrb r0,[r4] */
+    g_cpu.R[15] = 0x08006EBEu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006EBE = 1u;
+    _cyc_08006EBE = 2u;
+    uint32_t _base_08006EBE = g_cpu.R[4];
+    uint32_t _off_08006EBE;
+    _off_08006EBE = 0x00000000u;
+    uint32_t _ea_08006EBE = _base_08006EBE + _off_08006EBE;
+    uint32_t _post_08006EBE = _base_08006EBE + _off_08006EBE;
+    _cyc_08006EBE += runtime_mem_cycles(_ea_08006EBE, 1u, 0u);
+    uint32_t _v_08006EBE;
+    _v_08006EBE = bus_read_u8(_ea_08006EBE);
+    g_cpu.R[0] = _v_08006EBE;
+    g_cpu.R[15] = 0x08006EC0u;
+    runtime_tick(_cyc_08006EBE);
+    /* 08006EC0  08006ec0 T cmps r0,#0xff */
+    g_cpu.R[15] = 0x08006EC0u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006EC0 = 1u;
+    _cyc_08006EC0 = 1u;
+    uint32_t _rn_08006EC0 = g_cpu.R[0];
+    uint32_t _r_08006EC0;
+    _r_08006EC0 = _rn_08006EC0 - 0x000000FFu;
+    arm_set_nzcv_sub(_rn_08006EC0, 0x000000FFu, _r_08006EC0);
+    g_cpu.R[15] = 0x08006EC2u;
+    runtime_tick(_cyc_08006EC0);
+    /* 08006EC2  08006ec2 T bne 0x08006eca */
+    g_cpu.R[15] = 0x08006EC2u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006EC2 = 1u;
+    if (arm_cond_passes(0x1u)) {
+        _cyc_08006EC2 = 3u;
+        g_cpu.R[15] = 0x08006ECAu;
+        runtime_tick(_cyc_08006EC2);
+        GBARECOMP_TAIL_CALL(gf_tfunc_08006ECA);
+    }
+    g_cpu.R[15] = 0x08006EC4u;
+    runtime_tick(_cyc_08006EC2);
+    /* 08006EC4  08006ec4 T bl.hi 0x08005ec8 */
+    g_cpu.R[15] = 0x08006EC4u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006EC4 = 1u;
+    _cyc_08006EC4 = 1u;
+    g_cpu.R[14] = 0x08005EC8u;
+    g_cpu.R[15] = 0x08006EC6u;
+    runtime_tick(_cyc_08006EC4);
+    /* 08006EC6  08006ec6 T bl.lo 0x00000000 */
+    g_cpu.R[15] = 0x08006EC6u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006EC6 = 1u;
+    _cyc_08006EC6 = 3u;
+    uint32_t _blt_08006EC6 = (g_cpu.R[14] + 0x0000036Cu) & ~1u;
+    g_cpu.R[14] = 0x08006EC9u;
+    g_cpu.R[15] = _blt_08006EC6;
+    runtime_call_push_return(0x08006EC8u);
+    runtime_tick(_cyc_08006EC6);
+    _cyc_08006EC6 = 0u;
+    runtime_dispatch(_blt_08006EC6);
+    if (g_cpu.R[15] != 0x08006EC8u) { runtime_call_cancel_return(0x08006EC8u); return; }
+    g_cpu.R[15] = 0x08006EC8u;
+    runtime_tick(_cyc_08006EC6);
+    /* fall-through to 0x08006EC8 */
+    g_cpu.R[15] = 0x08006EC8u;
+    runtime_dispatch(0x08006EC8u);
+    return;
+}
+
+/* 0x08006EC8  mode=thumb  end=0x08006ECA  branches=7  indirect */
+
+
+/* 0x08006EC8 thumb */
+void gf_tfunc_08006EC8(void) {
+    if (g_runtime_fn_entry_hook) g_runtime_fn_entry_hook(0x08006EC8u);
+    /* 08006EC8  08006ec8 T strb r5,[r4] */
+    g_cpu.R[15] = 0x08006EC8u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006EC8 = 1u;
+    _cyc_08006EC8 = 1u;
+    uint32_t _base_08006EC8 = g_cpu.R[4];
+    uint32_t _off_08006EC8;
+    _off_08006EC8 = 0x00000000u;
+    uint32_t _ea_08006EC8 = _base_08006EC8 + _off_08006EC8;
+    uint32_t _post_08006EC8 = _base_08006EC8 + _off_08006EC8;
+    _cyc_08006EC8 += runtime_mem_cycles(_ea_08006EC8, 1u, 0u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x08006EC8u, _ea_08006EC8, (uint32_t)(g_cpu.R[5] & 0xFFu), 1u);
+    bus_write_u8(_ea_08006EC8, (uint8_t)(g_cpu.R[5] & 0xFFu));
+    g_cpu.R[15] = 0x08006ECAu;
+    runtime_tick(_cyc_08006EC8);
+    /* fall-through to 0x08006ECA */
+    g_cpu.R[15] = 0x08006ECAu;
+    runtime_dispatch(0x08006ECAu);
+    return;
+}
+
+/* 0x08006ECE  mode=thumb  end=0x08006EEA  branches=5  indirect */
+
+
+/* 0x08006ECA thumb */
+void gf_tfunc_08006ECA(void) {
+    if (g_runtime_fn_entry_hook) g_runtime_fn_entry_hook(0x08006ECAu);
+    /* 08006ECA  08006eca T bl.hi 0x0808bece */
+    g_cpu.R[15] = 0x08006ECAu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006ECA = 1u;
+    _cyc_08006ECA = 1u;
+    g_cpu.R[14] = 0x0808BECEu;
+    g_cpu.R[15] = 0x08006ECCu;
+    runtime_tick(_cyc_08006ECA);
+    /* 08006ECC  08006ecc T bl.lo 0x00000000 */
+    g_cpu.R[15] = 0x08006ECCu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006ECC = 1u;
+    _cyc_08006ECC = 3u;
+    uint32_t _blt_08006ECC = (g_cpu.R[14] + 0x00000C8Au) & ~1u;
+    g_cpu.R[14] = 0x08006ECFu;
+    g_cpu.R[15] = _blt_08006ECC;
+    runtime_call_push_return(0x08006ECEu);
+    runtime_tick(_cyc_08006ECC);
+    _cyc_08006ECC = 0u;
+    runtime_dispatch(_blt_08006ECC);
+    if (g_cpu.R[15] != 0x08006ECEu) { runtime_call_cancel_return(0x08006ECEu); return; }
+    g_cpu.R[15] = 0x08006ECEu;
+    runtime_tick(_cyc_08006ECC);
+    /* fall-through to 0x08006ECE */
+    g_cpu.R[15] = 0x08006ECEu;
+    runtime_dispatch(0x08006ECEu);
+    return;
+}
+
+/* 0x08006F34  mode=thumb  end=0x08006F48  branches=5  indirect */
+
+
+/* 0x08006ECE thumb */
+void gf_tfunc_08006ECE(void) {
+    if (g_runtime_fn_entry_hook) g_runtime_fn_entry_hook(0x08006ECEu);
+    /* 08006ECE  08006ece T movs r0,r0,lsl #24 */
+    g_cpu.R[15] = 0x08006ECEu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006ECE = 1u;
+    _cyc_08006ECE = 1u;
+    uint32_t _rm_08006ECE = g_cpu.R[0];
+    uint32_t _op2_08006ECE;
+    uint32_t _co_08006ECE;
+    _op2_08006ECE = _rm_08006ECE << 24;
+    _co_08006ECE = (_rm_08006ECE >> 8) & 1u;
+    uint32_t _r_08006ECE;
+    _r_08006ECE = _op2_08006ECE;
+    arm_set_nzc_logic(_r_08006ECE, _co_08006ECE);
+    g_cpu.R[0] = _r_08006ECE;
+    g_cpu.R[15] = 0x08006ED0u;
+    runtime_tick(_cyc_08006ECE);
+    /* 08006ED0  08006ed0 T movs r0,r0,lsr #24 */
+    g_cpu.R[15] = 0x08006ED0u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006ED0 = 1u;
+    _cyc_08006ED0 = 1u;
+    uint32_t _rm_08006ED0 = g_cpu.R[0];
+    uint32_t _op2_08006ED0;
+    uint32_t _co_08006ED0;
+    _op2_08006ED0 = _rm_08006ED0 >> 24;
+    _co_08006ED0 = (_rm_08006ED0 >> 23) & 1u;
+    uint32_t _r_08006ED0;
+    _r_08006ED0 = _op2_08006ED0;
+    arm_set_nzc_logic(_r_08006ED0, _co_08006ED0);
+    g_cpu.R[0] = _r_08006ED0;
+    g_cpu.R[15] = 0x08006ED2u;
+    runtime_tick(_cyc_08006ED0);
+    /* 08006ED2  08006ed2 T adds r1,r7,#0x0 */
+    g_cpu.R[15] = 0x08006ED2u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006ED2 = 1u;
+    _cyc_08006ED2 = 1u;
+    uint32_t _rn_08006ED2 = g_cpu.R[7];
+    uint32_t _r_08006ED2;
+    _r_08006ED2 = _rn_08006ED2 + 0x00000000u;
+    arm_set_nzcv_add(_rn_08006ED2, 0x00000000u, _r_08006ED2);
+    g_cpu.R[1] = _r_08006ED2;
+    g_cpu.R[15] = 0x08006ED4u;
+    runtime_tick(_cyc_08006ED2);
+    /* 08006ED4  08006ed4 T adds r1,r1,#0x9b */
+    g_cpu.R[15] = 0x08006ED4u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006ED4 = 1u;
+    _cyc_08006ED4 = 1u;
+    uint32_t _rn_08006ED4 = g_cpu.R[1];
+    uint32_t _r_08006ED4;
+    _r_08006ED4 = _rn_08006ED4 + 0x0000009Bu;
+    arm_set_nzcv_add(_rn_08006ED4, 0x0000009Bu, _r_08006ED4);
+    g_cpu.R[1] = _r_08006ED4;
+    g_cpu.R[15] = 0x08006ED6u;
+    runtime_tick(_cyc_08006ED4);
+    /* 08006ED6  08006ed6 T adds r1,r1,r0 */
+    g_cpu.R[15] = 0x08006ED6u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006ED6 = 1u;
+    _cyc_08006ED6 = 1u;
+    uint32_t _rm_08006ED6 = g_cpu.R[0];
+    uint32_t _op2_08006ED6;
+    uint32_t _co_08006ED6;
+    _op2_08006ED6 = _rm_08006ED6;
+    _co_08006ED6 = cpsr_c();
+    uint32_t _rn_08006ED6 = g_cpu.R[1];
+    uint32_t _r_08006ED6;
+    _r_08006ED6 = _rn_08006ED6 + _op2_08006ED6;
+    arm_set_nzcv_add(_rn_08006ED6, _op2_08006ED6, _r_08006ED6);
+    g_cpu.R[1] = _r_08006ED6;
+    g_cpu.R[15] = 0x08006ED8u;
+    runtime_tick(_cyc_08006ED6);
+    /* 08006ED8  08006ed8 T ldrb r0,[r1] */
+    g_cpu.R[15] = 0x08006ED8u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006ED8 = 1u;
+    _cyc_08006ED8 = 2u;
+    uint32_t _base_08006ED8 = g_cpu.R[1];
+    uint32_t _off_08006ED8;
+    _off_08006ED8 = 0x00000000u;
+    uint32_t _ea_08006ED8 = _base_08006ED8 + _off_08006ED8;
+    uint32_t _post_08006ED8 = _base_08006ED8 + _off_08006ED8;
+    _cyc_08006ED8 += runtime_mem_cycles(_ea_08006ED8, 1u, 0u);
+    uint32_t _v_08006ED8;
+    _v_08006ED8 = bus_read_u8(_ea_08006ED8);
+    g_cpu.R[0] = _v_08006ED8;
+    g_cpu.R[15] = 0x08006EDAu;
+    runtime_tick(_cyc_08006ED8);
+    /* 08006EDA  08006eda T cmps r0,#0x0 */
+    g_cpu.R[15] = 0x08006EDAu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006EDA = 1u;
+    _cyc_08006EDA = 1u;
+    uint32_t _rn_08006EDA = g_cpu.R[0];
+    uint32_t _r_08006EDA;
+    _r_08006EDA = _rn_08006EDA - 0x00000000u;
+    arm_set_nzcv_sub(_rn_08006EDA, 0x00000000u, _r_08006EDA);
+    g_cpu.R[15] = 0x08006EDCu;
+    runtime_tick(_cyc_08006EDA);
+    /* 08006EDC  08006edc T bne 0x08006eea */
+    g_cpu.R[15] = 0x08006EDCu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006EDC = 1u;
+    if (arm_cond_passes(0x1u)) {
+        _cyc_08006EDC = 3u;
+        g_cpu.R[15] = 0x08006EEAu;
+        runtime_tick(_cyc_08006EDC);
+        GBARECOMP_TAIL_CALL(gf_tfunc_08006EEA);
+    }
+    g_cpu.R[15] = 0x08006EDEu;
+    runtime_tick(_cyc_08006EDC);
+    /* 08006EDE  08006ede T movs r0,#0x1 */
+    g_cpu.R[15] = 0x08006EDEu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006EDE = 1u;
+    _cyc_08006EDE = 1u;
+    uint32_t _r_08006EDE;
+    _r_08006EDE = 0x00000001u;
+    arm_set_nzc_logic(_r_08006EDE, cpsr_c());
+    g_cpu.R[0] = _r_08006EDE;
+    g_cpu.R[15] = 0x08006EE0u;
+    runtime_tick(_cyc_08006EDE);
+    /* 08006EE0  08006ee0 T strb r0,[r1] */
+    g_cpu.R[15] = 0x08006EE0u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006EE0 = 1u;
+    _cyc_08006EE0 = 1u;
+    uint32_t _base_08006EE0 = g_cpu.R[1];
+    uint32_t _off_08006EE0;
+    _off_08006EE0 = 0x00000000u;
+    uint32_t _ea_08006EE0 = _base_08006EE0 + _off_08006EE0;
+    uint32_t _post_08006EE0 = _base_08006EE0 + _off_08006EE0;
+    _cyc_08006EE0 += runtime_mem_cycles(_ea_08006EE0, 1u, 0u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x08006EE0u, _ea_08006EE0, (uint32_t)(g_cpu.R[0] & 0xFFu), 1u);
+    bus_write_u8(_ea_08006EE0, (uint8_t)(g_cpu.R[0] & 0xFFu));
+    g_cpu.R[15] = 0x08006EE2u;
+    runtime_tick(_cyc_08006EE0);
+    /* 08006EE2  08006ee2 T adds r0,r6,#0x0 */
+    g_cpu.R[15] = 0x08006EE2u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006EE2 = 1u;
+    _cyc_08006EE2 = 1u;
+    uint32_t _rn_08006EE2 = g_cpu.R[6];
+    uint32_t _r_08006EE2;
+    _r_08006EE2 = _rn_08006EE2 + 0x00000000u;
+    arm_set_nzcv_add(_rn_08006EE2, 0x00000000u, _r_08006EE2);
+    g_cpu.R[0] = _r_08006EE2;
+    g_cpu.R[15] = 0x08006EE4u;
+    runtime_tick(_cyc_08006EE2);
+    /* 08006EE4  08006ee4 T movs r1,#0x13 */
+    g_cpu.R[15] = 0x08006EE4u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006EE4 = 1u;
+    _cyc_08006EE4 = 1u;
+    uint32_t _r_08006EE4;
+    _r_08006EE4 = 0x00000013u;
+    arm_set_nzc_logic(_r_08006EE4, cpsr_c());
+    g_cpu.R[1] = _r_08006EE4;
+    g_cpu.R[15] = 0x08006EE6u;
+    runtime_tick(_cyc_08006EE4);
+    /* 08006EE6  08006ee6 T bl.hi 0x08000eea */
+    g_cpu.R[15] = 0x08006EE6u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006EE6 = 1u;
+    _cyc_08006EE6 = 1u;
+    g_cpu.R[14] = 0x08000EEAu;
+    g_cpu.R[15] = 0x08006EE8u;
+    runtime_tick(_cyc_08006EE6);
+    /* 08006EE8  08006ee8 T bl.lo 0x00000000 */
+    g_cpu.R[15] = 0x08006EE8u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006EE8 = 1u;
+    _cyc_08006EE8 = 3u;
+    uint32_t _blt_08006EE8 = (g_cpu.R[14] + 0x00000596u) & ~1u;
+    g_cpu.R[14] = 0x08006EEBu;
+    g_cpu.R[15] = _blt_08006EE8;
+    runtime_call_push_return(0x08006EEAu);
+    runtime_tick(_cyc_08006EE8);
+    _cyc_08006EE8 = 0u;
+    runtime_dispatch(_blt_08006EE8);
+    if (g_cpu.R[15] != 0x08006EEAu) { runtime_call_cancel_return(0x08006EEAu); return; }
+    g_cpu.R[15] = 0x08006EEAu;
+    runtime_tick(_cyc_08006EE8);
+    /* fall-through to 0x08006EEA */
+    g_cpu.R[15] = 0x08006EEAu;
+    runtime_dispatch(0x08006EEAu);
+    return;
+}
+
+/* 0x08006EEA  mode=thumb  end=0x08006F04  branches=2  indirect */
+
+
+/* 0x08006EEA thumb */
+void gf_tfunc_08006EEA(void) {
+    if (g_runtime_fn_entry_hook) g_runtime_fn_entry_hook(0x08006EEAu);
+    /* 08006EEA  08006eea T movs r1,#0x22 */
+    g_cpu.R[15] = 0x08006EEAu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006EEA = 1u;
+    _cyc_08006EEA = 1u;
+    uint32_t _r_08006EEA;
+    _r_08006EEA = 0x00000022u;
+    arm_set_nzc_logic(_r_08006EEA, cpsr_c());
+    g_cpu.R[1] = _r_08006EEA;
+    g_cpu.R[15] = 0x08006EECu;
+    runtime_tick(_cyc_08006EEA);
+    /* 08006EEC  08006eec T ldrsh r0,[r6,+r1] */
+    g_cpu.R[15] = 0x08006EECu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006EEC = 1u;
+    _cyc_08006EEC = 2u;
+    uint32_t _base_08006EEC = g_cpu.R[6];
+    uint32_t _off_08006EEC;
+    uint32_t _morm_08006EEC = g_cpu.R[1];
+    _off_08006EEC = _morm_08006EEC;
+    uint32_t _ea_08006EEC = _base_08006EEC + _off_08006EEC;
+    uint32_t _post_08006EEC = _base_08006EEC + _off_08006EEC;
+    _cyc_08006EEC += runtime_mem_cycles(_ea_08006EEC, 2u, 0u);
+    uint32_t _v_08006EEC;
+    if (_ea_08006EEC & 1u) _v_08006EEC = (uint32_t)(int32_t)(int8_t)bus_read_u8(_ea_08006EEC);
+    else _v_08006EEC = (uint32_t)(int32_t)(int16_t)bus_read_u16(_ea_08006EEC);
+    g_cpu.R[0] = _v_08006EEC;
+    g_cpu.R[15] = 0x08006EEEu;
+    runtime_tick(_cyc_08006EEC);
+    /* 08006EEE  08006eee T movs r0,r0,lsl #1 */
+    g_cpu.R[15] = 0x08006EEEu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006EEE = 1u;
+    _cyc_08006EEE = 1u;
+    uint32_t _rm_08006EEE = g_cpu.R[0];
+    uint32_t _op2_08006EEE;
+    uint32_t _co_08006EEE;
+    _op2_08006EEE = _rm_08006EEE << 1;
+    _co_08006EEE = (_rm_08006EEE >> 31) & 1u;
+    uint32_t _r_08006EEE;
+    _r_08006EEE = _op2_08006EEE;
+    arm_set_nzc_logic(_r_08006EEE, _co_08006EEE);
+    g_cpu.R[0] = _r_08006EEE;
+    g_cpu.R[15] = 0x08006EF0u;
+    runtime_tick(_cyc_08006EEE);
+    /* 08006EF0  08006ef0 T adds r0,r0,r6 */
+    g_cpu.R[15] = 0x08006EF0u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006EF0 = 1u;
+    _cyc_08006EF0 = 1u;
+    uint32_t _rm_08006EF0 = g_cpu.R[6];
+    uint32_t _op2_08006EF0;
+    uint32_t _co_08006EF0;
+    _op2_08006EF0 = _rm_08006EF0;
+    _co_08006EF0 = cpsr_c();
+    uint32_t _rn_08006EF0 = g_cpu.R[0];
+    uint32_t _r_08006EF0;
+    _r_08006EF0 = _rn_08006EF0 + _op2_08006EF0;
+    arm_set_nzcv_add(_rn_08006EF0, _op2_08006EF0, _r_08006EF0);
+    g_cpu.R[0] = _r_08006EF0;
+    g_cpu.R[15] = 0x08006EF2u;
+    runtime_tick(_cyc_08006EF0);
+    /* 08006EF2  08006ef2 T strb r5,[r0,#0x19] */
+    g_cpu.R[15] = 0x08006EF2u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006EF2 = 1u;
+    _cyc_08006EF2 = 1u;
+    uint32_t _base_08006EF2 = g_cpu.R[0];
+    uint32_t _off_08006EF2;
+    _off_08006EF2 = 0x00000019u;
+    uint32_t _ea_08006EF2 = _base_08006EF2 + _off_08006EF2;
+    uint32_t _post_08006EF2 = _base_08006EF2 + _off_08006EF2;
+    _cyc_08006EF2 += runtime_mem_cycles(_ea_08006EF2, 1u, 0u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x08006EF2u, _ea_08006EF2, (uint32_t)(g_cpu.R[5] & 0xFFu), 1u);
+    bus_write_u8(_ea_08006EF2, (uint8_t)(g_cpu.R[5] & 0xFFu));
+    g_cpu.R[15] = 0x08006EF4u;
+    runtime_tick(_cyc_08006EF2);
+    /* 08006EF4  08006ef4 T ldr r2,[r15,#0x1c] */
+    g_cpu.R[15] = 0x08006EF4u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006EF4 = 1u;
+    _cyc_08006EF4 = 2u;
+    uint32_t _base_08006EF4 = 0x08006EF8u & ~3u;
+    uint32_t _off_08006EF4;
+    _off_08006EF4 = 0x0000001Cu;
+    uint32_t _ea_08006EF4 = _base_08006EF4 + _off_08006EF4;
+    uint32_t _post_08006EF4 = _base_08006EF4 + _off_08006EF4;
+    _cyc_08006EF4 += runtime_mem_cycles(_ea_08006EF4, 4u, 0u);
+    uint32_t _v_08006EF4;
+    { uint32_t _w = bus_read_u32(_ea_08006EF4 & ~3u); uint32_t _rot = (_ea_08006EF4 & 3u) * 8u; _v_08006EF4 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[2] = _v_08006EF4;
+    g_cpu.R[15] = 0x08006EF6u;
+    runtime_tick(_cyc_08006EF4);
+    /* 08006EF6  08006ef6 T adds r0,r6,#0x0 */
+    g_cpu.R[15] = 0x08006EF6u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006EF6 = 1u;
+    _cyc_08006EF6 = 1u;
+    uint32_t _rn_08006EF6 = g_cpu.R[6];
+    uint32_t _r_08006EF6;
+    _r_08006EF6 = _rn_08006EF6 + 0x00000000u;
+    arm_set_nzcv_add(_rn_08006EF6, 0x00000000u, _r_08006EF6);
+    g_cpu.R[0] = _r_08006EF6;
+    g_cpu.R[15] = 0x08006EF8u;
+    runtime_tick(_cyc_08006EF6);
+    /* 08006EF8  08006ef8 T adds r0,r0,#0x18 */
+    g_cpu.R[15] = 0x08006EF8u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006EF8 = 1u;
+    _cyc_08006EF8 = 1u;
+    uint32_t _rn_08006EF8 = g_cpu.R[0];
+    uint32_t _r_08006EF8;
+    _r_08006EF8 = _rn_08006EF8 + 0x00000018u;
+    arm_set_nzcv_add(_rn_08006EF8, 0x00000018u, _r_08006EF8);
+    g_cpu.R[0] = _r_08006EF8;
+    g_cpu.R[15] = 0x08006EFAu;
+    runtime_tick(_cyc_08006EF8);
+    /* 08006EFA  08006efa T adds r1,r6,#0x0 */
+    g_cpu.R[15] = 0x08006EFAu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006EFA = 1u;
+    _cyc_08006EFA = 1u;
+    uint32_t _rn_08006EFA = g_cpu.R[6];
+    uint32_t _r_08006EFA;
+    _r_08006EFA = _rn_08006EFA + 0x00000000u;
+    arm_set_nzcv_add(_rn_08006EFA, 0x00000000u, _r_08006EFA);
+    g_cpu.R[1] = _r_08006EFA;
+    g_cpu.R[15] = 0x08006EFCu;
+    runtime_tick(_cyc_08006EFA);
+    /* 08006EFC  08006efc T adds r1,r1,#0x22 */
+    g_cpu.R[15] = 0x08006EFCu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006EFC = 1u;
+    _cyc_08006EFC = 1u;
+    uint32_t _rn_08006EFC = g_cpu.R[1];
+    uint32_t _r_08006EFC;
+    _r_08006EFC = _rn_08006EFC + 0x00000022u;
+    arm_set_nzcv_add(_rn_08006EFC, 0x00000022u, _r_08006EFC);
+    g_cpu.R[1] = _r_08006EFC;
+    g_cpu.R[15] = 0x08006EFEu;
+    runtime_tick(_cyc_08006EFC);
+    /* 08006EFE  08006efe T ldr r2,[r2] */
+    g_cpu.R[15] = 0x08006EFEu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006EFE = 1u;
+    _cyc_08006EFE = 2u;
+    uint32_t _base_08006EFE = g_cpu.R[2];
+    uint32_t _off_08006EFE;
+    _off_08006EFE = 0x00000000u;
+    uint32_t _ea_08006EFE = _base_08006EFE + _off_08006EFE;
+    uint32_t _post_08006EFE = _base_08006EFE + _off_08006EFE;
+    _cyc_08006EFE += runtime_mem_cycles(_ea_08006EFE, 4u, 0u);
+    uint32_t _v_08006EFE;
+    { uint32_t _w = bus_read_u32(_ea_08006EFE & ~3u); uint32_t _rot = (_ea_08006EFE & 3u) * 8u; _v_08006EFE = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[2] = _v_08006EFE;
+    g_cpu.R[15] = 0x08006F00u;
+    runtime_tick(_cyc_08006EFE);
+    /* 08006F00  08006f00 T bl.hi 0x080c2f04 */
+    g_cpu.R[15] = 0x08006F00u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006F00 = 1u;
+    _cyc_08006F00 = 1u;
+    g_cpu.R[14] = 0x080C2F04u;
+    g_cpu.R[15] = 0x08006F02u;
+    runtime_tick(_cyc_08006F00);
+    /* 08006F02  08006f02 T bl.lo 0x00000000 */
+    g_cpu.R[15] = 0x08006F02u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006F02 = 1u;
+    _cyc_08006F02 = 3u;
+    uint32_t _blt_08006F02 = (g_cpu.R[14] + 0x000002E0u) & ~1u;
+    g_cpu.R[14] = 0x08006F05u;
+    g_cpu.R[15] = _blt_08006F02;
+    runtime_call_push_return(0x08006F04u);
+    runtime_tick(_cyc_08006F02);
+    _cyc_08006F02 = 0u;
+    runtime_dispatch(_blt_08006F02);
+    if (g_cpu.R[15] != 0x08006F04u) { runtime_call_cancel_return(0x08006F04u); return; }
+    g_cpu.R[15] = 0x08006F04u;
+    runtime_tick(_cyc_08006F02);
+    /* fall-through to 0x08006F04 */
+    g_cpu.R[15] = 0x08006F04u;
+    runtime_dispatch(0x08006F04u);
+    return;
+}
+
+/* 0x08006F04  mode=thumb  end=0x08006F0A  branches=0  indirect */
+
+
+/* 0x08006F04 thumb */
+void gf_tfunc_08006F04(void) {
+    if (g_runtime_fn_entry_hook) g_runtime_fn_entry_hook(0x08006F04u);
+    /* 08006F04  08006f04 T ldm r13!,{r4,r5,r6,r7} */
+    g_cpu.R[15] = 0x08006F04u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006F04 = 1u;
+    _cyc_08006F04 = 2u;
+    uint32_t _b_08006F04 = g_cpu.R[13];
+    uint32_t _a_08006F04 = _b_08006F04;
+    uint32_t _fb_08006F04 = _b_08006F04 + 16u;
+    _cyc_08006F04 += runtime_mem_cycles(_a_08006F04 & ~3u, 4u, 0u);
+    g_cpu.R[4] = bus_read_u32(_a_08006F04 & ~3u);
+    _a_08006F04 += 4u;
+    _cyc_08006F04 += runtime_mem_cycles(_a_08006F04 & ~3u, 4u, 1u);
+    g_cpu.R[5] = bus_read_u32(_a_08006F04 & ~3u);
+    _a_08006F04 += 4u;
+    _cyc_08006F04 += runtime_mem_cycles(_a_08006F04 & ~3u, 4u, 1u);
+    g_cpu.R[6] = bus_read_u32(_a_08006F04 & ~3u);
+    _a_08006F04 += 4u;
+    _cyc_08006F04 += runtime_mem_cycles(_a_08006F04 & ~3u, 4u, 1u);
+    g_cpu.R[7] = bus_read_u32(_a_08006F04 & ~3u);
+    _a_08006F04 += 4u;
+    g_cpu.R[13] = _fb_08006F04;
+    g_cpu.R[15] = 0x08006F06u;
+    runtime_tick(_cyc_08006F04);
+    /* 08006F06  08006f06 T ldm r13!,{r0} */
+    g_cpu.R[15] = 0x08006F06u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006F06 = 1u;
+    _cyc_08006F06 = 2u;
+    uint32_t _b_08006F06 = g_cpu.R[13];
+    uint32_t _a_08006F06 = _b_08006F06;
+    uint32_t _fb_08006F06 = _b_08006F06 + 4u;
+    _cyc_08006F06 += runtime_mem_cycles(_a_08006F06 & ~3u, 4u, 0u);
+    g_cpu.R[0] = bus_read_u32(_a_08006F06 & ~3u);
+    _a_08006F06 += 4u;
+    g_cpu.R[13] = _fb_08006F06;
+    g_cpu.R[15] = 0x08006F08u;
+    runtime_tick(_cyc_08006F06);
+    /* 08006F08  08006f08 T bx r0 */
+    g_cpu.R[15] = 0x08006F08u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006F08 = 1u;
+    _cyc_08006F08 = 3u;
+    uint32_t _bxt_08006F08 = g_cpu.R[0];
+    g_cpu.R[15] = _bxt_08006F08 & ~1u;
+    if (_bxt_08006F08 & 1u) g_cpu.cpsr |= CPSR_T_BIT; else g_cpu.cpsr &= ~CPSR_T_BIT;
+    runtime_tick(_cyc_08006F08);
+    if (runtime_call_should_return(g_cpu.R[15])) return;
+    GBARECOMP_TAIL_DISPATCH_WITH_EXCHANGE(_bxt_08006F08);
+    g_cpu.R[15] = 0x08006F0Au;
+    runtime_tick(_cyc_08006F08);
+    /* fall-through to 0x08006F0A */
+    g_cpu.R[15] = 0x08006F0Au;
+    runtime_dispatch(0x08006F0Au);
+    return;
+}
+
+/* 0x08006F18  mode=thumb  end=0x08006F28  branches=9  indirect */
+
+
+/* 0x08006F18 thumb */
+void gf_actor_post_step(void) {
+    if (g_runtime_fn_entry_hook) g_runtime_fn_entry_hook(0x08006F18u);
+    /* 08006F18  08006f18 T stm r13!,{r4,r5,r14} */
+    g_cpu.R[15] = 0x08006F18u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006F18 = 1u;
+    _cyc_08006F18 = 1u;
+    uint32_t _b_08006F18 = g_cpu.R[13];
+    uint32_t _a_08006F18 = _b_08006F18 - 12u;
+    uint32_t _fb_08006F18 = _b_08006F18 - 12u;
+    _cyc_08006F18 += runtime_mem_cycles(_a_08006F18 & ~3u, 4u, 0u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x08006F18u, _a_08006F18 & ~3u, g_cpu.R[4], 4u);
+    bus_write_u32(_a_08006F18 & ~3u, g_cpu.R[4]);
+    _a_08006F18 += 4u;
+    _cyc_08006F18 += runtime_mem_cycles(_a_08006F18 & ~3u, 4u, 1u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x08006F18u, _a_08006F18 & ~3u, g_cpu.R[5], 4u);
+    bus_write_u32(_a_08006F18 & ~3u, g_cpu.R[5]);
+    _a_08006F18 += 4u;
+    _cyc_08006F18 += runtime_mem_cycles(_a_08006F18 & ~3u, 4u, 1u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x08006F18u, _a_08006F18 & ~3u, g_cpu.R[14], 4u);
+    bus_write_u32(_a_08006F18 & ~3u, g_cpu.R[14]);
+    _a_08006F18 += 4u;
+    g_cpu.R[13] = _fb_08006F18;
+    g_cpu.R[15] = 0x08006F1Au;
+    runtime_tick(_cyc_08006F18);
+    /* 08006F1A  08006f1a T adds r5,r0,#0x0 */
+    g_cpu.R[15] = 0x08006F1Au;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006F1A = 1u;
+    _cyc_08006F1A = 1u;
+    uint32_t _rn_08006F1A = g_cpu.R[0];
+    uint32_t _r_08006F1A;
+    _r_08006F1A = _rn_08006F1A + 0x00000000u;
+    arm_set_nzcv_add(_rn_08006F1A, 0x00000000u, _r_08006F1A);
+    g_cpu.R[5] = _r_08006F1A;
+    g_cpu.R[15] = 0x08006F1Cu;
+    runtime_tick(_cyc_08006F1A);
+    /* 08006F1C  08006f1c T ldr r4,[r15,#0x48] */
+    g_cpu.R[15] = 0x08006F1Cu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006F1C = 1u;
+    _cyc_08006F1C = 2u;
+    uint32_t _base_08006F1C = 0x08006F20u & ~3u;
+    uint32_t _off_08006F1C;
+    _off_08006F1C = 0x00000048u;
+    uint32_t _ea_08006F1C = _base_08006F1C + _off_08006F1C;
+    uint32_t _post_08006F1C = _base_08006F1C + _off_08006F1C;
+    _cyc_08006F1C += runtime_mem_cycles(_ea_08006F1C, 4u, 0u);
+    uint32_t _v_08006F1C;
+    { uint32_t _w = bus_read_u32(_ea_08006F1C & ~3u); uint32_t _rot = (_ea_08006F1C & 3u) * 8u; _v_08006F1C = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[4] = _v_08006F1C;
+    g_cpu.R[15] = 0x08006F1Eu;
+    runtime_tick(_cyc_08006F1C);
+    /* 08006F1E  08006f1e T ldr r1,[r15,#0x4c] */
+    g_cpu.R[15] = 0x08006F1Eu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006F1E = 1u;
+    _cyc_08006F1E = 2u;
+    uint32_t _base_08006F1E = 0x08006F22u & ~3u;
+    uint32_t _off_08006F1E;
+    _off_08006F1E = 0x0000004Cu;
+    uint32_t _ea_08006F1E = _base_08006F1E + _off_08006F1E;
+    uint32_t _post_08006F1E = _base_08006F1E + _off_08006F1E;
+    _cyc_08006F1E += runtime_mem_cycles(_ea_08006F1E, 4u, 0u);
+    uint32_t _v_08006F1E;
+    { uint32_t _w = bus_read_u32(_ea_08006F1E & ~3u); uint32_t _rot = (_ea_08006F1E & 3u) * 8u; _v_08006F1E = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[1] = _v_08006F1E;
+    g_cpu.R[15] = 0x08006F20u;
+    runtime_tick(_cyc_08006F1E);
+    /* 08006F20  08006f20 T adds r0,r4,r1 */
+    g_cpu.R[15] = 0x08006F20u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006F20 = 1u;
+    _cyc_08006F20 = 1u;
+    uint32_t _rm_08006F20 = g_cpu.R[1];
+    uint32_t _op2_08006F20;
+    uint32_t _co_08006F20;
+    _op2_08006F20 = _rm_08006F20;
+    _co_08006F20 = cpsr_c();
+    uint32_t _rn_08006F20 = g_cpu.R[4];
+    uint32_t _r_08006F20;
+    _r_08006F20 = _rn_08006F20 + _op2_08006F20;
+    arm_set_nzcv_add(_rn_08006F20, _op2_08006F20, _r_08006F20);
+    g_cpu.R[0] = _r_08006F20;
+    g_cpu.R[15] = 0x08006F22u;
+    runtime_tick(_cyc_08006F20);
+    /* 08006F22  08006f22 T ldr r0,[r0] */
+    g_cpu.R[15] = 0x08006F22u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006F22 = 1u;
+    _cyc_08006F22 = 2u;
+    uint32_t _base_08006F22 = g_cpu.R[0];
+    uint32_t _off_08006F22;
+    _off_08006F22 = 0x00000000u;
+    uint32_t _ea_08006F22 = _base_08006F22 + _off_08006F22;
+    uint32_t _post_08006F22 = _base_08006F22 + _off_08006F22;
+    _cyc_08006F22 += runtime_mem_cycles(_ea_08006F22, 4u, 0u);
+    uint32_t _v_08006F22;
+    { uint32_t _w = bus_read_u32(_ea_08006F22 & ~3u); uint32_t _rot = (_ea_08006F22 & 3u) * 8u; _v_08006F22 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_08006F22;
+    g_cpu.R[15] = 0x08006F24u;
+    runtime_tick(_cyc_08006F22);
+    /* 08006F24  08006f24 T bl.hi 0x08000f28 */
+    g_cpu.R[15] = 0x08006F24u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006F24 = 1u;
+    _cyc_08006F24 = 1u;
+    g_cpu.R[14] = 0x08000F28u;
+    g_cpu.R[15] = 0x08006F26u;
+    runtime_tick(_cyc_08006F24);
+    /* 08006F26  08006f26 T bl.lo 0x00000000 */
+    g_cpu.R[15] = 0x08006F26u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006F26 = 1u;
+    _cyc_08006F26 = 3u;
+    uint32_t _blt_08006F26 = (g_cpu.R[14] + 0x00000810u) & ~1u;
+    g_cpu.R[14] = 0x08006F29u;
+    g_cpu.R[15] = _blt_08006F26;
+    runtime_call_push_return(0x08006F28u);
+    runtime_tick(_cyc_08006F26);
+    _cyc_08006F26 = 0u;
+    runtime_dispatch(_blt_08006F26);
+    if (g_cpu.R[15] != 0x08006F28u) { runtime_call_cancel_return(0x08006F28u); return; }
+    g_cpu.R[15] = 0x08006F28u;
+    runtime_tick(_cyc_08006F26);
+    /* fall-through to 0x08006F28 */
+    g_cpu.R[15] = 0x08006F28u;
+    runtime_dispatch(0x08006F28u);
+    return;
+}
+
+/* 0x08006F28  mode=thumb  end=0x08006F34  branches=7  indirect */
+
+
+/* 0x08006F28 thumb */
+void gf_actor_step_b(void) {
+    if (g_runtime_fn_entry_hook) g_runtime_fn_entry_hook(0x08006F28u);
+    /* 08006F28  08006f28 T movs r1,#0xc3 */
+    g_cpu.R[15] = 0x08006F28u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006F28 = 1u;
+    _cyc_08006F28 = 1u;
+    uint32_t _r_08006F28;
+    _r_08006F28 = 0x000000C3u;
+    arm_set_nzc_logic(_r_08006F28, cpsr_c());
+    g_cpu.R[1] = _r_08006F28;
+    g_cpu.R[15] = 0x08006F2Au;
+    runtime_tick(_cyc_08006F28);
+    /* 08006F2A  08006f2a T movs r1,r1,lsl #5 */
+    g_cpu.R[15] = 0x08006F2Au;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006F2A = 1u;
+    _cyc_08006F2A = 1u;
+    uint32_t _rm_08006F2A = g_cpu.R[1];
+    uint32_t _op2_08006F2A;
+    uint32_t _co_08006F2A;
+    _op2_08006F2A = _rm_08006F2A << 5;
+    _co_08006F2A = (_rm_08006F2A >> 27) & 1u;
+    uint32_t _r_08006F2A;
+    _r_08006F2A = _op2_08006F2A;
+    arm_set_nzc_logic(_r_08006F2A, _co_08006F2A);
+    g_cpu.R[1] = _r_08006F2A;
+    g_cpu.R[15] = 0x08006F2Cu;
+    runtime_tick(_cyc_08006F2A);
+    /* 08006F2C  08006f2c T adds r0,r4,r1 */
+    g_cpu.R[15] = 0x08006F2Cu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006F2C = 1u;
+    _cyc_08006F2C = 1u;
+    uint32_t _rm_08006F2C = g_cpu.R[1];
+    uint32_t _op2_08006F2C;
+    uint32_t _co_08006F2C;
+    _op2_08006F2C = _rm_08006F2C;
+    _co_08006F2C = cpsr_c();
+    uint32_t _rn_08006F2C = g_cpu.R[4];
+    uint32_t _r_08006F2C;
+    _r_08006F2C = _rn_08006F2C + _op2_08006F2C;
+    arm_set_nzcv_add(_rn_08006F2C, _op2_08006F2C, _r_08006F2C);
+    g_cpu.R[0] = _r_08006F2C;
+    g_cpu.R[15] = 0x08006F2Eu;
+    runtime_tick(_cyc_08006F2C);
+    /* 08006F2E  08006f2e T ldr r0,[r0] */
+    g_cpu.R[15] = 0x08006F2Eu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006F2E = 1u;
+    _cyc_08006F2E = 2u;
+    uint32_t _base_08006F2E = g_cpu.R[0];
+    uint32_t _off_08006F2E;
+    _off_08006F2E = 0x00000000u;
+    uint32_t _ea_08006F2E = _base_08006F2E + _off_08006F2E;
+    uint32_t _post_08006F2E = _base_08006F2E + _off_08006F2E;
+    _cyc_08006F2E += runtime_mem_cycles(_ea_08006F2E, 4u, 0u);
+    uint32_t _v_08006F2E;
+    { uint32_t _w = bus_read_u32(_ea_08006F2E & ~3u); uint32_t _rot = (_ea_08006F2E & 3u) * 8u; _v_08006F2E = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_08006F2E;
+    g_cpu.R[15] = 0x08006F30u;
+    runtime_tick(_cyc_08006F2E);
+    /* 08006F30  08006f30 T bl.hi 0x08000f34 */
+    g_cpu.R[15] = 0x08006F30u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006F30 = 1u;
+    _cyc_08006F30 = 1u;
+    g_cpu.R[14] = 0x08000F34u;
+    g_cpu.R[15] = 0x08006F32u;
+    runtime_tick(_cyc_08006F30);
+    /* 08006F32  08006f32 T bl.lo 0x00000000 */
+    g_cpu.R[15] = 0x08006F32u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006F32 = 1u;
+    _cyc_08006F32 = 3u;
+    uint32_t _blt_08006F32 = (g_cpu.R[14] + 0x00000804u) & ~1u;
+    g_cpu.R[14] = 0x08006F35u;
+    g_cpu.R[15] = _blt_08006F32;
+    runtime_call_push_return(0x08006F34u);
+    runtime_tick(_cyc_08006F32);
+    _cyc_08006F32 = 0u;
+    runtime_dispatch(_blt_08006F32);
+    if (g_cpu.R[15] != 0x08006F34u) { runtime_call_cancel_return(0x08006F34u); return; }
+    g_cpu.R[15] = 0x08006F34u;
+    runtime_tick(_cyc_08006F32);
+    /* fall-through to 0x08006F34 */
+    g_cpu.R[15] = 0x08006F34u;
+    runtime_dispatch(0x08006F34u);
+    return;
+}
+
+/* 0x08006F78  mode=thumb  end=0x08006FA0  branches=62 */
+
+
+/* 0x08006F34 thumb */
+void gf_tfunc_08006F34(void) {
+    if (g_runtime_fn_entry_hook) g_runtime_fn_entry_hook(0x08006F34u);
+    /* 08006F34  08006f34 T ldr r0,[r15,#0x38] */
+    g_cpu.R[15] = 0x08006F34u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006F34 = 1u;
+    _cyc_08006F34 = 2u;
+    uint32_t _base_08006F34 = 0x08006F38u & ~3u;
+    uint32_t _off_08006F34;
+    _off_08006F34 = 0x00000038u;
+    uint32_t _ea_08006F34 = _base_08006F34 + _off_08006F34;
+    uint32_t _post_08006F34 = _base_08006F34 + _off_08006F34;
+    _cyc_08006F34 += runtime_mem_cycles(_ea_08006F34, 4u, 0u);
+    uint32_t _v_08006F34;
+    { uint32_t _w = bus_read_u32(_ea_08006F34 & ~3u); uint32_t _rot = (_ea_08006F34 & 3u) * 8u; _v_08006F34 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_08006F34;
+    g_cpu.R[15] = 0x08006F36u;
+    runtime_tick(_cyc_08006F34);
+    /* 08006F36  08006f36 T adds r4,r4,r0 */
+    g_cpu.R[15] = 0x08006F36u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006F36 = 1u;
+    _cyc_08006F36 = 1u;
+    uint32_t _rm_08006F36 = g_cpu.R[0];
+    uint32_t _op2_08006F36;
+    uint32_t _co_08006F36;
+    _op2_08006F36 = _rm_08006F36;
+    _co_08006F36 = cpsr_c();
+    uint32_t _rn_08006F36 = g_cpu.R[4];
+    uint32_t _r_08006F36;
+    _r_08006F36 = _rn_08006F36 + _op2_08006F36;
+    arm_set_nzcv_add(_rn_08006F36, _op2_08006F36, _r_08006F36);
+    g_cpu.R[4] = _r_08006F36;
+    g_cpu.R[15] = 0x08006F38u;
+    runtime_tick(_cyc_08006F36);
+    /* 08006F38  08006f38 T ldr r0,[r4] */
+    g_cpu.R[15] = 0x08006F38u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006F38 = 1u;
+    _cyc_08006F38 = 2u;
+    uint32_t _base_08006F38 = g_cpu.R[4];
+    uint32_t _off_08006F38;
+    _off_08006F38 = 0x00000000u;
+    uint32_t _ea_08006F38 = _base_08006F38 + _off_08006F38;
+    uint32_t _post_08006F38 = _base_08006F38 + _off_08006F38;
+    _cyc_08006F38 += runtime_mem_cycles(_ea_08006F38, 4u, 0u);
+    uint32_t _v_08006F38;
+    { uint32_t _w = bus_read_u32(_ea_08006F38 & ~3u); uint32_t _rot = (_ea_08006F38 & 3u) * 8u; _v_08006F38 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_08006F38;
+    g_cpu.R[15] = 0x08006F3Au;
+    runtime_tick(_cyc_08006F38);
+    /* 08006F3A  08006f3a T adds r0,r0,#0x1 */
+    g_cpu.R[15] = 0x08006F3Au;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006F3A = 1u;
+    _cyc_08006F3A = 1u;
+    uint32_t _rn_08006F3A = g_cpu.R[0];
+    uint32_t _r_08006F3A;
+    _r_08006F3A = _rn_08006F3A + 0x00000001u;
+    arm_set_nzcv_add(_rn_08006F3A, 0x00000001u, _r_08006F3A);
+    g_cpu.R[0] = _r_08006F3A;
+    g_cpu.R[15] = 0x08006F3Cu;
+    runtime_tick(_cyc_08006F3A);
+    /* 08006F3C  08006f3c T str r0,[r4] */
+    g_cpu.R[15] = 0x08006F3Cu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006F3C = 1u;
+    _cyc_08006F3C = 1u;
+    uint32_t _base_08006F3C = g_cpu.R[4];
+    uint32_t _off_08006F3C;
+    _off_08006F3C = 0x00000000u;
+    uint32_t _ea_08006F3C = _base_08006F3C + _off_08006F3C;
+    uint32_t _post_08006F3C = _base_08006F3C + _off_08006F3C;
+    _cyc_08006F3C += runtime_mem_cycles(_ea_08006F3C, 4u, 0u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x08006F3Cu, _ea_08006F3C & ~3u, g_cpu.R[0], 4u);
+    bus_write_u32(_ea_08006F3C & ~3u, g_cpu.R[0]);
+    g_cpu.R[15] = 0x08006F3Eu;
+    runtime_tick(_cyc_08006F3C);
+    /* 08006F3E  08006f3e T ldr r4,[r5,#0x30] */
+    g_cpu.R[15] = 0x08006F3Eu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006F3E = 1u;
+    _cyc_08006F3E = 2u;
+    uint32_t _base_08006F3E = g_cpu.R[5];
+    uint32_t _off_08006F3E;
+    _off_08006F3E = 0x00000030u;
+    uint32_t _ea_08006F3E = _base_08006F3E + _off_08006F3E;
+    uint32_t _post_08006F3E = _base_08006F3E + _off_08006F3E;
+    _cyc_08006F3E += runtime_mem_cycles(_ea_08006F3E, 4u, 0u);
+    uint32_t _v_08006F3E;
+    { uint32_t _w = bus_read_u32(_ea_08006F3E & ~3u); uint32_t _rot = (_ea_08006F3E & 3u) * 8u; _v_08006F3E = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[4] = _v_08006F3E;
+    g_cpu.R[15] = 0x08006F40u;
+    runtime_tick(_cyc_08006F3E);
+    /* 08006F40  08006f40 T cmps r4,#0x0 */
+    g_cpu.R[15] = 0x08006F40u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006F40 = 1u;
+    _cyc_08006F40 = 1u;
+    uint32_t _rn_08006F40 = g_cpu.R[4];
+    uint32_t _r_08006F40;
+    _r_08006F40 = _rn_08006F40 - 0x00000000u;
+    arm_set_nzcv_sub(_rn_08006F40, 0x00000000u, _r_08006F40);
+    g_cpu.R[15] = 0x08006F42u;
+    runtime_tick(_cyc_08006F40);
+    /* 08006F42  08006f42 T bne 0x08006f62 */
+    g_cpu.R[15] = 0x08006F42u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006F42 = 1u;
+    if (arm_cond_passes(0x1u)) {
+        _cyc_08006F42 = 3u;
+        g_cpu.R[15] = 0x08006F62u;
+        runtime_tick(_cyc_08006F42);
+        GBARECOMP_TAIL_CALL(gf_tfunc_08006F62);
+    }
+    g_cpu.R[15] = 0x08006F44u;
+    runtime_tick(_cyc_08006F42);
+    /* 08006F44  08006f44 T bl.hi 0x0808bf48 */
+    g_cpu.R[15] = 0x08006F44u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006F44 = 1u;
+    _cyc_08006F44 = 1u;
+    g_cpu.R[14] = 0x0808BF48u;
+    g_cpu.R[15] = 0x08006F46u;
+    runtime_tick(_cyc_08006F44);
+    /* 08006F46  08006f46 T bl.lo 0x00000000 */
+    g_cpu.R[15] = 0x08006F46u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006F46 = 1u;
+    _cyc_08006F46 = 3u;
+    uint32_t _blt_08006F46 = (g_cpu.R[14] + 0x00000244u) & ~1u;
+    g_cpu.R[14] = 0x08006F49u;
+    g_cpu.R[15] = _blt_08006F46;
+    runtime_call_push_return(0x08006F48u);
+    runtime_tick(_cyc_08006F46);
+    _cyc_08006F46 = 0u;
+    runtime_dispatch(_blt_08006F46);
+    if (g_cpu.R[15] != 0x08006F48u) { runtime_call_cancel_return(0x08006F48u); return; }
+    g_cpu.R[15] = 0x08006F48u;
+    runtime_tick(_cyc_08006F46);
+    /* fall-through to 0x08006F48 */
+    g_cpu.R[15] = 0x08006F48u;
+    runtime_dispatch(0x08006F48u);
+    return;
+}
+
+/* 0x08006F48  mode=thumb  end=0x08006F62  branches=2  indirect */
+
+
+/* 0x08006F48 thumb */
+void gf_tfunc_08006F48(void) {
+    if (g_runtime_fn_entry_hook) g_runtime_fn_entry_hook(0x08006F48u);
+    /* 08006F48  08006f48 T movs r1,#0x22 */
+    g_cpu.R[15] = 0x08006F48u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006F48 = 1u;
+    _cyc_08006F48 = 1u;
+    uint32_t _r_08006F48;
+    _r_08006F48 = 0x00000022u;
+    arm_set_nzc_logic(_r_08006F48, cpsr_c());
+    g_cpu.R[1] = _r_08006F48;
+    g_cpu.R[15] = 0x08006F4Au;
+    runtime_tick(_cyc_08006F48);
+    /* 08006F4A  08006f4a T ldrsh r0,[r5,+r1] */
+    g_cpu.R[15] = 0x08006F4Au;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006F4A = 1u;
+    _cyc_08006F4A = 2u;
+    uint32_t _base_08006F4A = g_cpu.R[5];
+    uint32_t _off_08006F4A;
+    uint32_t _morm_08006F4A = g_cpu.R[1];
+    _off_08006F4A = _morm_08006F4A;
+    uint32_t _ea_08006F4A = _base_08006F4A + _off_08006F4A;
+    uint32_t _post_08006F4A = _base_08006F4A + _off_08006F4A;
+    _cyc_08006F4A += runtime_mem_cycles(_ea_08006F4A, 2u, 0u);
+    uint32_t _v_08006F4A;
+    if (_ea_08006F4A & 1u) _v_08006F4A = (uint32_t)(int32_t)(int8_t)bus_read_u8(_ea_08006F4A);
+    else _v_08006F4A = (uint32_t)(int32_t)(int16_t)bus_read_u16(_ea_08006F4A);
+    g_cpu.R[0] = _v_08006F4A;
+    g_cpu.R[15] = 0x08006F4Cu;
+    runtime_tick(_cyc_08006F4A);
+    /* 08006F4C  08006f4c T movs r0,r0,lsl #1 */
+    g_cpu.R[15] = 0x08006F4Cu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006F4C = 1u;
+    _cyc_08006F4C = 1u;
+    uint32_t _rm_08006F4C = g_cpu.R[0];
+    uint32_t _op2_08006F4C;
+    uint32_t _co_08006F4C;
+    _op2_08006F4C = _rm_08006F4C << 1;
+    _co_08006F4C = (_rm_08006F4C >> 31) & 1u;
+    uint32_t _r_08006F4C;
+    _r_08006F4C = _op2_08006F4C;
+    arm_set_nzc_logic(_r_08006F4C, _co_08006F4C);
+    g_cpu.R[0] = _r_08006F4C;
+    g_cpu.R[15] = 0x08006F4Eu;
+    runtime_tick(_cyc_08006F4C);
+    /* 08006F4E  08006f4e T adds r0,r0,r5 */
+    g_cpu.R[15] = 0x08006F4Eu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006F4E = 1u;
+    _cyc_08006F4E = 1u;
+    uint32_t _rm_08006F4E = g_cpu.R[5];
+    uint32_t _op2_08006F4E;
+    uint32_t _co_08006F4E;
+    _op2_08006F4E = _rm_08006F4E;
+    _co_08006F4E = cpsr_c();
+    uint32_t _rn_08006F4E = g_cpu.R[0];
+    uint32_t _r_08006F4E;
+    _r_08006F4E = _rn_08006F4E + _op2_08006F4E;
+    arm_set_nzcv_add(_rn_08006F4E, _op2_08006F4E, _r_08006F4E);
+    g_cpu.R[0] = _r_08006F4E;
+    g_cpu.R[15] = 0x08006F50u;
+    runtime_tick(_cyc_08006F4E);
+    /* 08006F50  08006f50 T strb r4,[r0,#0x19] */
+    g_cpu.R[15] = 0x08006F50u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006F50 = 1u;
+    _cyc_08006F50 = 1u;
+    uint32_t _base_08006F50 = g_cpu.R[0];
+    uint32_t _off_08006F50;
+    _off_08006F50 = 0x00000019u;
+    uint32_t _ea_08006F50 = _base_08006F50 + _off_08006F50;
+    uint32_t _post_08006F50 = _base_08006F50 + _off_08006F50;
+    _cyc_08006F50 += runtime_mem_cycles(_ea_08006F50, 1u, 0u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x08006F50u, _ea_08006F50, (uint32_t)(g_cpu.R[4] & 0xFFu), 1u);
+    bus_write_u8(_ea_08006F50, (uint8_t)(g_cpu.R[4] & 0xFFu));
+    g_cpu.R[15] = 0x08006F52u;
+    runtime_tick(_cyc_08006F50);
+    /* 08006F52  08006f52 T ldr r2,[r15,#0x20] */
+    g_cpu.R[15] = 0x08006F52u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006F52 = 1u;
+    _cyc_08006F52 = 2u;
+    uint32_t _base_08006F52 = 0x08006F56u & ~3u;
+    uint32_t _off_08006F52;
+    _off_08006F52 = 0x00000020u;
+    uint32_t _ea_08006F52 = _base_08006F52 + _off_08006F52;
+    uint32_t _post_08006F52 = _base_08006F52 + _off_08006F52;
+    _cyc_08006F52 += runtime_mem_cycles(_ea_08006F52, 4u, 0u);
+    uint32_t _v_08006F52;
+    { uint32_t _w = bus_read_u32(_ea_08006F52 & ~3u); uint32_t _rot = (_ea_08006F52 & 3u) * 8u; _v_08006F52 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[2] = _v_08006F52;
+    g_cpu.R[15] = 0x08006F54u;
+    runtime_tick(_cyc_08006F52);
+    /* 08006F54  08006f54 T adds r0,r5,#0x0 */
+    g_cpu.R[15] = 0x08006F54u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006F54 = 1u;
+    _cyc_08006F54 = 1u;
+    uint32_t _rn_08006F54 = g_cpu.R[5];
+    uint32_t _r_08006F54;
+    _r_08006F54 = _rn_08006F54 + 0x00000000u;
+    arm_set_nzcv_add(_rn_08006F54, 0x00000000u, _r_08006F54);
+    g_cpu.R[0] = _r_08006F54;
+    g_cpu.R[15] = 0x08006F56u;
+    runtime_tick(_cyc_08006F54);
+    /* 08006F56  08006f56 T adds r0,r0,#0x18 */
+    g_cpu.R[15] = 0x08006F56u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006F56 = 1u;
+    _cyc_08006F56 = 1u;
+    uint32_t _rn_08006F56 = g_cpu.R[0];
+    uint32_t _r_08006F56;
+    _r_08006F56 = _rn_08006F56 + 0x00000018u;
+    arm_set_nzcv_add(_rn_08006F56, 0x00000018u, _r_08006F56);
+    g_cpu.R[0] = _r_08006F56;
+    g_cpu.R[15] = 0x08006F58u;
+    runtime_tick(_cyc_08006F56);
+    /* 08006F58  08006f58 T adds r1,r5,#0x0 */
+    g_cpu.R[15] = 0x08006F58u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006F58 = 1u;
+    _cyc_08006F58 = 1u;
+    uint32_t _rn_08006F58 = g_cpu.R[5];
+    uint32_t _r_08006F58;
+    _r_08006F58 = _rn_08006F58 + 0x00000000u;
+    arm_set_nzcv_add(_rn_08006F58, 0x00000000u, _r_08006F58);
+    g_cpu.R[1] = _r_08006F58;
+    g_cpu.R[15] = 0x08006F5Au;
+    runtime_tick(_cyc_08006F58);
+    /* 08006F5A  08006f5a T adds r1,r1,#0x22 */
+    g_cpu.R[15] = 0x08006F5Au;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006F5A = 1u;
+    _cyc_08006F5A = 1u;
+    uint32_t _rn_08006F5A = g_cpu.R[1];
+    uint32_t _r_08006F5A;
+    _r_08006F5A = _rn_08006F5A + 0x00000022u;
+    arm_set_nzcv_add(_rn_08006F5A, 0x00000022u, _r_08006F5A);
+    g_cpu.R[1] = _r_08006F5A;
+    g_cpu.R[15] = 0x08006F5Cu;
+    runtime_tick(_cyc_08006F5A);
+    /* 08006F5C  08006f5c T ldr r2,[r2] */
+    g_cpu.R[15] = 0x08006F5Cu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006F5C = 1u;
+    _cyc_08006F5C = 2u;
+    uint32_t _base_08006F5C = g_cpu.R[2];
+    uint32_t _off_08006F5C;
+    _off_08006F5C = 0x00000000u;
+    uint32_t _ea_08006F5C = _base_08006F5C + _off_08006F5C;
+    uint32_t _post_08006F5C = _base_08006F5C + _off_08006F5C;
+    _cyc_08006F5C += runtime_mem_cycles(_ea_08006F5C, 4u, 0u);
+    uint32_t _v_08006F5C;
+    { uint32_t _w = bus_read_u32(_ea_08006F5C & ~3u); uint32_t _rot = (_ea_08006F5C & 3u) * 8u; _v_08006F5C = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[2] = _v_08006F5C;
+    g_cpu.R[15] = 0x08006F5Eu;
+    runtime_tick(_cyc_08006F5C);
+    /* 08006F5E  08006f5e T bl.hi 0x080c2f62 */
+    g_cpu.R[15] = 0x08006F5Eu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006F5E = 1u;
+    _cyc_08006F5E = 1u;
+    g_cpu.R[14] = 0x080C2F62u;
+    g_cpu.R[15] = 0x08006F60u;
+    runtime_tick(_cyc_08006F5E);
+    /* 08006F60  08006f60 T bl.lo 0x00000000 */
+    g_cpu.R[15] = 0x08006F60u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006F60 = 1u;
+    _cyc_08006F60 = 3u;
+    uint32_t _blt_08006F60 = (g_cpu.R[14] + 0x00000282u) & ~1u;
+    g_cpu.R[14] = 0x08006F63u;
+    g_cpu.R[15] = _blt_08006F60;
+    runtime_call_push_return(0x08006F62u);
+    runtime_tick(_cyc_08006F60);
+    _cyc_08006F60 = 0u;
+    runtime_dispatch(_blt_08006F60);
+    if (g_cpu.R[15] != 0x08006F62u) { runtime_call_cancel_return(0x08006F62u); return; }
+    g_cpu.R[15] = 0x08006F62u;
+    runtime_tick(_cyc_08006F60);
+    /* fall-through to 0x08006F62 */
+    g_cpu.R[15] = 0x08006F62u;
+    runtime_dispatch(0x08006F62u);
+    return;
+}
+
+/* 0x08006F62  mode=thumb  end=0x08006F68  branches=0  indirect */
+
+
+/* 0x08006F62 thumb */
+void gf_tfunc_08006F62(void) {
+    if (g_runtime_fn_entry_hook) g_runtime_fn_entry_hook(0x08006F62u);
+    /* 08006F62  08006f62 T ldm r13!,{r4,r5} */
+    g_cpu.R[15] = 0x08006F62u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006F62 = 1u;
+    _cyc_08006F62 = 2u;
+    uint32_t _b_08006F62 = g_cpu.R[13];
+    uint32_t _a_08006F62 = _b_08006F62;
+    uint32_t _fb_08006F62 = _b_08006F62 + 8u;
+    _cyc_08006F62 += runtime_mem_cycles(_a_08006F62 & ~3u, 4u, 0u);
+    g_cpu.R[4] = bus_read_u32(_a_08006F62 & ~3u);
+    _a_08006F62 += 4u;
+    _cyc_08006F62 += runtime_mem_cycles(_a_08006F62 & ~3u, 4u, 1u);
+    g_cpu.R[5] = bus_read_u32(_a_08006F62 & ~3u);
+    _a_08006F62 += 4u;
+    g_cpu.R[13] = _fb_08006F62;
+    g_cpu.R[15] = 0x08006F64u;
+    runtime_tick(_cyc_08006F62);
+    /* 08006F64  08006f64 T ldm r13!,{r0} */
+    g_cpu.R[15] = 0x08006F64u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006F64 = 1u;
+    _cyc_08006F64 = 2u;
+    uint32_t _b_08006F64 = g_cpu.R[13];
+    uint32_t _a_08006F64 = _b_08006F64;
+    uint32_t _fb_08006F64 = _b_08006F64 + 4u;
+    _cyc_08006F64 += runtime_mem_cycles(_a_08006F64 & ~3u, 4u, 0u);
+    g_cpu.R[0] = bus_read_u32(_a_08006F64 & ~3u);
+    _a_08006F64 += 4u;
+    g_cpu.R[13] = _fb_08006F64;
+    g_cpu.R[15] = 0x08006F66u;
+    runtime_tick(_cyc_08006F64);
+    /* 08006F66  08006f66 T bx r0 */
+    g_cpu.R[15] = 0x08006F66u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006F66 = 1u;
+    _cyc_08006F66 = 3u;
+    uint32_t _bxt_08006F66 = g_cpu.R[0];
+    g_cpu.R[15] = _bxt_08006F66 & ~1u;
+    if (_bxt_08006F66 & 1u) g_cpu.cpsr |= CPSR_T_BIT; else g_cpu.cpsr &= ~CPSR_T_BIT;
+    runtime_tick(_cyc_08006F66);
+    if (runtime_call_should_return(g_cpu.R[15])) return;
+    GBARECOMP_TAIL_DISPATCH_WITH_EXCHANGE(_bxt_08006F66);
+    g_cpu.R[15] = 0x08006F68u;
+    runtime_tick(_cyc_08006F66);
+    /* fall-through to 0x08006F68 */
+    g_cpu.R[15] = 0x08006F68u;
+    runtime_dispatch(0x08006F68u);
+    return;
+}
+
+/* 0x08006FA0  mode=thumb  end=0x08006FAA  branches=59 */
+
+
+/* 0x08006F78 thumb */
+void gf_actor_apply_vel(void) {
+    if (g_runtime_fn_entry_hook) g_runtime_fn_entry_hook(0x08006F78u);
+    /* 08006F78  08006f78 T stm r13!,{r4,r5,r6,r7,r14} */
+    g_cpu.R[15] = 0x08006F78u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006F78 = 1u;
+    _cyc_08006F78 = 1u;
+    uint32_t _b_08006F78 = g_cpu.R[13];
+    uint32_t _a_08006F78 = _b_08006F78 - 20u;
+    uint32_t _fb_08006F78 = _b_08006F78 - 20u;
+    _cyc_08006F78 += runtime_mem_cycles(_a_08006F78 & ~3u, 4u, 0u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x08006F78u, _a_08006F78 & ~3u, g_cpu.R[4], 4u);
+    bus_write_u32(_a_08006F78 & ~3u, g_cpu.R[4]);
+    _a_08006F78 += 4u;
+    _cyc_08006F78 += runtime_mem_cycles(_a_08006F78 & ~3u, 4u, 1u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x08006F78u, _a_08006F78 & ~3u, g_cpu.R[5], 4u);
+    bus_write_u32(_a_08006F78 & ~3u, g_cpu.R[5]);
+    _a_08006F78 += 4u;
+    _cyc_08006F78 += runtime_mem_cycles(_a_08006F78 & ~3u, 4u, 1u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x08006F78u, _a_08006F78 & ~3u, g_cpu.R[6], 4u);
+    bus_write_u32(_a_08006F78 & ~3u, g_cpu.R[6]);
+    _a_08006F78 += 4u;
+    _cyc_08006F78 += runtime_mem_cycles(_a_08006F78 & ~3u, 4u, 1u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x08006F78u, _a_08006F78 & ~3u, g_cpu.R[7], 4u);
+    bus_write_u32(_a_08006F78 & ~3u, g_cpu.R[7]);
+    _a_08006F78 += 4u;
+    _cyc_08006F78 += runtime_mem_cycles(_a_08006F78 & ~3u, 4u, 1u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x08006F78u, _a_08006F78 & ~3u, g_cpu.R[14], 4u);
+    bus_write_u32(_a_08006F78 & ~3u, g_cpu.R[14]);
+    _a_08006F78 += 4u;
+    g_cpu.R[13] = _fb_08006F78;
+    g_cpu.R[15] = 0x08006F7Au;
+    runtime_tick(_cyc_08006F78);
+    /* 08006F7A  08006f7a T mov r7,r8 */
+    g_cpu.R[15] = 0x08006F7Au;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006F7A = 1u;
+    _cyc_08006F7A = 1u;
+    uint32_t _rm_08006F7A = g_cpu.R[8];
+    uint32_t _op2_08006F7A;
+    uint32_t _co_08006F7A;
+    _op2_08006F7A = _rm_08006F7A;
+    _co_08006F7A = cpsr_c();
+    uint32_t _r_08006F7A;
+    _r_08006F7A = _op2_08006F7A;
+    g_cpu.R[7] = _r_08006F7A;
+    g_cpu.R[15] = 0x08006F7Cu;
+    runtime_tick(_cyc_08006F7A);
+    /* 08006F7C  08006f7c T stm r13!,{r7} */
+    g_cpu.R[15] = 0x08006F7Cu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006F7C = 1u;
+    _cyc_08006F7C = 1u;
+    uint32_t _b_08006F7C = g_cpu.R[13];
+    uint32_t _a_08006F7C = _b_08006F7C - 4u;
+    uint32_t _fb_08006F7C = _b_08006F7C - 4u;
+    _cyc_08006F7C += runtime_mem_cycles(_a_08006F7C & ~3u, 4u, 0u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x08006F7Cu, _a_08006F7C & ~3u, g_cpu.R[7], 4u);
+    bus_write_u32(_a_08006F7C & ~3u, g_cpu.R[7]);
+    _a_08006F7C += 4u;
+    g_cpu.R[13] = _fb_08006F7C;
+    g_cpu.R[15] = 0x08006F7Eu;
+    runtime_tick(_cyc_08006F7C);
+    /* 08006F7E  08006f7e T adds r6,r0,#0x0 */
+    g_cpu.R[15] = 0x08006F7Eu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006F7E = 1u;
+    _cyc_08006F7E = 1u;
+    uint32_t _rn_08006F7E = g_cpu.R[0];
+    uint32_t _r_08006F7E;
+    _r_08006F7E = _rn_08006F7E + 0x00000000u;
+    arm_set_nzcv_add(_rn_08006F7E, 0x00000000u, _r_08006F7E);
+    g_cpu.R[6] = _r_08006F7E;
+    g_cpu.R[15] = 0x08006F80u;
+    runtime_tick(_cyc_08006F7E);
+    /* 08006F80  08006f80 T ldr r0,[r15,#0x1f0] */
+    g_cpu.R[15] = 0x08006F80u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006F80 = 1u;
+    _cyc_08006F80 = 2u;
+    uint32_t _base_08006F80 = 0x08006F84u & ~3u;
+    uint32_t _off_08006F80;
+    _off_08006F80 = 0x000001F0u;
+    uint32_t _ea_08006F80 = _base_08006F80 + _off_08006F80;
+    uint32_t _post_08006F80 = _base_08006F80 + _off_08006F80;
+    _cyc_08006F80 += runtime_mem_cycles(_ea_08006F80, 4u, 0u);
+    uint32_t _v_08006F80;
+    { uint32_t _w = bus_read_u32(_ea_08006F80 & ~3u); uint32_t _rot = (_ea_08006F80 & 3u) * 8u; _v_08006F80 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_08006F80;
+    g_cpu.R[15] = 0x08006F82u;
+    runtime_tick(_cyc_08006F80);
+    /* 08006F82  08006f82 T mov r8,r0 */
+    g_cpu.R[15] = 0x08006F82u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006F82 = 1u;
+    _cyc_08006F82 = 1u;
+    uint32_t _rm_08006F82 = g_cpu.R[0];
+    uint32_t _op2_08006F82;
+    uint32_t _co_08006F82;
+    _op2_08006F82 = _rm_08006F82;
+    _co_08006F82 = cpsr_c();
+    uint32_t _r_08006F82;
+    _r_08006F82 = _op2_08006F82;
+    g_cpu.R[8] = _r_08006F82;
+    g_cpu.R[15] = 0x08006F84u;
+    runtime_tick(_cyc_08006F82);
+    /* 08006F84  08006f84 T ldr r4,[r15,#0x1f0] */
+    g_cpu.R[15] = 0x08006F84u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006F84 = 1u;
+    _cyc_08006F84 = 2u;
+    uint32_t _base_08006F84 = 0x08006F88u & ~3u;
+    uint32_t _off_08006F84;
+    _off_08006F84 = 0x000001F0u;
+    uint32_t _ea_08006F84 = _base_08006F84 + _off_08006F84;
+    uint32_t _post_08006F84 = _base_08006F84 + _off_08006F84;
+    _cyc_08006F84 += runtime_mem_cycles(_ea_08006F84, 4u, 0u);
+    uint32_t _v_08006F84;
+    { uint32_t _w = bus_read_u32(_ea_08006F84 & ~3u); uint32_t _rot = (_ea_08006F84 & 3u) * 8u; _v_08006F84 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[4] = _v_08006F84;
+    g_cpu.R[15] = 0x08006F86u;
+    runtime_tick(_cyc_08006F84);
+    /* 08006F86  08006f86 T ldr r1,[r15,#0x1f4] */
+    g_cpu.R[15] = 0x08006F86u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006F86 = 1u;
+    _cyc_08006F86 = 2u;
+    uint32_t _base_08006F86 = 0x08006F8Au & ~3u;
+    uint32_t _off_08006F86;
+    _off_08006F86 = 0x000001F4u;
+    uint32_t _ea_08006F86 = _base_08006F86 + _off_08006F86;
+    uint32_t _post_08006F86 = _base_08006F86 + _off_08006F86;
+    _cyc_08006F86 += runtime_mem_cycles(_ea_08006F86, 4u, 0u);
+    uint32_t _v_08006F86;
+    { uint32_t _w = bus_read_u32(_ea_08006F86 & ~3u); uint32_t _rot = (_ea_08006F86 & 3u) * 8u; _v_08006F86 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[1] = _v_08006F86;
+    g_cpu.R[15] = 0x08006F88u;
+    runtime_tick(_cyc_08006F86);
+    /* 08006F88  08006f88 T adds r5,r4,r1 */
+    g_cpu.R[15] = 0x08006F88u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006F88 = 1u;
+    _cyc_08006F88 = 1u;
+    uint32_t _rm_08006F88 = g_cpu.R[1];
+    uint32_t _op2_08006F88;
+    uint32_t _co_08006F88;
+    _op2_08006F88 = _rm_08006F88;
+    _co_08006F88 = cpsr_c();
+    uint32_t _rn_08006F88 = g_cpu.R[4];
+    uint32_t _r_08006F88;
+    _r_08006F88 = _rn_08006F88 + _op2_08006F88;
+    arm_set_nzcv_add(_rn_08006F88, _op2_08006F88, _r_08006F88);
+    g_cpu.R[5] = _r_08006F88;
+    g_cpu.R[15] = 0x08006F8Au;
+    runtime_tick(_cyc_08006F88);
+    /* 08006F8A  08006f8a T ldr r0,[r5] */
+    g_cpu.R[15] = 0x08006F8Au;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006F8A = 1u;
+    _cyc_08006F8A = 2u;
+    uint32_t _base_08006F8A = g_cpu.R[5];
+    uint32_t _off_08006F8A;
+    _off_08006F8A = 0x00000000u;
+    uint32_t _ea_08006F8A = _base_08006F8A + _off_08006F8A;
+    uint32_t _post_08006F8A = _base_08006F8A + _off_08006F8A;
+    _cyc_08006F8A += runtime_mem_cycles(_ea_08006F8A, 4u, 0u);
+    uint32_t _v_08006F8A;
+    { uint32_t _w = bus_read_u32(_ea_08006F8A & ~3u); uint32_t _rot = (_ea_08006F8A & 3u) * 8u; _v_08006F8A = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_08006F8A;
+    g_cpu.R[15] = 0x08006F8Cu;
+    runtime_tick(_cyc_08006F8A);
+    /* 08006F8C  08006f8c T movs r1,#0x80 */
+    g_cpu.R[15] = 0x08006F8Cu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006F8C = 1u;
+    _cyc_08006F8C = 1u;
+    uint32_t _r_08006F8C;
+    _r_08006F8C = 0x00000080u;
+    arm_set_nzc_logic(_r_08006F8C, cpsr_c());
+    g_cpu.R[1] = _r_08006F8C;
+    g_cpu.R[15] = 0x08006F8Eu;
+    runtime_tick(_cyc_08006F8C);
+    /* 08006F8E  08006f8e T movs r1,r1,lsl #23 */
+    g_cpu.R[15] = 0x08006F8Eu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006F8E = 1u;
+    _cyc_08006F8E = 1u;
+    uint32_t _rm_08006F8E = g_cpu.R[1];
+    uint32_t _op2_08006F8E;
+    uint32_t _co_08006F8E;
+    _op2_08006F8E = _rm_08006F8E << 23;
+    _co_08006F8E = (_rm_08006F8E >> 9) & 1u;
+    uint32_t _r_08006F8E;
+    _r_08006F8E = _op2_08006F8E;
+    arm_set_nzc_logic(_r_08006F8E, _co_08006F8E);
+    g_cpu.R[1] = _r_08006F8E;
+    g_cpu.R[15] = 0x08006F90u;
+    runtime_tick(_cyc_08006F8E);
+    /* 08006F90  08006f90 T ands r0,r0,r1 */
+    g_cpu.R[15] = 0x08006F90u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006F90 = 1u;
+    _cyc_08006F90 = 1u;
+    uint32_t _rm_08006F90 = g_cpu.R[1];
+    uint32_t _op2_08006F90;
+    uint32_t _co_08006F90;
+    _op2_08006F90 = _rm_08006F90;
+    _co_08006F90 = cpsr_c();
+    uint32_t _rn_08006F90 = g_cpu.R[0];
+    uint32_t _r_08006F90;
+    _r_08006F90 = _rn_08006F90 & _op2_08006F90;
+    arm_set_nzc_logic(_r_08006F90, _co_08006F90);
+    g_cpu.R[0] = _r_08006F90;
+    g_cpu.R[15] = 0x08006F92u;
+    runtime_tick(_cyc_08006F90);
+    /* 08006F92  08006f92 T cmps r0,#0x0 */
+    g_cpu.R[15] = 0x08006F92u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006F92 = 1u;
+    _cyc_08006F92 = 1u;
+    uint32_t _rn_08006F92 = g_cpu.R[0];
+    uint32_t _r_08006F92;
+    _r_08006F92 = _rn_08006F92 - 0x00000000u;
+    arm_set_nzcv_sub(_rn_08006F92, 0x00000000u, _r_08006F92);
+    g_cpu.R[15] = 0x08006F94u;
+    runtime_tick(_cyc_08006F92);
+    /* 08006F94  08006f94 T bne 0x08006faa */
+    g_cpu.R[15] = 0x08006F94u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006F94 = 1u;
+    if (arm_cond_passes(0x1u)) {
+        _cyc_08006F94 = 3u;
+        g_cpu.R[15] = 0x08006FAAu;
+        runtime_tick(_cyc_08006F94);
+        GBARECOMP_TAIL_CALL(gf_tfunc_08006FAA);
+    }
+    g_cpu.R[15] = 0x08006F96u;
+    runtime_tick(_cyc_08006F94);
+    /* 08006F96  08006f96 T ldr r2,[r15,#0x1e8] */
+    g_cpu.R[15] = 0x08006F96u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006F96 = 1u;
+    _cyc_08006F96 = 2u;
+    uint32_t _base_08006F96 = 0x08006F9Au & ~3u;
+    uint32_t _off_08006F96;
+    _off_08006F96 = 0x000001E8u;
+    uint32_t _ea_08006F96 = _base_08006F96 + _off_08006F96;
+    uint32_t _post_08006F96 = _base_08006F96 + _off_08006F96;
+    _cyc_08006F96 += runtime_mem_cycles(_ea_08006F96, 4u, 0u);
+    uint32_t _v_08006F96;
+    { uint32_t _w = bus_read_u32(_ea_08006F96 & ~3u); uint32_t _rot = (_ea_08006F96 & 3u) * 8u; _v_08006F96 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[2] = _v_08006F96;
+    g_cpu.R[15] = 0x08006F98u;
+    runtime_tick(_cyc_08006F96);
+    /* 08006F98  08006f98 T adds r0,r4,r2 */
+    g_cpu.R[15] = 0x08006F98u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006F98 = 1u;
+    _cyc_08006F98 = 1u;
+    uint32_t _rm_08006F98 = g_cpu.R[2];
+    uint32_t _op2_08006F98;
+    uint32_t _co_08006F98;
+    _op2_08006F98 = _rm_08006F98;
+    _co_08006F98 = cpsr_c();
+    uint32_t _rn_08006F98 = g_cpu.R[4];
+    uint32_t _r_08006F98;
+    _r_08006F98 = _rn_08006F98 + _op2_08006F98;
+    arm_set_nzcv_add(_rn_08006F98, _op2_08006F98, _r_08006F98);
+    g_cpu.R[0] = _r_08006F98;
+    g_cpu.R[15] = 0x08006F9Au;
+    runtime_tick(_cyc_08006F98);
+    /* 08006F9A  08006f9a T ldr r0,[r0] */
+    g_cpu.R[15] = 0x08006F9Au;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006F9A = 1u;
+    _cyc_08006F9A = 2u;
+    uint32_t _base_08006F9A = g_cpu.R[0];
+    uint32_t _off_08006F9A;
+    _off_08006F9A = 0x00000000u;
+    uint32_t _ea_08006F9A = _base_08006F9A + _off_08006F9A;
+    uint32_t _post_08006F9A = _base_08006F9A + _off_08006F9A;
+    _cyc_08006F9A += runtime_mem_cycles(_ea_08006F9A, 4u, 0u);
+    uint32_t _v_08006F9A;
+    { uint32_t _w = bus_read_u32(_ea_08006F9A & ~3u); uint32_t _rot = (_ea_08006F9A & 3u) * 8u; _v_08006F9A = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_08006F9A;
+    g_cpu.R[15] = 0x08006F9Cu;
+    runtime_tick(_cyc_08006F9A);
+    /* 08006F9C  08006f9c T bl.hi 0x08000fa0 */
+    g_cpu.R[15] = 0x08006F9Cu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006F9C = 1u;
+    _cyc_08006F9C = 1u;
+    g_cpu.R[14] = 0x08000FA0u;
+    g_cpu.R[15] = 0x08006F9Eu;
+    runtime_tick(_cyc_08006F9C);
+    /* 08006F9E  08006f9e T bl.lo 0x00000000 */
+    g_cpu.R[15] = 0x08006F9Eu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006F9E = 1u;
+    _cyc_08006F9E = 3u;
+    uint32_t _blt_08006F9E = (g_cpu.R[14] + 0x00000798u) & ~1u;
+    g_cpu.R[14] = 0x08006FA1u;
+    g_cpu.R[15] = _blt_08006F9E;
+    runtime_call_push_return(0x08006FA0u);
+    runtime_tick(_cyc_08006F9E);
+    _cyc_08006F9E = 0u;
+    runtime_dispatch(_blt_08006F9E);
+    if (g_cpu.R[15] != 0x08006FA0u) { runtime_call_cancel_return(0x08006FA0u); return; }
+    g_cpu.R[15] = 0x08006FA0u;
+    runtime_tick(_cyc_08006F9E);
+    /* fall-through to 0x08006FA0 */
+    g_cpu.R[15] = 0x08006FA0u;
+    runtime_dispatch(0x08006FA0u);
+    return;
+}
+
+/* 0x08006FAA  mode=thumb  end=0x08006FC0  branches=59 */
+
+
+/* 0x08006FA0 thumb */
+void gf_actor_step_main(void) {
+    if (g_runtime_fn_entry_hook) g_runtime_fn_entry_hook(0x08006FA0u);
+    /* 08006FA0  08006fa0 T ldr r7,[r15,#0x1e0] */
+    g_cpu.R[15] = 0x08006FA0u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006FA0 = 1u;
+    _cyc_08006FA0 = 2u;
+    uint32_t _base_08006FA0 = 0x08006FA4u & ~3u;
+    uint32_t _off_08006FA0;
+    _off_08006FA0 = 0x000001E0u;
+    uint32_t _ea_08006FA0 = _base_08006FA0 + _off_08006FA0;
+    uint32_t _post_08006FA0 = _base_08006FA0 + _off_08006FA0;
+    _cyc_08006FA0 += runtime_mem_cycles(_ea_08006FA0, 4u, 0u);
+    uint32_t _v_08006FA0;
+    { uint32_t _w = bus_read_u32(_ea_08006FA0 & ~3u); uint32_t _rot = (_ea_08006FA0 & 3u) * 8u; _v_08006FA0 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[7] = _v_08006FA0;
+    g_cpu.R[15] = 0x08006FA2u;
+    runtime_tick(_cyc_08006FA0);
+    /* 08006FA2  08006fa2 T adds r1,r4,r7 */
+    g_cpu.R[15] = 0x08006FA2u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006FA2 = 1u;
+    _cyc_08006FA2 = 1u;
+    uint32_t _rm_08006FA2 = g_cpu.R[7];
+    uint32_t _op2_08006FA2;
+    uint32_t _co_08006FA2;
+    _op2_08006FA2 = _rm_08006FA2;
+    _co_08006FA2 = cpsr_c();
+    uint32_t _rn_08006FA2 = g_cpu.R[4];
+    uint32_t _r_08006FA2;
+    _r_08006FA2 = _rn_08006FA2 + _op2_08006FA2;
+    arm_set_nzcv_add(_rn_08006FA2, _op2_08006FA2, _r_08006FA2);
+    g_cpu.R[1] = _r_08006FA2;
+    g_cpu.R[15] = 0x08006FA4u;
+    runtime_tick(_cyc_08006FA2);
+    /* 08006FA4  08006fa4 T ldr r0,[r1] */
+    g_cpu.R[15] = 0x08006FA4u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006FA4 = 1u;
+    _cyc_08006FA4 = 2u;
+    uint32_t _base_08006FA4 = g_cpu.R[1];
+    uint32_t _off_08006FA4;
+    _off_08006FA4 = 0x00000000u;
+    uint32_t _ea_08006FA4 = _base_08006FA4 + _off_08006FA4;
+    uint32_t _post_08006FA4 = _base_08006FA4 + _off_08006FA4;
+    _cyc_08006FA4 += runtime_mem_cycles(_ea_08006FA4, 4u, 0u);
+    uint32_t _v_08006FA4;
+    { uint32_t _w = bus_read_u32(_ea_08006FA4 & ~3u); uint32_t _rot = (_ea_08006FA4 & 3u) * 8u; _v_08006FA4 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_08006FA4;
+    g_cpu.R[15] = 0x08006FA6u;
+    runtime_tick(_cyc_08006FA4);
+    /* 08006FA6  08006fa6 T adds r0,r0,#0x1 */
+    g_cpu.R[15] = 0x08006FA6u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006FA6 = 1u;
+    _cyc_08006FA6 = 1u;
+    uint32_t _rn_08006FA6 = g_cpu.R[0];
+    uint32_t _r_08006FA6;
+    _r_08006FA6 = _rn_08006FA6 + 0x00000001u;
+    arm_set_nzcv_add(_rn_08006FA6, 0x00000001u, _r_08006FA6);
+    g_cpu.R[0] = _r_08006FA6;
+    g_cpu.R[15] = 0x08006FA8u;
+    runtime_tick(_cyc_08006FA6);
+    /* 08006FA8  08006fa8 T str r0,[r1] */
+    g_cpu.R[15] = 0x08006FA8u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006FA8 = 1u;
+    _cyc_08006FA8 = 1u;
+    uint32_t _base_08006FA8 = g_cpu.R[1];
+    uint32_t _off_08006FA8;
+    _off_08006FA8 = 0x00000000u;
+    uint32_t _ea_08006FA8 = _base_08006FA8 + _off_08006FA8;
+    uint32_t _post_08006FA8 = _base_08006FA8 + _off_08006FA8;
+    _cyc_08006FA8 += runtime_mem_cycles(_ea_08006FA8, 4u, 0u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x08006FA8u, _ea_08006FA8 & ~3u, g_cpu.R[0], 4u);
+    bus_write_u32(_ea_08006FA8 & ~3u, g_cpu.R[0]);
+    g_cpu.R[15] = 0x08006FAAu;
+    runtime_tick(_cyc_08006FA8);
+    /* fall-through to 0x08006FAA */
+    g_cpu.R[15] = 0x08006FAAu;
+    runtime_dispatch(0x08006FAAu);
+    return;
+}
+
+/* 0x08006FC0  mode=thumb  end=0x08006FD6  branches=56 */
+
+
+/* 0x08006FAA thumb */
+void gf_tfunc_08006FAA(void) {
+    if (g_runtime_fn_entry_hook) g_runtime_fn_entry_hook(0x08006FAAu);
+    /* 08006FAA  08006faa T ldr r0,[r5] */
+    g_cpu.R[15] = 0x08006FAAu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006FAA = 1u;
+    _cyc_08006FAA = 2u;
+    uint32_t _base_08006FAA = g_cpu.R[5];
+    uint32_t _off_08006FAA;
+    _off_08006FAA = 0x00000000u;
+    uint32_t _ea_08006FAA = _base_08006FAA + _off_08006FAA;
+    uint32_t _post_08006FAA = _base_08006FAA + _off_08006FAA;
+    _cyc_08006FAA += runtime_mem_cycles(_ea_08006FAA, 4u, 0u);
+    uint32_t _v_08006FAA;
+    { uint32_t _w = bus_read_u32(_ea_08006FAA & ~3u); uint32_t _rot = (_ea_08006FAA & 3u) * 8u; _v_08006FAA = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_08006FAA;
+    g_cpu.R[15] = 0x08006FACu;
+    runtime_tick(_cyc_08006FAA);
+    /* 08006FAC  08006fac T movs r1,#0x80 */
+    g_cpu.R[15] = 0x08006FACu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006FAC = 1u;
+    _cyc_08006FAC = 1u;
+    uint32_t _r_08006FAC;
+    _r_08006FAC = 0x00000080u;
+    arm_set_nzc_logic(_r_08006FAC, cpsr_c());
+    g_cpu.R[1] = _r_08006FAC;
+    g_cpu.R[15] = 0x08006FAEu;
+    runtime_tick(_cyc_08006FAC);
+    /* 08006FAE  08006fae T movs r1,r1,lsl #22 */
+    g_cpu.R[15] = 0x08006FAEu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006FAE = 1u;
+    _cyc_08006FAE = 1u;
+    uint32_t _rm_08006FAE = g_cpu.R[1];
+    uint32_t _op2_08006FAE;
+    uint32_t _co_08006FAE;
+    _op2_08006FAE = _rm_08006FAE << 22;
+    _co_08006FAE = (_rm_08006FAE >> 10) & 1u;
+    uint32_t _r_08006FAE;
+    _r_08006FAE = _op2_08006FAE;
+    arm_set_nzc_logic(_r_08006FAE, _co_08006FAE);
+    g_cpu.R[1] = _r_08006FAE;
+    g_cpu.R[15] = 0x08006FB0u;
+    runtime_tick(_cyc_08006FAE);
+    /* 08006FB0  08006fb0 T ands r0,r0,r1 */
+    g_cpu.R[15] = 0x08006FB0u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006FB0 = 1u;
+    _cyc_08006FB0 = 1u;
+    uint32_t _rm_08006FB0 = g_cpu.R[1];
+    uint32_t _op2_08006FB0;
+    uint32_t _co_08006FB0;
+    _op2_08006FB0 = _rm_08006FB0;
+    _co_08006FB0 = cpsr_c();
+    uint32_t _rn_08006FB0 = g_cpu.R[0];
+    uint32_t _r_08006FB0;
+    _r_08006FB0 = _rn_08006FB0 & _op2_08006FB0;
+    arm_set_nzc_logic(_r_08006FB0, _co_08006FB0);
+    g_cpu.R[0] = _r_08006FB0;
+    g_cpu.R[15] = 0x08006FB2u;
+    runtime_tick(_cyc_08006FB0);
+    /* 08006FB2  08006fb2 T cmps r0,#0x0 */
+    g_cpu.R[15] = 0x08006FB2u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006FB2 = 1u;
+    _cyc_08006FB2 = 1u;
+    uint32_t _rn_08006FB2 = g_cpu.R[0];
+    uint32_t _r_08006FB2;
+    _r_08006FB2 = _rn_08006FB2 - 0x00000000u;
+    arm_set_nzcv_sub(_rn_08006FB2, 0x00000000u, _r_08006FB2);
+    g_cpu.R[15] = 0x08006FB4u;
+    runtime_tick(_cyc_08006FB2);
+    /* 08006FB4  08006fb4 T bne 0x08006fc0 */
+    g_cpu.R[15] = 0x08006FB4u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006FB4 = 1u;
+    if (arm_cond_passes(0x1u)) {
+        _cyc_08006FB4 = 3u;
+        g_cpu.R[15] = 0x08006FC0u;
+        runtime_tick(_cyc_08006FB4);
+        GBARECOMP_TAIL_CALL(gf_tfunc_08006FC0);
+    }
+    g_cpu.R[15] = 0x08006FB6u;
+    runtime_tick(_cyc_08006FB4);
+    /* 08006FB6  08006fb6 T ldr r1,[r15,#0x1d0] */
+    g_cpu.R[15] = 0x08006FB6u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006FB6 = 1u;
+    _cyc_08006FB6 = 2u;
+    uint32_t _base_08006FB6 = 0x08006FBAu & ~3u;
+    uint32_t _off_08006FB6;
+    _off_08006FB6 = 0x000001D0u;
+    uint32_t _ea_08006FB6 = _base_08006FB6 + _off_08006FB6;
+    uint32_t _post_08006FB6 = _base_08006FB6 + _off_08006FB6;
+    _cyc_08006FB6 += runtime_mem_cycles(_ea_08006FB6, 4u, 0u);
+    uint32_t _v_08006FB6;
+    { uint32_t _w = bus_read_u32(_ea_08006FB6 & ~3u); uint32_t _rot = (_ea_08006FB6 & 3u) * 8u; _v_08006FB6 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[1] = _v_08006FB6;
+    g_cpu.R[15] = 0x08006FB8u;
+    runtime_tick(_cyc_08006FB6);
+    /* 08006FB8  08006fb8 T adds r0,r4,r1 */
+    g_cpu.R[15] = 0x08006FB8u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006FB8 = 1u;
+    _cyc_08006FB8 = 1u;
+    uint32_t _rm_08006FB8 = g_cpu.R[1];
+    uint32_t _op2_08006FB8;
+    uint32_t _co_08006FB8;
+    _op2_08006FB8 = _rm_08006FB8;
+    _co_08006FB8 = cpsr_c();
+    uint32_t _rn_08006FB8 = g_cpu.R[4];
+    uint32_t _r_08006FB8;
+    _r_08006FB8 = _rn_08006FB8 + _op2_08006FB8;
+    arm_set_nzcv_add(_rn_08006FB8, _op2_08006FB8, _r_08006FB8);
+    g_cpu.R[0] = _r_08006FB8;
+    g_cpu.R[15] = 0x08006FBAu;
+    runtime_tick(_cyc_08006FB8);
+    /* 08006FBA  08006fba T ldr r0,[r0] */
+    g_cpu.R[15] = 0x08006FBAu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006FBA = 1u;
+    _cyc_08006FBA = 2u;
+    uint32_t _base_08006FBA = g_cpu.R[0];
+    uint32_t _off_08006FBA;
+    _off_08006FBA = 0x00000000u;
+    uint32_t _ea_08006FBA = _base_08006FBA + _off_08006FBA;
+    uint32_t _post_08006FBA = _base_08006FBA + _off_08006FBA;
+    _cyc_08006FBA += runtime_mem_cycles(_ea_08006FBA, 4u, 0u);
+    uint32_t _v_08006FBA;
+    { uint32_t _w = bus_read_u32(_ea_08006FBA & ~3u); uint32_t _rot = (_ea_08006FBA & 3u) * 8u; _v_08006FBA = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_08006FBA;
+    g_cpu.R[15] = 0x08006FBCu;
+    runtime_tick(_cyc_08006FBA);
+    /* 08006FBC  08006fbc T bl.hi 0x08000fc0 */
+    g_cpu.R[15] = 0x08006FBCu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006FBC = 1u;
+    _cyc_08006FBC = 1u;
+    g_cpu.R[14] = 0x08000FC0u;
+    g_cpu.R[15] = 0x08006FBEu;
+    runtime_tick(_cyc_08006FBC);
+    /* 08006FBE  08006fbe T bl.lo 0x00000000 */
+    g_cpu.R[15] = 0x08006FBEu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006FBE = 1u;
+    _cyc_08006FBE = 3u;
+    uint32_t _blt_08006FBE = (g_cpu.R[14] + 0x00000778u) & ~1u;
+    g_cpu.R[14] = 0x08006FC1u;
+    g_cpu.R[15] = _blt_08006FBE;
+    runtime_call_push_return(0x08006FC0u);
+    runtime_tick(_cyc_08006FBE);
+    _cyc_08006FBE = 0u;
+    runtime_dispatch(_blt_08006FBE);
+    if (g_cpu.R[15] != 0x08006FC0u) { runtime_call_cancel_return(0x08006FC0u); return; }
+    g_cpu.R[15] = 0x08006FC0u;
+    runtime_tick(_cyc_08006FBE);
+    /* fall-through to 0x08006FC0 */
+    g_cpu.R[15] = 0x08006FC0u;
+    runtime_dispatch(0x08006FC0u);
+    return;
+}
+
+/* 0x08006FEC  mode=thumb  end=0x08006FFC  branches=50 */
+
+
+/* 0x08006FC0 thumb */
+void gf_tfunc_08006FC0(void) {
+    if (g_runtime_fn_entry_hook) g_runtime_fn_entry_hook(0x08006FC0u);
+    /* 08006FC0  08006fc0 T ldr r0,[r5] */
+    g_cpu.R[15] = 0x08006FC0u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006FC0 = 1u;
+    _cyc_08006FC0 = 2u;
+    uint32_t _base_08006FC0 = g_cpu.R[5];
+    uint32_t _off_08006FC0;
+    _off_08006FC0 = 0x00000000u;
+    uint32_t _ea_08006FC0 = _base_08006FC0 + _off_08006FC0;
+    uint32_t _post_08006FC0 = _base_08006FC0 + _off_08006FC0;
+    _cyc_08006FC0 += runtime_mem_cycles(_ea_08006FC0, 4u, 0u);
+    uint32_t _v_08006FC0;
+    { uint32_t _w = bus_read_u32(_ea_08006FC0 & ~3u); uint32_t _rot = (_ea_08006FC0 & 3u) * 8u; _v_08006FC0 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_08006FC0;
+    g_cpu.R[15] = 0x08006FC2u;
+    runtime_tick(_cyc_08006FC0);
+    /* 08006FC2  08006fc2 T movs r1,#0x80 */
+    g_cpu.R[15] = 0x08006FC2u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006FC2 = 1u;
+    _cyc_08006FC2 = 1u;
+    uint32_t _r_08006FC2;
+    _r_08006FC2 = 0x00000080u;
+    arm_set_nzc_logic(_r_08006FC2, cpsr_c());
+    g_cpu.R[1] = _r_08006FC2;
+    g_cpu.R[15] = 0x08006FC4u;
+    runtime_tick(_cyc_08006FC2);
+    /* 08006FC4  08006fc4 T movs r1,r1,lsl #21 */
+    g_cpu.R[15] = 0x08006FC4u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006FC4 = 1u;
+    _cyc_08006FC4 = 1u;
+    uint32_t _rm_08006FC4 = g_cpu.R[1];
+    uint32_t _op2_08006FC4;
+    uint32_t _co_08006FC4;
+    _op2_08006FC4 = _rm_08006FC4 << 21;
+    _co_08006FC4 = (_rm_08006FC4 >> 11) & 1u;
+    uint32_t _r_08006FC4;
+    _r_08006FC4 = _op2_08006FC4;
+    arm_set_nzc_logic(_r_08006FC4, _co_08006FC4);
+    g_cpu.R[1] = _r_08006FC4;
+    g_cpu.R[15] = 0x08006FC6u;
+    runtime_tick(_cyc_08006FC4);
+    /* 08006FC6  08006fc6 T ands r0,r0,r1 */
+    g_cpu.R[15] = 0x08006FC6u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006FC6 = 1u;
+    _cyc_08006FC6 = 1u;
+    uint32_t _rm_08006FC6 = g_cpu.R[1];
+    uint32_t _op2_08006FC6;
+    uint32_t _co_08006FC6;
+    _op2_08006FC6 = _rm_08006FC6;
+    _co_08006FC6 = cpsr_c();
+    uint32_t _rn_08006FC6 = g_cpu.R[0];
+    uint32_t _r_08006FC6;
+    _r_08006FC6 = _rn_08006FC6 & _op2_08006FC6;
+    arm_set_nzc_logic(_r_08006FC6, _co_08006FC6);
+    g_cpu.R[0] = _r_08006FC6;
+    g_cpu.R[15] = 0x08006FC8u;
+    runtime_tick(_cyc_08006FC6);
+    /* 08006FC8  08006fc8 T cmps r0,#0x0 */
+    g_cpu.R[15] = 0x08006FC8u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006FC8 = 1u;
+    _cyc_08006FC8 = 1u;
+    uint32_t _rn_08006FC8 = g_cpu.R[0];
+    uint32_t _r_08006FC8;
+    _r_08006FC8 = _rn_08006FC8 - 0x00000000u;
+    arm_set_nzcv_sub(_rn_08006FC8, 0x00000000u, _r_08006FC8);
+    g_cpu.R[15] = 0x08006FCAu;
+    runtime_tick(_cyc_08006FC8);
+    /* 08006FCA  08006fca T bne 0x08006fd6 */
+    g_cpu.R[15] = 0x08006FCAu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006FCA = 1u;
+    if (arm_cond_passes(0x1u)) {
+        _cyc_08006FCA = 3u;
+        g_cpu.R[15] = 0x08006FD6u;
+        runtime_tick(_cyc_08006FCA);
+        GBARECOMP_TAIL_CALL(gf_tfunc_08006FD6);
+    }
+    g_cpu.R[15] = 0x08006FCCu;
+    runtime_tick(_cyc_08006FCA);
+    /* 08006FCC  08006fcc T ldr r2,[r15,#0x1bc] */
+    g_cpu.R[15] = 0x08006FCCu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006FCC = 1u;
+    _cyc_08006FCC = 2u;
+    uint32_t _base_08006FCC = 0x08006FD0u & ~3u;
+    uint32_t _off_08006FCC;
+    _off_08006FCC = 0x000001BCu;
+    uint32_t _ea_08006FCC = _base_08006FCC + _off_08006FCC;
+    uint32_t _post_08006FCC = _base_08006FCC + _off_08006FCC;
+    _cyc_08006FCC += runtime_mem_cycles(_ea_08006FCC, 4u, 0u);
+    uint32_t _v_08006FCC;
+    { uint32_t _w = bus_read_u32(_ea_08006FCC & ~3u); uint32_t _rot = (_ea_08006FCC & 3u) * 8u; _v_08006FCC = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[2] = _v_08006FCC;
+    g_cpu.R[15] = 0x08006FCEu;
+    runtime_tick(_cyc_08006FCC);
+    /* 08006FCE  08006fce T adds r0,r4,r2 */
+    g_cpu.R[15] = 0x08006FCEu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006FCE = 1u;
+    _cyc_08006FCE = 1u;
+    uint32_t _rm_08006FCE = g_cpu.R[2];
+    uint32_t _op2_08006FCE;
+    uint32_t _co_08006FCE;
+    _op2_08006FCE = _rm_08006FCE;
+    _co_08006FCE = cpsr_c();
+    uint32_t _rn_08006FCE = g_cpu.R[4];
+    uint32_t _r_08006FCE;
+    _r_08006FCE = _rn_08006FCE + _op2_08006FCE;
+    arm_set_nzcv_add(_rn_08006FCE, _op2_08006FCE, _r_08006FCE);
+    g_cpu.R[0] = _r_08006FCE;
+    g_cpu.R[15] = 0x08006FD0u;
+    runtime_tick(_cyc_08006FCE);
+    /* 08006FD0  08006fd0 T ldr r0,[r0] */
+    g_cpu.R[15] = 0x08006FD0u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006FD0 = 1u;
+    _cyc_08006FD0 = 2u;
+    uint32_t _base_08006FD0 = g_cpu.R[0];
+    uint32_t _off_08006FD0;
+    _off_08006FD0 = 0x00000000u;
+    uint32_t _ea_08006FD0 = _base_08006FD0 + _off_08006FD0;
+    uint32_t _post_08006FD0 = _base_08006FD0 + _off_08006FD0;
+    _cyc_08006FD0 += runtime_mem_cycles(_ea_08006FD0, 4u, 0u);
+    uint32_t _v_08006FD0;
+    { uint32_t _w = bus_read_u32(_ea_08006FD0 & ~3u); uint32_t _rot = (_ea_08006FD0 & 3u) * 8u; _v_08006FD0 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_08006FD0;
+    g_cpu.R[15] = 0x08006FD2u;
+    runtime_tick(_cyc_08006FD0);
+    /* 08006FD2  08006fd2 T bl.hi 0x08000fd6 */
+    g_cpu.R[15] = 0x08006FD2u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006FD2 = 1u;
+    _cyc_08006FD2 = 1u;
+    g_cpu.R[14] = 0x08000FD6u;
+    g_cpu.R[15] = 0x08006FD4u;
+    runtime_tick(_cyc_08006FD2);
+    /* 08006FD4  08006fd4 T bl.lo 0x00000000 */
+    g_cpu.R[15] = 0x08006FD4u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006FD4 = 1u;
+    _cyc_08006FD4 = 3u;
+    uint32_t _blt_08006FD4 = (g_cpu.R[14] + 0x00000762u) & ~1u;
+    g_cpu.R[14] = 0x08006FD7u;
+    g_cpu.R[15] = _blt_08006FD4;
+    runtime_call_push_return(0x08006FD6u);
+    runtime_tick(_cyc_08006FD4);
+    _cyc_08006FD4 = 0u;
+    runtime_dispatch(_blt_08006FD4);
+    if (g_cpu.R[15] != 0x08006FD6u) { runtime_call_cancel_return(0x08006FD6u); return; }
+    g_cpu.R[15] = 0x08006FD6u;
+    runtime_tick(_cyc_08006FD4);
+    /* fall-through to 0x08006FD6 */
+    g_cpu.R[15] = 0x08006FD6u;
+    runtime_dispatch(0x08006FD6u);
+    return;
+}
+
+/* 0x08006FD6  mode=thumb  end=0x08006FEC  branches=53 */
+
+
+/* 0x08006FD6 thumb */
+void gf_tfunc_08006FD6(void) {
+    if (g_runtime_fn_entry_hook) g_runtime_fn_entry_hook(0x08006FD6u);
+    /* 08006FD6  08006fd6 T ldr r0,[r5] */
+    g_cpu.R[15] = 0x08006FD6u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006FD6 = 1u;
+    _cyc_08006FD6 = 2u;
+    uint32_t _base_08006FD6 = g_cpu.R[5];
+    uint32_t _off_08006FD6;
+    _off_08006FD6 = 0x00000000u;
+    uint32_t _ea_08006FD6 = _base_08006FD6 + _off_08006FD6;
+    uint32_t _post_08006FD6 = _base_08006FD6 + _off_08006FD6;
+    _cyc_08006FD6 += runtime_mem_cycles(_ea_08006FD6, 4u, 0u);
+    uint32_t _v_08006FD6;
+    { uint32_t _w = bus_read_u32(_ea_08006FD6 & ~3u); uint32_t _rot = (_ea_08006FD6 & 3u) * 8u; _v_08006FD6 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_08006FD6;
+    g_cpu.R[15] = 0x08006FD8u;
+    runtime_tick(_cyc_08006FD6);
+    /* 08006FD8  08006fd8 T movs r1,#0x80 */
+    g_cpu.R[15] = 0x08006FD8u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006FD8 = 1u;
+    _cyc_08006FD8 = 1u;
+    uint32_t _r_08006FD8;
+    _r_08006FD8 = 0x00000080u;
+    arm_set_nzc_logic(_r_08006FD8, cpsr_c());
+    g_cpu.R[1] = _r_08006FD8;
+    g_cpu.R[15] = 0x08006FDAu;
+    runtime_tick(_cyc_08006FD8);
+    /* 08006FDA  08006fda T movs r1,r1,lsl #20 */
+    g_cpu.R[15] = 0x08006FDAu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006FDA = 1u;
+    _cyc_08006FDA = 1u;
+    uint32_t _rm_08006FDA = g_cpu.R[1];
+    uint32_t _op2_08006FDA;
+    uint32_t _co_08006FDA;
+    _op2_08006FDA = _rm_08006FDA << 20;
+    _co_08006FDA = (_rm_08006FDA >> 12) & 1u;
+    uint32_t _r_08006FDA;
+    _r_08006FDA = _op2_08006FDA;
+    arm_set_nzc_logic(_r_08006FDA, _co_08006FDA);
+    g_cpu.R[1] = _r_08006FDA;
+    g_cpu.R[15] = 0x08006FDCu;
+    runtime_tick(_cyc_08006FDA);
+    /* 08006FDC  08006fdc T ands r0,r0,r1 */
+    g_cpu.R[15] = 0x08006FDCu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006FDC = 1u;
+    _cyc_08006FDC = 1u;
+    uint32_t _rm_08006FDC = g_cpu.R[1];
+    uint32_t _op2_08006FDC;
+    uint32_t _co_08006FDC;
+    _op2_08006FDC = _rm_08006FDC;
+    _co_08006FDC = cpsr_c();
+    uint32_t _rn_08006FDC = g_cpu.R[0];
+    uint32_t _r_08006FDC;
+    _r_08006FDC = _rn_08006FDC & _op2_08006FDC;
+    arm_set_nzc_logic(_r_08006FDC, _co_08006FDC);
+    g_cpu.R[0] = _r_08006FDC;
+    g_cpu.R[15] = 0x08006FDEu;
+    runtime_tick(_cyc_08006FDC);
+    /* 08006FDE  08006fde T cmps r0,#0x0 */
+    g_cpu.R[15] = 0x08006FDEu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006FDE = 1u;
+    _cyc_08006FDE = 1u;
+    uint32_t _rn_08006FDE = g_cpu.R[0];
+    uint32_t _r_08006FDE;
+    _r_08006FDE = _rn_08006FDE - 0x00000000u;
+    arm_set_nzcv_sub(_rn_08006FDE, 0x00000000u, _r_08006FDE);
+    g_cpu.R[15] = 0x08006FE0u;
+    runtime_tick(_cyc_08006FDE);
+    /* 08006FE0  08006fe0 T bne 0x08006fec */
+    g_cpu.R[15] = 0x08006FE0u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006FE0 = 1u;
+    if (arm_cond_passes(0x1u)) {
+        _cyc_08006FE0 = 3u;
+        g_cpu.R[15] = 0x08006FECu;
+        runtime_tick(_cyc_08006FE0);
+        GBARECOMP_TAIL_CALL(gf_tfunc_08006FEC);
+    }
+    g_cpu.R[15] = 0x08006FE2u;
+    runtime_tick(_cyc_08006FE0);
+    /* 08006FE2  08006fe2 T ldr r7,[r15,#0x1ac] */
+    g_cpu.R[15] = 0x08006FE2u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006FE2 = 1u;
+    _cyc_08006FE2 = 2u;
+    uint32_t _base_08006FE2 = 0x08006FE6u & ~3u;
+    uint32_t _off_08006FE2;
+    _off_08006FE2 = 0x000001ACu;
+    uint32_t _ea_08006FE2 = _base_08006FE2 + _off_08006FE2;
+    uint32_t _post_08006FE2 = _base_08006FE2 + _off_08006FE2;
+    _cyc_08006FE2 += runtime_mem_cycles(_ea_08006FE2, 4u, 0u);
+    uint32_t _v_08006FE2;
+    { uint32_t _w = bus_read_u32(_ea_08006FE2 & ~3u); uint32_t _rot = (_ea_08006FE2 & 3u) * 8u; _v_08006FE2 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[7] = _v_08006FE2;
+    g_cpu.R[15] = 0x08006FE4u;
+    runtime_tick(_cyc_08006FE2);
+    /* 08006FE4  08006fe4 T adds r0,r4,r7 */
+    g_cpu.R[15] = 0x08006FE4u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006FE4 = 1u;
+    _cyc_08006FE4 = 1u;
+    uint32_t _rm_08006FE4 = g_cpu.R[7];
+    uint32_t _op2_08006FE4;
+    uint32_t _co_08006FE4;
+    _op2_08006FE4 = _rm_08006FE4;
+    _co_08006FE4 = cpsr_c();
+    uint32_t _rn_08006FE4 = g_cpu.R[4];
+    uint32_t _r_08006FE4;
+    _r_08006FE4 = _rn_08006FE4 + _op2_08006FE4;
+    arm_set_nzcv_add(_rn_08006FE4, _op2_08006FE4, _r_08006FE4);
+    g_cpu.R[0] = _r_08006FE4;
+    g_cpu.R[15] = 0x08006FE6u;
+    runtime_tick(_cyc_08006FE4);
+    /* 08006FE6  08006fe6 T ldr r0,[r0] */
+    g_cpu.R[15] = 0x08006FE6u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006FE6 = 1u;
+    _cyc_08006FE6 = 2u;
+    uint32_t _base_08006FE6 = g_cpu.R[0];
+    uint32_t _off_08006FE6;
+    _off_08006FE6 = 0x00000000u;
+    uint32_t _ea_08006FE6 = _base_08006FE6 + _off_08006FE6;
+    uint32_t _post_08006FE6 = _base_08006FE6 + _off_08006FE6;
+    _cyc_08006FE6 += runtime_mem_cycles(_ea_08006FE6, 4u, 0u);
+    uint32_t _v_08006FE6;
+    { uint32_t _w = bus_read_u32(_ea_08006FE6 & ~3u); uint32_t _rot = (_ea_08006FE6 & 3u) * 8u; _v_08006FE6 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_08006FE6;
+    g_cpu.R[15] = 0x08006FE8u;
+    runtime_tick(_cyc_08006FE6);
+    /* 08006FE8  08006fe8 T bl.hi 0x08000fec */
+    g_cpu.R[15] = 0x08006FE8u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006FE8 = 1u;
+    _cyc_08006FE8 = 1u;
+    g_cpu.R[14] = 0x08000FECu;
+    g_cpu.R[15] = 0x08006FEAu;
+    runtime_tick(_cyc_08006FE8);
+    /* 08006FEA  08006fea T bl.lo 0x00000000 */
+    g_cpu.R[15] = 0x08006FEAu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006FEA = 1u;
+    _cyc_08006FEA = 3u;
+    uint32_t _blt_08006FEA = (g_cpu.R[14] + 0x0000074Cu) & ~1u;
+    g_cpu.R[14] = 0x08006FEDu;
+    g_cpu.R[15] = _blt_08006FEA;
+    runtime_call_push_return(0x08006FECu);
+    runtime_tick(_cyc_08006FEA);
+    _cyc_08006FEA = 0u;
+    runtime_dispatch(_blt_08006FEA);
+    if (g_cpu.R[15] != 0x08006FECu) { runtime_call_cancel_return(0x08006FECu); return; }
+    g_cpu.R[15] = 0x08006FECu;
+    runtime_tick(_cyc_08006FEA);
+    /* fall-through to 0x08006FEC */
+    g_cpu.R[15] = 0x08006FECu;
+    runtime_dispatch(0x08006FECu);
+    return;
+}
+
+/* 0x08006FFC  mode=thumb  end=0x08007006  branches=47 */
+
+
+/* 0x08006FEC thumb */
+void gf_tfunc_08006FEC(void) {
+    if (g_runtime_fn_entry_hook) g_runtime_fn_entry_hook(0x08006FECu);
+    /* 08006FEC  08006fec T ldr r0,[r5] */
+    g_cpu.R[15] = 0x08006FECu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006FEC = 1u;
+    _cyc_08006FEC = 2u;
+    uint32_t _base_08006FEC = g_cpu.R[5];
+    uint32_t _off_08006FEC;
+    _off_08006FEC = 0x00000000u;
+    uint32_t _ea_08006FEC = _base_08006FEC + _off_08006FEC;
+    uint32_t _post_08006FEC = _base_08006FEC + _off_08006FEC;
+    _cyc_08006FEC += runtime_mem_cycles(_ea_08006FEC, 4u, 0u);
+    uint32_t _v_08006FEC;
+    { uint32_t _w = bus_read_u32(_ea_08006FEC & ~3u); uint32_t _rot = (_ea_08006FEC & 3u) * 8u; _v_08006FEC = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_08006FEC;
+    g_cpu.R[15] = 0x08006FEEu;
+    runtime_tick(_cyc_08006FEC);
+    /* 08006FEE  08006fee T movs r1,#0x80 */
+    g_cpu.R[15] = 0x08006FEEu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006FEE = 1u;
+    _cyc_08006FEE = 1u;
+    uint32_t _r_08006FEE;
+    _r_08006FEE = 0x00000080u;
+    arm_set_nzc_logic(_r_08006FEE, cpsr_c());
+    g_cpu.R[1] = _r_08006FEE;
+    g_cpu.R[15] = 0x08006FF0u;
+    runtime_tick(_cyc_08006FEE);
+    /* 08006FF0  08006ff0 T movs r1,r1,lsl #19 */
+    g_cpu.R[15] = 0x08006FF0u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006FF0 = 1u;
+    _cyc_08006FF0 = 1u;
+    uint32_t _rm_08006FF0 = g_cpu.R[1];
+    uint32_t _op2_08006FF0;
+    uint32_t _co_08006FF0;
+    _op2_08006FF0 = _rm_08006FF0 << 19;
+    _co_08006FF0 = (_rm_08006FF0 >> 13) & 1u;
+    uint32_t _r_08006FF0;
+    _r_08006FF0 = _op2_08006FF0;
+    arm_set_nzc_logic(_r_08006FF0, _co_08006FF0);
+    g_cpu.R[1] = _r_08006FF0;
+    g_cpu.R[15] = 0x08006FF2u;
+    runtime_tick(_cyc_08006FF0);
+    /* 08006FF2  08006ff2 T ands r0,r0,r1 */
+    g_cpu.R[15] = 0x08006FF2u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006FF2 = 1u;
+    _cyc_08006FF2 = 1u;
+    uint32_t _rm_08006FF2 = g_cpu.R[1];
+    uint32_t _op2_08006FF2;
+    uint32_t _co_08006FF2;
+    _op2_08006FF2 = _rm_08006FF2;
+    _co_08006FF2 = cpsr_c();
+    uint32_t _rn_08006FF2 = g_cpu.R[0];
+    uint32_t _r_08006FF2;
+    _r_08006FF2 = _rn_08006FF2 & _op2_08006FF2;
+    arm_set_nzc_logic(_r_08006FF2, _co_08006FF2);
+    g_cpu.R[0] = _r_08006FF2;
+    g_cpu.R[15] = 0x08006FF4u;
+    runtime_tick(_cyc_08006FF2);
+    /* 08006FF4  08006ff4 T cmps r0,#0x0 */
+    g_cpu.R[15] = 0x08006FF4u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006FF4 = 1u;
+    _cyc_08006FF4 = 1u;
+    uint32_t _rn_08006FF4 = g_cpu.R[0];
+    uint32_t _r_08006FF4;
+    _r_08006FF4 = _rn_08006FF4 - 0x00000000u;
+    arm_set_nzcv_sub(_rn_08006FF4, 0x00000000u, _r_08006FF4);
+    g_cpu.R[15] = 0x08006FF6u;
+    runtime_tick(_cyc_08006FF4);
+    /* 08006FF6  08006ff6 T bne 0x0800701a */
+    g_cpu.R[15] = 0x08006FF6u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006FF6 = 1u;
+    if (arm_cond_passes(0x1u)) {
+        _cyc_08006FF6 = 3u;
+        g_cpu.R[15] = 0x0800701Au;
+        runtime_tick(_cyc_08006FF6);
+        GBARECOMP_TAIL_CALL(gf_tfunc_0800701A);
+    }
+    g_cpu.R[15] = 0x08006FF8u;
+    runtime_tick(_cyc_08006FF6);
+    /* 08006FF8  08006ff8 T bl.hi 0x08015ffc */
+    g_cpu.R[15] = 0x08006FF8u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006FF8 = 1u;
+    _cyc_08006FF8 = 1u;
+    g_cpu.R[14] = 0x08015FFCu;
+    g_cpu.R[15] = 0x08006FFAu;
+    runtime_tick(_cyc_08006FF8);
+    /* 08006FFA  08006ffa T bl.lo 0x00000000 */
+    g_cpu.R[15] = 0x08006FFAu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006FFA = 1u;
+    _cyc_08006FFA = 3u;
+    uint32_t _blt_08006FFA = (g_cpu.R[14] + 0x00000A04u) & ~1u;
+    g_cpu.R[14] = 0x08006FFDu;
+    g_cpu.R[15] = _blt_08006FFA;
+    runtime_call_push_return(0x08006FFCu);
+    runtime_tick(_cyc_08006FFA);
+    _cyc_08006FFA = 0u;
+    runtime_dispatch(_blt_08006FFA);
+    if (g_cpu.R[15] != 0x08006FFCu) { runtime_call_cancel_return(0x08006FFCu); return; }
+    g_cpu.R[15] = 0x08006FFCu;
+    runtime_tick(_cyc_08006FFA);
+    /* fall-through to 0x08006FFC */
+    g_cpu.R[15] = 0x08006FFCu;
+    runtime_dispatch(0x08006FFCu);
+    return;
+}
+
+/* 0x08007006  mode=thumb  end=0x0800700A  branches=45 */
+
+
+/* 0x08006FFC thumb */
+void gf_tfunc_08006FFC(void) {
+    if (g_runtime_fn_entry_hook) g_runtime_fn_entry_hook(0x08006FFCu);
+    /* 08006FFC  08006ffc T ldr r1,[r15,#0x194] */
+    g_cpu.R[15] = 0x08006FFCu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006FFC = 1u;
+    _cyc_08006FFC = 2u;
+    uint32_t _base_08006FFC = 0x08007000u & ~3u;
+    uint32_t _off_08006FFC;
+    _off_08006FFC = 0x00000194u;
+    uint32_t _ea_08006FFC = _base_08006FFC + _off_08006FFC;
+    uint32_t _post_08006FFC = _base_08006FFC + _off_08006FFC;
+    _cyc_08006FFC += runtime_mem_cycles(_ea_08006FFC, 4u, 0u);
+    uint32_t _v_08006FFC;
+    { uint32_t _w = bus_read_u32(_ea_08006FFC & ~3u); uint32_t _rot = (_ea_08006FFC & 3u) * 8u; _v_08006FFC = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[1] = _v_08006FFC;
+    g_cpu.R[15] = 0x08006FFEu;
+    runtime_tick(_cyc_08006FFC);
+    /* 08006FFE  08006ffe T adds r0,r4,r1 */
+    g_cpu.R[15] = 0x08006FFEu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08006FFE = 1u;
+    _cyc_08006FFE = 1u;
+    uint32_t _rm_08006FFE = g_cpu.R[1];
+    uint32_t _op2_08006FFE;
+    uint32_t _co_08006FFE;
+    _op2_08006FFE = _rm_08006FFE;
+    _co_08006FFE = cpsr_c();
+    uint32_t _rn_08006FFE = g_cpu.R[4];
+    uint32_t _r_08006FFE;
+    _r_08006FFE = _rn_08006FFE + _op2_08006FFE;
+    arm_set_nzcv_add(_rn_08006FFE, _op2_08006FFE, _r_08006FFE);
+    g_cpu.R[0] = _r_08006FFE;
+    g_cpu.R[15] = 0x08007000u;
+    runtime_tick(_cyc_08006FFE);
+    /* 08007000  08007000 T ldr r0,[r0] */
+    g_cpu.R[15] = 0x08007000u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007000 = 1u;
+    _cyc_08007000 = 2u;
+    uint32_t _base_08007000 = g_cpu.R[0];
+    uint32_t _off_08007000;
+    _off_08007000 = 0x00000000u;
+    uint32_t _ea_08007000 = _base_08007000 + _off_08007000;
+    uint32_t _post_08007000 = _base_08007000 + _off_08007000;
+    _cyc_08007000 += runtime_mem_cycles(_ea_08007000, 4u, 0u);
+    uint32_t _v_08007000;
+    { uint32_t _w = bus_read_u32(_ea_08007000 & ~3u); uint32_t _rot = (_ea_08007000 & 3u) * 8u; _v_08007000 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_08007000;
+    g_cpu.R[15] = 0x08007002u;
+    runtime_tick(_cyc_08007000);
+    /* 08007002  08007002 T bl.hi 0x08001006 */
+    g_cpu.R[15] = 0x08007002u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007002 = 1u;
+    _cyc_08007002 = 1u;
+    g_cpu.R[14] = 0x08001006u;
+    g_cpu.R[15] = 0x08007004u;
+    runtime_tick(_cyc_08007002);
+    /* 08007004  08007004 T bl.lo 0x00000000 */
+    g_cpu.R[15] = 0x08007004u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007004 = 1u;
+    _cyc_08007004 = 3u;
+    uint32_t _blt_08007004 = (g_cpu.R[14] + 0x00000732u) & ~1u;
+    g_cpu.R[14] = 0x08007007u;
+    g_cpu.R[15] = _blt_08007004;
+    runtime_call_push_return(0x08007006u);
+    runtime_tick(_cyc_08007004);
+    _cyc_08007004 = 0u;
+    runtime_dispatch(_blt_08007004);
+    if (g_cpu.R[15] != 0x08007006u) { runtime_call_cancel_return(0x08007006u); return; }
+    g_cpu.R[15] = 0x08007006u;
+    runtime_tick(_cyc_08007004);
+    /* fall-through to 0x08007006 */
+    g_cpu.R[15] = 0x08007006u;
+    runtime_dispatch(0x08007006u);
+    return;
+}
+
+/* 0x0800700A  mode=thumb  end=0x0800701A  branches=43 */
+
+
+/* 0x08007006 thumb */
+void gf_tfunc_08007006(void) {
+    if (g_runtime_fn_entry_hook) g_runtime_fn_entry_hook(0x08007006u);
+    /* 08007006  08007006 T bl.hi 0x0801600a */
+    g_cpu.R[15] = 0x08007006u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007006 = 1u;
+    _cyc_08007006 = 1u;
+    g_cpu.R[14] = 0x0801600Au;
+    g_cpu.R[15] = 0x08007008u;
+    runtime_tick(_cyc_08007006);
+    /* 08007008  08007008 T bl.lo 0x00000000 */
+    g_cpu.R[15] = 0x08007008u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007008 = 1u;
+    _cyc_08007008 = 3u;
+    uint32_t _blt_08007008 = (g_cpu.R[14] + 0x00000A0Au) & ~1u;
+    g_cpu.R[14] = 0x0800700Bu;
+    g_cpu.R[15] = _blt_08007008;
+    runtime_call_push_return(0x0800700Au);
+    runtime_tick(_cyc_08007008);
+    _cyc_08007008 = 0u;
+    runtime_dispatch(_blt_08007008);
+    if (g_cpu.R[15] != 0x0800700Au) { runtime_call_cancel_return(0x0800700Au); return; }
+    g_cpu.R[15] = 0x0800700Au;
+    runtime_tick(_cyc_08007008);
+    /* fall-through to 0x0800700A */
+    g_cpu.R[15] = 0x0800700Au;
+    runtime_dispatch(0x0800700Au);
+    return;
+}
+
+/* 0x0800701A  mode=thumb  end=0x08007038  branches=42 */
+
+
+/* 0x0800700A thumb */
+void gf_tfunc_0800700A(void) {
+    if (g_runtime_fn_entry_hook) g_runtime_fn_entry_hook(0x0800700Au);
+    /* 0800700A  0800700a T mov r2,r8 */
+    g_cpu.R[15] = 0x0800700Au;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800700A = 1u;
+    _cyc_0800700A = 1u;
+    uint32_t _rm_0800700A = g_cpu.R[8];
+    uint32_t _op2_0800700A;
+    uint32_t _co_0800700A;
+    _op2_0800700A = _rm_0800700A;
+    _co_0800700A = cpsr_c();
+    uint32_t _r_0800700A;
+    _r_0800700A = _op2_0800700A;
+    g_cpu.R[2] = _r_0800700A;
+    g_cpu.R[15] = 0x0800700Cu;
+    runtime_tick(_cyc_0800700A);
+    /* 0800700C  0800700c T adds r2,r2,#0xa0 */
+    g_cpu.R[15] = 0x0800700Cu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800700C = 1u;
+    _cyc_0800700C = 1u;
+    uint32_t _rn_0800700C = g_cpu.R[2];
+    uint32_t _r_0800700C;
+    _r_0800700C = _rn_0800700C + 0x000000A0u;
+    arm_set_nzcv_add(_rn_0800700C, 0x000000A0u, _r_0800700C);
+    g_cpu.R[2] = _r_0800700C;
+    g_cpu.R[15] = 0x0800700Eu;
+    runtime_tick(_cyc_0800700C);
+    /* 0800700E  0800700e T ldr r1,[r2] */
+    g_cpu.R[15] = 0x0800700Eu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800700E = 1u;
+    _cyc_0800700E = 2u;
+    uint32_t _base_0800700E = g_cpu.R[2];
+    uint32_t _off_0800700E;
+    _off_0800700E = 0x00000000u;
+    uint32_t _ea_0800700E = _base_0800700E + _off_0800700E;
+    uint32_t _post_0800700E = _base_0800700E + _off_0800700E;
+    _cyc_0800700E += runtime_mem_cycles(_ea_0800700E, 4u, 0u);
+    uint32_t _v_0800700E;
+    { uint32_t _w = bus_read_u32(_ea_0800700E & ~3u); uint32_t _rot = (_ea_0800700E & 3u) * 8u; _v_0800700E = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[1] = _v_0800700E;
+    g_cpu.R[15] = 0x08007010u;
+    runtime_tick(_cyc_0800700E);
+    /* 08007010  08007010 T ldr r0,[r15,#0x184] */
+    g_cpu.R[15] = 0x08007010u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007010 = 1u;
+    _cyc_08007010 = 2u;
+    uint32_t _base_08007010 = 0x08007014u & ~3u;
+    uint32_t _off_08007010;
+    _off_08007010 = 0x00000184u;
+    uint32_t _ea_08007010 = _base_08007010 + _off_08007010;
+    uint32_t _post_08007010 = _base_08007010 + _off_08007010;
+    _cyc_08007010 += runtime_mem_cycles(_ea_08007010, 4u, 0u);
+    uint32_t _v_08007010;
+    { uint32_t _w = bus_read_u32(_ea_08007010 & ~3u); uint32_t _rot = (_ea_08007010 & 3u) * 8u; _v_08007010 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_08007010;
+    g_cpu.R[15] = 0x08007012u;
+    runtime_tick(_cyc_08007010);
+    /* 08007012  08007012 T cmps r1,r0 */
+    g_cpu.R[15] = 0x08007012u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007012 = 1u;
+    _cyc_08007012 = 1u;
+    uint32_t _rm_08007012 = g_cpu.R[0];
+    uint32_t _op2_08007012;
+    uint32_t _co_08007012;
+    _op2_08007012 = _rm_08007012;
+    _co_08007012 = cpsr_c();
+    uint32_t _rn_08007012 = g_cpu.R[1];
+    uint32_t _r_08007012;
+    _r_08007012 = _rn_08007012 - _op2_08007012;
+    arm_set_nzcv_sub(_rn_08007012, _op2_08007012, _r_08007012);
+    g_cpu.R[15] = 0x08007014u;
+    runtime_tick(_cyc_08007012);
+    /* 08007014  08007014 T beq 0x0800701a */
+    g_cpu.R[15] = 0x08007014u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007014 = 1u;
+    if (arm_cond_passes(0x0u)) {
+        _cyc_08007014 = 3u;
+        g_cpu.R[15] = 0x0800701Au;
+        runtime_tick(_cyc_08007014);
+        GBARECOMP_TAIL_CALL(gf_tfunc_0800701A);
+    }
+    g_cpu.R[15] = 0x08007016u;
+    runtime_tick(_cyc_08007014);
+    /* 08007016  08007016 T adds r0,r1,#0x1 */
+    g_cpu.R[15] = 0x08007016u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007016 = 1u;
+    _cyc_08007016 = 1u;
+    uint32_t _rn_08007016 = g_cpu.R[1];
+    uint32_t _r_08007016;
+    _r_08007016 = _rn_08007016 + 0x00000001u;
+    arm_set_nzcv_add(_rn_08007016, 0x00000001u, _r_08007016);
+    g_cpu.R[0] = _r_08007016;
+    g_cpu.R[15] = 0x08007018u;
+    runtime_tick(_cyc_08007016);
+    /* 08007018  08007018 T str r0,[r2] */
+    g_cpu.R[15] = 0x08007018u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007018 = 1u;
+    _cyc_08007018 = 1u;
+    uint32_t _base_08007018 = g_cpu.R[2];
+    uint32_t _off_08007018;
+    _off_08007018 = 0x00000000u;
+    uint32_t _ea_08007018 = _base_08007018 + _off_08007018;
+    uint32_t _post_08007018 = _base_08007018 + _off_08007018;
+    _cyc_08007018 += runtime_mem_cycles(_ea_08007018, 4u, 0u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x08007018u, _ea_08007018 & ~3u, g_cpu.R[0], 4u);
+    bus_write_u32(_ea_08007018 & ~3u, g_cpu.R[0]);
+    g_cpu.R[15] = 0x0800701Au;
+    runtime_tick(_cyc_08007018);
+    /* fall-through to 0x0800701A */
+    g_cpu.R[15] = 0x0800701Au;
+    runtime_dispatch(0x0800701Au);
+    return;
+}
+
+/* 0x08007038  mode=thumb  end=0x08007042  branches=39 */
+
+
+/* 0x0800701A thumb */
+void gf_tfunc_0800701A(void) {
+    if (g_runtime_fn_entry_hook) g_runtime_fn_entry_hook(0x0800701Au);
+    /* 0800701A  0800701a T ldr r5,[r15,#0x15c] */
+    g_cpu.R[15] = 0x0800701Au;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800701A = 1u;
+    _cyc_0800701A = 2u;
+    uint32_t _base_0800701A = 0x0800701Eu & ~3u;
+    uint32_t _off_0800701A;
+    _off_0800701A = 0x0000015Cu;
+    uint32_t _ea_0800701A = _base_0800701A + _off_0800701A;
+    uint32_t _post_0800701A = _base_0800701A + _off_0800701A;
+    _cyc_0800701A += runtime_mem_cycles(_ea_0800701A, 4u, 0u);
+    uint32_t _v_0800701A;
+    { uint32_t _w = bus_read_u32(_ea_0800701A & ~3u); uint32_t _rot = (_ea_0800701A & 3u) * 8u; _v_0800701A = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[5] = _v_0800701A;
+    g_cpu.R[15] = 0x0800701Cu;
+    runtime_tick(_cyc_0800701A);
+    /* 0800701C  0800701c T ldr r2,[r15,#0x15c] */
+    g_cpu.R[15] = 0x0800701Cu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800701C = 1u;
+    _cyc_0800701C = 2u;
+    uint32_t _base_0800701C = 0x08007020u & ~3u;
+    uint32_t _off_0800701C;
+    _off_0800701C = 0x0000015Cu;
+    uint32_t _ea_0800701C = _base_0800701C + _off_0800701C;
+    uint32_t _post_0800701C = _base_0800701C + _off_0800701C;
+    _cyc_0800701C += runtime_mem_cycles(_ea_0800701C, 4u, 0u);
+    uint32_t _v_0800701C;
+    { uint32_t _w = bus_read_u32(_ea_0800701C & ~3u); uint32_t _rot = (_ea_0800701C & 3u) * 8u; _v_0800701C = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[2] = _v_0800701C;
+    g_cpu.R[15] = 0x0800701Eu;
+    runtime_tick(_cyc_0800701C);
+    /* 0800701E  0800701e T adds r4,r5,r2 */
+    g_cpu.R[15] = 0x0800701Eu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800701E = 1u;
+    _cyc_0800701E = 1u;
+    uint32_t _rm_0800701E = g_cpu.R[2];
+    uint32_t _op2_0800701E;
+    uint32_t _co_0800701E;
+    _op2_0800701E = _rm_0800701E;
+    _co_0800701E = cpsr_c();
+    uint32_t _rn_0800701E = g_cpu.R[5];
+    uint32_t _r_0800701E;
+    _r_0800701E = _rn_0800701E + _op2_0800701E;
+    arm_set_nzcv_add(_rn_0800701E, _op2_0800701E, _r_0800701E);
+    g_cpu.R[4] = _r_0800701E;
+    g_cpu.R[15] = 0x08007020u;
+    runtime_tick(_cyc_0800701E);
+    /* 08007020  08007020 T ldr r0,[r4] */
+    g_cpu.R[15] = 0x08007020u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007020 = 1u;
+    _cyc_08007020 = 2u;
+    uint32_t _base_08007020 = g_cpu.R[4];
+    uint32_t _off_08007020;
+    _off_08007020 = 0x00000000u;
+    uint32_t _ea_08007020 = _base_08007020 + _off_08007020;
+    uint32_t _post_08007020 = _base_08007020 + _off_08007020;
+    _cyc_08007020 += runtime_mem_cycles(_ea_08007020, 4u, 0u);
+    uint32_t _v_08007020;
+    { uint32_t _w = bus_read_u32(_ea_08007020 & ~3u); uint32_t _rot = (_ea_08007020 & 3u) * 8u; _v_08007020 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_08007020;
+    g_cpu.R[15] = 0x08007022u;
+    runtime_tick(_cyc_08007020);
+    /* 08007022  08007022 T movs r1,#0x80 */
+    g_cpu.R[15] = 0x08007022u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007022 = 1u;
+    _cyc_08007022 = 1u;
+    uint32_t _r_08007022;
+    _r_08007022 = 0x00000080u;
+    arm_set_nzc_logic(_r_08007022, cpsr_c());
+    g_cpu.R[1] = _r_08007022;
+    g_cpu.R[15] = 0x08007024u;
+    runtime_tick(_cyc_08007022);
+    /* 08007024  08007024 T movs r1,r1,lsl #18 */
+    g_cpu.R[15] = 0x08007024u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007024 = 1u;
+    _cyc_08007024 = 1u;
+    uint32_t _rm_08007024 = g_cpu.R[1];
+    uint32_t _op2_08007024;
+    uint32_t _co_08007024;
+    _op2_08007024 = _rm_08007024 << 18;
+    _co_08007024 = (_rm_08007024 >> 14) & 1u;
+    uint32_t _r_08007024;
+    _r_08007024 = _op2_08007024;
+    arm_set_nzc_logic(_r_08007024, _co_08007024);
+    g_cpu.R[1] = _r_08007024;
+    g_cpu.R[15] = 0x08007026u;
+    runtime_tick(_cyc_08007024);
+    /* 08007026  08007026 T ands r0,r0,r1 */
+    g_cpu.R[15] = 0x08007026u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007026 = 1u;
+    _cyc_08007026 = 1u;
+    uint32_t _rm_08007026 = g_cpu.R[1];
+    uint32_t _op2_08007026;
+    uint32_t _co_08007026;
+    _op2_08007026 = _rm_08007026;
+    _co_08007026 = cpsr_c();
+    uint32_t _rn_08007026 = g_cpu.R[0];
+    uint32_t _r_08007026;
+    _r_08007026 = _rn_08007026 & _op2_08007026;
+    arm_set_nzc_logic(_r_08007026, _co_08007026);
+    g_cpu.R[0] = _r_08007026;
+    g_cpu.R[15] = 0x08007028u;
+    runtime_tick(_cyc_08007026);
+    /* 08007028  08007028 T cmps r0,#0x0 */
+    g_cpu.R[15] = 0x08007028u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007028 = 1u;
+    _cyc_08007028 = 1u;
+    uint32_t _rn_08007028 = g_cpu.R[0];
+    uint32_t _r_08007028;
+    _r_08007028 = _rn_08007028 - 0x00000000u;
+    arm_set_nzcv_sub(_rn_08007028, 0x00000000u, _r_08007028);
+    g_cpu.R[15] = 0x0800702Au;
+    runtime_tick(_cyc_08007028);
+    /* 0800702A  0800702a T bne 0x08007042 */
+    g_cpu.R[15] = 0x0800702Au;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800702A = 1u;
+    if (arm_cond_passes(0x1u)) {
+        _cyc_0800702A = 3u;
+        g_cpu.R[15] = 0x08007042u;
+        runtime_tick(_cyc_0800702A);
+        GBARECOMP_TAIL_CALL(gf_tfunc_08007042);
+    }
+    g_cpu.R[15] = 0x0800702Cu;
+    runtime_tick(_cyc_0800702A);
+    /* 0800702C  0800702c T movs r7,#0xc3 */
+    g_cpu.R[15] = 0x0800702Cu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800702C = 1u;
+    _cyc_0800702C = 1u;
+    uint32_t _r_0800702C;
+    _r_0800702C = 0x000000C3u;
+    arm_set_nzc_logic(_r_0800702C, cpsr_c());
+    g_cpu.R[7] = _r_0800702C;
+    g_cpu.R[15] = 0x0800702Eu;
+    runtime_tick(_cyc_0800702C);
+    /* 0800702E  0800702e T movs r7,r7,lsl #5 */
+    g_cpu.R[15] = 0x0800702Eu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800702E = 1u;
+    _cyc_0800702E = 1u;
+    uint32_t _rm_0800702E = g_cpu.R[7];
+    uint32_t _op2_0800702E;
+    uint32_t _co_0800702E;
+    _op2_0800702E = _rm_0800702E << 5;
+    _co_0800702E = (_rm_0800702E >> 27) & 1u;
+    uint32_t _r_0800702E;
+    _r_0800702E = _op2_0800702E;
+    arm_set_nzc_logic(_r_0800702E, _co_0800702E);
+    g_cpu.R[7] = _r_0800702E;
+    g_cpu.R[15] = 0x08007030u;
+    runtime_tick(_cyc_0800702E);
+    /* 08007030  08007030 T adds r0,r5,r7 */
+    g_cpu.R[15] = 0x08007030u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007030 = 1u;
+    _cyc_08007030 = 1u;
+    uint32_t _rm_08007030 = g_cpu.R[7];
+    uint32_t _op2_08007030;
+    uint32_t _co_08007030;
+    _op2_08007030 = _rm_08007030;
+    _co_08007030 = cpsr_c();
+    uint32_t _rn_08007030 = g_cpu.R[5];
+    uint32_t _r_08007030;
+    _r_08007030 = _rn_08007030 + _op2_08007030;
+    arm_set_nzcv_add(_rn_08007030, _op2_08007030, _r_08007030);
+    g_cpu.R[0] = _r_08007030;
+    g_cpu.R[15] = 0x08007032u;
+    runtime_tick(_cyc_08007030);
+    /* 08007032  08007032 T ldr r0,[r0] */
+    g_cpu.R[15] = 0x08007032u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007032 = 1u;
+    _cyc_08007032 = 2u;
+    uint32_t _base_08007032 = g_cpu.R[0];
+    uint32_t _off_08007032;
+    _off_08007032 = 0x00000000u;
+    uint32_t _ea_08007032 = _base_08007032 + _off_08007032;
+    uint32_t _post_08007032 = _base_08007032 + _off_08007032;
+    _cyc_08007032 += runtime_mem_cycles(_ea_08007032, 4u, 0u);
+    uint32_t _v_08007032;
+    { uint32_t _w = bus_read_u32(_ea_08007032 & ~3u); uint32_t _rot = (_ea_08007032 & 3u) * 8u; _v_08007032 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_08007032;
+    g_cpu.R[15] = 0x08007034u;
+    runtime_tick(_cyc_08007032);
+    /* 08007034  08007034 T bl.hi 0x08001038 */
+    g_cpu.R[15] = 0x08007034u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007034 = 1u;
+    _cyc_08007034 = 1u;
+    g_cpu.R[14] = 0x08001038u;
+    g_cpu.R[15] = 0x08007036u;
+    runtime_tick(_cyc_08007034);
+    /* 08007036  08007036 T bl.lo 0x00000000 */
+    g_cpu.R[15] = 0x08007036u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007036 = 1u;
+    _cyc_08007036 = 3u;
+    uint32_t _blt_08007036 = (g_cpu.R[14] + 0x00000700u) & ~1u;
+    g_cpu.R[14] = 0x08007039u;
+    g_cpu.R[15] = _blt_08007036;
+    runtime_call_push_return(0x08007038u);
+    runtime_tick(_cyc_08007036);
+    _cyc_08007036 = 0u;
+    runtime_dispatch(_blt_08007036);
+    if (g_cpu.R[15] != 0x08007038u) { runtime_call_cancel_return(0x08007038u); return; }
+    g_cpu.R[15] = 0x08007038u;
+    runtime_tick(_cyc_08007036);
+    /* fall-through to 0x08007038 */
+    g_cpu.R[15] = 0x08007038u;
+    runtime_dispatch(0x08007038u);
+    return;
+}
+
+/* 0x0800705C  mode=thumb  end=0x08007072  branches=34 */
+
+
+/* 0x08007038 thumb */
+void gf_tfunc_08007038(void) {
+    if (g_runtime_fn_entry_hook) g_runtime_fn_entry_hook(0x08007038u);
+    /* 08007038  08007038 T ldr r0,[r15,#0x160] */
+    g_cpu.R[15] = 0x08007038u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007038 = 1u;
+    _cyc_08007038 = 2u;
+    uint32_t _base_08007038 = 0x0800703Cu & ~3u;
+    uint32_t _off_08007038;
+    _off_08007038 = 0x00000160u;
+    uint32_t _ea_08007038 = _base_08007038 + _off_08007038;
+    uint32_t _post_08007038 = _base_08007038 + _off_08007038;
+    _cyc_08007038 += runtime_mem_cycles(_ea_08007038, 4u, 0u);
+    uint32_t _v_08007038;
+    { uint32_t _w = bus_read_u32(_ea_08007038 & ~3u); uint32_t _rot = (_ea_08007038 & 3u) * 8u; _v_08007038 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_08007038;
+    g_cpu.R[15] = 0x0800703Au;
+    runtime_tick(_cyc_08007038);
+    /* 0800703A  0800703a T adds r1,r5,r0 */
+    g_cpu.R[15] = 0x0800703Au;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800703A = 1u;
+    _cyc_0800703A = 1u;
+    uint32_t _rm_0800703A = g_cpu.R[0];
+    uint32_t _op2_0800703A;
+    uint32_t _co_0800703A;
+    _op2_0800703A = _rm_0800703A;
+    _co_0800703A = cpsr_c();
+    uint32_t _rn_0800703A = g_cpu.R[5];
+    uint32_t _r_0800703A;
+    _r_0800703A = _rn_0800703A + _op2_0800703A;
+    arm_set_nzcv_add(_rn_0800703A, _op2_0800703A, _r_0800703A);
+    g_cpu.R[1] = _r_0800703A;
+    g_cpu.R[15] = 0x0800703Cu;
+    runtime_tick(_cyc_0800703A);
+    /* 0800703C  0800703c T ldr r0,[r1] */
+    g_cpu.R[15] = 0x0800703Cu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800703C = 1u;
+    _cyc_0800703C = 2u;
+    uint32_t _base_0800703C = g_cpu.R[1];
+    uint32_t _off_0800703C;
+    _off_0800703C = 0x00000000u;
+    uint32_t _ea_0800703C = _base_0800703C + _off_0800703C;
+    uint32_t _post_0800703C = _base_0800703C + _off_0800703C;
+    _cyc_0800703C += runtime_mem_cycles(_ea_0800703C, 4u, 0u);
+    uint32_t _v_0800703C;
+    { uint32_t _w = bus_read_u32(_ea_0800703C & ~3u); uint32_t _rot = (_ea_0800703C & 3u) * 8u; _v_0800703C = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_0800703C;
+    g_cpu.R[15] = 0x0800703Eu;
+    runtime_tick(_cyc_0800703C);
+    /* 0800703E  0800703e T adds r0,r0,#0x1 */
+    g_cpu.R[15] = 0x0800703Eu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800703E = 1u;
+    _cyc_0800703E = 1u;
+    uint32_t _rn_0800703E = g_cpu.R[0];
+    uint32_t _r_0800703E;
+    _r_0800703E = _rn_0800703E + 0x00000001u;
+    arm_set_nzcv_add(_rn_0800703E, 0x00000001u, _r_0800703E);
+    g_cpu.R[0] = _r_0800703E;
+    g_cpu.R[15] = 0x08007040u;
+    runtime_tick(_cyc_0800703E);
+    /* 08007040  08007040 T str r0,[r1] */
+    g_cpu.R[15] = 0x08007040u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007040 = 1u;
+    _cyc_08007040 = 1u;
+    uint32_t _base_08007040 = g_cpu.R[1];
+    uint32_t _off_08007040;
+    _off_08007040 = 0x00000000u;
+    uint32_t _ea_08007040 = _base_08007040 + _off_08007040;
+    uint32_t _post_08007040 = _base_08007040 + _off_08007040;
+    _cyc_08007040 += runtime_mem_cycles(_ea_08007040, 4u, 0u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x08007040u, _ea_08007040 & ~3u, g_cpu.R[0], 4u);
+    bus_write_u32(_ea_08007040 & ~3u, g_cpu.R[0]);
+    g_cpu.R[15] = 0x08007042u;
+    runtime_tick(_cyc_08007040);
+    /* fall-through to 0x08007042 */
+    g_cpu.R[15] = 0x08007042u;
+    runtime_dispatch(0x08007042u);
+    return;
+}
+
+/* 0x08007042  mode=thumb  end=0x08007058  branches=39 */
+
+
+/* 0x08007042 thumb */
+void gf_tfunc_08007042(void) {
+    if (g_runtime_fn_entry_hook) g_runtime_fn_entry_hook(0x08007042u);
+    /* 08007042  08007042 T ldr r0,[r4] */
+    g_cpu.R[15] = 0x08007042u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007042 = 1u;
+    _cyc_08007042 = 2u;
+    uint32_t _base_08007042 = g_cpu.R[4];
+    uint32_t _off_08007042;
+    _off_08007042 = 0x00000000u;
+    uint32_t _ea_08007042 = _base_08007042 + _off_08007042;
+    uint32_t _post_08007042 = _base_08007042 + _off_08007042;
+    _cyc_08007042 += runtime_mem_cycles(_ea_08007042, 4u, 0u);
+    uint32_t _v_08007042;
+    { uint32_t _w = bus_read_u32(_ea_08007042 & ~3u); uint32_t _rot = (_ea_08007042 & 3u) * 8u; _v_08007042 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_08007042;
+    g_cpu.R[15] = 0x08007044u;
+    runtime_tick(_cyc_08007042);
+    /* 08007044  08007044 T movs r7,#0x80 */
+    g_cpu.R[15] = 0x08007044u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007044 = 1u;
+    _cyc_08007044 = 1u;
+    uint32_t _r_08007044;
+    _r_08007044 = 0x00000080u;
+    arm_set_nzc_logic(_r_08007044, cpsr_c());
+    g_cpu.R[7] = _r_08007044;
+    g_cpu.R[15] = 0x08007046u;
+    runtime_tick(_cyc_08007044);
+    /* 08007046  08007046 T movs r7,r7,lsl #17 */
+    g_cpu.R[15] = 0x08007046u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007046 = 1u;
+    _cyc_08007046 = 1u;
+    uint32_t _rm_08007046 = g_cpu.R[7];
+    uint32_t _op2_08007046;
+    uint32_t _co_08007046;
+    _op2_08007046 = _rm_08007046 << 17;
+    _co_08007046 = (_rm_08007046 >> 15) & 1u;
+    uint32_t _r_08007046;
+    _r_08007046 = _op2_08007046;
+    arm_set_nzc_logic(_r_08007046, _co_08007046);
+    g_cpu.R[7] = _r_08007046;
+    g_cpu.R[15] = 0x08007048u;
+    runtime_tick(_cyc_08007046);
+    /* 08007048  08007048 T ands r0,r0,r7 */
+    g_cpu.R[15] = 0x08007048u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007048 = 1u;
+    _cyc_08007048 = 1u;
+    uint32_t _rm_08007048 = g_cpu.R[7];
+    uint32_t _op2_08007048;
+    uint32_t _co_08007048;
+    _op2_08007048 = _rm_08007048;
+    _co_08007048 = cpsr_c();
+    uint32_t _rn_08007048 = g_cpu.R[0];
+    uint32_t _r_08007048;
+    _r_08007048 = _rn_08007048 & _op2_08007048;
+    arm_set_nzc_logic(_r_08007048, _co_08007048);
+    g_cpu.R[0] = _r_08007048;
+    g_cpu.R[15] = 0x0800704Au;
+    runtime_tick(_cyc_08007048);
+    /* 0800704A  0800704a T cmps r0,#0x0 */
+    g_cpu.R[15] = 0x0800704Au;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800704A = 1u;
+    _cyc_0800704A = 1u;
+    uint32_t _rn_0800704A = g_cpu.R[0];
+    uint32_t _r_0800704A;
+    _r_0800704A = _rn_0800704A - 0x00000000u;
+    arm_set_nzcv_sub(_rn_0800704A, 0x00000000u, _r_0800704A);
+    g_cpu.R[15] = 0x0800704Cu;
+    runtime_tick(_cyc_0800704A);
+    /* 0800704C  0800704c T bne 0x08007058 */
+    g_cpu.R[15] = 0x0800704Cu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800704C = 1u;
+    if (arm_cond_passes(0x1u)) {
+        _cyc_0800704C = 3u;
+        g_cpu.R[15] = 0x08007058u;
+        runtime_tick(_cyc_0800704C);
+        GBARECOMP_TAIL_CALL(gf_tfunc_08007058);
+    }
+    g_cpu.R[15] = 0x0800704Eu;
+    runtime_tick(_cyc_0800704C);
+    /* 0800704E  0800704e T ldr r1,[r15,#0x150] */
+    g_cpu.R[15] = 0x0800704Eu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800704E = 1u;
+    _cyc_0800704E = 2u;
+    uint32_t _base_0800704E = 0x08007052u & ~3u;
+    uint32_t _off_0800704E;
+    _off_0800704E = 0x00000150u;
+    uint32_t _ea_0800704E = _base_0800704E + _off_0800704E;
+    uint32_t _post_0800704E = _base_0800704E + _off_0800704E;
+    _cyc_0800704E += runtime_mem_cycles(_ea_0800704E, 4u, 0u);
+    uint32_t _v_0800704E;
+    { uint32_t _w = bus_read_u32(_ea_0800704E & ~3u); uint32_t _rot = (_ea_0800704E & 3u) * 8u; _v_0800704E = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[1] = _v_0800704E;
+    g_cpu.R[15] = 0x08007050u;
+    runtime_tick(_cyc_0800704E);
+    /* 08007050  08007050 T adds r0,r5,r1 */
+    g_cpu.R[15] = 0x08007050u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007050 = 1u;
+    _cyc_08007050 = 1u;
+    uint32_t _rm_08007050 = g_cpu.R[1];
+    uint32_t _op2_08007050;
+    uint32_t _co_08007050;
+    _op2_08007050 = _rm_08007050;
+    _co_08007050 = cpsr_c();
+    uint32_t _rn_08007050 = g_cpu.R[5];
+    uint32_t _r_08007050;
+    _r_08007050 = _rn_08007050 + _op2_08007050;
+    arm_set_nzcv_add(_rn_08007050, _op2_08007050, _r_08007050);
+    g_cpu.R[0] = _r_08007050;
+    g_cpu.R[15] = 0x08007052u;
+    runtime_tick(_cyc_08007050);
+    /* 08007052  08007052 T ldr r0,[r0] */
+    g_cpu.R[15] = 0x08007052u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007052 = 1u;
+    _cyc_08007052 = 2u;
+    uint32_t _base_08007052 = g_cpu.R[0];
+    uint32_t _off_08007052;
+    _off_08007052 = 0x00000000u;
+    uint32_t _ea_08007052 = _base_08007052 + _off_08007052;
+    uint32_t _post_08007052 = _base_08007052 + _off_08007052;
+    _cyc_08007052 += runtime_mem_cycles(_ea_08007052, 4u, 0u);
+    uint32_t _v_08007052;
+    { uint32_t _w = bus_read_u32(_ea_08007052 & ~3u); uint32_t _rot = (_ea_08007052 & 3u) * 8u; _v_08007052 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_08007052;
+    g_cpu.R[15] = 0x08007054u;
+    runtime_tick(_cyc_08007052);
+    /* 08007054  08007054 T bl.hi 0x08001058 */
+    g_cpu.R[15] = 0x08007054u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007054 = 1u;
+    _cyc_08007054 = 1u;
+    g_cpu.R[14] = 0x08001058u;
+    g_cpu.R[15] = 0x08007056u;
+    runtime_tick(_cyc_08007054);
+    /* 08007056  08007056 T bl.lo 0x00000000 */
+    g_cpu.R[15] = 0x08007056u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007056 = 1u;
+    _cyc_08007056 = 3u;
+    uint32_t _blt_08007056 = (g_cpu.R[14] + 0x000006E0u) & ~1u;
+    g_cpu.R[14] = 0x08007059u;
+    g_cpu.R[15] = _blt_08007056;
+    runtime_call_push_return(0x08007058u);
+    runtime_tick(_cyc_08007056);
+    _cyc_08007056 = 0u;
+    runtime_dispatch(_blt_08007056);
+    if (g_cpu.R[15] != 0x08007058u) { runtime_call_cancel_return(0x08007058u); return; }
+    g_cpu.R[15] = 0x08007058u;
+    runtime_tick(_cyc_08007056);
+    /* fall-through to 0x08007058 */
+    g_cpu.R[15] = 0x08007058u;
+    runtime_dispatch(0x08007058u);
+    return;
+}
+
+/* 0x08007058  mode=thumb  end=0x0800705C  branches=36 */
+
+
+/* 0x08007058 thumb */
+void gf_tfunc_08007058(void) {
+    if (g_runtime_fn_entry_hook) g_runtime_fn_entry_hook(0x08007058u);
+    /* 08007058  08007058 T bl.hi 0x0801605c */
+    g_cpu.R[15] = 0x08007058u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007058 = 1u;
+    _cyc_08007058 = 1u;
+    g_cpu.R[14] = 0x0801605Cu;
+    g_cpu.R[15] = 0x0800705Au;
+    runtime_tick(_cyc_08007058);
+    /* 0800705A  0800705a T bl.lo 0x00000000 */
+    g_cpu.R[15] = 0x0800705Au;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800705A = 1u;
+    _cyc_0800705A = 3u;
+    uint32_t _blt_0800705A = (g_cpu.R[14] + 0x00000630u) & ~1u;
+    g_cpu.R[14] = 0x0800705Du;
+    g_cpu.R[15] = _blt_0800705A;
+    runtime_call_push_return(0x0800705Cu);
+    runtime_tick(_cyc_0800705A);
+    _cyc_0800705A = 0u;
+    runtime_dispatch(_blt_0800705A);
+    if (g_cpu.R[15] != 0x0800705Cu) { runtime_call_cancel_return(0x0800705Cu); return; }
+    g_cpu.R[15] = 0x0800705Cu;
+    runtime_tick(_cyc_0800705A);
+    /* fall-through to 0x0800705C */
+    g_cpu.R[15] = 0x0800705Cu;
+    runtime_dispatch(0x0800705Cu);
+    return;
+}
+
+/* 0x080070A0  mode=thumb  end=0x080070B6  branches=26 */
+
+
+/* 0x0800705C thumb */
+void gf_tfunc_0800705C(void) {
+    if (g_runtime_fn_entry_hook) g_runtime_fn_entry_hook(0x0800705Cu);
+    /* 0800705C  0800705c T ldr r0,[r4] */
+    g_cpu.R[15] = 0x0800705Cu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800705C = 1u;
+    _cyc_0800705C = 2u;
+    uint32_t _base_0800705C = g_cpu.R[4];
+    uint32_t _off_0800705C;
+    _off_0800705C = 0x00000000u;
+    uint32_t _ea_0800705C = _base_0800705C + _off_0800705C;
+    uint32_t _post_0800705C = _base_0800705C + _off_0800705C;
+    _cyc_0800705C += runtime_mem_cycles(_ea_0800705C, 4u, 0u);
+    uint32_t _v_0800705C;
+    { uint32_t _w = bus_read_u32(_ea_0800705C & ~3u); uint32_t _rot = (_ea_0800705C & 3u) * 8u; _v_0800705C = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_0800705C;
+    g_cpu.R[15] = 0x0800705Eu;
+    runtime_tick(_cyc_0800705C);
+    /* 0800705E  0800705e T movs r1,#0x80 */
+    g_cpu.R[15] = 0x0800705Eu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800705E = 1u;
+    _cyc_0800705E = 1u;
+    uint32_t _r_0800705E;
+    _r_0800705E = 0x00000080u;
+    arm_set_nzc_logic(_r_0800705E, cpsr_c());
+    g_cpu.R[1] = _r_0800705E;
+    g_cpu.R[15] = 0x08007060u;
+    runtime_tick(_cyc_0800705E);
+    /* 08007060  08007060 T movs r1,r1,lsl #16 */
+    g_cpu.R[15] = 0x08007060u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007060 = 1u;
+    _cyc_08007060 = 1u;
+    uint32_t _rm_08007060 = g_cpu.R[1];
+    uint32_t _op2_08007060;
+    uint32_t _co_08007060;
+    _op2_08007060 = _rm_08007060 << 16;
+    _co_08007060 = (_rm_08007060 >> 16) & 1u;
+    uint32_t _r_08007060;
+    _r_08007060 = _op2_08007060;
+    arm_set_nzc_logic(_r_08007060, _co_08007060);
+    g_cpu.R[1] = _r_08007060;
+    g_cpu.R[15] = 0x08007062u;
+    runtime_tick(_cyc_08007060);
+    /* 08007062  08007062 T ands r0,r0,r1 */
+    g_cpu.R[15] = 0x08007062u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007062 = 1u;
+    _cyc_08007062 = 1u;
+    uint32_t _rm_08007062 = g_cpu.R[1];
+    uint32_t _op2_08007062;
+    uint32_t _co_08007062;
+    _op2_08007062 = _rm_08007062;
+    _co_08007062 = cpsr_c();
+    uint32_t _rn_08007062 = g_cpu.R[0];
+    uint32_t _r_08007062;
+    _r_08007062 = _rn_08007062 & _op2_08007062;
+    arm_set_nzc_logic(_r_08007062, _co_08007062);
+    g_cpu.R[0] = _r_08007062;
+    g_cpu.R[15] = 0x08007064u;
+    runtime_tick(_cyc_08007062);
+    /* 08007064  08007064 T cmps r0,#0x0 */
+    g_cpu.R[15] = 0x08007064u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007064 = 1u;
+    _cyc_08007064 = 1u;
+    uint32_t _rn_08007064 = g_cpu.R[0];
+    uint32_t _r_08007064;
+    _r_08007064 = _rn_08007064 - 0x00000000u;
+    arm_set_nzcv_sub(_rn_08007064, 0x00000000u, _r_08007064);
+    g_cpu.R[15] = 0x08007066u;
+    runtime_tick(_cyc_08007064);
+    /* 08007066  08007066 T bne 0x0800707c */
+    g_cpu.R[15] = 0x08007066u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007066 = 1u;
+    if (arm_cond_passes(0x1u)) {
+        _cyc_08007066 = 3u;
+        g_cpu.R[15] = 0x0800707Cu;
+        runtime_tick(_cyc_08007066);
+        GBARECOMP_TAIL_CALL(gf_tfunc_0800707C);
+    }
+    g_cpu.R[15] = 0x08007068u;
+    runtime_tick(_cyc_08007066);
+    /* 08007068  08007068 T ldr r2,[r15,#0x138] */
+    g_cpu.R[15] = 0x08007068u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007068 = 1u;
+    _cyc_08007068 = 2u;
+    uint32_t _base_08007068 = 0x0800706Cu & ~3u;
+    uint32_t _off_08007068;
+    _off_08007068 = 0x00000138u;
+    uint32_t _ea_08007068 = _base_08007068 + _off_08007068;
+    uint32_t _post_08007068 = _base_08007068 + _off_08007068;
+    _cyc_08007068 += runtime_mem_cycles(_ea_08007068, 4u, 0u);
+    uint32_t _v_08007068;
+    { uint32_t _w = bus_read_u32(_ea_08007068 & ~3u); uint32_t _rot = (_ea_08007068 & 3u) * 8u; _v_08007068 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[2] = _v_08007068;
+    g_cpu.R[15] = 0x0800706Au;
+    runtime_tick(_cyc_08007068);
+    /* 0800706A  0800706a T adds r0,r5,r2 */
+    g_cpu.R[15] = 0x0800706Au;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800706A = 1u;
+    _cyc_0800706A = 1u;
+    uint32_t _rm_0800706A = g_cpu.R[2];
+    uint32_t _op2_0800706A;
+    uint32_t _co_0800706A;
+    _op2_0800706A = _rm_0800706A;
+    _co_0800706A = cpsr_c();
+    uint32_t _rn_0800706A = g_cpu.R[5];
+    uint32_t _r_0800706A;
+    _r_0800706A = _rn_0800706A + _op2_0800706A;
+    arm_set_nzcv_add(_rn_0800706A, _op2_0800706A, _r_0800706A);
+    g_cpu.R[0] = _r_0800706A;
+    g_cpu.R[15] = 0x0800706Cu;
+    runtime_tick(_cyc_0800706A);
+    /* 0800706C  0800706c T ldr r0,[r0] */
+    g_cpu.R[15] = 0x0800706Cu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800706C = 1u;
+    _cyc_0800706C = 2u;
+    uint32_t _base_0800706C = g_cpu.R[0];
+    uint32_t _off_0800706C;
+    _off_0800706C = 0x00000000u;
+    uint32_t _ea_0800706C = _base_0800706C + _off_0800706C;
+    uint32_t _post_0800706C = _base_0800706C + _off_0800706C;
+    _cyc_0800706C += runtime_mem_cycles(_ea_0800706C, 4u, 0u);
+    uint32_t _v_0800706C;
+    { uint32_t _w = bus_read_u32(_ea_0800706C & ~3u); uint32_t _rot = (_ea_0800706C & 3u) * 8u; _v_0800706C = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_0800706C;
+    g_cpu.R[15] = 0x0800706Eu;
+    runtime_tick(_cyc_0800706C);
+    /* 0800706E  0800706e T bl.hi 0x08001072 */
+    g_cpu.R[15] = 0x0800706Eu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800706E = 1u;
+    _cyc_0800706E = 1u;
+    g_cpu.R[14] = 0x08001072u;
+    g_cpu.R[15] = 0x08007070u;
+    runtime_tick(_cyc_0800706E);
+    /* 08007070  08007070 T bl.lo 0x00000000 */
+    g_cpu.R[15] = 0x08007070u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007070 = 1u;
+    _cyc_08007070 = 3u;
+    uint32_t _blt_08007070 = (g_cpu.R[14] + 0x000006C6u) & ~1u;
+    g_cpu.R[14] = 0x08007073u;
+    g_cpu.R[15] = _blt_08007070;
+    runtime_call_push_return(0x08007072u);
+    runtime_tick(_cyc_08007070);
+    _cyc_08007070 = 0u;
+    runtime_dispatch(_blt_08007070);
+    if (g_cpu.R[15] != 0x08007072u) { runtime_call_cancel_return(0x08007072u); return; }
+    g_cpu.R[15] = 0x08007072u;
+    runtime_tick(_cyc_08007070);
+    /* fall-through to 0x08007072 */
+    g_cpu.R[15] = 0x08007072u;
+    runtime_dispatch(0x08007072u);
+    return;
+}
+
+/* 0x08007072  mode=thumb  end=0x0800707C  branches=31 */
+
+
+/* 0x08007072 thumb */
+void gf_tfunc_08007072(void) {
+    if (g_runtime_fn_entry_hook) g_runtime_fn_entry_hook(0x08007072u);
+    /* 08007072  08007072 T ldr r0,[r15,#0x134] */
+    g_cpu.R[15] = 0x08007072u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007072 = 1u;
+    _cyc_08007072 = 2u;
+    uint32_t _base_08007072 = 0x08007076u & ~3u;
+    uint32_t _off_08007072;
+    _off_08007072 = 0x00000134u;
+    uint32_t _ea_08007072 = _base_08007072 + _off_08007072;
+    uint32_t _post_08007072 = _base_08007072 + _off_08007072;
+    _cyc_08007072 += runtime_mem_cycles(_ea_08007072, 4u, 0u);
+    uint32_t _v_08007072;
+    { uint32_t _w = bus_read_u32(_ea_08007072 & ~3u); uint32_t _rot = (_ea_08007072 & 3u) * 8u; _v_08007072 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_08007072;
+    g_cpu.R[15] = 0x08007074u;
+    runtime_tick(_cyc_08007072);
+    /* 08007074  08007074 T adds r1,r5,r0 */
+    g_cpu.R[15] = 0x08007074u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007074 = 1u;
+    _cyc_08007074 = 1u;
+    uint32_t _rm_08007074 = g_cpu.R[0];
+    uint32_t _op2_08007074;
+    uint32_t _co_08007074;
+    _op2_08007074 = _rm_08007074;
+    _co_08007074 = cpsr_c();
+    uint32_t _rn_08007074 = g_cpu.R[5];
+    uint32_t _r_08007074;
+    _r_08007074 = _rn_08007074 + _op2_08007074;
+    arm_set_nzcv_add(_rn_08007074, _op2_08007074, _r_08007074);
+    g_cpu.R[1] = _r_08007074;
+    g_cpu.R[15] = 0x08007076u;
+    runtime_tick(_cyc_08007074);
+    /* 08007076  08007076 T ldr r0,[r1] */
+    g_cpu.R[15] = 0x08007076u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007076 = 1u;
+    _cyc_08007076 = 2u;
+    uint32_t _base_08007076 = g_cpu.R[1];
+    uint32_t _off_08007076;
+    _off_08007076 = 0x00000000u;
+    uint32_t _ea_08007076 = _base_08007076 + _off_08007076;
+    uint32_t _post_08007076 = _base_08007076 + _off_08007076;
+    _cyc_08007076 += runtime_mem_cycles(_ea_08007076, 4u, 0u);
+    uint32_t _v_08007076;
+    { uint32_t _w = bus_read_u32(_ea_08007076 & ~3u); uint32_t _rot = (_ea_08007076 & 3u) * 8u; _v_08007076 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_08007076;
+    g_cpu.R[15] = 0x08007078u;
+    runtime_tick(_cyc_08007076);
+    /* 08007078  08007078 T adds r0,r0,#0x1 */
+    g_cpu.R[15] = 0x08007078u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007078 = 1u;
+    _cyc_08007078 = 1u;
+    uint32_t _rn_08007078 = g_cpu.R[0];
+    uint32_t _r_08007078;
+    _r_08007078 = _rn_08007078 + 0x00000001u;
+    arm_set_nzcv_add(_rn_08007078, 0x00000001u, _r_08007078);
+    g_cpu.R[0] = _r_08007078;
+    g_cpu.R[15] = 0x0800707Au;
+    runtime_tick(_cyc_08007078);
+    /* 0800707A  0800707a T str r0,[r1] */
+    g_cpu.R[15] = 0x0800707Au;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800707A = 1u;
+    _cyc_0800707A = 1u;
+    uint32_t _base_0800707A = g_cpu.R[1];
+    uint32_t _off_0800707A;
+    _off_0800707A = 0x00000000u;
+    uint32_t _ea_0800707A = _base_0800707A + _off_0800707A;
+    uint32_t _post_0800707A = _base_0800707A + _off_0800707A;
+    _cyc_0800707A += runtime_mem_cycles(_ea_0800707A, 4u, 0u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x0800707Au, _ea_0800707A & ~3u, g_cpu.R[0], 4u);
+    bus_write_u32(_ea_0800707A & ~3u, g_cpu.R[0]);
+    g_cpu.R[15] = 0x0800707Cu;
+    runtime_tick(_cyc_0800707A);
+    /* fall-through to 0x0800707C */
+    g_cpu.R[15] = 0x0800707Cu;
+    runtime_dispatch(0x0800707Cu);
+    return;
+}
+
+/* 0x0800707C  mode=thumb  end=0x08007092  branches=31 */
+
+
+/* 0x0800707C thumb */
+void gf_tfunc_0800707C(void) {
+    if (g_runtime_fn_entry_hook) g_runtime_fn_entry_hook(0x0800707Cu);
+    /* 0800707C  0800707c T ldr r0,[r4] */
+    g_cpu.R[15] = 0x0800707Cu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800707C = 1u;
+    _cyc_0800707C = 2u;
+    uint32_t _base_0800707C = g_cpu.R[4];
+    uint32_t _off_0800707C;
+    _off_0800707C = 0x00000000u;
+    uint32_t _ea_0800707C = _base_0800707C + _off_0800707C;
+    uint32_t _post_0800707C = _base_0800707C + _off_0800707C;
+    _cyc_0800707C += runtime_mem_cycles(_ea_0800707C, 4u, 0u);
+    uint32_t _v_0800707C;
+    { uint32_t _w = bus_read_u32(_ea_0800707C & ~3u); uint32_t _rot = (_ea_0800707C & 3u) * 8u; _v_0800707C = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_0800707C;
+    g_cpu.R[15] = 0x0800707Eu;
+    runtime_tick(_cyc_0800707C);
+    /* 0800707E  0800707e T movs r1,#0x80 */
+    g_cpu.R[15] = 0x0800707Eu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800707E = 1u;
+    _cyc_0800707E = 1u;
+    uint32_t _r_0800707E;
+    _r_0800707E = 0x00000080u;
+    arm_set_nzc_logic(_r_0800707E, cpsr_c());
+    g_cpu.R[1] = _r_0800707E;
+    g_cpu.R[15] = 0x08007080u;
+    runtime_tick(_cyc_0800707E);
+    /* 08007080  08007080 T movs r1,r1,lsl #15 */
+    g_cpu.R[15] = 0x08007080u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007080 = 1u;
+    _cyc_08007080 = 1u;
+    uint32_t _rm_08007080 = g_cpu.R[1];
+    uint32_t _op2_08007080;
+    uint32_t _co_08007080;
+    _op2_08007080 = _rm_08007080 << 15;
+    _co_08007080 = (_rm_08007080 >> 17) & 1u;
+    uint32_t _r_08007080;
+    _r_08007080 = _op2_08007080;
+    arm_set_nzc_logic(_r_08007080, _co_08007080);
+    g_cpu.R[1] = _r_08007080;
+    g_cpu.R[15] = 0x08007082u;
+    runtime_tick(_cyc_08007080);
+    /* 08007082  08007082 T ands r0,r0,r1 */
+    g_cpu.R[15] = 0x08007082u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007082 = 1u;
+    _cyc_08007082 = 1u;
+    uint32_t _rm_08007082 = g_cpu.R[1];
+    uint32_t _op2_08007082;
+    uint32_t _co_08007082;
+    _op2_08007082 = _rm_08007082;
+    _co_08007082 = cpsr_c();
+    uint32_t _rn_08007082 = g_cpu.R[0];
+    uint32_t _r_08007082;
+    _r_08007082 = _rn_08007082 & _op2_08007082;
+    arm_set_nzc_logic(_r_08007082, _co_08007082);
+    g_cpu.R[0] = _r_08007082;
+    g_cpu.R[15] = 0x08007084u;
+    runtime_tick(_cyc_08007082);
+    /* 08007084  08007084 T cmps r0,#0x0 */
+    g_cpu.R[15] = 0x08007084u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007084 = 1u;
+    _cyc_08007084 = 1u;
+    uint32_t _rn_08007084 = g_cpu.R[0];
+    uint32_t _r_08007084;
+    _r_08007084 = _rn_08007084 - 0x00000000u;
+    arm_set_nzcv_sub(_rn_08007084, 0x00000000u, _r_08007084);
+    g_cpu.R[15] = 0x08007086u;
+    runtime_tick(_cyc_08007084);
+    /* 08007086  08007086 T bne 0x0800709c */
+    g_cpu.R[15] = 0x08007086u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007086 = 1u;
+    if (arm_cond_passes(0x1u)) {
+        _cyc_08007086 = 3u;
+        g_cpu.R[15] = 0x0800709Cu;
+        runtime_tick(_cyc_08007086);
+        GBARECOMP_TAIL_CALL(gf_tfunc_0800709C);
+    }
+    g_cpu.R[15] = 0x08007088u;
+    runtime_tick(_cyc_08007086);
+    /* 08007088  08007088 T ldr r1,[r15,#0x120] */
+    g_cpu.R[15] = 0x08007088u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007088 = 1u;
+    _cyc_08007088 = 2u;
+    uint32_t _base_08007088 = 0x0800708Cu & ~3u;
+    uint32_t _off_08007088;
+    _off_08007088 = 0x00000120u;
+    uint32_t _ea_08007088 = _base_08007088 + _off_08007088;
+    uint32_t _post_08007088 = _base_08007088 + _off_08007088;
+    _cyc_08007088 += runtime_mem_cycles(_ea_08007088, 4u, 0u);
+    uint32_t _v_08007088;
+    { uint32_t _w = bus_read_u32(_ea_08007088 & ~3u); uint32_t _rot = (_ea_08007088 & 3u) * 8u; _v_08007088 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[1] = _v_08007088;
+    g_cpu.R[15] = 0x0800708Au;
+    runtime_tick(_cyc_08007088);
+    /* 0800708A  0800708a T adds r0,r5,r1 */
+    g_cpu.R[15] = 0x0800708Au;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800708A = 1u;
+    _cyc_0800708A = 1u;
+    uint32_t _rm_0800708A = g_cpu.R[1];
+    uint32_t _op2_0800708A;
+    uint32_t _co_0800708A;
+    _op2_0800708A = _rm_0800708A;
+    _co_0800708A = cpsr_c();
+    uint32_t _rn_0800708A = g_cpu.R[5];
+    uint32_t _r_0800708A;
+    _r_0800708A = _rn_0800708A + _op2_0800708A;
+    arm_set_nzcv_add(_rn_0800708A, _op2_0800708A, _r_0800708A);
+    g_cpu.R[0] = _r_0800708A;
+    g_cpu.R[15] = 0x0800708Cu;
+    runtime_tick(_cyc_0800708A);
+    /* 0800708C  0800708c T ldr r0,[r0] */
+    g_cpu.R[15] = 0x0800708Cu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800708C = 1u;
+    _cyc_0800708C = 2u;
+    uint32_t _base_0800708C = g_cpu.R[0];
+    uint32_t _off_0800708C;
+    _off_0800708C = 0x00000000u;
+    uint32_t _ea_0800708C = _base_0800708C + _off_0800708C;
+    uint32_t _post_0800708C = _base_0800708C + _off_0800708C;
+    _cyc_0800708C += runtime_mem_cycles(_ea_0800708C, 4u, 0u);
+    uint32_t _v_0800708C;
+    { uint32_t _w = bus_read_u32(_ea_0800708C & ~3u); uint32_t _rot = (_ea_0800708C & 3u) * 8u; _v_0800708C = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_0800708C;
+    g_cpu.R[15] = 0x0800708Eu;
+    runtime_tick(_cyc_0800708C);
+    /* 0800708E  0800708e T bl.hi 0x08001092 */
+    g_cpu.R[15] = 0x0800708Eu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800708E = 1u;
+    _cyc_0800708E = 1u;
+    g_cpu.R[14] = 0x08001092u;
+    g_cpu.R[15] = 0x08007090u;
+    runtime_tick(_cyc_0800708E);
+    /* 08007090  08007090 T bl.lo 0x00000000 */
+    g_cpu.R[15] = 0x08007090u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007090 = 1u;
+    _cyc_08007090 = 3u;
+    uint32_t _blt_08007090 = (g_cpu.R[14] + 0x000006A6u) & ~1u;
+    g_cpu.R[14] = 0x08007093u;
+    g_cpu.R[15] = _blt_08007090;
+    runtime_call_push_return(0x08007092u);
+    runtime_tick(_cyc_08007090);
+    _cyc_08007090 = 0u;
+    runtime_dispatch(_blt_08007090);
+    if (g_cpu.R[15] != 0x08007092u) { runtime_call_cancel_return(0x08007092u); return; }
+    g_cpu.R[15] = 0x08007092u;
+    runtime_tick(_cyc_08007090);
+    /* fall-through to 0x08007092 */
+    g_cpu.R[15] = 0x08007092u;
+    runtime_dispatch(0x08007092u);
+    return;
+}
+
+/* 0x08007092  mode=thumb  end=0x0800709C  branches=28 */
+
+
+/* 0x08007092 thumb */
+void gf_tfunc_08007092(void) {
+    if (g_runtime_fn_entry_hook) g_runtime_fn_entry_hook(0x08007092u);
+    /* 08007092  08007092 T ldr r2,[r15,#0x11c] */
+    g_cpu.R[15] = 0x08007092u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007092 = 1u;
+    _cyc_08007092 = 2u;
+    uint32_t _base_08007092 = 0x08007096u & ~3u;
+    uint32_t _off_08007092;
+    _off_08007092 = 0x0000011Cu;
+    uint32_t _ea_08007092 = _base_08007092 + _off_08007092;
+    uint32_t _post_08007092 = _base_08007092 + _off_08007092;
+    _cyc_08007092 += runtime_mem_cycles(_ea_08007092, 4u, 0u);
+    uint32_t _v_08007092;
+    { uint32_t _w = bus_read_u32(_ea_08007092 & ~3u); uint32_t _rot = (_ea_08007092 & 3u) * 8u; _v_08007092 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[2] = _v_08007092;
+    g_cpu.R[15] = 0x08007094u;
+    runtime_tick(_cyc_08007092);
+    /* 08007094  08007094 T adds r1,r5,r2 */
+    g_cpu.R[15] = 0x08007094u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007094 = 1u;
+    _cyc_08007094 = 1u;
+    uint32_t _rm_08007094 = g_cpu.R[2];
+    uint32_t _op2_08007094;
+    uint32_t _co_08007094;
+    _op2_08007094 = _rm_08007094;
+    _co_08007094 = cpsr_c();
+    uint32_t _rn_08007094 = g_cpu.R[5];
+    uint32_t _r_08007094;
+    _r_08007094 = _rn_08007094 + _op2_08007094;
+    arm_set_nzcv_add(_rn_08007094, _op2_08007094, _r_08007094);
+    g_cpu.R[1] = _r_08007094;
+    g_cpu.R[15] = 0x08007096u;
+    runtime_tick(_cyc_08007094);
+    /* 08007096  08007096 T ldr r0,[r1] */
+    g_cpu.R[15] = 0x08007096u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007096 = 1u;
+    _cyc_08007096 = 2u;
+    uint32_t _base_08007096 = g_cpu.R[1];
+    uint32_t _off_08007096;
+    _off_08007096 = 0x00000000u;
+    uint32_t _ea_08007096 = _base_08007096 + _off_08007096;
+    uint32_t _post_08007096 = _base_08007096 + _off_08007096;
+    _cyc_08007096 += runtime_mem_cycles(_ea_08007096, 4u, 0u);
+    uint32_t _v_08007096;
+    { uint32_t _w = bus_read_u32(_ea_08007096 & ~3u); uint32_t _rot = (_ea_08007096 & 3u) * 8u; _v_08007096 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_08007096;
+    g_cpu.R[15] = 0x08007098u;
+    runtime_tick(_cyc_08007096);
+    /* 08007098  08007098 T adds r0,r0,#0x1 */
+    g_cpu.R[15] = 0x08007098u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007098 = 1u;
+    _cyc_08007098 = 1u;
+    uint32_t _rn_08007098 = g_cpu.R[0];
+    uint32_t _r_08007098;
+    _r_08007098 = _rn_08007098 + 0x00000001u;
+    arm_set_nzcv_add(_rn_08007098, 0x00000001u, _r_08007098);
+    g_cpu.R[0] = _r_08007098;
+    g_cpu.R[15] = 0x0800709Au;
+    runtime_tick(_cyc_08007098);
+    /* 0800709A  0800709a T str r0,[r1] */
+    g_cpu.R[15] = 0x0800709Au;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800709A = 1u;
+    _cyc_0800709A = 1u;
+    uint32_t _base_0800709A = g_cpu.R[1];
+    uint32_t _off_0800709A;
+    _off_0800709A = 0x00000000u;
+    uint32_t _ea_0800709A = _base_0800709A + _off_0800709A;
+    uint32_t _post_0800709A = _base_0800709A + _off_0800709A;
+    _cyc_0800709A += runtime_mem_cycles(_ea_0800709A, 4u, 0u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x0800709Au, _ea_0800709A & ~3u, g_cpu.R[0], 4u);
+    bus_write_u32(_ea_0800709A & ~3u, g_cpu.R[0]);
+    g_cpu.R[15] = 0x0800709Cu;
+    runtime_tick(_cyc_0800709A);
+    /* fall-through to 0x0800709C */
+    g_cpu.R[15] = 0x0800709Cu;
+    runtime_dispatch(0x0800709Cu);
+    return;
+}
+
+/* 0x0800709C  mode=thumb  end=0x080070A0  branches=28 */
+
+
+/* 0x0800709C thumb */
+void gf_tfunc_0800709C(void) {
+    if (g_runtime_fn_entry_hook) g_runtime_fn_entry_hook(0x0800709Cu);
+    /* 0800709C  0800709c T bl.hi 0x080110a0 */
+    g_cpu.R[15] = 0x0800709Cu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800709C = 1u;
+    _cyc_0800709C = 1u;
+    g_cpu.R[14] = 0x080110A0u;
+    g_cpu.R[15] = 0x0800709Eu;
+    runtime_tick(_cyc_0800709C);
+    /* 0800709E  0800709e T bl.lo 0x00000000 */
+    g_cpu.R[15] = 0x0800709Eu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800709E = 1u;
+    _cyc_0800709E = 3u;
+    uint32_t _blt_0800709E = (g_cpu.R[14] + 0x0000025Cu) & ~1u;
+    g_cpu.R[14] = 0x080070A1u;
+    g_cpu.R[15] = _blt_0800709E;
+    runtime_call_push_return(0x080070A0u);
+    runtime_tick(_cyc_0800709E);
+    _cyc_0800709E = 0u;
+    runtime_dispatch(_blt_0800709E);
+    if (g_cpu.R[15] != 0x080070A0u) { runtime_call_cancel_return(0x080070A0u); return; }
+    g_cpu.R[15] = 0x080070A0u;
+    runtime_tick(_cyc_0800709E);
+    /* fall-through to 0x080070A0 */
+    g_cpu.R[15] = 0x080070A0u;
+    runtime_dispatch(0x080070A0u);
+    return;
+}
+
+/* 0x080070D6  mode=thumb  end=0x080070EC  branches=20 */
+
+
+/* 0x080070A0 thumb */
+void gf_tfunc_080070A0(void) {
+    if (g_runtime_fn_entry_hook) g_runtime_fn_entry_hook(0x080070A0u);
+    /* 080070A0  080070a0 T ldr r0,[r4] */
+    g_cpu.R[15] = 0x080070A0u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080070A0 = 1u;
+    _cyc_080070A0 = 2u;
+    uint32_t _base_080070A0 = g_cpu.R[4];
+    uint32_t _off_080070A0;
+    _off_080070A0 = 0x00000000u;
+    uint32_t _ea_080070A0 = _base_080070A0 + _off_080070A0;
+    uint32_t _post_080070A0 = _base_080070A0 + _off_080070A0;
+    _cyc_080070A0 += runtime_mem_cycles(_ea_080070A0, 4u, 0u);
+    uint32_t _v_080070A0;
+    { uint32_t _w = bus_read_u32(_ea_080070A0 & ~3u); uint32_t _rot = (_ea_080070A0 & 3u) * 8u; _v_080070A0 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_080070A0;
+    g_cpu.R[15] = 0x080070A2u;
+    runtime_tick(_cyc_080070A0);
+    /* 080070A2  080070a2 T movs r1,#0x80 */
+    g_cpu.R[15] = 0x080070A2u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080070A2 = 1u;
+    _cyc_080070A2 = 1u;
+    uint32_t _r_080070A2;
+    _r_080070A2 = 0x00000080u;
+    arm_set_nzc_logic(_r_080070A2, cpsr_c());
+    g_cpu.R[1] = _r_080070A2;
+    g_cpu.R[15] = 0x080070A4u;
+    runtime_tick(_cyc_080070A2);
+    /* 080070A4  080070a4 T movs r1,r1,lsl #14 */
+    g_cpu.R[15] = 0x080070A4u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080070A4 = 1u;
+    _cyc_080070A4 = 1u;
+    uint32_t _rm_080070A4 = g_cpu.R[1];
+    uint32_t _op2_080070A4;
+    uint32_t _co_080070A4;
+    _op2_080070A4 = _rm_080070A4 << 14;
+    _co_080070A4 = (_rm_080070A4 >> 18) & 1u;
+    uint32_t _r_080070A4;
+    _r_080070A4 = _op2_080070A4;
+    arm_set_nzc_logic(_r_080070A4, _co_080070A4);
+    g_cpu.R[1] = _r_080070A4;
+    g_cpu.R[15] = 0x080070A6u;
+    runtime_tick(_cyc_080070A4);
+    /* 080070A6  080070a6 T ands r0,r0,r1 */
+    g_cpu.R[15] = 0x080070A6u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080070A6 = 1u;
+    _cyc_080070A6 = 1u;
+    uint32_t _rm_080070A6 = g_cpu.R[1];
+    uint32_t _op2_080070A6;
+    uint32_t _co_080070A6;
+    _op2_080070A6 = _rm_080070A6;
+    _co_080070A6 = cpsr_c();
+    uint32_t _rn_080070A6 = g_cpu.R[0];
+    uint32_t _r_080070A6;
+    _r_080070A6 = _rn_080070A6 & _op2_080070A6;
+    arm_set_nzc_logic(_r_080070A6, _co_080070A6);
+    g_cpu.R[0] = _r_080070A6;
+    g_cpu.R[15] = 0x080070A8u;
+    runtime_tick(_cyc_080070A6);
+    /* 080070A8  080070a8 T cmps r0,#0x0 */
+    g_cpu.R[15] = 0x080070A8u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080070A8 = 1u;
+    _cyc_080070A8 = 1u;
+    uint32_t _rn_080070A8 = g_cpu.R[0];
+    uint32_t _r_080070A8;
+    _r_080070A8 = _rn_080070A8 - 0x00000000u;
+    arm_set_nzcv_sub(_rn_080070A8, 0x00000000u, _r_080070A8);
+    g_cpu.R[15] = 0x080070AAu;
+    runtime_tick(_cyc_080070A8);
+    /* 080070AA  080070aa T bne 0x080070c0 */
+    g_cpu.R[15] = 0x080070AAu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080070AA = 1u;
+    if (arm_cond_passes(0x1u)) {
+        _cyc_080070AA = 3u;
+        g_cpu.R[15] = 0x080070C0u;
+        runtime_tick(_cyc_080070AA);
+        GBARECOMP_TAIL_CALL(gf_tfunc_080070C0);
+    }
+    g_cpu.R[15] = 0x080070ACu;
+    runtime_tick(_cyc_080070AA);
+    /* 080070AC  080070ac T ldr r1,[r15,#0x104] */
+    g_cpu.R[15] = 0x080070ACu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080070AC = 1u;
+    _cyc_080070AC = 2u;
+    uint32_t _base_080070AC = 0x080070B0u & ~3u;
+    uint32_t _off_080070AC;
+    _off_080070AC = 0x00000104u;
+    uint32_t _ea_080070AC = _base_080070AC + _off_080070AC;
+    uint32_t _post_080070AC = _base_080070AC + _off_080070AC;
+    _cyc_080070AC += runtime_mem_cycles(_ea_080070AC, 4u, 0u);
+    uint32_t _v_080070AC;
+    { uint32_t _w = bus_read_u32(_ea_080070AC & ~3u); uint32_t _rot = (_ea_080070AC & 3u) * 8u; _v_080070AC = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[1] = _v_080070AC;
+    g_cpu.R[15] = 0x080070AEu;
+    runtime_tick(_cyc_080070AC);
+    /* 080070AE  080070ae T adds r0,r5,r1 */
+    g_cpu.R[15] = 0x080070AEu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080070AE = 1u;
+    _cyc_080070AE = 1u;
+    uint32_t _rm_080070AE = g_cpu.R[1];
+    uint32_t _op2_080070AE;
+    uint32_t _co_080070AE;
+    _op2_080070AE = _rm_080070AE;
+    _co_080070AE = cpsr_c();
+    uint32_t _rn_080070AE = g_cpu.R[5];
+    uint32_t _r_080070AE;
+    _r_080070AE = _rn_080070AE + _op2_080070AE;
+    arm_set_nzcv_add(_rn_080070AE, _op2_080070AE, _r_080070AE);
+    g_cpu.R[0] = _r_080070AE;
+    g_cpu.R[15] = 0x080070B0u;
+    runtime_tick(_cyc_080070AE);
+    /* 080070B0  080070b0 T ldr r0,[r0] */
+    g_cpu.R[15] = 0x080070B0u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080070B0 = 1u;
+    _cyc_080070B0 = 2u;
+    uint32_t _base_080070B0 = g_cpu.R[0];
+    uint32_t _off_080070B0;
+    _off_080070B0 = 0x00000000u;
+    uint32_t _ea_080070B0 = _base_080070B0 + _off_080070B0;
+    uint32_t _post_080070B0 = _base_080070B0 + _off_080070B0;
+    _cyc_080070B0 += runtime_mem_cycles(_ea_080070B0, 4u, 0u);
+    uint32_t _v_080070B0;
+    { uint32_t _w = bus_read_u32(_ea_080070B0 & ~3u); uint32_t _rot = (_ea_080070B0 & 3u) * 8u; _v_080070B0 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_080070B0;
+    g_cpu.R[15] = 0x080070B2u;
+    runtime_tick(_cyc_080070B0);
+    /* 080070B2  080070b2 T bl.hi 0x080010b6 */
+    g_cpu.R[15] = 0x080070B2u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080070B2 = 1u;
+    _cyc_080070B2 = 1u;
+    g_cpu.R[14] = 0x080010B6u;
+    g_cpu.R[15] = 0x080070B4u;
+    runtime_tick(_cyc_080070B2);
+    /* 080070B4  080070b4 T bl.lo 0x00000000 */
+    g_cpu.R[15] = 0x080070B4u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080070B4 = 1u;
+    _cyc_080070B4 = 3u;
+    uint32_t _blt_080070B4 = (g_cpu.R[14] + 0x00000682u) & ~1u;
+    g_cpu.R[14] = 0x080070B7u;
+    g_cpu.R[15] = _blt_080070B4;
+    runtime_call_push_return(0x080070B6u);
+    runtime_tick(_cyc_080070B4);
+    _cyc_080070B4 = 0u;
+    runtime_dispatch(_blt_080070B4);
+    if (g_cpu.R[15] != 0x080070B6u) { runtime_call_cancel_return(0x080070B6u); return; }
+    g_cpu.R[15] = 0x080070B6u;
+    runtime_tick(_cyc_080070B4);
+    /* fall-through to 0x080070B6 */
+    g_cpu.R[15] = 0x080070B6u;
+    runtime_dispatch(0x080070B6u);
+    return;
+}
+
+/* 0x080070B6  mode=thumb  end=0x080070C0  branches=23 */
+
+
+/* 0x080070B6 thumb */
+void gf_tfunc_080070B6(void) {
+    if (g_runtime_fn_entry_hook) g_runtime_fn_entry_hook(0x080070B6u);
+    /* 080070B6  080070b6 T ldr r2,[r15,#0x100] */
+    g_cpu.R[15] = 0x080070B6u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080070B6 = 1u;
+    _cyc_080070B6 = 2u;
+    uint32_t _base_080070B6 = 0x080070BAu & ~3u;
+    uint32_t _off_080070B6;
+    _off_080070B6 = 0x00000100u;
+    uint32_t _ea_080070B6 = _base_080070B6 + _off_080070B6;
+    uint32_t _post_080070B6 = _base_080070B6 + _off_080070B6;
+    _cyc_080070B6 += runtime_mem_cycles(_ea_080070B6, 4u, 0u);
+    uint32_t _v_080070B6;
+    { uint32_t _w = bus_read_u32(_ea_080070B6 & ~3u); uint32_t _rot = (_ea_080070B6 & 3u) * 8u; _v_080070B6 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[2] = _v_080070B6;
+    g_cpu.R[15] = 0x080070B8u;
+    runtime_tick(_cyc_080070B6);
+    /* 080070B8  080070b8 T adds r1,r5,r2 */
+    g_cpu.R[15] = 0x080070B8u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080070B8 = 1u;
+    _cyc_080070B8 = 1u;
+    uint32_t _rm_080070B8 = g_cpu.R[2];
+    uint32_t _op2_080070B8;
+    uint32_t _co_080070B8;
+    _op2_080070B8 = _rm_080070B8;
+    _co_080070B8 = cpsr_c();
+    uint32_t _rn_080070B8 = g_cpu.R[5];
+    uint32_t _r_080070B8;
+    _r_080070B8 = _rn_080070B8 + _op2_080070B8;
+    arm_set_nzcv_add(_rn_080070B8, _op2_080070B8, _r_080070B8);
+    g_cpu.R[1] = _r_080070B8;
+    g_cpu.R[15] = 0x080070BAu;
+    runtime_tick(_cyc_080070B8);
+    /* 080070BA  080070ba T ldr r0,[r1] */
+    g_cpu.R[15] = 0x080070BAu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080070BA = 1u;
+    _cyc_080070BA = 2u;
+    uint32_t _base_080070BA = g_cpu.R[1];
+    uint32_t _off_080070BA;
+    _off_080070BA = 0x00000000u;
+    uint32_t _ea_080070BA = _base_080070BA + _off_080070BA;
+    uint32_t _post_080070BA = _base_080070BA + _off_080070BA;
+    _cyc_080070BA += runtime_mem_cycles(_ea_080070BA, 4u, 0u);
+    uint32_t _v_080070BA;
+    { uint32_t _w = bus_read_u32(_ea_080070BA & ~3u); uint32_t _rot = (_ea_080070BA & 3u) * 8u; _v_080070BA = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_080070BA;
+    g_cpu.R[15] = 0x080070BCu;
+    runtime_tick(_cyc_080070BA);
+    /* 080070BC  080070bc T adds r0,r0,#0x1 */
+    g_cpu.R[15] = 0x080070BCu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080070BC = 1u;
+    _cyc_080070BC = 1u;
+    uint32_t _rn_080070BC = g_cpu.R[0];
+    uint32_t _r_080070BC;
+    _r_080070BC = _rn_080070BC + 0x00000001u;
+    arm_set_nzcv_add(_rn_080070BC, 0x00000001u, _r_080070BC);
+    g_cpu.R[0] = _r_080070BC;
+    g_cpu.R[15] = 0x080070BEu;
+    runtime_tick(_cyc_080070BC);
+    /* 080070BE  080070be T str r0,[r1] */
+    g_cpu.R[15] = 0x080070BEu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080070BE = 1u;
+    _cyc_080070BE = 1u;
+    uint32_t _base_080070BE = g_cpu.R[1];
+    uint32_t _off_080070BE;
+    _off_080070BE = 0x00000000u;
+    uint32_t _ea_080070BE = _base_080070BE + _off_080070BE;
+    uint32_t _post_080070BE = _base_080070BE + _off_080070BE;
+    _cyc_080070BE += runtime_mem_cycles(_ea_080070BE, 4u, 0u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x080070BEu, _ea_080070BE & ~3u, g_cpu.R[0], 4u);
+    bus_write_u32(_ea_080070BE & ~3u, g_cpu.R[0]);
+    g_cpu.R[15] = 0x080070C0u;
+    runtime_tick(_cyc_080070BE);
+    /* fall-through to 0x080070C0 */
+    g_cpu.R[15] = 0x080070C0u;
+    runtime_dispatch(0x080070C0u);
+    return;
+}
+
+/* 0x080070C0  mode=thumb  end=0x080070D6  branches=23 */
+
+
+/* 0x080070C0 thumb */
+void gf_tfunc_080070C0(void) {
+    if (g_runtime_fn_entry_hook) g_runtime_fn_entry_hook(0x080070C0u);
+    /* 080070C0  080070c0 T ldr r0,[r4] */
+    g_cpu.R[15] = 0x080070C0u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080070C0 = 1u;
+    _cyc_080070C0 = 2u;
+    uint32_t _base_080070C0 = g_cpu.R[4];
+    uint32_t _off_080070C0;
+    _off_080070C0 = 0x00000000u;
+    uint32_t _ea_080070C0 = _base_080070C0 + _off_080070C0;
+    uint32_t _post_080070C0 = _base_080070C0 + _off_080070C0;
+    _cyc_080070C0 += runtime_mem_cycles(_ea_080070C0, 4u, 0u);
+    uint32_t _v_080070C0;
+    { uint32_t _w = bus_read_u32(_ea_080070C0 & ~3u); uint32_t _rot = (_ea_080070C0 & 3u) * 8u; _v_080070C0 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_080070C0;
+    g_cpu.R[15] = 0x080070C2u;
+    runtime_tick(_cyc_080070C0);
+    /* 080070C2  080070c2 T movs r1,#0x80 */
+    g_cpu.R[15] = 0x080070C2u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080070C2 = 1u;
+    _cyc_080070C2 = 1u;
+    uint32_t _r_080070C2;
+    _r_080070C2 = 0x00000080u;
+    arm_set_nzc_logic(_r_080070C2, cpsr_c());
+    g_cpu.R[1] = _r_080070C2;
+    g_cpu.R[15] = 0x080070C4u;
+    runtime_tick(_cyc_080070C2);
+    /* 080070C4  080070c4 T movs r1,r1,lsl #13 */
+    g_cpu.R[15] = 0x080070C4u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080070C4 = 1u;
+    _cyc_080070C4 = 1u;
+    uint32_t _rm_080070C4 = g_cpu.R[1];
+    uint32_t _op2_080070C4;
+    uint32_t _co_080070C4;
+    _op2_080070C4 = _rm_080070C4 << 13;
+    _co_080070C4 = (_rm_080070C4 >> 19) & 1u;
+    uint32_t _r_080070C4;
+    _r_080070C4 = _op2_080070C4;
+    arm_set_nzc_logic(_r_080070C4, _co_080070C4);
+    g_cpu.R[1] = _r_080070C4;
+    g_cpu.R[15] = 0x080070C6u;
+    runtime_tick(_cyc_080070C4);
+    /* 080070C6  080070c6 T ands r0,r0,r1 */
+    g_cpu.R[15] = 0x080070C6u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080070C6 = 1u;
+    _cyc_080070C6 = 1u;
+    uint32_t _rm_080070C6 = g_cpu.R[1];
+    uint32_t _op2_080070C6;
+    uint32_t _co_080070C6;
+    _op2_080070C6 = _rm_080070C6;
+    _co_080070C6 = cpsr_c();
+    uint32_t _rn_080070C6 = g_cpu.R[0];
+    uint32_t _r_080070C6;
+    _r_080070C6 = _rn_080070C6 & _op2_080070C6;
+    arm_set_nzc_logic(_r_080070C6, _co_080070C6);
+    g_cpu.R[0] = _r_080070C6;
+    g_cpu.R[15] = 0x080070C8u;
+    runtime_tick(_cyc_080070C6);
+    /* 080070C8  080070c8 T cmps r0,#0x0 */
+    g_cpu.R[15] = 0x080070C8u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080070C8 = 1u;
+    _cyc_080070C8 = 1u;
+    uint32_t _rn_080070C8 = g_cpu.R[0];
+    uint32_t _r_080070C8;
+    _r_080070C8 = _rn_080070C8 - 0x00000000u;
+    arm_set_nzcv_sub(_rn_080070C8, 0x00000000u, _r_080070C8);
+    g_cpu.R[15] = 0x080070CAu;
+    runtime_tick(_cyc_080070C8);
+    /* 080070CA  080070ca T bne 0x080070d6 */
+    g_cpu.R[15] = 0x080070CAu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080070CA = 1u;
+    if (arm_cond_passes(0x1u)) {
+        _cyc_080070CA = 3u;
+        g_cpu.R[15] = 0x080070D6u;
+        runtime_tick(_cyc_080070CA);
+        GBARECOMP_TAIL_CALL(gf_tfunc_080070D6);
+    }
+    g_cpu.R[15] = 0x080070CCu;
+    runtime_tick(_cyc_080070CA);
+    /* 080070CC  080070cc T ldr r1,[r15,#0xec] */
+    g_cpu.R[15] = 0x080070CCu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080070CC = 1u;
+    _cyc_080070CC = 2u;
+    uint32_t _base_080070CC = 0x080070D0u & ~3u;
+    uint32_t _off_080070CC;
+    _off_080070CC = 0x000000ECu;
+    uint32_t _ea_080070CC = _base_080070CC + _off_080070CC;
+    uint32_t _post_080070CC = _base_080070CC + _off_080070CC;
+    _cyc_080070CC += runtime_mem_cycles(_ea_080070CC, 4u, 0u);
+    uint32_t _v_080070CC;
+    { uint32_t _w = bus_read_u32(_ea_080070CC & ~3u); uint32_t _rot = (_ea_080070CC & 3u) * 8u; _v_080070CC = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[1] = _v_080070CC;
+    g_cpu.R[15] = 0x080070CEu;
+    runtime_tick(_cyc_080070CC);
+    /* 080070CE  080070ce T adds r0,r5,r1 */
+    g_cpu.R[15] = 0x080070CEu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080070CE = 1u;
+    _cyc_080070CE = 1u;
+    uint32_t _rm_080070CE = g_cpu.R[1];
+    uint32_t _op2_080070CE;
+    uint32_t _co_080070CE;
+    _op2_080070CE = _rm_080070CE;
+    _co_080070CE = cpsr_c();
+    uint32_t _rn_080070CE = g_cpu.R[5];
+    uint32_t _r_080070CE;
+    _r_080070CE = _rn_080070CE + _op2_080070CE;
+    arm_set_nzcv_add(_rn_080070CE, _op2_080070CE, _r_080070CE);
+    g_cpu.R[0] = _r_080070CE;
+    g_cpu.R[15] = 0x080070D0u;
+    runtime_tick(_cyc_080070CE);
+    /* 080070D0  080070d0 T ldr r0,[r0] */
+    g_cpu.R[15] = 0x080070D0u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080070D0 = 1u;
+    _cyc_080070D0 = 2u;
+    uint32_t _base_080070D0 = g_cpu.R[0];
+    uint32_t _off_080070D0;
+    _off_080070D0 = 0x00000000u;
+    uint32_t _ea_080070D0 = _base_080070D0 + _off_080070D0;
+    uint32_t _post_080070D0 = _base_080070D0 + _off_080070D0;
+    _cyc_080070D0 += runtime_mem_cycles(_ea_080070D0, 4u, 0u);
+    uint32_t _v_080070D0;
+    { uint32_t _w = bus_read_u32(_ea_080070D0 & ~3u); uint32_t _rot = (_ea_080070D0 & 3u) * 8u; _v_080070D0 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_080070D0;
+    g_cpu.R[15] = 0x080070D2u;
+    runtime_tick(_cyc_080070D0);
+    /* 080070D2  080070d2 T bl.hi 0x080010d6 */
+    g_cpu.R[15] = 0x080070D2u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080070D2 = 1u;
+    _cyc_080070D2 = 1u;
+    g_cpu.R[14] = 0x080010D6u;
+    g_cpu.R[15] = 0x080070D4u;
+    runtime_tick(_cyc_080070D2);
+    /* 080070D4  080070d4 T bl.lo 0x00000000 */
+    g_cpu.R[15] = 0x080070D4u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080070D4 = 1u;
+    _cyc_080070D4 = 3u;
+    uint32_t _blt_080070D4 = (g_cpu.R[14] + 0x00000662u) & ~1u;
+    g_cpu.R[14] = 0x080070D7u;
+    g_cpu.R[15] = _blt_080070D4;
+    runtime_call_push_return(0x080070D6u);
+    runtime_tick(_cyc_080070D4);
+    _cyc_080070D4 = 0u;
+    runtime_dispatch(_blt_080070D4);
+    if (g_cpu.R[15] != 0x080070D6u) { runtime_call_cancel_return(0x080070D6u); return; }
+    g_cpu.R[15] = 0x080070D6u;
+    runtime_tick(_cyc_080070D4);
+    /* fall-through to 0x080070D6 */
+    g_cpu.R[15] = 0x080070D6u;
+    runtime_dispatch(0x080070D6u);
+    return;
+}
+
+/* 0x080070EC  mode=thumb  end=0x08007102  branches=17 */
+
+
+/* 0x080070D6 thumb */
+void gf_tfunc_080070D6(void) {
+    if (g_runtime_fn_entry_hook) g_runtime_fn_entry_hook(0x080070D6u);
+    /* 080070D6  080070d6 T ldr r0,[r4] */
+    g_cpu.R[15] = 0x080070D6u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080070D6 = 1u;
+    _cyc_080070D6 = 2u;
+    uint32_t _base_080070D6 = g_cpu.R[4];
+    uint32_t _off_080070D6;
+    _off_080070D6 = 0x00000000u;
+    uint32_t _ea_080070D6 = _base_080070D6 + _off_080070D6;
+    uint32_t _post_080070D6 = _base_080070D6 + _off_080070D6;
+    _cyc_080070D6 += runtime_mem_cycles(_ea_080070D6, 4u, 0u);
+    uint32_t _v_080070D6;
+    { uint32_t _w = bus_read_u32(_ea_080070D6 & ~3u); uint32_t _rot = (_ea_080070D6 & 3u) * 8u; _v_080070D6 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_080070D6;
+    g_cpu.R[15] = 0x080070D8u;
+    runtime_tick(_cyc_080070D6);
+    /* 080070D8  080070d8 T movs r1,#0x80 */
+    g_cpu.R[15] = 0x080070D8u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080070D8 = 1u;
+    _cyc_080070D8 = 1u;
+    uint32_t _r_080070D8;
+    _r_080070D8 = 0x00000080u;
+    arm_set_nzc_logic(_r_080070D8, cpsr_c());
+    g_cpu.R[1] = _r_080070D8;
+    g_cpu.R[15] = 0x080070DAu;
+    runtime_tick(_cyc_080070D8);
+    /* 080070DA  080070da T movs r1,r1,lsl #12 */
+    g_cpu.R[15] = 0x080070DAu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080070DA = 1u;
+    _cyc_080070DA = 1u;
+    uint32_t _rm_080070DA = g_cpu.R[1];
+    uint32_t _op2_080070DA;
+    uint32_t _co_080070DA;
+    _op2_080070DA = _rm_080070DA << 12;
+    _co_080070DA = (_rm_080070DA >> 20) & 1u;
+    uint32_t _r_080070DA;
+    _r_080070DA = _op2_080070DA;
+    arm_set_nzc_logic(_r_080070DA, _co_080070DA);
+    g_cpu.R[1] = _r_080070DA;
+    g_cpu.R[15] = 0x080070DCu;
+    runtime_tick(_cyc_080070DA);
+    /* 080070DC  080070dc T ands r0,r0,r1 */
+    g_cpu.R[15] = 0x080070DCu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080070DC = 1u;
+    _cyc_080070DC = 1u;
+    uint32_t _rm_080070DC = g_cpu.R[1];
+    uint32_t _op2_080070DC;
+    uint32_t _co_080070DC;
+    _op2_080070DC = _rm_080070DC;
+    _co_080070DC = cpsr_c();
+    uint32_t _rn_080070DC = g_cpu.R[0];
+    uint32_t _r_080070DC;
+    _r_080070DC = _rn_080070DC & _op2_080070DC;
+    arm_set_nzc_logic(_r_080070DC, _co_080070DC);
+    g_cpu.R[0] = _r_080070DC;
+    g_cpu.R[15] = 0x080070DEu;
+    runtime_tick(_cyc_080070DC);
+    /* 080070DE  080070de T cmps r0,#0x0 */
+    g_cpu.R[15] = 0x080070DEu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080070DE = 1u;
+    _cyc_080070DE = 1u;
+    uint32_t _rn_080070DE = g_cpu.R[0];
+    uint32_t _r_080070DE;
+    _r_080070DE = _rn_080070DE - 0x00000000u;
+    arm_set_nzcv_sub(_rn_080070DE, 0x00000000u, _r_080070DE);
+    g_cpu.R[15] = 0x080070E0u;
+    runtime_tick(_cyc_080070DE);
+    /* 080070E0  080070e0 T bne 0x080070ec */
+    g_cpu.R[15] = 0x080070E0u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080070E0 = 1u;
+    if (arm_cond_passes(0x1u)) {
+        _cyc_080070E0 = 3u;
+        g_cpu.R[15] = 0x080070ECu;
+        runtime_tick(_cyc_080070E0);
+        GBARECOMP_TAIL_CALL(gf_tfunc_080070EC);
+    }
+    g_cpu.R[15] = 0x080070E2u;
+    runtime_tick(_cyc_080070E0);
+    /* 080070E2  080070e2 T ldr r2,[r15,#0xdc] */
+    g_cpu.R[15] = 0x080070E2u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080070E2 = 1u;
+    _cyc_080070E2 = 2u;
+    uint32_t _base_080070E2 = 0x080070E6u & ~3u;
+    uint32_t _off_080070E2;
+    _off_080070E2 = 0x000000DCu;
+    uint32_t _ea_080070E2 = _base_080070E2 + _off_080070E2;
+    uint32_t _post_080070E2 = _base_080070E2 + _off_080070E2;
+    _cyc_080070E2 += runtime_mem_cycles(_ea_080070E2, 4u, 0u);
+    uint32_t _v_080070E2;
+    { uint32_t _w = bus_read_u32(_ea_080070E2 & ~3u); uint32_t _rot = (_ea_080070E2 & 3u) * 8u; _v_080070E2 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[2] = _v_080070E2;
+    g_cpu.R[15] = 0x080070E4u;
+    runtime_tick(_cyc_080070E2);
+    /* 080070E4  080070e4 T adds r0,r5,r2 */
+    g_cpu.R[15] = 0x080070E4u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080070E4 = 1u;
+    _cyc_080070E4 = 1u;
+    uint32_t _rm_080070E4 = g_cpu.R[2];
+    uint32_t _op2_080070E4;
+    uint32_t _co_080070E4;
+    _op2_080070E4 = _rm_080070E4;
+    _co_080070E4 = cpsr_c();
+    uint32_t _rn_080070E4 = g_cpu.R[5];
+    uint32_t _r_080070E4;
+    _r_080070E4 = _rn_080070E4 + _op2_080070E4;
+    arm_set_nzcv_add(_rn_080070E4, _op2_080070E4, _r_080070E4);
+    g_cpu.R[0] = _r_080070E4;
+    g_cpu.R[15] = 0x080070E6u;
+    runtime_tick(_cyc_080070E4);
+    /* 080070E6  080070e6 T ldr r0,[r0] */
+    g_cpu.R[15] = 0x080070E6u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080070E6 = 1u;
+    _cyc_080070E6 = 2u;
+    uint32_t _base_080070E6 = g_cpu.R[0];
+    uint32_t _off_080070E6;
+    _off_080070E6 = 0x00000000u;
+    uint32_t _ea_080070E6 = _base_080070E6 + _off_080070E6;
+    uint32_t _post_080070E6 = _base_080070E6 + _off_080070E6;
+    _cyc_080070E6 += runtime_mem_cycles(_ea_080070E6, 4u, 0u);
+    uint32_t _v_080070E6;
+    { uint32_t _w = bus_read_u32(_ea_080070E6 & ~3u); uint32_t _rot = (_ea_080070E6 & 3u) * 8u; _v_080070E6 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_080070E6;
+    g_cpu.R[15] = 0x080070E8u;
+    runtime_tick(_cyc_080070E6);
+    /* 080070E8  080070e8 T bl.hi 0x080010ec */
+    g_cpu.R[15] = 0x080070E8u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080070E8 = 1u;
+    _cyc_080070E8 = 1u;
+    g_cpu.R[14] = 0x080010ECu;
+    g_cpu.R[15] = 0x080070EAu;
+    runtime_tick(_cyc_080070E8);
+    /* 080070EA  080070ea T bl.lo 0x00000000 */
+    g_cpu.R[15] = 0x080070EAu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080070EA = 1u;
+    _cyc_080070EA = 3u;
+    uint32_t _blt_080070EA = (g_cpu.R[14] + 0x0000064Cu) & ~1u;
+    g_cpu.R[14] = 0x080070EDu;
+    g_cpu.R[15] = _blt_080070EA;
+    runtime_call_push_return(0x080070ECu);
+    runtime_tick(_cyc_080070EA);
+    _cyc_080070EA = 0u;
+    runtime_dispatch(_blt_080070EA);
+    if (g_cpu.R[15] != 0x080070ECu) { runtime_call_cancel_return(0x080070ECu); return; }
+    g_cpu.R[15] = 0x080070ECu;
+    runtime_tick(_cyc_080070EA);
+    /* fall-through to 0x080070EC */
+    g_cpu.R[15] = 0x080070ECu;
+    runtime_dispatch(0x080070ECu);
+    return;
+}
+
+/* 0x08007102  mode=thumb  end=0x0800711A  branches=14 */
+
+
+/* 0x080070EC thumb */
+void gf_tfunc_080070EC(void) {
+    if (g_runtime_fn_entry_hook) g_runtime_fn_entry_hook(0x080070ECu);
+    /* 080070EC  080070ec T ldr r0,[r4] */
+    g_cpu.R[15] = 0x080070ECu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080070EC = 1u;
+    _cyc_080070EC = 2u;
+    uint32_t _base_080070EC = g_cpu.R[4];
+    uint32_t _off_080070EC;
+    _off_080070EC = 0x00000000u;
+    uint32_t _ea_080070EC = _base_080070EC + _off_080070EC;
+    uint32_t _post_080070EC = _base_080070EC + _off_080070EC;
+    _cyc_080070EC += runtime_mem_cycles(_ea_080070EC, 4u, 0u);
+    uint32_t _v_080070EC;
+    { uint32_t _w = bus_read_u32(_ea_080070EC & ~3u); uint32_t _rot = (_ea_080070EC & 3u) * 8u; _v_080070EC = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_080070EC;
+    g_cpu.R[15] = 0x080070EEu;
+    runtime_tick(_cyc_080070EC);
+    /* 080070EE  080070ee T movs r1,#0x80 */
+    g_cpu.R[15] = 0x080070EEu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080070EE = 1u;
+    _cyc_080070EE = 1u;
+    uint32_t _r_080070EE;
+    _r_080070EE = 0x00000080u;
+    arm_set_nzc_logic(_r_080070EE, cpsr_c());
+    g_cpu.R[1] = _r_080070EE;
+    g_cpu.R[15] = 0x080070F0u;
+    runtime_tick(_cyc_080070EE);
+    /* 080070F0  080070f0 T movs r1,r1,lsl #11 */
+    g_cpu.R[15] = 0x080070F0u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080070F0 = 1u;
+    _cyc_080070F0 = 1u;
+    uint32_t _rm_080070F0 = g_cpu.R[1];
+    uint32_t _op2_080070F0;
+    uint32_t _co_080070F0;
+    _op2_080070F0 = _rm_080070F0 << 11;
+    _co_080070F0 = (_rm_080070F0 >> 21) & 1u;
+    uint32_t _r_080070F0;
+    _r_080070F0 = _op2_080070F0;
+    arm_set_nzc_logic(_r_080070F0, _co_080070F0);
+    g_cpu.R[1] = _r_080070F0;
+    g_cpu.R[15] = 0x080070F2u;
+    runtime_tick(_cyc_080070F0);
+    /* 080070F2  080070f2 T ands r0,r0,r1 */
+    g_cpu.R[15] = 0x080070F2u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080070F2 = 1u;
+    _cyc_080070F2 = 1u;
+    uint32_t _rm_080070F2 = g_cpu.R[1];
+    uint32_t _op2_080070F2;
+    uint32_t _co_080070F2;
+    _op2_080070F2 = _rm_080070F2;
+    _co_080070F2 = cpsr_c();
+    uint32_t _rn_080070F2 = g_cpu.R[0];
+    uint32_t _r_080070F2;
+    _r_080070F2 = _rn_080070F2 & _op2_080070F2;
+    arm_set_nzc_logic(_r_080070F2, _co_080070F2);
+    g_cpu.R[0] = _r_080070F2;
+    g_cpu.R[15] = 0x080070F4u;
+    runtime_tick(_cyc_080070F2);
+    /* 080070F4  080070f4 T cmps r0,#0x0 */
+    g_cpu.R[15] = 0x080070F4u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080070F4 = 1u;
+    _cyc_080070F4 = 1u;
+    uint32_t _rn_080070F4 = g_cpu.R[0];
+    uint32_t _r_080070F4;
+    _r_080070F4 = _rn_080070F4 - 0x00000000u;
+    arm_set_nzcv_sub(_rn_080070F4, 0x00000000u, _r_080070F4);
+    g_cpu.R[15] = 0x080070F6u;
+    runtime_tick(_cyc_080070F4);
+    /* 080070F6  080070f6 T bne 0x08007102 */
+    g_cpu.R[15] = 0x080070F6u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080070F6 = 1u;
+    if (arm_cond_passes(0x1u)) {
+        _cyc_080070F6 = 3u;
+        g_cpu.R[15] = 0x08007102u;
+        runtime_tick(_cyc_080070F6);
+        GBARECOMP_TAIL_CALL(gf_tfunc_08007102);
+    }
+    g_cpu.R[15] = 0x080070F8u;
+    runtime_tick(_cyc_080070F6);
+    /* 080070F8  080070f8 T ldr r1,[r15,#0xc8] */
+    g_cpu.R[15] = 0x080070F8u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080070F8 = 1u;
+    _cyc_080070F8 = 2u;
+    uint32_t _base_080070F8 = 0x080070FCu & ~3u;
+    uint32_t _off_080070F8;
+    _off_080070F8 = 0x000000C8u;
+    uint32_t _ea_080070F8 = _base_080070F8 + _off_080070F8;
+    uint32_t _post_080070F8 = _base_080070F8 + _off_080070F8;
+    _cyc_080070F8 += runtime_mem_cycles(_ea_080070F8, 4u, 0u);
+    uint32_t _v_080070F8;
+    { uint32_t _w = bus_read_u32(_ea_080070F8 & ~3u); uint32_t _rot = (_ea_080070F8 & 3u) * 8u; _v_080070F8 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[1] = _v_080070F8;
+    g_cpu.R[15] = 0x080070FAu;
+    runtime_tick(_cyc_080070F8);
+    /* 080070FA  080070fa T adds r0,r5,r1 */
+    g_cpu.R[15] = 0x080070FAu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080070FA = 1u;
+    _cyc_080070FA = 1u;
+    uint32_t _rm_080070FA = g_cpu.R[1];
+    uint32_t _op2_080070FA;
+    uint32_t _co_080070FA;
+    _op2_080070FA = _rm_080070FA;
+    _co_080070FA = cpsr_c();
+    uint32_t _rn_080070FA = g_cpu.R[5];
+    uint32_t _r_080070FA;
+    _r_080070FA = _rn_080070FA + _op2_080070FA;
+    arm_set_nzcv_add(_rn_080070FA, _op2_080070FA, _r_080070FA);
+    g_cpu.R[0] = _r_080070FA;
+    g_cpu.R[15] = 0x080070FCu;
+    runtime_tick(_cyc_080070FA);
+    /* 080070FC  080070fc T ldr r0,[r0] */
+    g_cpu.R[15] = 0x080070FCu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080070FC = 1u;
+    _cyc_080070FC = 2u;
+    uint32_t _base_080070FC = g_cpu.R[0];
+    uint32_t _off_080070FC;
+    _off_080070FC = 0x00000000u;
+    uint32_t _ea_080070FC = _base_080070FC + _off_080070FC;
+    uint32_t _post_080070FC = _base_080070FC + _off_080070FC;
+    _cyc_080070FC += runtime_mem_cycles(_ea_080070FC, 4u, 0u);
+    uint32_t _v_080070FC;
+    { uint32_t _w = bus_read_u32(_ea_080070FC & ~3u); uint32_t _rot = (_ea_080070FC & 3u) * 8u; _v_080070FC = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_080070FC;
+    g_cpu.R[15] = 0x080070FEu;
+    runtime_tick(_cyc_080070FC);
+    /* 080070FE  080070fe T bl.hi 0x08001102 */
+    g_cpu.R[15] = 0x080070FEu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080070FE = 1u;
+    _cyc_080070FE = 1u;
+    g_cpu.R[14] = 0x08001102u;
+    g_cpu.R[15] = 0x08007100u;
+    runtime_tick(_cyc_080070FE);
+    /* 08007100  08007100 T bl.lo 0x00000000 */
+    g_cpu.R[15] = 0x08007100u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007100 = 1u;
+    _cyc_08007100 = 3u;
+    uint32_t _blt_08007100 = (g_cpu.R[14] + 0x00000636u) & ~1u;
+    g_cpu.R[14] = 0x08007103u;
+    g_cpu.R[15] = _blt_08007100;
+    runtime_call_push_return(0x08007102u);
+    runtime_tick(_cyc_08007100);
+    _cyc_08007100 = 0u;
+    runtime_dispatch(_blt_08007100);
+    if (g_cpu.R[15] != 0x08007102u) { runtime_call_cancel_return(0x08007102u); return; }
+    g_cpu.R[15] = 0x08007102u;
+    runtime_tick(_cyc_08007100);
+    /* fall-through to 0x08007102 */
+    g_cpu.R[15] = 0x08007102u;
+    runtime_dispatch(0x08007102u);
+    return;
+}
+
+/* 0x0800711A  mode=thumb  end=0x08007126  branches=11 */
+
+
+/* 0x08007102 thumb */
+void gf_tfunc_08007102(void) {
+    if (g_runtime_fn_entry_hook) g_runtime_fn_entry_hook(0x08007102u);
+    /* 08007102  08007102 T ldr r0,[r4] */
+    g_cpu.R[15] = 0x08007102u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007102 = 1u;
+    _cyc_08007102 = 2u;
+    uint32_t _base_08007102 = g_cpu.R[4];
+    uint32_t _off_08007102;
+    _off_08007102 = 0x00000000u;
+    uint32_t _ea_08007102 = _base_08007102 + _off_08007102;
+    uint32_t _post_08007102 = _base_08007102 + _off_08007102;
+    _cyc_08007102 += runtime_mem_cycles(_ea_08007102, 4u, 0u);
+    uint32_t _v_08007102;
+    { uint32_t _w = bus_read_u32(_ea_08007102 & ~3u); uint32_t _rot = (_ea_08007102 & 3u) * 8u; _v_08007102 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_08007102;
+    g_cpu.R[15] = 0x08007104u;
+    runtime_tick(_cyc_08007102);
+    /* 08007104  08007104 T movs r1,#0x80 */
+    g_cpu.R[15] = 0x08007104u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007104 = 1u;
+    _cyc_08007104 = 1u;
+    uint32_t _r_08007104;
+    _r_08007104 = 0x00000080u;
+    arm_set_nzc_logic(_r_08007104, cpsr_c());
+    g_cpu.R[1] = _r_08007104;
+    g_cpu.R[15] = 0x08007106u;
+    runtime_tick(_cyc_08007104);
+    /* 08007106  08007106 T movs r1,r1,lsl #10 */
+    g_cpu.R[15] = 0x08007106u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007106 = 1u;
+    _cyc_08007106 = 1u;
+    uint32_t _rm_08007106 = g_cpu.R[1];
+    uint32_t _op2_08007106;
+    uint32_t _co_08007106;
+    _op2_08007106 = _rm_08007106 << 10;
+    _co_08007106 = (_rm_08007106 >> 22) & 1u;
+    uint32_t _r_08007106;
+    _r_08007106 = _op2_08007106;
+    arm_set_nzc_logic(_r_08007106, _co_08007106);
+    g_cpu.R[1] = _r_08007106;
+    g_cpu.R[15] = 0x08007108u;
+    runtime_tick(_cyc_08007106);
+    /* 08007108  08007108 T ands r0,r0,r1 */
+    g_cpu.R[15] = 0x08007108u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007108 = 1u;
+    _cyc_08007108 = 1u;
+    uint32_t _rm_08007108 = g_cpu.R[1];
+    uint32_t _op2_08007108;
+    uint32_t _co_08007108;
+    _op2_08007108 = _rm_08007108;
+    _co_08007108 = cpsr_c();
+    uint32_t _rn_08007108 = g_cpu.R[0];
+    uint32_t _r_08007108;
+    _r_08007108 = _rn_08007108 & _op2_08007108;
+    arm_set_nzc_logic(_r_08007108, _co_08007108);
+    g_cpu.R[0] = _r_08007108;
+    g_cpu.R[15] = 0x0800710Au;
+    runtime_tick(_cyc_08007108);
+    /* 0800710A  0800710a T cmps r0,#0x0 */
+    g_cpu.R[15] = 0x0800710Au;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800710A = 1u;
+    _cyc_0800710A = 1u;
+    uint32_t _rn_0800710A = g_cpu.R[0];
+    uint32_t _r_0800710A;
+    _r_0800710A = _rn_0800710A - 0x00000000u;
+    arm_set_nzcv_sub(_rn_0800710A, 0x00000000u, _r_0800710A);
+    g_cpu.R[15] = 0x0800710Cu;
+    runtime_tick(_cyc_0800710A);
+    /* 0800710C  0800710c T bne 0x08007126 */
+    g_cpu.R[15] = 0x0800710Cu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800710C = 1u;
+    if (arm_cond_passes(0x1u)) {
+        _cyc_0800710C = 3u;
+        g_cpu.R[15] = 0x08007126u;
+        runtime_tick(_cyc_0800710C);
+        GBARECOMP_TAIL_CALL(gf_tfunc_08007126);
+    }
+    g_cpu.R[15] = 0x0800710Eu;
+    runtime_tick(_cyc_0800710C);
+    /* 0800710E  0800710e T movs r2,#0xc4 */
+    g_cpu.R[15] = 0x0800710Eu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800710E = 1u;
+    _cyc_0800710E = 1u;
+    uint32_t _r_0800710E;
+    _r_0800710E = 0x000000C4u;
+    arm_set_nzc_logic(_r_0800710E, cpsr_c());
+    g_cpu.R[2] = _r_0800710E;
+    g_cpu.R[15] = 0x08007110u;
+    runtime_tick(_cyc_0800710E);
+    /* 08007110  08007110 T movs r2,r2,lsl #5 */
+    g_cpu.R[15] = 0x08007110u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007110 = 1u;
+    _cyc_08007110 = 1u;
+    uint32_t _rm_08007110 = g_cpu.R[2];
+    uint32_t _op2_08007110;
+    uint32_t _co_08007110;
+    _op2_08007110 = _rm_08007110 << 5;
+    _co_08007110 = (_rm_08007110 >> 27) & 1u;
+    uint32_t _r_08007110;
+    _r_08007110 = _op2_08007110;
+    arm_set_nzc_logic(_r_08007110, _co_08007110);
+    g_cpu.R[2] = _r_08007110;
+    g_cpu.R[15] = 0x08007112u;
+    runtime_tick(_cyc_08007110);
+    /* 08007112  08007112 T adds r0,r5,r2 */
+    g_cpu.R[15] = 0x08007112u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007112 = 1u;
+    _cyc_08007112 = 1u;
+    uint32_t _rm_08007112 = g_cpu.R[2];
+    uint32_t _op2_08007112;
+    uint32_t _co_08007112;
+    _op2_08007112 = _rm_08007112;
+    _co_08007112 = cpsr_c();
+    uint32_t _rn_08007112 = g_cpu.R[5];
+    uint32_t _r_08007112;
+    _r_08007112 = _rn_08007112 + _op2_08007112;
+    arm_set_nzcv_add(_rn_08007112, _op2_08007112, _r_08007112);
+    g_cpu.R[0] = _r_08007112;
+    g_cpu.R[15] = 0x08007114u;
+    runtime_tick(_cyc_08007112);
+    /* 08007114  08007114 T ldr r0,[r0] */
+    g_cpu.R[15] = 0x08007114u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007114 = 1u;
+    _cyc_08007114 = 2u;
+    uint32_t _base_08007114 = g_cpu.R[0];
+    uint32_t _off_08007114;
+    _off_08007114 = 0x00000000u;
+    uint32_t _ea_08007114 = _base_08007114 + _off_08007114;
+    uint32_t _post_08007114 = _base_08007114 + _off_08007114;
+    _cyc_08007114 += runtime_mem_cycles(_ea_08007114, 4u, 0u);
+    uint32_t _v_08007114;
+    { uint32_t _w = bus_read_u32(_ea_08007114 & ~3u); uint32_t _rot = (_ea_08007114 & 3u) * 8u; _v_08007114 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_08007114;
+    g_cpu.R[15] = 0x08007116u;
+    runtime_tick(_cyc_08007114);
+    /* 08007116  08007116 T bl.hi 0x0800111a */
+    g_cpu.R[15] = 0x08007116u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007116 = 1u;
+    _cyc_08007116 = 1u;
+    g_cpu.R[14] = 0x0800111Au;
+    g_cpu.R[15] = 0x08007118u;
+    runtime_tick(_cyc_08007116);
+    /* 08007118  08007118 T bl.lo 0x00000000 */
+    g_cpu.R[15] = 0x08007118u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007118 = 1u;
+    _cyc_08007118 = 3u;
+    uint32_t _blt_08007118 = (g_cpu.R[14] + 0x0000061Eu) & ~1u;
+    g_cpu.R[14] = 0x0800711Bu;
+    g_cpu.R[15] = _blt_08007118;
+    runtime_call_push_return(0x0800711Au);
+    runtime_tick(_cyc_08007118);
+    _cyc_08007118 = 0u;
+    runtime_dispatch(_blt_08007118);
+    if (g_cpu.R[15] != 0x0800711Au) { runtime_call_cancel_return(0x0800711Au); return; }
+    g_cpu.R[15] = 0x0800711Au;
+    runtime_tick(_cyc_08007118);
+    /* fall-through to 0x0800711A */
+    g_cpu.R[15] = 0x0800711Au;
+    runtime_dispatch(0x0800711Au);
+    return;
+}
+
+/* 0x08007130  mode=thumb  end=0x08007134  branches=9 */
+
+
+/* 0x0800711A thumb */
+void gf_tfunc_0800711A(void) {
+    if (g_runtime_fn_entry_hook) g_runtime_fn_entry_hook(0x0800711Au);
+    /* 0800711A  0800711a T movs r4,#0xc5 */
+    g_cpu.R[15] = 0x0800711Au;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800711A = 1u;
+    _cyc_0800711A = 1u;
+    uint32_t _r_0800711A;
+    _r_0800711A = 0x000000C5u;
+    arm_set_nzc_logic(_r_0800711A, cpsr_c());
+    g_cpu.R[4] = _r_0800711A;
+    g_cpu.R[15] = 0x0800711Cu;
+    runtime_tick(_cyc_0800711A);
+    /* 0800711C  0800711c T movs r4,r4,lsl #5 */
+    g_cpu.R[15] = 0x0800711Cu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800711C = 1u;
+    _cyc_0800711C = 1u;
+    uint32_t _rm_0800711C = g_cpu.R[4];
+    uint32_t _op2_0800711C;
+    uint32_t _co_0800711C;
+    _op2_0800711C = _rm_0800711C << 5;
+    _co_0800711C = (_rm_0800711C >> 27) & 1u;
+    uint32_t _r_0800711C;
+    _r_0800711C = _op2_0800711C;
+    arm_set_nzc_logic(_r_0800711C, _co_0800711C);
+    g_cpu.R[4] = _r_0800711C;
+    g_cpu.R[15] = 0x0800711Eu;
+    runtime_tick(_cyc_0800711C);
+    /* 0800711E  0800711e T adds r1,r5,r4 */
+    g_cpu.R[15] = 0x0800711Eu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800711E = 1u;
+    _cyc_0800711E = 1u;
+    uint32_t _rm_0800711E = g_cpu.R[4];
+    uint32_t _op2_0800711E;
+    uint32_t _co_0800711E;
+    _op2_0800711E = _rm_0800711E;
+    _co_0800711E = cpsr_c();
+    uint32_t _rn_0800711E = g_cpu.R[5];
+    uint32_t _r_0800711E;
+    _r_0800711E = _rn_0800711E + _op2_0800711E;
+    arm_set_nzcv_add(_rn_0800711E, _op2_0800711E, _r_0800711E);
+    g_cpu.R[1] = _r_0800711E;
+    g_cpu.R[15] = 0x08007120u;
+    runtime_tick(_cyc_0800711E);
+    /* 08007120  08007120 T ldr r0,[r1] */
+    g_cpu.R[15] = 0x08007120u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007120 = 1u;
+    _cyc_08007120 = 2u;
+    uint32_t _base_08007120 = g_cpu.R[1];
+    uint32_t _off_08007120;
+    _off_08007120 = 0x00000000u;
+    uint32_t _ea_08007120 = _base_08007120 + _off_08007120;
+    uint32_t _post_08007120 = _base_08007120 + _off_08007120;
+    _cyc_08007120 += runtime_mem_cycles(_ea_08007120, 4u, 0u);
+    uint32_t _v_08007120;
+    { uint32_t _w = bus_read_u32(_ea_08007120 & ~3u); uint32_t _rot = (_ea_08007120 & 3u) * 8u; _v_08007120 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_08007120;
+    g_cpu.R[15] = 0x08007122u;
+    runtime_tick(_cyc_08007120);
+    /* 08007122  08007122 T adds r0,r0,#0x1 */
+    g_cpu.R[15] = 0x08007122u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007122 = 1u;
+    _cyc_08007122 = 1u;
+    uint32_t _rn_08007122 = g_cpu.R[0];
+    uint32_t _r_08007122;
+    _r_08007122 = _rn_08007122 + 0x00000001u;
+    arm_set_nzcv_add(_rn_08007122, 0x00000001u, _r_08007122);
+    g_cpu.R[0] = _r_08007122;
+    g_cpu.R[15] = 0x08007124u;
+    runtime_tick(_cyc_08007122);
+    /* 08007124  08007124 T str r0,[r1] */
+    g_cpu.R[15] = 0x08007124u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007124 = 1u;
+    _cyc_08007124 = 1u;
+    uint32_t _base_08007124 = g_cpu.R[1];
+    uint32_t _off_08007124;
+    _off_08007124 = 0x00000000u;
+    uint32_t _ea_08007124 = _base_08007124 + _off_08007124;
+    uint32_t _post_08007124 = _base_08007124 + _off_08007124;
+    _cyc_08007124 += runtime_mem_cycles(_ea_08007124, 4u, 0u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x08007124u, _ea_08007124 & ~3u, g_cpu.R[0], 4u);
+    bus_write_u32(_ea_08007124 & ~3u, g_cpu.R[0]);
+    g_cpu.R[15] = 0x08007126u;
+    runtime_tick(_cyc_08007124);
+    /* fall-through to 0x08007126 */
+    g_cpu.R[15] = 0x08007126u;
+    runtime_dispatch(0x08007126u);
+    return;
+}
+
+/* 0x08007126  mode=thumb  end=0x08007130  branches=11 */
+
+
+/* 0x08007126 thumb */
+void gf_tfunc_08007126(void) {
+    if (g_runtime_fn_entry_hook) g_runtime_fn_entry_hook(0x08007126u);
+    /* 08007126  08007126 T ldr r1,[r15,#0xa0] */
+    g_cpu.R[15] = 0x08007126u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007126 = 1u;
+    _cyc_08007126 = 2u;
+    uint32_t _base_08007126 = 0x0800712Au & ~3u;
+    uint32_t _off_08007126;
+    _off_08007126 = 0x000000A0u;
+    uint32_t _ea_08007126 = _base_08007126 + _off_08007126;
+    uint32_t _post_08007126 = _base_08007126 + _off_08007126;
+    _cyc_08007126 += runtime_mem_cycles(_ea_08007126, 4u, 0u);
+    uint32_t _v_08007126;
+    { uint32_t _w = bus_read_u32(_ea_08007126 & ~3u); uint32_t _rot = (_ea_08007126 & 3u) * 8u; _v_08007126 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[1] = _v_08007126;
+    g_cpu.R[15] = 0x08007128u;
+    runtime_tick(_cyc_08007126);
+    /* 08007128  08007128 T adds r0,r5,r1 */
+    g_cpu.R[15] = 0x08007128u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007128 = 1u;
+    _cyc_08007128 = 1u;
+    uint32_t _rm_08007128 = g_cpu.R[1];
+    uint32_t _op2_08007128;
+    uint32_t _co_08007128;
+    _op2_08007128 = _rm_08007128;
+    _co_08007128 = cpsr_c();
+    uint32_t _rn_08007128 = g_cpu.R[5];
+    uint32_t _r_08007128;
+    _r_08007128 = _rn_08007128 + _op2_08007128;
+    arm_set_nzcv_add(_rn_08007128, _op2_08007128, _r_08007128);
+    g_cpu.R[0] = _r_08007128;
+    g_cpu.R[15] = 0x0800712Au;
+    runtime_tick(_cyc_08007128);
+    /* 0800712A  0800712a T ldr r0,[r0] */
+    g_cpu.R[15] = 0x0800712Au;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800712A = 1u;
+    _cyc_0800712A = 2u;
+    uint32_t _base_0800712A = g_cpu.R[0];
+    uint32_t _off_0800712A;
+    _off_0800712A = 0x00000000u;
+    uint32_t _ea_0800712A = _base_0800712A + _off_0800712A;
+    uint32_t _post_0800712A = _base_0800712A + _off_0800712A;
+    _cyc_0800712A += runtime_mem_cycles(_ea_0800712A, 4u, 0u);
+    uint32_t _v_0800712A;
+    { uint32_t _w = bus_read_u32(_ea_0800712A & ~3u); uint32_t _rot = (_ea_0800712A & 3u) * 8u; _v_0800712A = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_0800712A;
+    g_cpu.R[15] = 0x0800712Cu;
+    runtime_tick(_cyc_0800712A);
+    /* 0800712C  0800712c T bl.hi 0x08001130 */
+    g_cpu.R[15] = 0x0800712Cu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800712C = 1u;
+    _cyc_0800712C = 1u;
+    g_cpu.R[14] = 0x08001130u;
+    g_cpu.R[15] = 0x0800712Eu;
+    runtime_tick(_cyc_0800712C);
+    /* 0800712E  0800712e T bl.lo 0x00000000 */
+    g_cpu.R[15] = 0x0800712Eu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800712E = 1u;
+    _cyc_0800712E = 3u;
+    uint32_t _blt_0800712E = (g_cpu.R[14] + 0x00000608u) & ~1u;
+    g_cpu.R[14] = 0x08007131u;
+    g_cpu.R[15] = _blt_0800712E;
+    runtime_call_push_return(0x08007130u);
+    runtime_tick(_cyc_0800712E);
+    _cyc_0800712E = 0u;
+    runtime_dispatch(_blt_0800712E);
+    if (g_cpu.R[15] != 0x08007130u) { runtime_call_cancel_return(0x08007130u); return; }
+    g_cpu.R[15] = 0x08007130u;
+    runtime_tick(_cyc_0800712E);
+    /* fall-through to 0x08007130 */
+    g_cpu.R[15] = 0x08007130u;
+    runtime_dispatch(0x08007130u);
+    return;
+}
+
+/* 0x08007138  mode=thumb  end=0x0800715C  branches=5 */
+
+
+/* 0x08007130 thumb */
+void gf_tfunc_08007130(void) {
+    if (g_runtime_fn_entry_hook) g_runtime_fn_entry_hook(0x08007130u);
+    /* 08007130  08007130 T bl.hi 0x08016134 */
+    g_cpu.R[15] = 0x08007130u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007130 = 1u;
+    _cyc_08007130 = 1u;
+    g_cpu.R[14] = 0x08016134u;
+    g_cpu.R[15] = 0x08007132u;
+    runtime_tick(_cyc_08007130);
+    /* 08007132  08007132 T bl.lo 0x00000000 */
+    g_cpu.R[15] = 0x08007132u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007132 = 1u;
+    _cyc_08007132 = 3u;
+    uint32_t _blt_08007132 = (g_cpu.R[14] + 0x000001F0u) & ~1u;
+    g_cpu.R[14] = 0x08007135u;
+    g_cpu.R[15] = _blt_08007132;
+    runtime_call_push_return(0x08007134u);
+    runtime_tick(_cyc_08007132);
+    _cyc_08007132 = 0u;
+    runtime_dispatch(_blt_08007132);
+    if (g_cpu.R[15] != 0x08007134u) { runtime_call_cancel_return(0x08007134u); return; }
+    g_cpu.R[15] = 0x08007134u;
+    runtime_tick(_cyc_08007132);
+    /* fall-through to 0x08007134 */
+    g_cpu.R[15] = 0x08007134u;
+    runtime_dispatch(0x08007134u);
+    return;
+}
+
+/* 0x08007134  mode=thumb  end=0x08007138  branches=7 */
+
+
+/* 0x08007134 thumb */
+void gf_tfunc_08007134(void) {
+    if (g_runtime_fn_entry_hook) g_runtime_fn_entry_hook(0x08007134u);
+    /* 08007134  08007134 T bl.hi 0x08016138 */
+    g_cpu.R[15] = 0x08007134u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007134 = 1u;
+    _cyc_08007134 = 1u;
+    g_cpu.R[14] = 0x08016138u;
+    g_cpu.R[15] = 0x08007136u;
+    runtime_tick(_cyc_08007134);
+    /* 08007136  08007136 T bl.lo 0x00000000 */
+    g_cpu.R[15] = 0x08007136u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007136 = 1u;
+    _cyc_08007136 = 3u;
+    uint32_t _blt_08007136 = (g_cpu.R[14] + 0x00000570u) & ~1u;
+    g_cpu.R[14] = 0x08007139u;
+    g_cpu.R[15] = _blt_08007136;
+    runtime_call_push_return(0x08007138u);
+    runtime_tick(_cyc_08007136);
+    _cyc_08007136 = 0u;
+    runtime_dispatch(_blt_08007136);
+    if (g_cpu.R[15] != 0x08007138u) { runtime_call_cancel_return(0x08007138u); return; }
+    g_cpu.R[15] = 0x08007138u;
+    runtime_tick(_cyc_08007136);
+    /* fall-through to 0x08007138 */
+    g_cpu.R[15] = 0x08007138u;
+    runtime_dispatch(0x08007138u);
+    return;
+}
+
+/* 0x0800715C  mode=thumb  end=0x08007174  branches=2 */
+
+
+/* 0x08007138 thumb */
+void gf_tfunc_08007138(void) {
+    if (g_runtime_fn_entry_hook) g_runtime_fn_entry_hook(0x08007138u);
+    /* 08007138  08007138 T ldr r2,[r15,#0x90] */
+    g_cpu.R[15] = 0x08007138u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007138 = 1u;
+    _cyc_08007138 = 2u;
+    uint32_t _base_08007138 = 0x0800713Cu & ~3u;
+    uint32_t _off_08007138;
+    _off_08007138 = 0x00000090u;
+    uint32_t _ea_08007138 = _base_08007138 + _off_08007138;
+    uint32_t _post_08007138 = _base_08007138 + _off_08007138;
+    _cyc_08007138 += runtime_mem_cycles(_ea_08007138, 4u, 0u);
+    uint32_t _v_08007138;
+    { uint32_t _w = bus_read_u32(_ea_08007138 & ~3u); uint32_t _rot = (_ea_08007138 & 3u) * 8u; _v_08007138 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[2] = _v_08007138;
+    g_cpu.R[15] = 0x0800713Au;
+    runtime_tick(_cyc_08007138);
+    /* 0800713A  0800713a T adds r0,r5,r2 */
+    g_cpu.R[15] = 0x0800713Au;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800713A = 1u;
+    _cyc_0800713A = 1u;
+    uint32_t _rm_0800713A = g_cpu.R[2];
+    uint32_t _op2_0800713A;
+    uint32_t _co_0800713A;
+    _op2_0800713A = _rm_0800713A;
+    _co_0800713A = cpsr_c();
+    uint32_t _rn_0800713A = g_cpu.R[5];
+    uint32_t _r_0800713A;
+    _r_0800713A = _rn_0800713A + _op2_0800713A;
+    arm_set_nzcv_add(_rn_0800713A, _op2_0800713A, _r_0800713A);
+    g_cpu.R[0] = _r_0800713A;
+    g_cpu.R[15] = 0x0800713Cu;
+    runtime_tick(_cyc_0800713A);
+    /* 0800713C  0800713c T ldr r1,[r0] */
+    g_cpu.R[15] = 0x0800713Cu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800713C = 1u;
+    _cyc_0800713C = 2u;
+    uint32_t _base_0800713C = g_cpu.R[0];
+    uint32_t _off_0800713C;
+    _off_0800713C = 0x00000000u;
+    uint32_t _ea_0800713C = _base_0800713C + _off_0800713C;
+    uint32_t _post_0800713C = _base_0800713C + _off_0800713C;
+    _cyc_0800713C += runtime_mem_cycles(_ea_0800713C, 4u, 0u);
+    uint32_t _v_0800713C;
+    { uint32_t _w = bus_read_u32(_ea_0800713C & ~3u); uint32_t _rot = (_ea_0800713C & 3u) * 8u; _v_0800713C = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[1] = _v_0800713C;
+    g_cpu.R[15] = 0x0800713Eu;
+    runtime_tick(_cyc_0800713C);
+    /* 0800713E  0800713e T movs r0,#0xff */
+    g_cpu.R[15] = 0x0800713Eu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800713E = 1u;
+    _cyc_0800713E = 1u;
+    uint32_t _r_0800713E;
+    _r_0800713E = 0x000000FFu;
+    arm_set_nzc_logic(_r_0800713E, cpsr_c());
+    g_cpu.R[0] = _r_0800713E;
+    g_cpu.R[15] = 0x08007140u;
+    runtime_tick(_cyc_0800713E);
+    /* 08007140  08007140 T movs r0,r0,lsl #8 */
+    g_cpu.R[15] = 0x08007140u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007140 = 1u;
+    _cyc_08007140 = 1u;
+    uint32_t _rm_08007140 = g_cpu.R[0];
+    uint32_t _op2_08007140;
+    uint32_t _co_08007140;
+    _op2_08007140 = _rm_08007140 << 8;
+    _co_08007140 = (_rm_08007140 >> 24) & 1u;
+    uint32_t _r_08007140;
+    _r_08007140 = _op2_08007140;
+    arm_set_nzc_logic(_r_08007140, _co_08007140);
+    g_cpu.R[0] = _r_08007140;
+    g_cpu.R[15] = 0x08007142u;
+    runtime_tick(_cyc_08007140);
+    /* 08007142  08007142 T ands r1,r1,r0 */
+    g_cpu.R[15] = 0x08007142u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007142 = 1u;
+    _cyc_08007142 = 1u;
+    uint32_t _rm_08007142 = g_cpu.R[0];
+    uint32_t _op2_08007142;
+    uint32_t _co_08007142;
+    _op2_08007142 = _rm_08007142;
+    _co_08007142 = cpsr_c();
+    uint32_t _rn_08007142 = g_cpu.R[1];
+    uint32_t _r_08007142;
+    _r_08007142 = _rn_08007142 & _op2_08007142;
+    arm_set_nzc_logic(_r_08007142, _co_08007142);
+    g_cpu.R[1] = _r_08007142;
+    g_cpu.R[15] = 0x08007144u;
+    runtime_tick(_cyc_08007142);
+    /* 08007144  08007144 T movs r0,#0x80 */
+    g_cpu.R[15] = 0x08007144u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007144 = 1u;
+    _cyc_08007144 = 1u;
+    uint32_t _r_08007144;
+    _r_08007144 = 0x00000080u;
+    arm_set_nzc_logic(_r_08007144, cpsr_c());
+    g_cpu.R[0] = _r_08007144;
+    g_cpu.R[15] = 0x08007146u;
+    runtime_tick(_cyc_08007144);
+    /* 08007146  08007146 T movs r0,r0,lsl #1 */
+    g_cpu.R[15] = 0x08007146u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007146 = 1u;
+    _cyc_08007146 = 1u;
+    uint32_t _rm_08007146 = g_cpu.R[0];
+    uint32_t _op2_08007146;
+    uint32_t _co_08007146;
+    _op2_08007146 = _rm_08007146 << 1;
+    _co_08007146 = (_rm_08007146 >> 31) & 1u;
+    uint32_t _r_08007146;
+    _r_08007146 = _op2_08007146;
+    arm_set_nzc_logic(_r_08007146, _co_08007146);
+    g_cpu.R[0] = _r_08007146;
+    g_cpu.R[15] = 0x08007148u;
+    runtime_tick(_cyc_08007146);
+    /* 08007148  08007148 T cmps r1,r0 */
+    g_cpu.R[15] = 0x08007148u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007148 = 1u;
+    _cyc_08007148 = 1u;
+    uint32_t _rm_08007148 = g_cpu.R[0];
+    uint32_t _op2_08007148;
+    uint32_t _co_08007148;
+    _op2_08007148 = _rm_08007148;
+    _co_08007148 = cpsr_c();
+    uint32_t _rn_08007148 = g_cpu.R[1];
+    uint32_t _r_08007148;
+    _r_08007148 = _rn_08007148 - _op2_08007148;
+    arm_set_nzcv_sub(_rn_08007148, _op2_08007148, _r_08007148);
+    g_cpu.R[15] = 0x0800714Au;
+    runtime_tick(_cyc_08007148);
+    /* 0800714A  0800714a T beq 0x0800715c */
+    g_cpu.R[15] = 0x0800714Au;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800714A = 1u;
+    if (arm_cond_passes(0x0u)) {
+        _cyc_0800714A = 3u;
+        g_cpu.R[15] = 0x0800715Cu;
+        runtime_tick(_cyc_0800714A);
+        GBARECOMP_TAIL_CALL(gf_tfunc_0800715C);
+    }
+    g_cpu.R[15] = 0x0800714Cu;
+    runtime_tick(_cyc_0800714A);
+    /* 0800714C  0800714c T movs r0,#0x80 */
+    g_cpu.R[15] = 0x0800714Cu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800714C = 1u;
+    _cyc_0800714C = 1u;
+    uint32_t _r_0800714C;
+    _r_0800714C = 0x00000080u;
+    arm_set_nzc_logic(_r_0800714C, cpsr_c());
+    g_cpu.R[0] = _r_0800714C;
+    g_cpu.R[15] = 0x0800714Eu;
+    runtime_tick(_cyc_0800714C);
+    /* 0800714E  0800714e T movs r0,r0,lsl #3 */
+    g_cpu.R[15] = 0x0800714Eu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800714E = 1u;
+    _cyc_0800714E = 1u;
+    uint32_t _rm_0800714E = g_cpu.R[0];
+    uint32_t _op2_0800714E;
+    uint32_t _co_0800714E;
+    _op2_0800714E = _rm_0800714E << 3;
+    _co_0800714E = (_rm_0800714E >> 29) & 1u;
+    uint32_t _r_0800714E;
+    _r_0800714E = _op2_0800714E;
+    arm_set_nzc_logic(_r_0800714E, _co_0800714E);
+    g_cpu.R[0] = _r_0800714E;
+    g_cpu.R[15] = 0x08007150u;
+    runtime_tick(_cyc_0800714E);
+    /* 08007150  08007150 T cmps r1,r0 */
+    g_cpu.R[15] = 0x08007150u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007150 = 1u;
+    _cyc_08007150 = 1u;
+    uint32_t _rm_08007150 = g_cpu.R[0];
+    uint32_t _op2_08007150;
+    uint32_t _co_08007150;
+    _op2_08007150 = _rm_08007150;
+    _co_08007150 = cpsr_c();
+    uint32_t _rn_08007150 = g_cpu.R[1];
+    uint32_t _r_08007150;
+    _r_08007150 = _rn_08007150 - _op2_08007150;
+    arm_set_nzcv_sub(_rn_08007150, _op2_08007150, _r_08007150);
+    g_cpu.R[15] = 0x08007152u;
+    runtime_tick(_cyc_08007150);
+    /* 08007152  08007152 T beq 0x0800715c */
+    g_cpu.R[15] = 0x08007152u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007152 = 1u;
+    if (arm_cond_passes(0x0u)) {
+        _cyc_08007152 = 3u;
+        g_cpu.R[15] = 0x0800715Cu;
+        runtime_tick(_cyc_08007152);
+        GBARECOMP_TAIL_CALL(gf_tfunc_0800715C);
+    }
+    g_cpu.R[15] = 0x08007154u;
+    runtime_tick(_cyc_08007152);
+    /* 08007154  08007154 T movs r0,#0x80 */
+    g_cpu.R[15] = 0x08007154u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007154 = 1u;
+    _cyc_08007154 = 1u;
+    uint32_t _r_08007154;
+    _r_08007154 = 0x00000080u;
+    arm_set_nzc_logic(_r_08007154, cpsr_c());
+    g_cpu.R[0] = _r_08007154;
+    g_cpu.R[15] = 0x08007156u;
+    runtime_tick(_cyc_08007154);
+    /* 08007156  08007156 T movs r0,r0,lsl #4 */
+    g_cpu.R[15] = 0x08007156u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007156 = 1u;
+    _cyc_08007156 = 1u;
+    uint32_t _rm_08007156 = g_cpu.R[0];
+    uint32_t _op2_08007156;
+    uint32_t _co_08007156;
+    _op2_08007156 = _rm_08007156 << 4;
+    _co_08007156 = (_rm_08007156 >> 28) & 1u;
+    uint32_t _r_08007156;
+    _r_08007156 = _op2_08007156;
+    arm_set_nzc_logic(_r_08007156, _co_08007156);
+    g_cpu.R[0] = _r_08007156;
+    g_cpu.R[15] = 0x08007158u;
+    runtime_tick(_cyc_08007156);
+    /* 08007158  08007158 T cmps r1,r0 */
+    g_cpu.R[15] = 0x08007158u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007158 = 1u;
+    _cyc_08007158 = 1u;
+    uint32_t _rm_08007158 = g_cpu.R[0];
+    uint32_t _op2_08007158;
+    uint32_t _co_08007158;
+    _op2_08007158 = _rm_08007158;
+    _co_08007158 = cpsr_c();
+    uint32_t _rn_08007158 = g_cpu.R[1];
+    uint32_t _r_08007158;
+    _r_08007158 = _rn_08007158 - _op2_08007158;
+    arm_set_nzcv_sub(_rn_08007158, _op2_08007158, _r_08007158);
+    g_cpu.R[15] = 0x0800715Au;
+    runtime_tick(_cyc_08007158);
+    /* 0800715A  0800715a T bne 0x08007208 */
+    g_cpu.R[15] = 0x0800715Au;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800715A = 1u;
+    if (arm_cond_passes(0x1u)) {
+        _cyc_0800715A = 3u;
+        g_cpu.R[15] = 0x08007208u;
+        runtime_tick(_cyc_0800715A);
+        GBARECOMP_TAIL_CALL(gf_tfunc_08007208);
+    }
+    g_cpu.R[15] = 0x0800715Cu;
+    runtime_tick(_cyc_0800715A);
+    /* fall-through to 0x0800715C */
+    g_cpu.R[15] = 0x0800715Cu;
+    runtime_dispatch(0x0800715Cu);
+    return;
+}
+
+/* 0x08007278  mode=thumb  end=0x0800728A  branches=3 */
+
+
+/* 0x0800715C thumb */
+void gf_tfunc_0800715C(void) {
+    if (g_runtime_fn_entry_hook) g_runtime_fn_entry_hook(0x0800715Cu);
+    /* 0800715C  0800715c T ldr r0,[r15,#0x18] */
+    g_cpu.R[15] = 0x0800715Cu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800715C = 1u;
+    _cyc_0800715C = 2u;
+    uint32_t _base_0800715C = 0x08007160u & ~3u;
+    uint32_t _off_0800715C;
+    _off_0800715C = 0x00000018u;
+    uint32_t _ea_0800715C = _base_0800715C + _off_0800715C;
+    uint32_t _post_0800715C = _base_0800715C + _off_0800715C;
+    _cyc_0800715C += runtime_mem_cycles(_ea_0800715C, 4u, 0u);
+    uint32_t _v_0800715C;
+    { uint32_t _w = bus_read_u32(_ea_0800715C & ~3u); uint32_t _rot = (_ea_0800715C & 3u) * 8u; _v_0800715C = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_0800715C;
+    g_cpu.R[15] = 0x0800715Eu;
+    runtime_tick(_cyc_0800715C);
+    /* 0800715E  0800715e T movs r4,#0xa6 */
+    g_cpu.R[15] = 0x0800715Eu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800715E = 1u;
+    _cyc_0800715E = 1u;
+    uint32_t _r_0800715E;
+    _r_0800715E = 0x000000A6u;
+    arm_set_nzc_logic(_r_0800715E, cpsr_c());
+    g_cpu.R[4] = _r_0800715E;
+    g_cpu.R[15] = 0x08007160u;
+    runtime_tick(_cyc_0800715E);
+    /* 08007160  08007160 T movs r4,r4,lsl #5 */
+    g_cpu.R[15] = 0x08007160u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007160 = 1u;
+    _cyc_08007160 = 1u;
+    uint32_t _rm_08007160 = g_cpu.R[4];
+    uint32_t _op2_08007160;
+    uint32_t _co_08007160;
+    _op2_08007160 = _rm_08007160 << 5;
+    _co_08007160 = (_rm_08007160 >> 27) & 1u;
+    uint32_t _r_08007160;
+    _r_08007160 = _op2_08007160;
+    arm_set_nzc_logic(_r_08007160, _co_08007160);
+    g_cpu.R[4] = _r_08007160;
+    g_cpu.R[15] = 0x08007162u;
+    runtime_tick(_cyc_08007160);
+    /* 08007162  08007162 T adds r0,r0,r4 */
+    g_cpu.R[15] = 0x08007162u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007162 = 1u;
+    _cyc_08007162 = 1u;
+    uint32_t _rm_08007162 = g_cpu.R[4];
+    uint32_t _op2_08007162;
+    uint32_t _co_08007162;
+    _op2_08007162 = _rm_08007162;
+    _co_08007162 = cpsr_c();
+    uint32_t _rn_08007162 = g_cpu.R[0];
+    uint32_t _r_08007162;
+    _r_08007162 = _rn_08007162 + _op2_08007162;
+    arm_set_nzcv_add(_rn_08007162, _op2_08007162, _r_08007162);
+    g_cpu.R[0] = _r_08007162;
+    g_cpu.R[15] = 0x08007164u;
+    runtime_tick(_cyc_08007162);
+    /* 08007164  08007164 T ldr r0,[r0] */
+    g_cpu.R[15] = 0x08007164u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007164 = 1u;
+    _cyc_08007164 = 2u;
+    uint32_t _base_08007164 = g_cpu.R[0];
+    uint32_t _off_08007164;
+    _off_08007164 = 0x00000000u;
+    uint32_t _ea_08007164 = _base_08007164 + _off_08007164;
+    uint32_t _post_08007164 = _base_08007164 + _off_08007164;
+    _cyc_08007164 += runtime_mem_cycles(_ea_08007164, 4u, 0u);
+    uint32_t _v_08007164;
+    { uint32_t _w = bus_read_u32(_ea_08007164 & ~3u); uint32_t _rot = (_ea_08007164 & 3u) * 8u; _v_08007164 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_08007164;
+    g_cpu.R[15] = 0x08007166u;
+    runtime_tick(_cyc_08007164);
+    /* 08007166  08007166 T movs r1,#0x1 */
+    g_cpu.R[15] = 0x08007166u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007166 = 1u;
+    _cyc_08007166 = 1u;
+    uint32_t _r_08007166;
+    _r_08007166 = 0x00000001u;
+    arm_set_nzc_logic(_r_08007166, cpsr_c());
+    g_cpu.R[1] = _r_08007166;
+    g_cpu.R[15] = 0x08007168u;
+    runtime_tick(_cyc_08007166);
+    /* 08007168  08007168 T ands r0,r0,r1 */
+    g_cpu.R[15] = 0x08007168u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007168 = 1u;
+    _cyc_08007168 = 1u;
+    uint32_t _rm_08007168 = g_cpu.R[1];
+    uint32_t _op2_08007168;
+    uint32_t _co_08007168;
+    _op2_08007168 = _rm_08007168;
+    _co_08007168 = cpsr_c();
+    uint32_t _rn_08007168 = g_cpu.R[0];
+    uint32_t _r_08007168;
+    _r_08007168 = _rn_08007168 & _op2_08007168;
+    arm_set_nzc_logic(_r_08007168, _co_08007168);
+    g_cpu.R[0] = _r_08007168;
+    g_cpu.R[15] = 0x0800716Au;
+    runtime_tick(_cyc_08007168);
+    /* 0800716A  0800716a T cmps r0,#0x0 */
+    g_cpu.R[15] = 0x0800716Au;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800716A = 1u;
+    _cyc_0800716A = 1u;
+    uint32_t _rn_0800716A = g_cpu.R[0];
+    uint32_t _r_0800716A;
+    _r_0800716A = _rn_0800716A - 0x00000000u;
+    arm_set_nzcv_sub(_rn_0800716A, 0x00000000u, _r_0800716A);
+    g_cpu.R[15] = 0x0800716Cu;
+    runtime_tick(_cyc_0800716A);
+    /* 0800716C  0800716c T beq 0x080071d4 */
+    g_cpu.R[15] = 0x0800716Cu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800716C = 1u;
+    if (arm_cond_passes(0x0u)) {
+        _cyc_0800716C = 3u;
+        g_cpu.R[15] = 0x080071D4u;
+        runtime_tick(_cyc_0800716C);
+        GBARECOMP_TAIL_CALL(gf_tfunc_080071D4);
+    }
+    g_cpu.R[15] = 0x0800716Eu;
+    runtime_tick(_cyc_0800716C);
+    /* 0800716E  0800716e T ldr r1,[r15,#0x60] */
+    g_cpu.R[15] = 0x0800716Eu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800716E = 1u;
+    _cyc_0800716E = 2u;
+    uint32_t _base_0800716E = 0x08007172u & ~3u;
+    uint32_t _off_0800716E;
+    _off_0800716E = 0x00000060u;
+    uint32_t _ea_0800716E = _base_0800716E + _off_0800716E;
+    uint32_t _post_0800716E = _base_0800716E + _off_0800716E;
+    _cyc_0800716E += runtime_mem_cycles(_ea_0800716E, 4u, 0u);
+    uint32_t _v_0800716E;
+    { uint32_t _w = bus_read_u32(_ea_0800716E & ~3u); uint32_t _rot = (_ea_0800716E & 3u) * 8u; _v_0800716E = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[1] = _v_0800716E;
+    g_cpu.R[15] = 0x08007170u;
+    runtime_tick(_cyc_0800716E);
+    /* 08007170  08007170 T movs r0,#0xbf */
+    g_cpu.R[15] = 0x08007170u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007170 = 1u;
+    _cyc_08007170 = 1u;
+    uint32_t _r_08007170;
+    _r_08007170 = 0x000000BFu;
+    arm_set_nzc_logic(_r_08007170, cpsr_c());
+    g_cpu.R[0] = _r_08007170;
+    g_cpu.R[15] = 0x08007172u;
+    runtime_tick(_cyc_08007170);
+    /* 08007172  08007172 T b 0x080071d8 */
+    g_cpu.R[15] = 0x08007172u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007172 = 1u;
+    _cyc_08007172 = 3u;
+    g_cpu.R[15] = 0x080071D8u;
+    runtime_tick(_cyc_08007172);
+    GBARECOMP_TAIL_CALL(gf_tfunc_080071D8);
+    g_cpu.R[15] = 0x08007174u;
+    runtime_tick(_cyc_08007172);
+    /* fall-through to 0x08007174 */
+    g_cpu.R[15] = 0x08007174u;
+    runtime_dispatch(0x08007174u);
+    return;
+}
+
+/* 0x080071D4  mode=thumb  end=0x080071D8  branches=5 */
 
 
 /* 0x080071D4 thumb */
@@ -37925,6 +51257,18 @@ void gf_tfunc_080071D4(void) {
     g_cpu.R[0] = _r_080071D6;
     g_cpu.R[15] = 0x080071D8u;
     runtime_tick(_cyc_080071D6);
+    /* fall-through to 0x080071D8 */
+    g_cpu.R[15] = 0x080071D8u;
+    runtime_dispatch(0x080071D8u);
+    return;
+}
+
+/* 0x080071D8  mode=thumb  end=0x080071DE  branches=5 */
+
+
+/* 0x080071D8 thumb */
+void gf_tfunc_080071D8(void) {
+    if (g_runtime_fn_entry_hook) g_runtime_fn_entry_hook(0x080071D8u);
     /* 080071D8  080071d8 T strh r0,[r1,#0x4] */
     g_cpu.R[15] = 0x080071D8u;
     if (runtime_should_yield()) return;
@@ -38224,6 +51568,1406 @@ void gf_tfunc_080071FC(void) {
     return;
 }
 
+/* 0x08007208  mode=thumb  end=0x08007256  branches=4 */
+
+
+/* 0x08007208 thumb */
+void gf_tfunc_08007208(void) {
+    if (g_runtime_fn_entry_hook) g_runtime_fn_entry_hook(0x08007208u);
+    /* 08007208  08007208 T movs r0,#0x80 */
+    g_cpu.R[15] = 0x08007208u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007208 = 1u;
+    _cyc_08007208 = 1u;
+    uint32_t _r_08007208;
+    _r_08007208 = 0x00000080u;
+    arm_set_nzc_logic(_r_08007208, cpsr_c());
+    g_cpu.R[0] = _r_08007208;
+    g_cpu.R[15] = 0x0800720Au;
+    runtime_tick(_cyc_08007208);
+    /* 0800720A  0800720a T movs r0,r0,lsl #2 */
+    g_cpu.R[15] = 0x0800720Au;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800720A = 1u;
+    _cyc_0800720A = 1u;
+    uint32_t _rm_0800720A = g_cpu.R[0];
+    uint32_t _op2_0800720A;
+    uint32_t _co_0800720A;
+    _op2_0800720A = _rm_0800720A << 2;
+    _co_0800720A = (_rm_0800720A >> 30) & 1u;
+    uint32_t _r_0800720A;
+    _r_0800720A = _op2_0800720A;
+    arm_set_nzc_logic(_r_0800720A, _co_0800720A);
+    g_cpu.R[0] = _r_0800720A;
+    g_cpu.R[15] = 0x0800720Cu;
+    runtime_tick(_cyc_0800720A);
+    /* 0800720C  0800720c T cmps r1,r0 */
+    g_cpu.R[15] = 0x0800720Cu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800720C = 1u;
+    _cyc_0800720C = 1u;
+    uint32_t _rm_0800720C = g_cpu.R[0];
+    uint32_t _op2_0800720C;
+    uint32_t _co_0800720C;
+    _op2_0800720C = _rm_0800720C;
+    _co_0800720C = cpsr_c();
+    uint32_t _rn_0800720C = g_cpu.R[1];
+    uint32_t _r_0800720C;
+    _r_0800720C = _rn_0800720C - _op2_0800720C;
+    arm_set_nzcv_sub(_rn_0800720C, _op2_0800720C, _r_0800720C);
+    g_cpu.R[15] = 0x0800720Eu;
+    runtime_tick(_cyc_0800720C);
+    /* 0800720E  0800720e T bne 0x08007278 */
+    g_cpu.R[15] = 0x0800720Eu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800720E = 1u;
+    if (arm_cond_passes(0x1u)) {
+        _cyc_0800720E = 3u;
+        g_cpu.R[15] = 0x08007278u;
+        runtime_tick(_cyc_0800720E);
+        GBARECOMP_TAIL_CALL(gf_tfunc_08007278);
+    }
+    g_cpu.R[15] = 0x08007210u;
+    runtime_tick(_cyc_0800720E);
+    /* 08007210  08007210 T ldr r1,[r15,#0x44] */
+    g_cpu.R[15] = 0x08007210u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007210 = 1u;
+    _cyc_08007210 = 2u;
+    uint32_t _base_08007210 = 0x08007214u & ~3u;
+    uint32_t _off_08007210;
+    _off_08007210 = 0x00000044u;
+    uint32_t _ea_08007210 = _base_08007210 + _off_08007210;
+    uint32_t _post_08007210 = _base_08007210 + _off_08007210;
+    _cyc_08007210 += runtime_mem_cycles(_ea_08007210, 4u, 0u);
+    uint32_t _v_08007210;
+    { uint32_t _w = bus_read_u32(_ea_08007210 & ~3u); uint32_t _rot = (_ea_08007210 & 3u) * 8u; _v_08007210 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[1] = _v_08007210;
+    g_cpu.R[15] = 0x08007212u;
+    runtime_tick(_cyc_08007210);
+    /* 08007212  08007212 T movs r4,#0x0 */
+    g_cpu.R[15] = 0x08007212u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007212 = 1u;
+    _cyc_08007212 = 1u;
+    uint32_t _r_08007212;
+    _r_08007212 = 0x00000000u;
+    arm_set_nzc_logic(_r_08007212, cpsr_c());
+    g_cpu.R[4] = _r_08007212;
+    g_cpu.R[15] = 0x08007214u;
+    runtime_tick(_cyc_08007212);
+    /* 08007214  08007214 T movs r3,#0x0 */
+    g_cpu.R[15] = 0x08007214u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007214 = 1u;
+    _cyc_08007214 = 1u;
+    uint32_t _r_08007214;
+    _r_08007214 = 0x00000000u;
+    arm_set_nzc_logic(_r_08007214, cpsr_c());
+    g_cpu.R[3] = _r_08007214;
+    g_cpu.R[15] = 0x08007216u;
+    runtime_tick(_cyc_08007214);
+    /* 08007216  08007216 T ldr r0,[r15,#0x44] */
+    g_cpu.R[15] = 0x08007216u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007216 = 1u;
+    _cyc_08007216 = 2u;
+    uint32_t _base_08007216 = 0x0800721Au & ~3u;
+    uint32_t _off_08007216;
+    _off_08007216 = 0x00000044u;
+    uint32_t _ea_08007216 = _base_08007216 + _off_08007216;
+    uint32_t _post_08007216 = _base_08007216 + _off_08007216;
+    _cyc_08007216 += runtime_mem_cycles(_ea_08007216, 4u, 0u);
+    uint32_t _v_08007216;
+    { uint32_t _w = bus_read_u32(_ea_08007216 & ~3u); uint32_t _rot = (_ea_08007216 & 3u) * 8u; _v_08007216 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_08007216;
+    g_cpu.R[15] = 0x08007218u;
+    runtime_tick(_cyc_08007216);
+    /* 08007218  08007218 T strh r0,[r1,#0x4] */
+    g_cpu.R[15] = 0x08007218u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007218 = 1u;
+    _cyc_08007218 = 1u;
+    uint32_t _base_08007218 = g_cpu.R[1];
+    uint32_t _off_08007218;
+    _off_08007218 = 0x00000004u;
+    uint32_t _ea_08007218 = _base_08007218 + _off_08007218;
+    uint32_t _post_08007218 = _base_08007218 + _off_08007218;
+    _cyc_08007218 += runtime_mem_cycles(_ea_08007218, 2u, 0u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x08007218u, _ea_08007218 & ~1u, (uint32_t)(g_cpu.R[0] & 0xFFFFu), 2u);
+    bus_write_u16(_ea_08007218 & ~1u, (uint16_t)(g_cpu.R[0] & 0xFFFFu));
+    g_cpu.R[15] = 0x0800721Au;
+    runtime_tick(_cyc_08007218);
+    /* 0800721A  0800721a T ldr r0,[r15,#0x44] */
+    g_cpu.R[15] = 0x0800721Au;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800721A = 1u;
+    _cyc_0800721A = 2u;
+    uint32_t _base_0800721A = 0x0800721Eu & ~3u;
+    uint32_t _off_0800721A;
+    _off_0800721A = 0x00000044u;
+    uint32_t _ea_0800721A = _base_0800721A + _off_0800721A;
+    uint32_t _post_0800721A = _base_0800721A + _off_0800721A;
+    _cyc_0800721A += runtime_mem_cycles(_ea_0800721A, 4u, 0u);
+    uint32_t _v_0800721A;
+    { uint32_t _w = bus_read_u32(_ea_0800721A & ~3u); uint32_t _rot = (_ea_0800721A & 3u) * 8u; _v_0800721A = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_0800721A;
+    g_cpu.R[15] = 0x0800721Cu;
+    runtime_tick(_cyc_0800721A);
+    /* 0800721C  0800721c T strh r0,[r1,#0x6] */
+    g_cpu.R[15] = 0x0800721Cu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800721C = 1u;
+    _cyc_0800721C = 1u;
+    uint32_t _base_0800721C = g_cpu.R[1];
+    uint32_t _off_0800721C;
+    _off_0800721C = 0x00000006u;
+    uint32_t _ea_0800721C = _base_0800721C + _off_0800721C;
+    uint32_t _post_0800721C = _base_0800721C + _off_0800721C;
+    _cyc_0800721C += runtime_mem_cycles(_ea_0800721C, 2u, 0u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x0800721Cu, _ea_0800721C & ~1u, (uint32_t)(g_cpu.R[0] & 0xFFFFu), 2u);
+    bus_write_u16(_ea_0800721C & ~1u, (uint16_t)(g_cpu.R[0] & 0xFFFFu));
+    g_cpu.R[15] = 0x0800721Eu;
+    runtime_tick(_cyc_0800721C);
+    /* 0800721E  0800721e T ldr r1,[r15,#0x44] */
+    g_cpu.R[15] = 0x0800721Eu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800721E = 1u;
+    _cyc_0800721E = 2u;
+    uint32_t _base_0800721E = 0x08007222u & ~3u;
+    uint32_t _off_0800721E;
+    _off_0800721E = 0x00000044u;
+    uint32_t _ea_0800721E = _base_0800721E + _off_0800721E;
+    uint32_t _post_0800721E = _base_0800721E + _off_0800721E;
+    _cyc_0800721E += runtime_mem_cycles(_ea_0800721E, 4u, 0u);
+    uint32_t _v_0800721E;
+    { uint32_t _w = bus_read_u32(_ea_0800721E & ~3u); uint32_t _rot = (_ea_0800721E & 3u) * 8u; _v_0800721E = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[1] = _v_0800721E;
+    g_cpu.R[15] = 0x08007220u;
+    runtime_tick(_cyc_0800721E);
+    /* 08007220  08007220 T ldr r2,[r15,#0x44] */
+    g_cpu.R[15] = 0x08007220u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007220 = 1u;
+    _cyc_08007220 = 2u;
+    uint32_t _base_08007220 = 0x08007224u & ~3u;
+    uint32_t _off_08007220;
+    _off_08007220 = 0x00000044u;
+    uint32_t _ea_08007220 = _base_08007220 + _off_08007220;
+    uint32_t _post_08007220 = _base_08007220 + _off_08007220;
+    _cyc_08007220 += runtime_mem_cycles(_ea_08007220, 4u, 0u);
+    uint32_t _v_08007220;
+    { uint32_t _w = bus_read_u32(_ea_08007220 & ~3u); uint32_t _rot = (_ea_08007220 & 3u) * 8u; _v_08007220 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[2] = _v_08007220;
+    g_cpu.R[15] = 0x08007222u;
+    runtime_tick(_cyc_08007220);
+    /* 08007222  08007222 T adds r0,r1,r2 */
+    g_cpu.R[15] = 0x08007222u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007222 = 1u;
+    _cyc_08007222 = 1u;
+    uint32_t _rm_08007222 = g_cpu.R[2];
+    uint32_t _op2_08007222;
+    uint32_t _co_08007222;
+    _op2_08007222 = _rm_08007222;
+    _co_08007222 = cpsr_c();
+    uint32_t _rn_08007222 = g_cpu.R[1];
+    uint32_t _r_08007222;
+    _r_08007222 = _rn_08007222 + _op2_08007222;
+    arm_set_nzcv_add(_rn_08007222, _op2_08007222, _r_08007222);
+    g_cpu.R[0] = _r_08007222;
+    g_cpu.R[15] = 0x08007224u;
+    runtime_tick(_cyc_08007222);
+    /* 08007224  08007224 T str r7,[r0] */
+    g_cpu.R[15] = 0x08007224u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007224 = 1u;
+    _cyc_08007224 = 1u;
+    uint32_t _base_08007224 = g_cpu.R[0];
+    uint32_t _off_08007224;
+    _off_08007224 = 0x00000000u;
+    uint32_t _ea_08007224 = _base_08007224 + _off_08007224;
+    uint32_t _post_08007224 = _base_08007224 + _off_08007224;
+    _cyc_08007224 += runtime_mem_cycles(_ea_08007224, 4u, 0u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x08007224u, _ea_08007224 & ~3u, g_cpu.R[7], 4u);
+    bus_write_u32(_ea_08007224 & ~3u, g_cpu.R[7]);
+    g_cpu.R[15] = 0x08007226u;
+    runtime_tick(_cyc_08007224);
+    /* 08007226  08007226 T movs r7,#0x95 */
+    g_cpu.R[15] = 0x08007226u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007226 = 1u;
+    _cyc_08007226 = 1u;
+    uint32_t _r_08007226;
+    _r_08007226 = 0x00000095u;
+    arm_set_nzc_logic(_r_08007226, cpsr_c());
+    g_cpu.R[7] = _r_08007226;
+    g_cpu.R[15] = 0x08007228u;
+    runtime_tick(_cyc_08007226);
+    /* 08007228  08007228 T movs r7,r7,lsl #5 */
+    g_cpu.R[15] = 0x08007228u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007228 = 1u;
+    _cyc_08007228 = 1u;
+    uint32_t _rm_08007228 = g_cpu.R[7];
+    uint32_t _op2_08007228;
+    uint32_t _co_08007228;
+    _op2_08007228 = _rm_08007228 << 5;
+    _co_08007228 = (_rm_08007228 >> 27) & 1u;
+    uint32_t _r_08007228;
+    _r_08007228 = _op2_08007228;
+    arm_set_nzc_logic(_r_08007228, _co_08007228);
+    g_cpu.R[7] = _r_08007228;
+    g_cpu.R[15] = 0x0800722Au;
+    runtime_tick(_cyc_08007228);
+    /* 0800722A  0800722a T adds r1,r1,r7 */
+    g_cpu.R[15] = 0x0800722Au;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800722A = 1u;
+    _cyc_0800722A = 1u;
+    uint32_t _rm_0800722A = g_cpu.R[7];
+    uint32_t _op2_0800722A;
+    uint32_t _co_0800722A;
+    _op2_0800722A = _rm_0800722A;
+    _co_0800722A = cpsr_c();
+    uint32_t _rn_0800722A = g_cpu.R[1];
+    uint32_t _r_0800722A;
+    _r_0800722A = _rn_0800722A + _op2_0800722A;
+    arm_set_nzcv_add(_rn_0800722A, _op2_0800722A, _r_0800722A);
+    g_cpu.R[1] = _r_0800722A;
+    g_cpu.R[15] = 0x0800722Cu;
+    runtime_tick(_cyc_0800722A);
+    /* 0800722C  0800722c T ldrh r2,[r1] */
+    g_cpu.R[15] = 0x0800722Cu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800722C = 1u;
+    _cyc_0800722C = 2u;
+    uint32_t _base_0800722C = g_cpu.R[1];
+    uint32_t _off_0800722C;
+    _off_0800722C = 0x00000000u;
+    uint32_t _ea_0800722C = _base_0800722C + _off_0800722C;
+    uint32_t _post_0800722C = _base_0800722C + _off_0800722C;
+    _cyc_0800722C += runtime_mem_cycles(_ea_0800722C, 2u, 0u);
+    uint32_t _v_0800722C;
+    { uint32_t _h = bus_read_u16(_ea_0800722C & ~1u); if (_ea_0800722C & 1u) _v_0800722C = ((_h >> 8) | (_h << 24)); else _v_0800722C = _h; }
+    g_cpu.R[2] = _v_0800722C;
+    g_cpu.R[15] = 0x0800722Eu;
+    runtime_tick(_cyc_0800722C);
+    /* 0800722E  0800722e T ldr r0,[r15,#0x3c] */
+    g_cpu.R[15] = 0x0800722Eu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800722E = 1u;
+    _cyc_0800722E = 2u;
+    uint32_t _base_0800722E = 0x08007232u & ~3u;
+    uint32_t _off_0800722E;
+    _off_0800722E = 0x0000003Cu;
+    uint32_t _ea_0800722E = _base_0800722E + _off_0800722E;
+    uint32_t _post_0800722E = _base_0800722E + _off_0800722E;
+    _cyc_0800722E += runtime_mem_cycles(_ea_0800722E, 4u, 0u);
+    uint32_t _v_0800722E;
+    { uint32_t _w = bus_read_u32(_ea_0800722E & ~3u); uint32_t _rot = (_ea_0800722E & 3u) * 8u; _v_0800722E = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_0800722E;
+    g_cpu.R[15] = 0x08007230u;
+    runtime_tick(_cyc_0800722E);
+    /* 08007230  08007230 T ands r0,r0,r2 */
+    g_cpu.R[15] = 0x08007230u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007230 = 1u;
+    _cyc_08007230 = 1u;
+    uint32_t _rm_08007230 = g_cpu.R[2];
+    uint32_t _op2_08007230;
+    uint32_t _co_08007230;
+    _op2_08007230 = _rm_08007230;
+    _co_08007230 = cpsr_c();
+    uint32_t _rn_08007230 = g_cpu.R[0];
+    uint32_t _r_08007230;
+    _r_08007230 = _rn_08007230 & _op2_08007230;
+    arm_set_nzc_logic(_r_08007230, _co_08007230);
+    g_cpu.R[0] = _r_08007230;
+    g_cpu.R[15] = 0x08007232u;
+    runtime_tick(_cyc_08007230);
+    /* 08007232  08007232 T strh r0,[r1] */
+    g_cpu.R[15] = 0x08007232u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007232 = 1u;
+    _cyc_08007232 = 1u;
+    uint32_t _base_08007232 = g_cpu.R[1];
+    uint32_t _off_08007232;
+    _off_08007232 = 0x00000000u;
+    uint32_t _ea_08007232 = _base_08007232 + _off_08007232;
+    uint32_t _post_08007232 = _base_08007232 + _off_08007232;
+    _cyc_08007232 += runtime_mem_cycles(_ea_08007232, 2u, 0u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x08007232u, _ea_08007232 & ~1u, (uint32_t)(g_cpu.R[0] & 0xFFFFu), 2u);
+    bus_write_u16(_ea_08007232 & ~1u, (uint16_t)(g_cpu.R[0] & 0xFFFFu));
+    g_cpu.R[15] = 0x08007234u;
+    runtime_tick(_cyc_08007232);
+    /* 08007234  08007234 T ldr r1,[r15,#0x38] */
+    g_cpu.R[15] = 0x08007234u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007234 = 1u;
+    _cyc_08007234 = 2u;
+    uint32_t _base_08007234 = 0x08007238u & ~3u;
+    uint32_t _off_08007234;
+    _off_08007234 = 0x00000038u;
+    uint32_t _ea_08007234 = _base_08007234 + _off_08007234;
+    uint32_t _post_08007234 = _base_08007234 + _off_08007234;
+    _cyc_08007234 += runtime_mem_cycles(_ea_08007234, 4u, 0u);
+    uint32_t _v_08007234;
+    { uint32_t _w = bus_read_u32(_ea_08007234 & ~3u); uint32_t _rot = (_ea_08007234 & 3u) * 8u; _v_08007234 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[1] = _v_08007234;
+    g_cpu.R[15] = 0x08007236u;
+    runtime_tick(_cyc_08007234);
+    /* 08007236  08007236 T adds r0,r5,r1 */
+    g_cpu.R[15] = 0x08007236u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007236 = 1u;
+    _cyc_08007236 = 1u;
+    uint32_t _rm_08007236 = g_cpu.R[1];
+    uint32_t _op2_08007236;
+    uint32_t _co_08007236;
+    _op2_08007236 = _rm_08007236;
+    _co_08007236 = cpsr_c();
+    uint32_t _rn_08007236 = g_cpu.R[5];
+    uint32_t _r_08007236;
+    _r_08007236 = _rn_08007236 + _op2_08007236;
+    arm_set_nzcv_add(_rn_08007236, _op2_08007236, _r_08007236);
+    g_cpu.R[0] = _r_08007236;
+    g_cpu.R[15] = 0x08007238u;
+    runtime_tick(_cyc_08007236);
+    /* 08007238  08007238 T str r3,[r0] */
+    g_cpu.R[15] = 0x08007238u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007238 = 1u;
+    _cyc_08007238 = 1u;
+    uint32_t _base_08007238 = g_cpu.R[0];
+    uint32_t _off_08007238;
+    _off_08007238 = 0x00000000u;
+    uint32_t _ea_08007238 = _base_08007238 + _off_08007238;
+    uint32_t _post_08007238 = _base_08007238 + _off_08007238;
+    _cyc_08007238 += runtime_mem_cycles(_ea_08007238, 4u, 0u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x08007238u, _ea_08007238 & ~3u, g_cpu.R[3], 4u);
+    bus_write_u32(_ea_08007238 & ~3u, g_cpu.R[3]);
+    g_cpu.R[15] = 0x0800723Au;
+    runtime_tick(_cyc_08007238);
+    /* 0800723A  0800723a T movs r2,#0x22 */
+    g_cpu.R[15] = 0x0800723Au;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800723A = 1u;
+    _cyc_0800723A = 1u;
+    uint32_t _r_0800723A;
+    _r_0800723A = 0x00000022u;
+    arm_set_nzc_logic(_r_0800723A, cpsr_c());
+    g_cpu.R[2] = _r_0800723A;
+    g_cpu.R[15] = 0x0800723Cu;
+    runtime_tick(_cyc_0800723A);
+    /* 0800723C  0800723c T ldrsh r0,[r6,+r2] */
+    g_cpu.R[15] = 0x0800723Cu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800723C = 1u;
+    _cyc_0800723C = 2u;
+    uint32_t _base_0800723C = g_cpu.R[6];
+    uint32_t _off_0800723C;
+    uint32_t _morm_0800723C = g_cpu.R[2];
+    _off_0800723C = _morm_0800723C;
+    uint32_t _ea_0800723C = _base_0800723C + _off_0800723C;
+    uint32_t _post_0800723C = _base_0800723C + _off_0800723C;
+    _cyc_0800723C += runtime_mem_cycles(_ea_0800723C, 2u, 0u);
+    uint32_t _v_0800723C;
+    if (_ea_0800723C & 1u) _v_0800723C = (uint32_t)(int32_t)(int8_t)bus_read_u8(_ea_0800723C);
+    else _v_0800723C = (uint32_t)(int32_t)(int16_t)bus_read_u16(_ea_0800723C);
+    g_cpu.R[0] = _v_0800723C;
+    g_cpu.R[15] = 0x0800723Eu;
+    runtime_tick(_cyc_0800723C);
+    /* 0800723E  0800723e T movs r0,r0,lsl #1 */
+    g_cpu.R[15] = 0x0800723Eu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800723E = 1u;
+    _cyc_0800723E = 1u;
+    uint32_t _rm_0800723E = g_cpu.R[0];
+    uint32_t _op2_0800723E;
+    uint32_t _co_0800723E;
+    _op2_0800723E = _rm_0800723E << 1;
+    _co_0800723E = (_rm_0800723E >> 31) & 1u;
+    uint32_t _r_0800723E;
+    _r_0800723E = _op2_0800723E;
+    arm_set_nzc_logic(_r_0800723E, _co_0800723E);
+    g_cpu.R[0] = _r_0800723E;
+    g_cpu.R[15] = 0x08007240u;
+    runtime_tick(_cyc_0800723E);
+    /* 08007240  08007240 T adds r0,r0,r6 */
+    g_cpu.R[15] = 0x08007240u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007240 = 1u;
+    _cyc_08007240 = 1u;
+    uint32_t _rm_08007240 = g_cpu.R[6];
+    uint32_t _op2_08007240;
+    uint32_t _co_08007240;
+    _op2_08007240 = _rm_08007240;
+    _co_08007240 = cpsr_c();
+    uint32_t _rn_08007240 = g_cpu.R[0];
+    uint32_t _r_08007240;
+    _r_08007240 = _rn_08007240 + _op2_08007240;
+    arm_set_nzcv_add(_rn_08007240, _op2_08007240, _r_08007240);
+    g_cpu.R[0] = _r_08007240;
+    g_cpu.R[15] = 0x08007242u;
+    runtime_tick(_cyc_08007240);
+    /* 08007242  08007242 T strb r4,[r0,#0x19] */
+    g_cpu.R[15] = 0x08007242u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007242 = 1u;
+    _cyc_08007242 = 1u;
+    uint32_t _base_08007242 = g_cpu.R[0];
+    uint32_t _off_08007242;
+    _off_08007242 = 0x00000019u;
+    uint32_t _ea_08007242 = _base_08007242 + _off_08007242;
+    uint32_t _post_08007242 = _base_08007242 + _off_08007242;
+    _cyc_08007242 += runtime_mem_cycles(_ea_08007242, 1u, 0u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x08007242u, _ea_08007242, (uint32_t)(g_cpu.R[4] & 0xFFu), 1u);
+    bus_write_u8(_ea_08007242, (uint8_t)(g_cpu.R[4] & 0xFFu));
+    g_cpu.R[15] = 0x08007244u;
+    runtime_tick(_cyc_08007242);
+    /* 08007244  08007244 T ldr r2,[r15,#0x2c] */
+    g_cpu.R[15] = 0x08007244u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007244 = 1u;
+    _cyc_08007244 = 2u;
+    uint32_t _base_08007244 = 0x08007248u & ~3u;
+    uint32_t _off_08007244;
+    _off_08007244 = 0x0000002Cu;
+    uint32_t _ea_08007244 = _base_08007244 + _off_08007244;
+    uint32_t _post_08007244 = _base_08007244 + _off_08007244;
+    _cyc_08007244 += runtime_mem_cycles(_ea_08007244, 4u, 0u);
+    uint32_t _v_08007244;
+    { uint32_t _w = bus_read_u32(_ea_08007244 & ~3u); uint32_t _rot = (_ea_08007244 & 3u) * 8u; _v_08007244 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[2] = _v_08007244;
+    g_cpu.R[15] = 0x08007246u;
+    runtime_tick(_cyc_08007244);
+    /* 08007246  08007246 T adds r0,r6,#0x0 */
+    g_cpu.R[15] = 0x08007246u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007246 = 1u;
+    _cyc_08007246 = 1u;
+    uint32_t _rn_08007246 = g_cpu.R[6];
+    uint32_t _r_08007246;
+    _r_08007246 = _rn_08007246 + 0x00000000u;
+    arm_set_nzcv_add(_rn_08007246, 0x00000000u, _r_08007246);
+    g_cpu.R[0] = _r_08007246;
+    g_cpu.R[15] = 0x08007248u;
+    runtime_tick(_cyc_08007246);
+    /* 08007248  08007248 T adds r0,r0,#0x18 */
+    g_cpu.R[15] = 0x08007248u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007248 = 1u;
+    _cyc_08007248 = 1u;
+    uint32_t _rn_08007248 = g_cpu.R[0];
+    uint32_t _r_08007248;
+    _r_08007248 = _rn_08007248 + 0x00000018u;
+    arm_set_nzcv_add(_rn_08007248, 0x00000018u, _r_08007248);
+    g_cpu.R[0] = _r_08007248;
+    g_cpu.R[15] = 0x0800724Au;
+    runtime_tick(_cyc_08007248);
+    /* 0800724A  0800724a T adds r1,r6,#0x0 */
+    g_cpu.R[15] = 0x0800724Au;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800724A = 1u;
+    _cyc_0800724A = 1u;
+    uint32_t _rn_0800724A = g_cpu.R[6];
+    uint32_t _r_0800724A;
+    _r_0800724A = _rn_0800724A + 0x00000000u;
+    arm_set_nzcv_add(_rn_0800724A, 0x00000000u, _r_0800724A);
+    g_cpu.R[1] = _r_0800724A;
+    g_cpu.R[15] = 0x0800724Cu;
+    runtime_tick(_cyc_0800724A);
+    /* 0800724C  0800724c T adds r1,r1,#0x22 */
+    g_cpu.R[15] = 0x0800724Cu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800724C = 1u;
+    _cyc_0800724C = 1u;
+    uint32_t _rn_0800724C = g_cpu.R[1];
+    uint32_t _r_0800724C;
+    _r_0800724C = _rn_0800724C + 0x00000022u;
+    arm_set_nzcv_add(_rn_0800724C, 0x00000022u, _r_0800724C);
+    g_cpu.R[1] = _r_0800724C;
+    g_cpu.R[15] = 0x0800724Eu;
+    runtime_tick(_cyc_0800724C);
+    /* 0800724E  0800724e T ldr r3,[r2] */
+    g_cpu.R[15] = 0x0800724Eu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800724E = 1u;
+    _cyc_0800724E = 2u;
+    uint32_t _base_0800724E = g_cpu.R[2];
+    uint32_t _off_0800724E;
+    _off_0800724E = 0x00000000u;
+    uint32_t _ea_0800724E = _base_0800724E + _off_0800724E;
+    uint32_t _post_0800724E = _base_0800724E + _off_0800724E;
+    _cyc_0800724E += runtime_mem_cycles(_ea_0800724E, 4u, 0u);
+    uint32_t _v_0800724E;
+    { uint32_t _w = bus_read_u32(_ea_0800724E & ~3u); uint32_t _rot = (_ea_0800724E & 3u) * 8u; _v_0800724E = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[3] = _v_0800724E;
+    g_cpu.R[15] = 0x08007250u;
+    runtime_tick(_cyc_0800724E);
+    /* 08007250  08007250 T movs r2,#0xa */
+    g_cpu.R[15] = 0x08007250u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007250 = 1u;
+    _cyc_08007250 = 1u;
+    uint32_t _r_08007250;
+    _r_08007250 = 0x0000000Au;
+    arm_set_nzc_logic(_r_08007250, cpsr_c());
+    g_cpu.R[2] = _r_08007250;
+    g_cpu.R[15] = 0x08007252u;
+    runtime_tick(_cyc_08007250);
+    /* 08007252  08007252 T bl.hi 0x080c2256 */
+    g_cpu.R[15] = 0x08007252u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007252 = 1u;
+    _cyc_08007252 = 1u;
+    g_cpu.R[14] = 0x080C2256u;
+    g_cpu.R[15] = 0x08007254u;
+    runtime_tick(_cyc_08007252);
+    /* 08007254  08007254 T bl.lo 0x00000000 */
+    g_cpu.R[15] = 0x08007254u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007254 = 1u;
+    _cyc_08007254 = 3u;
+    uint32_t _blt_08007254 = (g_cpu.R[14] + 0x00000F92u) & ~1u;
+    g_cpu.R[14] = 0x08007257u;
+    g_cpu.R[15] = _blt_08007254;
+    runtime_call_push_return(0x08007256u);
+    runtime_tick(_cyc_08007254);
+    _cyc_08007254 = 0u;
+    runtime_dispatch(_blt_08007254);
+    if (g_cpu.R[15] != 0x08007256u) { runtime_call_cancel_return(0x08007256u); return; }
+    g_cpu.R[15] = 0x08007256u;
+    runtime_tick(_cyc_08007254);
+    /* fall-through to 0x08007256 */
+    g_cpu.R[15] = 0x08007256u;
+    runtime_dispatch(0x08007256u);
+    return;
+}
+
+/* 0x08007256  mode=thumb  end=0x08007258  branches=1 */
+
+
+/* 0x08007256 thumb */
+void gf_tfunc_08007256(void) {
+    if (g_runtime_fn_entry_hook) g_runtime_fn_entry_hook(0x08007256u);
+    /* 08007256  08007256 T b 0x0800745a */
+    g_cpu.R[15] = 0x08007256u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007256 = 1u;
+    _cyc_08007256 = 3u;
+    g_cpu.R[15] = 0x0800745Au;
+    runtime_tick(_cyc_08007256);
+    GBARECOMP_TAIL_CALL(gf_tfunc_0800745A);
+    g_cpu.R[15] = 0x08007258u;
+    runtime_tick(_cyc_08007256);
+    /* fall-through to 0x08007258 */
+    g_cpu.R[15] = 0x08007258u;
+    runtime_dispatch(0x08007258u);
+    return;
+}
+
+/* 0x0800728A  mode=thumb  end=0x0800729A  branches=5 */
+
+
+/* 0x08007278 thumb */
+void gf_tfunc_08007278(void) {
+    if (g_runtime_fn_entry_hook) g_runtime_fn_entry_hook(0x08007278u);
+    /* 08007278  08007278 T ldr r0,[r5,#0x24] */
+    g_cpu.R[15] = 0x08007278u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007278 = 1u;
+    _cyc_08007278 = 2u;
+    uint32_t _base_08007278 = g_cpu.R[5];
+    uint32_t _off_08007278;
+    _off_08007278 = 0x00000024u;
+    uint32_t _ea_08007278 = _base_08007278 + _off_08007278;
+    uint32_t _post_08007278 = _base_08007278 + _off_08007278;
+    _cyc_08007278 += runtime_mem_cycles(_ea_08007278, 4u, 0u);
+    uint32_t _v_08007278;
+    { uint32_t _w = bus_read_u32(_ea_08007278 & ~3u); uint32_t _rot = (_ea_08007278 & 3u) * 8u; _v_08007278 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_08007278;
+    g_cpu.R[15] = 0x0800727Au;
+    runtime_tick(_cyc_08007278);
+    /* 0800727A  0800727a T cmps r0,#0x0 */
+    g_cpu.R[15] = 0x0800727Au;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800727A = 1u;
+    _cyc_0800727A = 1u;
+    uint32_t _rn_0800727A = g_cpu.R[0];
+    uint32_t _r_0800727A;
+    _r_0800727A = _rn_0800727A - 0x00000000u;
+    arm_set_nzcv_sub(_rn_0800727A, 0x00000000u, _r_0800727A);
+    g_cpu.R[15] = 0x0800727Cu;
+    runtime_tick(_cyc_0800727A);
+    /* 0800727C  0800727c T beq 0x0800728a */
+    g_cpu.R[15] = 0x0800727Cu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800727C = 1u;
+    if (arm_cond_passes(0x0u)) {
+        _cyc_0800727C = 3u;
+        g_cpu.R[15] = 0x0800728Au;
+        runtime_tick(_cyc_0800727C);
+        GBARECOMP_TAIL_CALL(gf_tfunc_0800728A);
+    }
+    g_cpu.R[15] = 0x0800727Eu;
+    runtime_tick(_cyc_0800727C);
+    /* 0800727E  0800727e T ldrh r1,[r5,#0x28] */
+    g_cpu.R[15] = 0x0800727Eu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800727E = 1u;
+    _cyc_0800727E = 2u;
+    uint32_t _base_0800727E = g_cpu.R[5];
+    uint32_t _off_0800727E;
+    _off_0800727E = 0x00000028u;
+    uint32_t _ea_0800727E = _base_0800727E + _off_0800727E;
+    uint32_t _post_0800727E = _base_0800727E + _off_0800727E;
+    _cyc_0800727E += runtime_mem_cycles(_ea_0800727E, 2u, 0u);
+    uint32_t _v_0800727E;
+    { uint32_t _h = bus_read_u16(_ea_0800727E & ~1u); if (_ea_0800727E & 1u) _v_0800727E = ((_h >> 8) | (_h << 24)); else _v_0800727E = _h; }
+    g_cpu.R[1] = _v_0800727E;
+    g_cpu.R[15] = 0x08007280u;
+    runtime_tick(_cyc_0800727E);
+    /* 08007280  08007280 T movs r0,#0x4 */
+    g_cpu.R[15] = 0x08007280u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007280 = 1u;
+    _cyc_08007280 = 1u;
+    uint32_t _r_08007280;
+    _r_08007280 = 0x00000004u;
+    arm_set_nzc_logic(_r_08007280, cpsr_c());
+    g_cpu.R[0] = _r_08007280;
+    g_cpu.R[15] = 0x08007282u;
+    runtime_tick(_cyc_08007280);
+    /* 08007282  08007282 T ands r0,r0,r1 */
+    g_cpu.R[15] = 0x08007282u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007282 = 1u;
+    _cyc_08007282 = 1u;
+    uint32_t _rm_08007282 = g_cpu.R[1];
+    uint32_t _op2_08007282;
+    uint32_t _co_08007282;
+    _op2_08007282 = _rm_08007282;
+    _co_08007282 = cpsr_c();
+    uint32_t _rn_08007282 = g_cpu.R[0];
+    uint32_t _r_08007282;
+    _r_08007282 = _rn_08007282 & _op2_08007282;
+    arm_set_nzc_logic(_r_08007282, _co_08007282);
+    g_cpu.R[0] = _r_08007282;
+    g_cpu.R[15] = 0x08007284u;
+    runtime_tick(_cyc_08007282);
+    /* 08007284  08007284 T cmps r0,#0x0 */
+    g_cpu.R[15] = 0x08007284u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007284 = 1u;
+    _cyc_08007284 = 1u;
+    uint32_t _rn_08007284 = g_cpu.R[0];
+    uint32_t _r_08007284;
+    _r_08007284 = _rn_08007284 - 0x00000000u;
+    arm_set_nzcv_sub(_rn_08007284, 0x00000000u, _r_08007284);
+    g_cpu.R[15] = 0x08007286u;
+    runtime_tick(_cyc_08007284);
+    /* 08007286  08007286 T bne 0x0800729a */
+    g_cpu.R[15] = 0x08007286u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007286 = 1u;
+    if (arm_cond_passes(0x1u)) {
+        _cyc_08007286 = 3u;
+        g_cpu.R[15] = 0x0800729Au;
+        runtime_tick(_cyc_08007286);
+        GBARECOMP_TAIL_CALL(gf_tfunc_0800729A);
+    }
+    g_cpu.R[15] = 0x08007288u;
+    runtime_tick(_cyc_08007286);
+    /* 08007288  08007288 T b 0x080072f8 */
+    g_cpu.R[15] = 0x08007288u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007288 = 1u;
+    _cyc_08007288 = 3u;
+    g_cpu.R[15] = 0x080072F8u;
+    runtime_tick(_cyc_08007288);
+    GBARECOMP_TAIL_CALL(gf_tfunc_080072F8);
+    g_cpu.R[15] = 0x0800728Au;
+    runtime_tick(_cyc_08007288);
+    /* fall-through to 0x0800728A */
+    g_cpu.R[15] = 0x0800728Au;
+    runtime_dispatch(0x0800728Au);
+    return;
+}
+
+/* 0x0800731A  mode=thumb  end=0x0800734A  branches=10 */
+
+
+/* 0x0800728A thumb */
+void gf_tfunc_0800728A(void) {
+    if (g_runtime_fn_entry_hook) g_runtime_fn_entry_hook(0x0800728Au);
+    /* 0800728A  0800728a T ldr r0,[r15,#0x4c] */
+    g_cpu.R[15] = 0x0800728Au;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800728A = 1u;
+    _cyc_0800728A = 2u;
+    uint32_t _base_0800728A = 0x0800728Eu & ~3u;
+    uint32_t _off_0800728A;
+    _off_0800728A = 0x0000004Cu;
+    uint32_t _ea_0800728A = _base_0800728A + _off_0800728A;
+    uint32_t _post_0800728A = _base_0800728A + _off_0800728A;
+    _cyc_0800728A += runtime_mem_cycles(_ea_0800728A, 4u, 0u);
+    uint32_t _v_0800728A;
+    { uint32_t _w = bus_read_u32(_ea_0800728A & ~3u); uint32_t _rot = (_ea_0800728A & 3u) * 8u; _v_0800728A = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_0800728A;
+    g_cpu.R[15] = 0x0800728Cu;
+    runtime_tick(_cyc_0800728A);
+    /* 0800728C  0800728c T ldr r4,[r15,#0x4c] */
+    g_cpu.R[15] = 0x0800728Cu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800728C = 1u;
+    _cyc_0800728C = 2u;
+    uint32_t _base_0800728C = 0x08007290u & ~3u;
+    uint32_t _off_0800728C;
+    _off_0800728C = 0x0000004Cu;
+    uint32_t _ea_0800728C = _base_0800728C + _off_0800728C;
+    uint32_t _post_0800728C = _base_0800728C + _off_0800728C;
+    _cyc_0800728C += runtime_mem_cycles(_ea_0800728C, 4u, 0u);
+    uint32_t _v_0800728C;
+    { uint32_t _w = bus_read_u32(_ea_0800728C & ~3u); uint32_t _rot = (_ea_0800728C & 3u) * 8u; _v_0800728C = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[4] = _v_0800728C;
+    g_cpu.R[15] = 0x0800728Eu;
+    runtime_tick(_cyc_0800728C);
+    /* 0800728E  0800728e T adds r0,r0,r4 */
+    g_cpu.R[15] = 0x0800728Eu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800728E = 1u;
+    _cyc_0800728E = 1u;
+    uint32_t _rm_0800728E = g_cpu.R[4];
+    uint32_t _op2_0800728E;
+    uint32_t _co_0800728E;
+    _op2_0800728E = _rm_0800728E;
+    _co_0800728E = cpsr_c();
+    uint32_t _rn_0800728E = g_cpu.R[0];
+    uint32_t _r_0800728E;
+    _r_0800728E = _rn_0800728E + _op2_0800728E;
+    arm_set_nzcv_add(_rn_0800728E, _op2_0800728E, _r_0800728E);
+    g_cpu.R[0] = _r_0800728E;
+    g_cpu.R[15] = 0x08007290u;
+    runtime_tick(_cyc_0800728E);
+    /* 08007290  08007290 T ldrh r1,[r0] */
+    g_cpu.R[15] = 0x08007290u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007290 = 1u;
+    _cyc_08007290 = 2u;
+    uint32_t _base_08007290 = g_cpu.R[0];
+    uint32_t _off_08007290;
+    _off_08007290 = 0x00000000u;
+    uint32_t _ea_08007290 = _base_08007290 + _off_08007290;
+    uint32_t _post_08007290 = _base_08007290 + _off_08007290;
+    _cyc_08007290 += runtime_mem_cycles(_ea_08007290, 2u, 0u);
+    uint32_t _v_08007290;
+    { uint32_t _h = bus_read_u16(_ea_08007290 & ~1u); if (_ea_08007290 & 1u) _v_08007290 = ((_h >> 8) | (_h << 24)); else _v_08007290 = _h; }
+    g_cpu.R[1] = _v_08007290;
+    g_cpu.R[15] = 0x08007292u;
+    runtime_tick(_cyc_08007290);
+    /* 08007292  08007292 T movs r0,#0x4 */
+    g_cpu.R[15] = 0x08007292u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007292 = 1u;
+    _cyc_08007292 = 1u;
+    uint32_t _r_08007292;
+    _r_08007292 = 0x00000004u;
+    arm_set_nzc_logic(_r_08007292, cpsr_c());
+    g_cpu.R[0] = _r_08007292;
+    g_cpu.R[15] = 0x08007294u;
+    runtime_tick(_cyc_08007292);
+    /* 08007294  08007294 T ands r0,r0,r1 */
+    g_cpu.R[15] = 0x08007294u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007294 = 1u;
+    _cyc_08007294 = 1u;
+    uint32_t _rm_08007294 = g_cpu.R[1];
+    uint32_t _op2_08007294;
+    uint32_t _co_08007294;
+    _op2_08007294 = _rm_08007294;
+    _co_08007294 = cpsr_c();
+    uint32_t _rn_08007294 = g_cpu.R[0];
+    uint32_t _r_08007294;
+    _r_08007294 = _rn_08007294 & _op2_08007294;
+    arm_set_nzc_logic(_r_08007294, _co_08007294);
+    g_cpu.R[0] = _r_08007294;
+    g_cpu.R[15] = 0x08007296u;
+    runtime_tick(_cyc_08007294);
+    /* 08007296  08007296 T cmps r0,#0x0 */
+    g_cpu.R[15] = 0x08007296u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007296 = 1u;
+    _cyc_08007296 = 1u;
+    uint32_t _rn_08007296 = g_cpu.R[0];
+    uint32_t _r_08007296;
+    _r_08007296 = _rn_08007296 - 0x00000000u;
+    arm_set_nzcv_sub(_rn_08007296, 0x00000000u, _r_08007296);
+    g_cpu.R[15] = 0x08007298u;
+    runtime_tick(_cyc_08007296);
+    /* 08007298  08007298 T beq 0x080072f8 */
+    g_cpu.R[15] = 0x08007298u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007298 = 1u;
+    if (arm_cond_passes(0x0u)) {
+        _cyc_08007298 = 3u;
+        g_cpu.R[15] = 0x080072F8u;
+        runtime_tick(_cyc_08007298);
+        GBARECOMP_TAIL_CALL(gf_tfunc_080072F8);
+    }
+    g_cpu.R[15] = 0x0800729Au;
+    runtime_tick(_cyc_08007298);
+    /* fall-through to 0x0800729A */
+    g_cpu.R[15] = 0x0800729Au;
+    runtime_dispatch(0x0800729Au);
+    return;
+}
+
+/* 0x0800729A  mode=thumb  end=0x080072CE  branches=4 */
+
+
+/* 0x0800729A thumb */
+void gf_tfunc_0800729A(void) {
+    if (g_runtime_fn_entry_hook) g_runtime_fn_entry_hook(0x0800729Au);
+    /* 0800729A  0800729a T ldr r1,[r15,#0x44] */
+    g_cpu.R[15] = 0x0800729Au;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800729A = 1u;
+    _cyc_0800729A = 2u;
+    uint32_t _base_0800729A = 0x0800729Eu & ~3u;
+    uint32_t _off_0800729A;
+    _off_0800729A = 0x00000044u;
+    uint32_t _ea_0800729A = _base_0800729A + _off_0800729A;
+    uint32_t _post_0800729A = _base_0800729A + _off_0800729A;
+    _cyc_0800729A += runtime_mem_cycles(_ea_0800729A, 4u, 0u);
+    uint32_t _v_0800729A;
+    { uint32_t _w = bus_read_u32(_ea_0800729A & ~3u); uint32_t _rot = (_ea_0800729A & 3u) * 8u; _v_0800729A = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[1] = _v_0800729A;
+    g_cpu.R[15] = 0x0800729Cu;
+    runtime_tick(_cyc_0800729A);
+    /* 0800729C  0800729c T ldr r7,[r15,#0x44] */
+    g_cpu.R[15] = 0x0800729Cu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800729C = 1u;
+    _cyc_0800729C = 2u;
+    uint32_t _base_0800729C = 0x080072A0u & ~3u;
+    uint32_t _off_0800729C;
+    _off_0800729C = 0x00000044u;
+    uint32_t _ea_0800729C = _base_0800729C + _off_0800729C;
+    uint32_t _post_0800729C = _base_0800729C + _off_0800729C;
+    _cyc_0800729C += runtime_mem_cycles(_ea_0800729C, 4u, 0u);
+    uint32_t _v_0800729C;
+    { uint32_t _w = bus_read_u32(_ea_0800729C & ~3u); uint32_t _rot = (_ea_0800729C & 3u) * 8u; _v_0800729C = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[7] = _v_0800729C;
+    g_cpu.R[15] = 0x0800729Eu;
+    runtime_tick(_cyc_0800729C);
+    /* 0800729E  0800729e T adds r0,r1,r7 */
+    g_cpu.R[15] = 0x0800729Eu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800729E = 1u;
+    _cyc_0800729E = 1u;
+    uint32_t _rm_0800729E = g_cpu.R[7];
+    uint32_t _op2_0800729E;
+    uint32_t _co_0800729E;
+    _op2_0800729E = _rm_0800729E;
+    _co_0800729E = cpsr_c();
+    uint32_t _rn_0800729E = g_cpu.R[1];
+    uint32_t _r_0800729E;
+    _r_0800729E = _rn_0800729E + _op2_0800729E;
+    arm_set_nzcv_add(_rn_0800729E, _op2_0800729E, _r_0800729E);
+    g_cpu.R[0] = _r_0800729E;
+    g_cpu.R[15] = 0x080072A0u;
+    runtime_tick(_cyc_0800729E);
+    /* 080072A0  080072a0 T ldrb r3,[r0] */
+    g_cpu.R[15] = 0x080072A0u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080072A0 = 1u;
+    _cyc_080072A0 = 2u;
+    uint32_t _base_080072A0 = g_cpu.R[0];
+    uint32_t _off_080072A0;
+    _off_080072A0 = 0x00000000u;
+    uint32_t _ea_080072A0 = _base_080072A0 + _off_080072A0;
+    uint32_t _post_080072A0 = _base_080072A0 + _off_080072A0;
+    _cyc_080072A0 += runtime_mem_cycles(_ea_080072A0, 1u, 0u);
+    uint32_t _v_080072A0;
+    _v_080072A0 = bus_read_u8(_ea_080072A0);
+    g_cpu.R[3] = _v_080072A0;
+    g_cpu.R[15] = 0x080072A2u;
+    runtime_tick(_cyc_080072A0);
+    /* 080072A2  080072a2 T adds r5,r1,#0x0 */
+    g_cpu.R[15] = 0x080072A2u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080072A2 = 1u;
+    _cyc_080072A2 = 1u;
+    uint32_t _rn_080072A2 = g_cpu.R[1];
+    uint32_t _r_080072A2;
+    _r_080072A2 = _rn_080072A2 + 0x00000000u;
+    arm_set_nzcv_add(_rn_080072A2, 0x00000000u, _r_080072A2);
+    g_cpu.R[5] = _r_080072A2;
+    g_cpu.R[15] = 0x080072A4u;
+    runtime_tick(_cyc_080072A2);
+    /* 080072A4  080072a4 T cmps r3,#0x0 */
+    g_cpu.R[15] = 0x080072A4u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080072A4 = 1u;
+    _cyc_080072A4 = 1u;
+    uint32_t _rn_080072A4 = g_cpu.R[3];
+    uint32_t _r_080072A4;
+    _r_080072A4 = _rn_080072A4 - 0x00000000u;
+    arm_set_nzcv_sub(_rn_080072A4, 0x00000000u, _r_080072A4);
+    g_cpu.R[15] = 0x080072A6u;
+    runtime_tick(_cyc_080072A4);
+    /* 080072A6  080072a6 T bne 0x080072f8 */
+    g_cpu.R[15] = 0x080072A6u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080072A6 = 1u;
+    if (arm_cond_passes(0x1u)) {
+        _cyc_080072A6 = 3u;
+        g_cpu.R[15] = 0x080072F8u;
+        runtime_tick(_cyc_080072A6);
+        GBARECOMP_TAIL_CALL(gf_tfunc_080072F8);
+    }
+    g_cpu.R[15] = 0x080072A8u;
+    runtime_tick(_cyc_080072A6);
+    /* 080072A8  080072a8 T ldr r2,[r15,#0x3c] */
+    g_cpu.R[15] = 0x080072A8u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080072A8 = 1u;
+    _cyc_080072A8 = 2u;
+    uint32_t _base_080072A8 = 0x080072ACu & ~3u;
+    uint32_t _off_080072A8;
+    _off_080072A8 = 0x0000003Cu;
+    uint32_t _ea_080072A8 = _base_080072A8 + _off_080072A8;
+    uint32_t _post_080072A8 = _base_080072A8 + _off_080072A8;
+    _cyc_080072A8 += runtime_mem_cycles(_ea_080072A8, 4u, 0u);
+    uint32_t _v_080072A8;
+    { uint32_t _w = bus_read_u32(_ea_080072A8 & ~3u); uint32_t _rot = (_ea_080072A8 & 3u) * 8u; _v_080072A8 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[2] = _v_080072A8;
+    g_cpu.R[15] = 0x080072AAu;
+    runtime_tick(_cyc_080072A8);
+    /* 080072AA  080072aa T ldrh r1,[r2,#0x4] */
+    g_cpu.R[15] = 0x080072AAu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080072AA = 1u;
+    _cyc_080072AA = 2u;
+    uint32_t _base_080072AA = g_cpu.R[2];
+    uint32_t _off_080072AA;
+    _off_080072AA = 0x00000004u;
+    uint32_t _ea_080072AA = _base_080072AA + _off_080072AA;
+    uint32_t _post_080072AA = _base_080072AA + _off_080072AA;
+    _cyc_080072AA += runtime_mem_cycles(_ea_080072AA, 2u, 0u);
+    uint32_t _v_080072AA;
+    { uint32_t _h = bus_read_u16(_ea_080072AA & ~1u); if (_ea_080072AA & 1u) _v_080072AA = ((_h >> 8) | (_h << 24)); else _v_080072AA = _h; }
+    g_cpu.R[1] = _v_080072AA;
+    g_cpu.R[15] = 0x080072ACu;
+    runtime_tick(_cyc_080072AA);
+    /* 080072AC  080072ac T ldr r4,[r15,#0x3c] */
+    g_cpu.R[15] = 0x080072ACu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080072AC = 1u;
+    _cyc_080072AC = 2u;
+    uint32_t _base_080072AC = 0x080072B0u & ~3u;
+    uint32_t _off_080072AC;
+    _off_080072AC = 0x0000003Cu;
+    uint32_t _ea_080072AC = _base_080072AC + _off_080072AC;
+    uint32_t _post_080072AC = _base_080072AC + _off_080072AC;
+    _cyc_080072AC += runtime_mem_cycles(_ea_080072AC, 4u, 0u);
+    uint32_t _v_080072AC;
+    { uint32_t _w = bus_read_u32(_ea_080072AC & ~3u); uint32_t _rot = (_ea_080072AC & 3u) * 8u; _v_080072AC = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[4] = _v_080072AC;
+    g_cpu.R[15] = 0x080072AEu;
+    runtime_tick(_cyc_080072AC);
+    /* 080072AE  080072ae T adds r0,r5,r4 */
+    g_cpu.R[15] = 0x080072AEu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080072AE = 1u;
+    _cyc_080072AE = 1u;
+    uint32_t _rm_080072AE = g_cpu.R[4];
+    uint32_t _op2_080072AE;
+    uint32_t _co_080072AE;
+    _op2_080072AE = _rm_080072AE;
+    _co_080072AE = cpsr_c();
+    uint32_t _rn_080072AE = g_cpu.R[5];
+    uint32_t _r_080072AE;
+    _r_080072AE = _rn_080072AE + _op2_080072AE;
+    arm_set_nzcv_add(_rn_080072AE, _op2_080072AE, _r_080072AE);
+    g_cpu.R[0] = _r_080072AE;
+    g_cpu.R[15] = 0x080072B0u;
+    runtime_tick(_cyc_080072AE);
+    /* 080072B0  080072b0 T movs r4,#0x0 */
+    g_cpu.R[15] = 0x080072B0u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080072B0 = 1u;
+    _cyc_080072B0 = 1u;
+    uint32_t _r_080072B0;
+    _r_080072B0 = 0x00000000u;
+    arm_set_nzc_logic(_r_080072B0, cpsr_c());
+    g_cpu.R[4] = _r_080072B0;
+    g_cpu.R[15] = 0x080072B2u;
+    runtime_tick(_cyc_080072B0);
+    /* 080072B2  080072b2 T strh r1,[r0] */
+    g_cpu.R[15] = 0x080072B2u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080072B2 = 1u;
+    _cyc_080072B2 = 1u;
+    uint32_t _base_080072B2 = g_cpu.R[0];
+    uint32_t _off_080072B2;
+    _off_080072B2 = 0x00000000u;
+    uint32_t _ea_080072B2 = _base_080072B2 + _off_080072B2;
+    uint32_t _post_080072B2 = _base_080072B2 + _off_080072B2;
+    _cyc_080072B2 += runtime_mem_cycles(_ea_080072B2, 2u, 0u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x080072B2u, _ea_080072B2 & ~1u, (uint32_t)(g_cpu.R[1] & 0xFFFFu), 2u);
+    bus_write_u16(_ea_080072B2 & ~1u, (uint16_t)(g_cpu.R[1] & 0xFFFFu));
+    g_cpu.R[15] = 0x080072B4u;
+    runtime_tick(_cyc_080072B2);
+    /* 080072B4  080072b4 T ldrh r1,[r2,#0x6] */
+    g_cpu.R[15] = 0x080072B4u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080072B4 = 1u;
+    _cyc_080072B4 = 2u;
+    uint32_t _base_080072B4 = g_cpu.R[2];
+    uint32_t _off_080072B4;
+    _off_080072B4 = 0x00000006u;
+    uint32_t _ea_080072B4 = _base_080072B4 + _off_080072B4;
+    uint32_t _post_080072B4 = _base_080072B4 + _off_080072B4;
+    _cyc_080072B4 += runtime_mem_cycles(_ea_080072B4, 2u, 0u);
+    uint32_t _v_080072B4;
+    { uint32_t _h = bus_read_u16(_ea_080072B4 & ~1u); if (_ea_080072B4 & 1u) _v_080072B4 = ((_h >> 8) | (_h << 24)); else _v_080072B4 = _h; }
+    g_cpu.R[1] = _v_080072B4;
+    g_cpu.R[15] = 0x080072B6u;
+    runtime_tick(_cyc_080072B4);
+    /* 080072B6  080072b6 T ldr r7,[r15,#0x38] */
+    g_cpu.R[15] = 0x080072B6u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080072B6 = 1u;
+    _cyc_080072B6 = 2u;
+    uint32_t _base_080072B6 = 0x080072BAu & ~3u;
+    uint32_t _off_080072B6;
+    _off_080072B6 = 0x00000038u;
+    uint32_t _ea_080072B6 = _base_080072B6 + _off_080072B6;
+    uint32_t _post_080072B6 = _base_080072B6 + _off_080072B6;
+    _cyc_080072B6 += runtime_mem_cycles(_ea_080072B6, 4u, 0u);
+    uint32_t _v_080072B6;
+    { uint32_t _w = bus_read_u32(_ea_080072B6 & ~3u); uint32_t _rot = (_ea_080072B6 & 3u) * 8u; _v_080072B6 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[7] = _v_080072B6;
+    g_cpu.R[15] = 0x080072B8u;
+    runtime_tick(_cyc_080072B6);
+    /* 080072B8  080072b8 T adds r0,r5,r7 */
+    g_cpu.R[15] = 0x080072B8u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080072B8 = 1u;
+    _cyc_080072B8 = 1u;
+    uint32_t _rm_080072B8 = g_cpu.R[7];
+    uint32_t _op2_080072B8;
+    uint32_t _co_080072B8;
+    _op2_080072B8 = _rm_080072B8;
+    _co_080072B8 = cpsr_c();
+    uint32_t _rn_080072B8 = g_cpu.R[5];
+    uint32_t _r_080072B8;
+    _r_080072B8 = _rn_080072B8 + _op2_080072B8;
+    arm_set_nzcv_add(_rn_080072B8, _op2_080072B8, _r_080072B8);
+    g_cpu.R[0] = _r_080072B8;
+    g_cpu.R[15] = 0x080072BAu;
+    runtime_tick(_cyc_080072B8);
+    /* 080072BA  080072ba T strh r1,[r0] */
+    g_cpu.R[15] = 0x080072BAu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080072BA = 1u;
+    _cyc_080072BA = 1u;
+    uint32_t _base_080072BA = g_cpu.R[0];
+    uint32_t _off_080072BA;
+    _off_080072BA = 0x00000000u;
+    uint32_t _ea_080072BA = _base_080072BA + _off_080072BA;
+    uint32_t _post_080072BA = _base_080072BA + _off_080072BA;
+    _cyc_080072BA += runtime_mem_cycles(_ea_080072BA, 2u, 0u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x080072BAu, _ea_080072BA & ~1u, (uint32_t)(g_cpu.R[1] & 0xFFFFu), 2u);
+    bus_write_u16(_ea_080072BA & ~1u, (uint16_t)(g_cpu.R[1] & 0xFFFFu));
+    g_cpu.R[15] = 0x080072BCu;
+    runtime_tick(_cyc_080072BA);
+    /* 080072BC  080072bc T ldrh r1,[r2,#0x8] */
+    g_cpu.R[15] = 0x080072BCu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080072BC = 1u;
+    _cyc_080072BC = 2u;
+    uint32_t _base_080072BC = g_cpu.R[2];
+    uint32_t _off_080072BC;
+    _off_080072BC = 0x00000008u;
+    uint32_t _ea_080072BC = _base_080072BC + _off_080072BC;
+    uint32_t _post_080072BC = _base_080072BC + _off_080072BC;
+    _cyc_080072BC += runtime_mem_cycles(_ea_080072BC, 2u, 0u);
+    uint32_t _v_080072BC;
+    { uint32_t _h = bus_read_u16(_ea_080072BC & ~1u); if (_ea_080072BC & 1u) _v_080072BC = ((_h >> 8) | (_h << 24)); else _v_080072BC = _h; }
+    g_cpu.R[1] = _v_080072BC;
+    g_cpu.R[15] = 0x080072BEu;
+    runtime_tick(_cyc_080072BC);
+    /* 080072BE  080072be T adds r7,r7,#0x2 */
+    g_cpu.R[15] = 0x080072BEu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080072BE = 1u;
+    _cyc_080072BE = 1u;
+    uint32_t _rn_080072BE = g_cpu.R[7];
+    uint32_t _r_080072BE;
+    _r_080072BE = _rn_080072BE + 0x00000002u;
+    arm_set_nzcv_add(_rn_080072BE, 0x00000002u, _r_080072BE);
+    g_cpu.R[7] = _r_080072BE;
+    g_cpu.R[15] = 0x080072C0u;
+    runtime_tick(_cyc_080072BE);
+    /* 080072C0  080072c0 T adds r0,r5,r7 */
+    g_cpu.R[15] = 0x080072C0u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080072C0 = 1u;
+    _cyc_080072C0 = 1u;
+    uint32_t _rm_080072C0 = g_cpu.R[7];
+    uint32_t _op2_080072C0;
+    uint32_t _co_080072C0;
+    _op2_080072C0 = _rm_080072C0;
+    _co_080072C0 = cpsr_c();
+    uint32_t _rn_080072C0 = g_cpu.R[5];
+    uint32_t _r_080072C0;
+    _r_080072C0 = _rn_080072C0 + _op2_080072C0;
+    arm_set_nzcv_add(_rn_080072C0, _op2_080072C0, _r_080072C0);
+    g_cpu.R[0] = _r_080072C0;
+    g_cpu.R[15] = 0x080072C2u;
+    runtime_tick(_cyc_080072C0);
+    /* 080072C2  080072c2 T strh r1,[r0] */
+    g_cpu.R[15] = 0x080072C2u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080072C2 = 1u;
+    _cyc_080072C2 = 1u;
+    uint32_t _base_080072C2 = g_cpu.R[0];
+    uint32_t _off_080072C2;
+    _off_080072C2 = 0x00000000u;
+    uint32_t _ea_080072C2 = _base_080072C2 + _off_080072C2;
+    uint32_t _post_080072C2 = _base_080072C2 + _off_080072C2;
+    _cyc_080072C2 += runtime_mem_cycles(_ea_080072C2, 2u, 0u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x080072C2u, _ea_080072C2 & ~1u, (uint32_t)(g_cpu.R[1] & 0xFFFFu), 2u);
+    bus_write_u16(_ea_080072C2 & ~1u, (uint16_t)(g_cpu.R[1] & 0xFFFFu));
+    g_cpu.R[15] = 0x080072C4u;
+    runtime_tick(_cyc_080072C2);
+    /* 080072C4  080072c4 T strh r3,[r2,#0x8] */
+    g_cpu.R[15] = 0x080072C4u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080072C4 = 1u;
+    _cyc_080072C4 = 1u;
+    uint32_t _base_080072C4 = g_cpu.R[2];
+    uint32_t _off_080072C4;
+    _off_080072C4 = 0x00000008u;
+    uint32_t _ea_080072C4 = _base_080072C4 + _off_080072C4;
+    uint32_t _post_080072C4 = _base_080072C4 + _off_080072C4;
+    _cyc_080072C4 += runtime_mem_cycles(_ea_080072C4, 2u, 0u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x080072C4u, _ea_080072C4 & ~1u, (uint32_t)(g_cpu.R[3] & 0xFFFFu), 2u);
+    bus_write_u16(_ea_080072C4 & ~1u, (uint16_t)(g_cpu.R[3] & 0xFFFFu));
+    g_cpu.R[15] = 0x080072C6u;
+    runtime_tick(_cyc_080072C4);
+    /* 080072C6  080072c6 T movs r0,#0xff */
+    g_cpu.R[15] = 0x080072C6u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080072C6 = 1u;
+    _cyc_080072C6 = 1u;
+    uint32_t _r_080072C6;
+    _r_080072C6 = 0x000000FFu;
+    arm_set_nzc_logic(_r_080072C6, cpsr_c());
+    g_cpu.R[0] = _r_080072C6;
+    g_cpu.R[15] = 0x080072C8u;
+    runtime_tick(_cyc_080072C6);
+    /* 080072C8  080072c8 T strh r0,[r2,#0x4] */
+    g_cpu.R[15] = 0x080072C8u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080072C8 = 1u;
+    _cyc_080072C8 = 1u;
+    uint32_t _base_080072C8 = g_cpu.R[2];
+    uint32_t _off_080072C8;
+    _off_080072C8 = 0x00000004u;
+    uint32_t _ea_080072C8 = _base_080072C8 + _off_080072C8;
+    uint32_t _post_080072C8 = _base_080072C8 + _off_080072C8;
+    _cyc_080072C8 += runtime_mem_cycles(_ea_080072C8, 2u, 0u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x080072C8u, _ea_080072C8 & ~1u, (uint32_t)(g_cpu.R[0] & 0xFFFFu), 2u);
+    bus_write_u16(_ea_080072C8 & ~1u, (uint16_t)(g_cpu.R[0] & 0xFFFFu));
+    g_cpu.R[15] = 0x080072CAu;
+    runtime_tick(_cyc_080072C8);
+    /* 080072CA  080072ca T bl.hi 0x0808b2ce */
+    g_cpu.R[15] = 0x080072CAu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080072CA = 1u;
+    _cyc_080072CA = 1u;
+    g_cpu.R[14] = 0x0808B2CEu;
+    g_cpu.R[15] = 0x080072CCu;
+    runtime_tick(_cyc_080072CA);
+    /* 080072CC  080072cc T bl.lo 0x00000000 */
+    g_cpu.R[15] = 0x080072CCu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080072CC = 1u;
+    _cyc_080072CC = 3u;
+    uint32_t _blt_080072CC = (g_cpu.R[14] + 0x00000F6Au) & ~1u;
+    g_cpu.R[14] = 0x080072CFu;
+    g_cpu.R[15] = _blt_080072CC;
+    runtime_call_push_return(0x080072CEu);
+    runtime_tick(_cyc_080072CC);
+    _cyc_080072CC = 0u;
+    runtime_dispatch(_blt_080072CC);
+    if (g_cpu.R[15] != 0x080072CEu) { runtime_call_cancel_return(0x080072CEu); return; }
+    g_cpu.R[15] = 0x080072CEu;
+    runtime_tick(_cyc_080072CC);
+    /* fall-through to 0x080072CE */
+    g_cpu.R[15] = 0x080072CEu;
+    runtime_dispatch(0x080072CEu);
+    return;
+}
+
+/* 0x080072CE  mode=thumb  end=0x080072D6  branches=1 */
+
+
+/* 0x080072CE thumb */
+void gf_tfunc_080072CE(void) {
+    if (g_runtime_fn_entry_hook) g_runtime_fn_entry_hook(0x080072CEu);
+    /* 080072CE  080072ce T ldr r0,[r15,#0x24] */
+    g_cpu.R[15] = 0x080072CEu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080072CE = 1u;
+    _cyc_080072CE = 2u;
+    uint32_t _base_080072CE = 0x080072D2u & ~3u;
+    uint32_t _off_080072CE;
+    _off_080072CE = 0x00000024u;
+    uint32_t _ea_080072CE = _base_080072CE + _off_080072CE;
+    uint32_t _post_080072CE = _base_080072CE + _off_080072CE;
+    _cyc_080072CE += runtime_mem_cycles(_ea_080072CE, 4u, 0u);
+    uint32_t _v_080072CE;
+    { uint32_t _w = bus_read_u32(_ea_080072CE & ~3u); uint32_t _rot = (_ea_080072CE & 3u) * 8u; _v_080072CE = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_080072CE;
+    g_cpu.R[15] = 0x080072D0u;
+    runtime_tick(_cyc_080072CE);
+    /* 080072D0  080072d0 T adds r1,r5,r0 */
+    g_cpu.R[15] = 0x080072D0u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080072D0 = 1u;
+    _cyc_080072D0 = 1u;
+    uint32_t _rm_080072D0 = g_cpu.R[0];
+    uint32_t _op2_080072D0;
+    uint32_t _co_080072D0;
+    _op2_080072D0 = _rm_080072D0;
+    _co_080072D0 = cpsr_c();
+    uint32_t _rn_080072D0 = g_cpu.R[5];
+    uint32_t _r_080072D0;
+    _r_080072D0 = _rn_080072D0 + _op2_080072D0;
+    arm_set_nzcv_add(_rn_080072D0, _op2_080072D0, _r_080072D0);
+    g_cpu.R[1] = _r_080072D0;
+    g_cpu.R[15] = 0x080072D2u;
+    runtime_tick(_cyc_080072D0);
+    /* 080072D2  080072d2 T movs r0,#0x1 */
+    g_cpu.R[15] = 0x080072D2u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080072D2 = 1u;
+    _cyc_080072D2 = 1u;
+    uint32_t _r_080072D2;
+    _r_080072D2 = 0x00000001u;
+    arm_set_nzc_logic(_r_080072D2, cpsr_c());
+    g_cpu.R[0] = _r_080072D2;
+    g_cpu.R[15] = 0x080072D4u;
+    runtime_tick(_cyc_080072D2);
+    /* 080072D4  080072d4 T b 0x08007350 */
+    g_cpu.R[15] = 0x080072D4u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080072D4 = 1u;
+    _cyc_080072D4 = 3u;
+    g_cpu.R[15] = 0x08007350u;
+    runtime_tick(_cyc_080072D4);
+    GBARECOMP_TAIL_CALL(gf_tfunc_08007350);
+    g_cpu.R[15] = 0x080072D6u;
+    runtime_tick(_cyc_080072D4);
+    /* fall-through to 0x080072D6 */
+    g_cpu.R[15] = 0x080072D6u;
+    runtime_dispatch(0x080072D6u);
+    return;
+}
+
 /* 0x080072F8  mode=thumb  end=0x0800730A  branches=3 */
 
 
@@ -38497,7 +53241,7 @@ void gf_tfunc_0800730A(void) {
     return;
 }
 
-/* 0x0800734A  mode=thumb  end=0x0800735A  branches=7 */
+/* 0x0800734A  mode=thumb  end=0x08007350  branches=7 */
 
 
 /* 0x0800731A thumb */
@@ -38880,7 +53624,7 @@ void gf_tfunc_0800731A(void) {
     return;
 }
 
-/* 0x0800735A  mode=thumb  end=0x0800735E  branches=5 */
+/* 0x08007350  mode=thumb  end=0x0800735A  branches=7 */
 
 
 /* 0x0800734A thumb */
@@ -38933,6 +53677,18 @@ void gf_tfunc_0800734A(void) {
     g_cpu.R[0] = _r_0800734E;
     g_cpu.R[15] = 0x08007350u;
     runtime_tick(_cyc_0800734E);
+    /* fall-through to 0x08007350 */
+    g_cpu.R[15] = 0x08007350u;
+    runtime_dispatch(0x08007350u);
+    return;
+}
+
+/* 0x0800735E  mode=thumb  end=0x0800737A  branches=3 */
+
+
+/* 0x08007350 thumb */
+void gf_tfunc_08007350(void) {
+    if (g_runtime_fn_entry_hook) g_runtime_fn_entry_hook(0x08007350u);
     /* 08007350  08007350 T strb r0,[r1] */
     g_cpu.R[15] = 0x08007350u;
     if (runtime_should_yield()) return;
@@ -39009,7 +53765,7 @@ void gf_tfunc_0800734A(void) {
     return;
 }
 
-/* 0x0800735E  mode=thumb  end=0x0800737A  branches=3 */
+/* 0x0800735A  mode=thumb  end=0x0800735E  branches=5 */
 
 
 /* 0x0800735A thumb */
@@ -40572,7 +55328,7 @@ void gf_tfunc_08007428(void) {
     return;
 }
 
-/* 0x080074EA  mode=thumb  end=0x080074F0  branches=24  indirect */
+/* 0x08007470  mode=thumb  end=0x08007484  branches=36  indirect */
 
 
 /* 0x0800745A thumb */
@@ -40669,6 +55425,1040 @@ void gf_tfunc_0800745A(void) {
 }
 
 /* 0x0800750C  mode=thumb  end=0x08007518  branches=18  indirect */
+
+
+/* 0x08007470 thumb */
+void gf_collision_resolve(void) {
+    if (g_runtime_fn_entry_hook) g_runtime_fn_entry_hook(0x08007470u);
+    /* 08007470  08007470 T stm r13!,{r4,r5,r6,r7,r14} */
+    g_cpu.R[15] = 0x08007470u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007470 = 1u;
+    _cyc_08007470 = 1u;
+    uint32_t _b_08007470 = g_cpu.R[13];
+    uint32_t _a_08007470 = _b_08007470 - 20u;
+    uint32_t _fb_08007470 = _b_08007470 - 20u;
+    _cyc_08007470 += runtime_mem_cycles(_a_08007470 & ~3u, 4u, 0u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x08007470u, _a_08007470 & ~3u, g_cpu.R[4], 4u);
+    bus_write_u32(_a_08007470 & ~3u, g_cpu.R[4]);
+    _a_08007470 += 4u;
+    _cyc_08007470 += runtime_mem_cycles(_a_08007470 & ~3u, 4u, 1u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x08007470u, _a_08007470 & ~3u, g_cpu.R[5], 4u);
+    bus_write_u32(_a_08007470 & ~3u, g_cpu.R[5]);
+    _a_08007470 += 4u;
+    _cyc_08007470 += runtime_mem_cycles(_a_08007470 & ~3u, 4u, 1u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x08007470u, _a_08007470 & ~3u, g_cpu.R[6], 4u);
+    bus_write_u32(_a_08007470 & ~3u, g_cpu.R[6]);
+    _a_08007470 += 4u;
+    _cyc_08007470 += runtime_mem_cycles(_a_08007470 & ~3u, 4u, 1u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x08007470u, _a_08007470 & ~3u, g_cpu.R[7], 4u);
+    bus_write_u32(_a_08007470 & ~3u, g_cpu.R[7]);
+    _a_08007470 += 4u;
+    _cyc_08007470 += runtime_mem_cycles(_a_08007470 & ~3u, 4u, 1u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x08007470u, _a_08007470 & ~3u, g_cpu.R[14], 4u);
+    bus_write_u32(_a_08007470 & ~3u, g_cpu.R[14]);
+    _a_08007470 += 4u;
+    g_cpu.R[13] = _fb_08007470;
+    g_cpu.R[15] = 0x08007472u;
+    runtime_tick(_cyc_08007470);
+    /* 08007472  08007472 T mov r7,r8 */
+    g_cpu.R[15] = 0x08007472u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007472 = 1u;
+    _cyc_08007472 = 1u;
+    uint32_t _rm_08007472 = g_cpu.R[8];
+    uint32_t _op2_08007472;
+    uint32_t _co_08007472;
+    _op2_08007472 = _rm_08007472;
+    _co_08007472 = cpsr_c();
+    uint32_t _r_08007472;
+    _r_08007472 = _op2_08007472;
+    g_cpu.R[7] = _r_08007472;
+    g_cpu.R[15] = 0x08007474u;
+    runtime_tick(_cyc_08007472);
+    /* 08007474  08007474 T stm r13!,{r7} */
+    g_cpu.R[15] = 0x08007474u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007474 = 1u;
+    _cyc_08007474 = 1u;
+    uint32_t _b_08007474 = g_cpu.R[13];
+    uint32_t _a_08007474 = _b_08007474 - 4u;
+    uint32_t _fb_08007474 = _b_08007474 - 4u;
+    _cyc_08007474 += runtime_mem_cycles(_a_08007474 & ~3u, 4u, 0u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x08007474u, _a_08007474 & ~3u, g_cpu.R[7], 4u);
+    bus_write_u32(_a_08007474 & ~3u, g_cpu.R[7]);
+    _a_08007474 += 4u;
+    g_cpu.R[13] = _fb_08007474;
+    g_cpu.R[15] = 0x08007476u;
+    runtime_tick(_cyc_08007474);
+    /* 08007476  08007476 T adds r6,r0,#0x0 */
+    g_cpu.R[15] = 0x08007476u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007476 = 1u;
+    _cyc_08007476 = 1u;
+    uint32_t _rn_08007476 = g_cpu.R[0];
+    uint32_t _r_08007476;
+    _r_08007476 = _rn_08007476 + 0x00000000u;
+    arm_set_nzcv_add(_rn_08007476, 0x00000000u, _r_08007476);
+    g_cpu.R[6] = _r_08007476;
+    g_cpu.R[15] = 0x08007478u;
+    runtime_tick(_cyc_08007476);
+    /* 08007478  08007478 T ldr r4,[r15,#0x118] */
+    g_cpu.R[15] = 0x08007478u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007478 = 1u;
+    _cyc_08007478 = 2u;
+    uint32_t _base_08007478 = 0x0800747Cu & ~3u;
+    uint32_t _off_08007478;
+    _off_08007478 = 0x00000118u;
+    uint32_t _ea_08007478 = _base_08007478 + _off_08007478;
+    uint32_t _post_08007478 = _base_08007478 + _off_08007478;
+    _cyc_08007478 += runtime_mem_cycles(_ea_08007478, 4u, 0u);
+    uint32_t _v_08007478;
+    { uint32_t _w = bus_read_u32(_ea_08007478 & ~3u); uint32_t _rot = (_ea_08007478 & 3u) * 8u; _v_08007478 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[4] = _v_08007478;
+    g_cpu.R[15] = 0x0800747Au;
+    runtime_tick(_cyc_08007478);
+    /* 0800747A  0800747a T ldr r1,[r15,#0x11c] */
+    g_cpu.R[15] = 0x0800747Au;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800747A = 1u;
+    _cyc_0800747A = 2u;
+    uint32_t _base_0800747A = 0x0800747Eu & ~3u;
+    uint32_t _off_0800747A;
+    _off_0800747A = 0x0000011Cu;
+    uint32_t _ea_0800747A = _base_0800747A + _off_0800747A;
+    uint32_t _post_0800747A = _base_0800747A + _off_0800747A;
+    _cyc_0800747A += runtime_mem_cycles(_ea_0800747A, 4u, 0u);
+    uint32_t _v_0800747A;
+    { uint32_t _w = bus_read_u32(_ea_0800747A & ~3u); uint32_t _rot = (_ea_0800747A & 3u) * 8u; _v_0800747A = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[1] = _v_0800747A;
+    g_cpu.R[15] = 0x0800747Cu;
+    runtime_tick(_cyc_0800747A);
+    /* 0800747C  0800747c T adds r0,r4,r1 */
+    g_cpu.R[15] = 0x0800747Cu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800747C = 1u;
+    _cyc_0800747C = 1u;
+    uint32_t _rm_0800747C = g_cpu.R[1];
+    uint32_t _op2_0800747C;
+    uint32_t _co_0800747C;
+    _op2_0800747C = _rm_0800747C;
+    _co_0800747C = cpsr_c();
+    uint32_t _rn_0800747C = g_cpu.R[4];
+    uint32_t _r_0800747C;
+    _r_0800747C = _rn_0800747C + _op2_0800747C;
+    arm_set_nzcv_add(_rn_0800747C, _op2_0800747C, _r_0800747C);
+    g_cpu.R[0] = _r_0800747C;
+    g_cpu.R[15] = 0x0800747Eu;
+    runtime_tick(_cyc_0800747C);
+    /* 0800747E  0800747e T ldr r0,[r0] */
+    g_cpu.R[15] = 0x0800747Eu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800747E = 1u;
+    _cyc_0800747E = 2u;
+    uint32_t _base_0800747E = g_cpu.R[0];
+    uint32_t _off_0800747E;
+    _off_0800747E = 0x00000000u;
+    uint32_t _ea_0800747E = _base_0800747E + _off_0800747E;
+    uint32_t _post_0800747E = _base_0800747E + _off_0800747E;
+    _cyc_0800747E += runtime_mem_cycles(_ea_0800747E, 4u, 0u);
+    uint32_t _v_0800747E;
+    { uint32_t _w = bus_read_u32(_ea_0800747E & ~3u); uint32_t _rot = (_ea_0800747E & 3u) * 8u; _v_0800747E = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_0800747E;
+    g_cpu.R[15] = 0x08007480u;
+    runtime_tick(_cyc_0800747E);
+    /* 08007480  08007480 T bl.hi 0x08001484 */
+    g_cpu.R[15] = 0x08007480u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007480 = 1u;
+    _cyc_08007480 = 1u;
+    g_cpu.R[14] = 0x08001484u;
+    g_cpu.R[15] = 0x08007482u;
+    runtime_tick(_cyc_08007480);
+    /* 08007482  08007482 T bl.lo 0x00000000 */
+    g_cpu.R[15] = 0x08007482u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007482 = 1u;
+    _cyc_08007482 = 3u;
+    uint32_t _blt_08007482 = (g_cpu.R[14] + 0x000002B4u) & ~1u;
+    g_cpu.R[14] = 0x08007485u;
+    g_cpu.R[15] = _blt_08007482;
+    runtime_call_push_return(0x08007484u);
+    runtime_tick(_cyc_08007482);
+    _cyc_08007482 = 0u;
+    runtime_dispatch(_blt_08007482);
+    if (g_cpu.R[15] != 0x08007484u) { runtime_call_cancel_return(0x08007484u); return; }
+    g_cpu.R[15] = 0x08007484u;
+    runtime_tick(_cyc_08007482);
+    /* fall-through to 0x08007484 */
+    g_cpu.R[15] = 0x08007484u;
+    runtime_dispatch(0x08007484u);
+    return;
+}
+
+/* 0x08007484  mode=thumb  end=0x08007490  branches=34  indirect */
+
+
+/* 0x08007484 thumb */
+void gf_collision_check(void) {
+    if (g_runtime_fn_entry_hook) g_runtime_fn_entry_hook(0x08007484u);
+    /* 08007484  08007484 T movs r0,#0xc3 */
+    g_cpu.R[15] = 0x08007484u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007484 = 1u;
+    _cyc_08007484 = 1u;
+    uint32_t _r_08007484;
+    _r_08007484 = 0x000000C3u;
+    arm_set_nzc_logic(_r_08007484, cpsr_c());
+    g_cpu.R[0] = _r_08007484;
+    g_cpu.R[15] = 0x08007486u;
+    runtime_tick(_cyc_08007484);
+    /* 08007486  08007486 T movs r0,r0,lsl #5 */
+    g_cpu.R[15] = 0x08007486u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007486 = 1u;
+    _cyc_08007486 = 1u;
+    uint32_t _rm_08007486 = g_cpu.R[0];
+    uint32_t _op2_08007486;
+    uint32_t _co_08007486;
+    _op2_08007486 = _rm_08007486 << 5;
+    _co_08007486 = (_rm_08007486 >> 27) & 1u;
+    uint32_t _r_08007486;
+    _r_08007486 = _op2_08007486;
+    arm_set_nzc_logic(_r_08007486, _co_08007486);
+    g_cpu.R[0] = _r_08007486;
+    g_cpu.R[15] = 0x08007488u;
+    runtime_tick(_cyc_08007486);
+    /* 08007488  08007488 T adds r7,r4,r0 */
+    g_cpu.R[15] = 0x08007488u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007488 = 1u;
+    _cyc_08007488 = 1u;
+    uint32_t _rm_08007488 = g_cpu.R[0];
+    uint32_t _op2_08007488;
+    uint32_t _co_08007488;
+    _op2_08007488 = _rm_08007488;
+    _co_08007488 = cpsr_c();
+    uint32_t _rn_08007488 = g_cpu.R[4];
+    uint32_t _r_08007488;
+    _r_08007488 = _rn_08007488 + _op2_08007488;
+    arm_set_nzcv_add(_rn_08007488, _op2_08007488, _r_08007488);
+    g_cpu.R[7] = _r_08007488;
+    g_cpu.R[15] = 0x0800748Au;
+    runtime_tick(_cyc_08007488);
+    /* 0800748A  0800748a T ldr r0,[r7] */
+    g_cpu.R[15] = 0x0800748Au;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800748A = 1u;
+    _cyc_0800748A = 2u;
+    uint32_t _base_0800748A = g_cpu.R[7];
+    uint32_t _off_0800748A;
+    _off_0800748A = 0x00000000u;
+    uint32_t _ea_0800748A = _base_0800748A + _off_0800748A;
+    uint32_t _post_0800748A = _base_0800748A + _off_0800748A;
+    _cyc_0800748A += runtime_mem_cycles(_ea_0800748A, 4u, 0u);
+    uint32_t _v_0800748A;
+    { uint32_t _w = bus_read_u32(_ea_0800748A & ~3u); uint32_t _rot = (_ea_0800748A & 3u) * 8u; _v_0800748A = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_0800748A;
+    g_cpu.R[15] = 0x0800748Cu;
+    runtime_tick(_cyc_0800748A);
+    /* 0800748C  0800748c T bl.hi 0x08001490 */
+    g_cpu.R[15] = 0x0800748Cu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800748C = 1u;
+    _cyc_0800748C = 1u;
+    g_cpu.R[14] = 0x08001490u;
+    g_cpu.R[15] = 0x0800748Eu;
+    runtime_tick(_cyc_0800748C);
+    /* 0800748E  0800748e T bl.lo 0x00000000 */
+    g_cpu.R[15] = 0x0800748Eu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800748E = 1u;
+    _cyc_0800748E = 3u;
+    uint32_t _blt_0800748E = (g_cpu.R[14] + 0x000002A8u) & ~1u;
+    g_cpu.R[14] = 0x08007491u;
+    g_cpu.R[15] = _blt_0800748E;
+    runtime_call_push_return(0x08007490u);
+    runtime_tick(_cyc_0800748E);
+    _cyc_0800748E = 0u;
+    runtime_dispatch(_blt_0800748E);
+    if (g_cpu.R[15] != 0x08007490u) { runtime_call_cancel_return(0x08007490u); return; }
+    g_cpu.R[15] = 0x08007490u;
+    runtime_tick(_cyc_0800748E);
+    /* fall-through to 0x08007490 */
+    g_cpu.R[15] = 0x08007490u;
+    runtime_dispatch(0x08007490u);
+    return;
+}
+
+/* 0x08007490  mode=thumb  end=0x080074A6  branches=32  indirect */
+
+
+/* 0x08007490 thumb */
+void gf_tfunc_08007490(void) {
+    if (g_runtime_fn_entry_hook) g_runtime_fn_entry_hook(0x08007490u);
+    /* 08007490  08007490 T ldr r1,[r15,#0x108] */
+    g_cpu.R[15] = 0x08007490u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007490 = 1u;
+    _cyc_08007490 = 2u;
+    uint32_t _base_08007490 = 0x08007494u & ~3u;
+    uint32_t _off_08007490;
+    _off_08007490 = 0x00000108u;
+    uint32_t _ea_08007490 = _base_08007490 + _off_08007490;
+    uint32_t _post_08007490 = _base_08007490 + _off_08007490;
+    _cyc_08007490 += runtime_mem_cycles(_ea_08007490, 4u, 0u);
+    uint32_t _v_08007490;
+    { uint32_t _w = bus_read_u32(_ea_08007490 & ~3u); uint32_t _rot = (_ea_08007490 & 3u) * 8u; _v_08007490 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[1] = _v_08007490;
+    g_cpu.R[15] = 0x08007492u;
+    runtime_tick(_cyc_08007490);
+    /* 08007492  08007492 T adds r5,r4,r1 */
+    g_cpu.R[15] = 0x08007492u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007492 = 1u;
+    _cyc_08007492 = 1u;
+    uint32_t _rm_08007492 = g_cpu.R[1];
+    uint32_t _op2_08007492;
+    uint32_t _co_08007492;
+    _op2_08007492 = _rm_08007492;
+    _co_08007492 = cpsr_c();
+    uint32_t _rn_08007492 = g_cpu.R[4];
+    uint32_t _r_08007492;
+    _r_08007492 = _rn_08007492 + _op2_08007492;
+    arm_set_nzcv_add(_rn_08007492, _op2_08007492, _r_08007492);
+    g_cpu.R[5] = _r_08007492;
+    g_cpu.R[15] = 0x08007494u;
+    runtime_tick(_cyc_08007492);
+    /* 08007494  08007494 T ldr r0,[r5] */
+    g_cpu.R[15] = 0x08007494u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007494 = 1u;
+    _cyc_08007494 = 2u;
+    uint32_t _base_08007494 = g_cpu.R[5];
+    uint32_t _off_08007494;
+    _off_08007494 = 0x00000000u;
+    uint32_t _ea_08007494 = _base_08007494 + _off_08007494;
+    uint32_t _post_08007494 = _base_08007494 + _off_08007494;
+    _cyc_08007494 += runtime_mem_cycles(_ea_08007494, 4u, 0u);
+    uint32_t _v_08007494;
+    { uint32_t _w = bus_read_u32(_ea_08007494 & ~3u); uint32_t _rot = (_ea_08007494 & 3u) * 8u; _v_08007494 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_08007494;
+    g_cpu.R[15] = 0x08007496u;
+    runtime_tick(_cyc_08007494);
+    /* 08007496  08007496 T adds r0,r0,#0x1 */
+    g_cpu.R[15] = 0x08007496u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007496 = 1u;
+    _cyc_08007496 = 1u;
+    uint32_t _rn_08007496 = g_cpu.R[0];
+    uint32_t _r_08007496;
+    _r_08007496 = _rn_08007496 + 0x00000001u;
+    arm_set_nzcv_add(_rn_08007496, 0x00000001u, _r_08007496);
+    g_cpu.R[0] = _r_08007496;
+    g_cpu.R[15] = 0x08007498u;
+    runtime_tick(_cyc_08007496);
+    /* 08007498  08007498 T str r0,[r5] */
+    g_cpu.R[15] = 0x08007498u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007498 = 1u;
+    _cyc_08007498 = 1u;
+    uint32_t _base_08007498 = g_cpu.R[5];
+    uint32_t _off_08007498;
+    _off_08007498 = 0x00000000u;
+    uint32_t _ea_08007498 = _base_08007498 + _off_08007498;
+    uint32_t _post_08007498 = _base_08007498 + _off_08007498;
+    _cyc_08007498 += runtime_mem_cycles(_ea_08007498, 4u, 0u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x08007498u, _ea_08007498 & ~3u, g_cpu.R[0], 4u);
+    bus_write_u32(_ea_08007498 & ~3u, g_cpu.R[0]);
+    g_cpu.R[15] = 0x0800749Au;
+    runtime_tick(_cyc_08007498);
+    /* 0800749A  0800749a T ldr r0,[r15,#0x104] */
+    g_cpu.R[15] = 0x0800749Au;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800749A = 1u;
+    _cyc_0800749A = 2u;
+    uint32_t _base_0800749A = 0x0800749Eu & ~3u;
+    uint32_t _off_0800749A;
+    _off_0800749A = 0x00000104u;
+    uint32_t _ea_0800749A = _base_0800749A + _off_0800749A;
+    uint32_t _post_0800749A = _base_0800749A + _off_0800749A;
+    _cyc_0800749A += runtime_mem_cycles(_ea_0800749A, 4u, 0u);
+    uint32_t _v_0800749A;
+    { uint32_t _w = bus_read_u32(_ea_0800749A & ~3u); uint32_t _rot = (_ea_0800749A & 3u) * 8u; _v_0800749A = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_0800749A;
+    g_cpu.R[15] = 0x0800749Cu;
+    runtime_tick(_cyc_0800749A);
+    /* 0800749C  0800749c T adds r0,r0,r4 */
+    g_cpu.R[15] = 0x0800749Cu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800749C = 1u;
+    _cyc_0800749C = 1u;
+    uint32_t _rm_0800749C = g_cpu.R[4];
+    uint32_t _op2_0800749C;
+    uint32_t _co_0800749C;
+    _op2_0800749C = _rm_0800749C;
+    _co_0800749C = cpsr_c();
+    uint32_t _rn_0800749C = g_cpu.R[0];
+    uint32_t _r_0800749C;
+    _r_0800749C = _rn_0800749C + _op2_0800749C;
+    arm_set_nzcv_add(_rn_0800749C, _op2_0800749C, _r_0800749C);
+    g_cpu.R[0] = _r_0800749C;
+    g_cpu.R[15] = 0x0800749Eu;
+    runtime_tick(_cyc_0800749C);
+    /* 0800749E  0800749e T mov r8,r0 */
+    g_cpu.R[15] = 0x0800749Eu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_0800749E = 1u;
+    _cyc_0800749E = 1u;
+    uint32_t _rm_0800749E = g_cpu.R[0];
+    uint32_t _op2_0800749E;
+    uint32_t _co_0800749E;
+    _op2_0800749E = _rm_0800749E;
+    _co_0800749E = cpsr_c();
+    uint32_t _r_0800749E;
+    _r_0800749E = _op2_0800749E;
+    g_cpu.R[8] = _r_0800749E;
+    g_cpu.R[15] = 0x080074A0u;
+    runtime_tick(_cyc_0800749E);
+    /* 080074A0  080074a0 T ldr r0,[r0] */
+    g_cpu.R[15] = 0x080074A0u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080074A0 = 1u;
+    _cyc_080074A0 = 2u;
+    uint32_t _base_080074A0 = g_cpu.R[0];
+    uint32_t _off_080074A0;
+    _off_080074A0 = 0x00000000u;
+    uint32_t _ea_080074A0 = _base_080074A0 + _off_080074A0;
+    uint32_t _post_080074A0 = _base_080074A0 + _off_080074A0;
+    _cyc_080074A0 += runtime_mem_cycles(_ea_080074A0, 4u, 0u);
+    uint32_t _v_080074A0;
+    { uint32_t _w = bus_read_u32(_ea_080074A0 & ~3u); uint32_t _rot = (_ea_080074A0 & 3u) * 8u; _v_080074A0 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_080074A0;
+    g_cpu.R[15] = 0x080074A2u;
+    runtime_tick(_cyc_080074A0);
+    /* 080074A2  080074a2 T bl.hi 0x080014a6 */
+    g_cpu.R[15] = 0x080074A2u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080074A2 = 1u;
+    _cyc_080074A2 = 1u;
+    g_cpu.R[14] = 0x080014A6u;
+    g_cpu.R[15] = 0x080074A4u;
+    runtime_tick(_cyc_080074A2);
+    /* 080074A4  080074a4 T bl.lo 0x00000000 */
+    g_cpu.R[15] = 0x080074A4u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080074A4 = 1u;
+    _cyc_080074A4 = 3u;
+    uint32_t _blt_080074A4 = (g_cpu.R[14] + 0x00000292u) & ~1u;
+    g_cpu.R[14] = 0x080074A7u;
+    g_cpu.R[15] = _blt_080074A4;
+    runtime_call_push_return(0x080074A6u);
+    runtime_tick(_cyc_080074A4);
+    _cyc_080074A4 = 0u;
+    runtime_dispatch(_blt_080074A4);
+    if (g_cpu.R[15] != 0x080074A6u) { runtime_call_cancel_return(0x080074A6u); return; }
+    g_cpu.R[15] = 0x080074A6u;
+    runtime_tick(_cyc_080074A4);
+    /* fall-through to 0x080074A6 */
+    g_cpu.R[15] = 0x080074A6u;
+    runtime_dispatch(0x080074A6u);
+    return;
+}
+
+/* 0x080074A6  mode=thumb  end=0x080074C2  branches=30  indirect */
+
+
+/* 0x080074A6 thumb */
+void gf_tfunc_080074A6(void) {
+    if (g_runtime_fn_entry_hook) g_runtime_fn_entry_hook(0x080074A6u);
+    /* 080074A6  080074a6 T movs r1,#0xa6 */
+    g_cpu.R[15] = 0x080074A6u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080074A6 = 1u;
+    _cyc_080074A6 = 1u;
+    uint32_t _r_080074A6;
+    _r_080074A6 = 0x000000A6u;
+    arm_set_nzc_logic(_r_080074A6, cpsr_c());
+    g_cpu.R[1] = _r_080074A6;
+    g_cpu.R[15] = 0x080074A8u;
+    runtime_tick(_cyc_080074A6);
+    /* 080074A8  080074a8 T movs r1,r1,lsl #5 */
+    g_cpu.R[15] = 0x080074A8u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080074A8 = 1u;
+    _cyc_080074A8 = 1u;
+    uint32_t _rm_080074A8 = g_cpu.R[1];
+    uint32_t _op2_080074A8;
+    uint32_t _co_080074A8;
+    _op2_080074A8 = _rm_080074A8 << 5;
+    _co_080074A8 = (_rm_080074A8 >> 27) & 1u;
+    uint32_t _r_080074A8;
+    _r_080074A8 = _op2_080074A8;
+    arm_set_nzc_logic(_r_080074A8, _co_080074A8);
+    g_cpu.R[1] = _r_080074A8;
+    g_cpu.R[15] = 0x080074AAu;
+    runtime_tick(_cyc_080074A8);
+    /* 080074AA  080074aa T adds r0,r4,r1 */
+    g_cpu.R[15] = 0x080074AAu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080074AA = 1u;
+    _cyc_080074AA = 1u;
+    uint32_t _rm_080074AA = g_cpu.R[1];
+    uint32_t _op2_080074AA;
+    uint32_t _co_080074AA;
+    _op2_080074AA = _rm_080074AA;
+    _co_080074AA = cpsr_c();
+    uint32_t _rn_080074AA = g_cpu.R[4];
+    uint32_t _r_080074AA;
+    _r_080074AA = _rn_080074AA + _op2_080074AA;
+    arm_set_nzcv_add(_rn_080074AA, _op2_080074AA, _r_080074AA);
+    g_cpu.R[0] = _r_080074AA;
+    g_cpu.R[15] = 0x080074ACu;
+    runtime_tick(_cyc_080074AA);
+    /* 080074AC  080074ac T ldr r0,[r0] */
+    g_cpu.R[15] = 0x080074ACu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080074AC = 1u;
+    _cyc_080074AC = 2u;
+    uint32_t _base_080074AC = g_cpu.R[0];
+    uint32_t _off_080074AC;
+    _off_080074AC = 0x00000000u;
+    uint32_t _ea_080074AC = _base_080074AC + _off_080074AC;
+    uint32_t _post_080074AC = _base_080074AC + _off_080074AC;
+    _cyc_080074AC += runtime_mem_cycles(_ea_080074AC, 4u, 0u);
+    uint32_t _v_080074AC;
+    { uint32_t _w = bus_read_u32(_ea_080074AC & ~3u); uint32_t _rot = (_ea_080074AC & 3u) * 8u; _v_080074AC = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_080074AC;
+    g_cpu.R[15] = 0x080074AEu;
+    runtime_tick(_cyc_080074AC);
+    /* 080074AE  080074ae T cmps r0,#0x0 */
+    g_cpu.R[15] = 0x080074AEu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080074AE = 1u;
+    _cyc_080074AE = 1u;
+    uint32_t _rn_080074AE = g_cpu.R[0];
+    uint32_t _r_080074AE;
+    _r_080074AE = _rn_080074AE - 0x00000000u;
+    arm_set_nzcv_sub(_rn_080074AE, 0x00000000u, _r_080074AE);
+    g_cpu.R[15] = 0x080074B0u;
+    runtime_tick(_cyc_080074AE);
+    /* 080074B0  080074b0 T blt 0x080074c2 */
+    g_cpu.R[15] = 0x080074B0u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080074B0 = 1u;
+    if (arm_cond_passes(0xbu)) {
+        _cyc_080074B0 = 3u;
+        g_cpu.R[15] = 0x080074C2u;
+        runtime_tick(_cyc_080074B0);
+        GBARECOMP_TAIL_CALL(gf_tfunc_080074C2);
+    }
+    g_cpu.R[15] = 0x080074B2u;
+    runtime_tick(_cyc_080074B0);
+    /* 080074B2  080074b2 T ldr r1,[r15,#0xf0] */
+    g_cpu.R[15] = 0x080074B2u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080074B2 = 1u;
+    _cyc_080074B2 = 2u;
+    uint32_t _base_080074B2 = 0x080074B6u & ~3u;
+    uint32_t _off_080074B2;
+    _off_080074B2 = 0x000000F0u;
+    uint32_t _ea_080074B2 = _base_080074B2 + _off_080074B2;
+    uint32_t _post_080074B2 = _base_080074B2 + _off_080074B2;
+    _cyc_080074B2 += runtime_mem_cycles(_ea_080074B2, 4u, 0u);
+    uint32_t _v_080074B2;
+    { uint32_t _w = bus_read_u32(_ea_080074B2 & ~3u); uint32_t _rot = (_ea_080074B2 & 3u) * 8u; _v_080074B2 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[1] = _v_080074B2;
+    g_cpu.R[15] = 0x080074B4u;
+    runtime_tick(_cyc_080074B2);
+    /* 080074B4  080074b4 T ldrh r0,[r1,#0x8] */
+    g_cpu.R[15] = 0x080074B4u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080074B4 = 1u;
+    _cyc_080074B4 = 2u;
+    uint32_t _base_080074B4 = g_cpu.R[1];
+    uint32_t _off_080074B4;
+    _off_080074B4 = 0x00000008u;
+    uint32_t _ea_080074B4 = _base_080074B4 + _off_080074B4;
+    uint32_t _post_080074B4 = _base_080074B4 + _off_080074B4;
+    _cyc_080074B4 += runtime_mem_cycles(_ea_080074B4, 2u, 0u);
+    uint32_t _v_080074B4;
+    { uint32_t _h = bus_read_u16(_ea_080074B4 & ~1u); if (_ea_080074B4 & 1u) _v_080074B4 = ((_h >> 8) | (_h << 24)); else _v_080074B4 = _h; }
+    g_cpu.R[0] = _v_080074B4;
+    g_cpu.R[15] = 0x080074B6u;
+    runtime_tick(_cyc_080074B4);
+    /* 080074B6  080074b6 T adds r0,r0,#0x2 */
+    g_cpu.R[15] = 0x080074B6u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080074B6 = 1u;
+    _cyc_080074B6 = 1u;
+    uint32_t _rn_080074B6 = g_cpu.R[0];
+    uint32_t _r_080074B6;
+    _r_080074B6 = _rn_080074B6 + 0x00000002u;
+    arm_set_nzcv_add(_rn_080074B6, 0x00000002u, _r_080074B6);
+    g_cpu.R[0] = _r_080074B6;
+    g_cpu.R[15] = 0x080074B8u;
+    runtime_tick(_cyc_080074B6);
+    /* 080074B8  080074b8 T strh r0,[r1,#0x8] */
+    g_cpu.R[15] = 0x080074B8u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080074B8 = 1u;
+    _cyc_080074B8 = 1u;
+    uint32_t _base_080074B8 = g_cpu.R[1];
+    uint32_t _off_080074B8;
+    _off_080074B8 = 0x00000008u;
+    uint32_t _ea_080074B8 = _base_080074B8 + _off_080074B8;
+    uint32_t _post_080074B8 = _base_080074B8 + _off_080074B8;
+    _cyc_080074B8 += runtime_mem_cycles(_ea_080074B8, 2u, 0u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x080074B8u, _ea_080074B8 & ~1u, (uint32_t)(g_cpu.R[0] & 0xFFFFu), 2u);
+    bus_write_u16(_ea_080074B8 & ~1u, (uint16_t)(g_cpu.R[0] & 0xFFFFu));
+    g_cpu.R[15] = 0x080074BAu;
+    runtime_tick(_cyc_080074B8);
+    /* 080074BA  080074ba T movs r0,r0,lsl #16 */
+    g_cpu.R[15] = 0x080074BAu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080074BA = 1u;
+    _cyc_080074BA = 1u;
+    uint32_t _rm_080074BA = g_cpu.R[0];
+    uint32_t _op2_080074BA;
+    uint32_t _co_080074BA;
+    _op2_080074BA = _rm_080074BA << 16;
+    _co_080074BA = (_rm_080074BA >> 16) & 1u;
+    uint32_t _r_080074BA;
+    _r_080074BA = _op2_080074BA;
+    arm_set_nzc_logic(_r_080074BA, _co_080074BA);
+    g_cpu.R[0] = _r_080074BA;
+    g_cpu.R[15] = 0x080074BCu;
+    runtime_tick(_cyc_080074BA);
+    /* 080074BC  080074bc T movs r0,r0,lsr #16 */
+    g_cpu.R[15] = 0x080074BCu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080074BC = 1u;
+    _cyc_080074BC = 1u;
+    uint32_t _rm_080074BC = g_cpu.R[0];
+    uint32_t _op2_080074BC;
+    uint32_t _co_080074BC;
+    _op2_080074BC = _rm_080074BC >> 16;
+    _co_080074BC = (_rm_080074BC >> 15) & 1u;
+    uint32_t _r_080074BC;
+    _r_080074BC = _op2_080074BC;
+    arm_set_nzc_logic(_r_080074BC, _co_080074BC);
+    g_cpu.R[0] = _r_080074BC;
+    g_cpu.R[15] = 0x080074BEu;
+    runtime_tick(_cyc_080074BC);
+    /* 080074BE  080074be T cmps r0,#0x10 */
+    g_cpu.R[15] = 0x080074BEu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080074BE = 1u;
+    _cyc_080074BE = 1u;
+    uint32_t _rn_080074BE = g_cpu.R[0];
+    uint32_t _r_080074BE;
+    _r_080074BE = _rn_080074BE - 0x00000010u;
+    arm_set_nzcv_sub(_rn_080074BE, 0x00000010u, _r_080074BE);
+    g_cpu.R[15] = 0x080074C0u;
+    runtime_tick(_cyc_080074BE);
+    /* 080074C0  080074c0 T bne 0x0800758a */
+    g_cpu.R[15] = 0x080074C0u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080074C0 = 1u;
+    if (arm_cond_passes(0x1u)) {
+        _cyc_080074C0 = 3u;
+        g_cpu.R[15] = 0x0800758Au;
+        runtime_tick(_cyc_080074C0);
+        GBARECOMP_TAIL_CALL(gf_tfunc_0800758A);
+    }
+    g_cpu.R[15] = 0x080074C2u;
+    runtime_tick(_cyc_080074C0);
+    /* fall-through to 0x080074C2 */
+    g_cpu.R[15] = 0x080074C2u;
+    runtime_dispatch(0x080074C2u);
+    return;
+}
+
+/* 0x080074C2  mode=thumb  end=0x080074E0  branches=28  indirect */
+
+
+/* 0x080074C2 thumb */
+void gf_tfunc_080074C2(void) {
+    if (g_runtime_fn_entry_hook) g_runtime_fn_entry_hook(0x080074C2u);
+    /* 080074C2  080074c2 T ldr r0,[r15,#0xe4] */
+    g_cpu.R[15] = 0x080074C2u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080074C2 = 1u;
+    _cyc_080074C2 = 2u;
+    uint32_t _base_080074C2 = 0x080074C6u & ~3u;
+    uint32_t _off_080074C2;
+    _off_080074C2 = 0x000000E4u;
+    uint32_t _ea_080074C2 = _base_080074C2 + _off_080074C2;
+    uint32_t _post_080074C2 = _base_080074C2 + _off_080074C2;
+    _cyc_080074C2 += runtime_mem_cycles(_ea_080074C2, 4u, 0u);
+    uint32_t _v_080074C2;
+    { uint32_t _w = bus_read_u32(_ea_080074C2 & ~3u); uint32_t _rot = (_ea_080074C2 & 3u) * 8u; _v_080074C2 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_080074C2;
+    g_cpu.R[15] = 0x080074C4u;
+    runtime_tick(_cyc_080074C2);
+    /* 080074C4  080074c4 T adds r2,r4,r0 */
+    g_cpu.R[15] = 0x080074C4u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080074C4 = 1u;
+    _cyc_080074C4 = 1u;
+    uint32_t _rm_080074C4 = g_cpu.R[0];
+    uint32_t _op2_080074C4;
+    uint32_t _co_080074C4;
+    _op2_080074C4 = _rm_080074C4;
+    _co_080074C4 = cpsr_c();
+    uint32_t _rn_080074C4 = g_cpu.R[4];
+    uint32_t _r_080074C4;
+    _r_080074C4 = _rn_080074C4 + _op2_080074C4;
+    arm_set_nzcv_add(_rn_080074C4, _op2_080074C4, _r_080074C4);
+    g_cpu.R[2] = _r_080074C4;
+    g_cpu.R[15] = 0x080074C6u;
+    runtime_tick(_cyc_080074C4);
+    /* 080074C6  080074c6 T ldr r1,[r15,#0xe4] */
+    g_cpu.R[15] = 0x080074C6u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080074C6 = 1u;
+    _cyc_080074C6 = 2u;
+    uint32_t _base_080074C6 = 0x080074CAu & ~3u;
+    uint32_t _off_080074C6;
+    _off_080074C6 = 0x000000E4u;
+    uint32_t _ea_080074C6 = _base_080074C6 + _off_080074C6;
+    uint32_t _post_080074C6 = _base_080074C6 + _off_080074C6;
+    _cyc_080074C6 += runtime_mem_cycles(_ea_080074C6, 4u, 0u);
+    uint32_t _v_080074C6;
+    { uint32_t _w = bus_read_u32(_ea_080074C6 & ~3u); uint32_t _rot = (_ea_080074C6 & 3u) * 8u; _v_080074C6 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[1] = _v_080074C6;
+    g_cpu.R[15] = 0x080074C8u;
+    runtime_tick(_cyc_080074C6);
+    /* 080074C8  080074c8 T adds r0,r4,r1 */
+    g_cpu.R[15] = 0x080074C8u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080074C8 = 1u;
+    _cyc_080074C8 = 1u;
+    uint32_t _rm_080074C8 = g_cpu.R[1];
+    uint32_t _op2_080074C8;
+    uint32_t _co_080074C8;
+    _op2_080074C8 = _rm_080074C8;
+    _co_080074C8 = cpsr_c();
+    uint32_t _rn_080074C8 = g_cpu.R[4];
+    uint32_t _r_080074C8;
+    _r_080074C8 = _rn_080074C8 + _op2_080074C8;
+    arm_set_nzcv_add(_rn_080074C8, _op2_080074C8, _r_080074C8);
+    g_cpu.R[0] = _r_080074C8;
+    g_cpu.R[15] = 0x080074CAu;
+    runtime_tick(_cyc_080074C8);
+    /* 080074CA  080074ca T ldr r0,[r0] */
+    g_cpu.R[15] = 0x080074CAu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080074CA = 1u;
+    _cyc_080074CA = 2u;
+    uint32_t _base_080074CA = g_cpu.R[0];
+    uint32_t _off_080074CA;
+    _off_080074CA = 0x00000000u;
+    uint32_t _ea_080074CA = _base_080074CA + _off_080074CA;
+    uint32_t _post_080074CA = _base_080074CA + _off_080074CA;
+    _cyc_080074CA += runtime_mem_cycles(_ea_080074CA, 4u, 0u);
+    uint32_t _v_080074CA;
+    { uint32_t _w = bus_read_u32(_ea_080074CA & ~3u); uint32_t _rot = (_ea_080074CA & 3u) * 8u; _v_080074CA = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_080074CA;
+    g_cpu.R[15] = 0x080074CCu;
+    runtime_tick(_cyc_080074CA);
+    /* 080074CC  080074cc T movs r1,#0xf */
+    g_cpu.R[15] = 0x080074CCu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080074CC = 1u;
+    _cyc_080074CC = 1u;
+    uint32_t _r_080074CC;
+    _r_080074CC = 0x0000000Fu;
+    arm_set_nzc_logic(_r_080074CC, cpsr_c());
+    g_cpu.R[1] = _r_080074CC;
+    g_cpu.R[15] = 0x080074CEu;
+    runtime_tick(_cyc_080074CC);
+    /* 080074CE  080074ce T ands r0,r0,r1 */
+    g_cpu.R[15] = 0x080074CEu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080074CE = 1u;
+    _cyc_080074CE = 1u;
+    uint32_t _rm_080074CE = g_cpu.R[1];
+    uint32_t _op2_080074CE;
+    uint32_t _co_080074CE;
+    _op2_080074CE = _rm_080074CE;
+    _co_080074CE = cpsr_c();
+    uint32_t _rn_080074CE = g_cpu.R[0];
+    uint32_t _r_080074CE;
+    _r_080074CE = _rn_080074CE & _op2_080074CE;
+    arm_set_nzc_logic(_r_080074CE, _co_080074CE);
+    g_cpu.R[0] = _r_080074CE;
+    g_cpu.R[15] = 0x080074D0u;
+    runtime_tick(_cyc_080074CE);
+    /* 080074D0  080074d0 T movs r1,#0x80 */
+    g_cpu.R[15] = 0x080074D0u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080074D0 = 1u;
+    _cyc_080074D0 = 1u;
+    uint32_t _r_080074D0;
+    _r_080074D0 = 0x00000080u;
+    arm_set_nzc_logic(_r_080074D0, cpsr_c());
+    g_cpu.R[1] = _r_080074D0;
+    g_cpu.R[15] = 0x080074D2u;
+    runtime_tick(_cyc_080074D0);
+    /* 080074D2  080074d2 T orrs r0,r0,r1 */
+    g_cpu.R[15] = 0x080074D2u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080074D2 = 1u;
+    _cyc_080074D2 = 1u;
+    uint32_t _rm_080074D2 = g_cpu.R[1];
+    uint32_t _op2_080074D2;
+    uint32_t _co_080074D2;
+    _op2_080074D2 = _rm_080074D2;
+    _co_080074D2 = cpsr_c();
+    uint32_t _rn_080074D2 = g_cpu.R[0];
+    uint32_t _r_080074D2;
+    _r_080074D2 = _rn_080074D2 | _op2_080074D2;
+    arm_set_nzc_logic(_r_080074D2, _co_080074D2);
+    g_cpu.R[0] = _r_080074D2;
+    g_cpu.R[15] = 0x080074D4u;
+    runtime_tick(_cyc_080074D2);
+    /* 080074D4  080074d4 T str r0,[r2] */
+    g_cpu.R[15] = 0x080074D4u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080074D4 = 1u;
+    _cyc_080074D4 = 1u;
+    uint32_t _base_080074D4 = g_cpu.R[2];
+    uint32_t _off_080074D4;
+    _off_080074D4 = 0x00000000u;
+    uint32_t _ea_080074D4 = _base_080074D4 + _off_080074D4;
+    uint32_t _post_080074D4 = _base_080074D4 + _off_080074D4;
+    _cyc_080074D4 += runtime_mem_cycles(_ea_080074D4, 4u, 0u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x080074D4u, _ea_080074D4 & ~3u, g_cpu.R[0], 4u);
+    bus_write_u32(_ea_080074D4 & ~3u, g_cpu.R[0]);
+    g_cpu.R[15] = 0x080074D6u;
+    runtime_tick(_cyc_080074D4);
+    /* 080074D6  080074d6 T ldr r1,[r15,#0xd8] */
+    g_cpu.R[15] = 0x080074D6u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080074D6 = 1u;
+    _cyc_080074D6 = 2u;
+    uint32_t _base_080074D6 = 0x080074DAu & ~3u;
+    uint32_t _off_080074D6;
+    _off_080074D6 = 0x000000D8u;
+    uint32_t _ea_080074D6 = _base_080074D6 + _off_080074D6;
+    uint32_t _post_080074D6 = _base_080074D6 + _off_080074D6;
+    _cyc_080074D6 += runtime_mem_cycles(_ea_080074D6, 4u, 0u);
+    uint32_t _v_080074D6;
+    { uint32_t _w = bus_read_u32(_ea_080074D6 & ~3u); uint32_t _rot = (_ea_080074D6 & 3u) * 8u; _v_080074D6 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[1] = _v_080074D6;
+    g_cpu.R[15] = 0x080074D8u;
+    runtime_tick(_cyc_080074D6);
+    /* 080074D8  080074d8 T adds r0,r4,r1 */
+    g_cpu.R[15] = 0x080074D8u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080074D8 = 1u;
+    _cyc_080074D8 = 1u;
+    uint32_t _rm_080074D8 = g_cpu.R[1];
+    uint32_t _op2_080074D8;
+    uint32_t _co_080074D8;
+    _op2_080074D8 = _rm_080074D8;
+    _co_080074D8 = cpsr_c();
+    uint32_t _rn_080074D8 = g_cpu.R[4];
+    uint32_t _r_080074D8;
+    _r_080074D8 = _rn_080074D8 + _op2_080074D8;
+    arm_set_nzcv_add(_rn_080074D8, _op2_080074D8, _r_080074D8);
+    g_cpu.R[0] = _r_080074D8;
+    g_cpu.R[15] = 0x080074DAu;
+    runtime_tick(_cyc_080074D8);
+    /* 080074DA  080074da T ldr r0,[r0] */
+    g_cpu.R[15] = 0x080074DAu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080074DA = 1u;
+    _cyc_080074DA = 2u;
+    uint32_t _base_080074DA = g_cpu.R[0];
+    uint32_t _off_080074DA;
+    _off_080074DA = 0x00000000u;
+    uint32_t _ea_080074DA = _base_080074DA + _off_080074DA;
+    uint32_t _post_080074DA = _base_080074DA + _off_080074DA;
+    _cyc_080074DA += runtime_mem_cycles(_ea_080074DA, 4u, 0u);
+    uint32_t _v_080074DA;
+    { uint32_t _w = bus_read_u32(_ea_080074DA & ~3u); uint32_t _rot = (_ea_080074DA & 3u) * 8u; _v_080074DA = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_080074DA;
+    g_cpu.R[15] = 0x080074DCu;
+    runtime_tick(_cyc_080074DA);
+    /* 080074DC  080074dc T bl.hi 0x080014e0 */
+    g_cpu.R[15] = 0x080074DCu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080074DC = 1u;
+    _cyc_080074DC = 1u;
+    g_cpu.R[14] = 0x080014E0u;
+    g_cpu.R[15] = 0x080074DEu;
+    runtime_tick(_cyc_080074DC);
+    /* 080074DE  080074de T bl.lo 0x00000000 */
+    g_cpu.R[15] = 0x080074DEu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080074DE = 1u;
+    _cyc_080074DE = 3u;
+    uint32_t _blt_080074DE = (g_cpu.R[14] + 0x00000258u) & ~1u;
+    g_cpu.R[14] = 0x080074E1u;
+    g_cpu.R[15] = _blt_080074DE;
+    runtime_call_push_return(0x080074E0u);
+    runtime_tick(_cyc_080074DE);
+    _cyc_080074DE = 0u;
+    runtime_dispatch(_blt_080074DE);
+    if (g_cpu.R[15] != 0x080074E0u) { runtime_call_cancel_return(0x080074E0u); return; }
+    g_cpu.R[15] = 0x080074E0u;
+    runtime_tick(_cyc_080074DE);
+    /* fall-through to 0x080074E0 */
+    g_cpu.R[15] = 0x080074E0u;
+    runtime_dispatch(0x080074E0u);
+    return;
+}
+
+/* 0x080074E0  mode=thumb  end=0x080074EA  branches=26  indirect */
+
+
+/* 0x080074E0 thumb */
+void gf_tfunc_080074E0(void) {
+    if (g_runtime_fn_entry_hook) g_runtime_fn_entry_hook(0x080074E0u);
+    /* 080074E0  080074e0 T ldr r1,[r15,#0xd0] */
+    g_cpu.R[15] = 0x080074E0u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080074E0 = 1u;
+    _cyc_080074E0 = 2u;
+    uint32_t _base_080074E0 = 0x080074E4u & ~3u;
+    uint32_t _off_080074E0;
+    _off_080074E0 = 0x000000D0u;
+    uint32_t _ea_080074E0 = _base_080074E0 + _off_080074E0;
+    uint32_t _post_080074E0 = _base_080074E0 + _off_080074E0;
+    _cyc_080074E0 += runtime_mem_cycles(_ea_080074E0, 4u, 0u);
+    uint32_t _v_080074E0;
+    { uint32_t _w = bus_read_u32(_ea_080074E0 & ~3u); uint32_t _rot = (_ea_080074E0 & 3u) * 8u; _v_080074E0 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[1] = _v_080074E0;
+    g_cpu.R[15] = 0x080074E2u;
+    runtime_tick(_cyc_080074E0);
+    /* 080074E2  080074e2 T adds r0,r4,r1 */
+    g_cpu.R[15] = 0x080074E2u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080074E2 = 1u;
+    _cyc_080074E2 = 1u;
+    uint32_t _rm_080074E2 = g_cpu.R[1];
+    uint32_t _op2_080074E2;
+    uint32_t _co_080074E2;
+    _op2_080074E2 = _rm_080074E2;
+    _co_080074E2 = cpsr_c();
+    uint32_t _rn_080074E2 = g_cpu.R[4];
+    uint32_t _r_080074E2;
+    _r_080074E2 = _rn_080074E2 + _op2_080074E2;
+    arm_set_nzcv_add(_rn_080074E2, _op2_080074E2, _r_080074E2);
+    g_cpu.R[0] = _r_080074E2;
+    g_cpu.R[15] = 0x080074E4u;
+    runtime_tick(_cyc_080074E2);
+    /* 080074E4  080074e4 T ldr r0,[r0] */
+    g_cpu.R[15] = 0x080074E4u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080074E4 = 1u;
+    _cyc_080074E4 = 2u;
+    uint32_t _base_080074E4 = g_cpu.R[0];
+    uint32_t _off_080074E4;
+    _off_080074E4 = 0x00000000u;
+    uint32_t _ea_080074E4 = _base_080074E4 + _off_080074E4;
+    uint32_t _post_080074E4 = _base_080074E4 + _off_080074E4;
+    _cyc_080074E4 += runtime_mem_cycles(_ea_080074E4, 4u, 0u);
+    uint32_t _v_080074E4;
+    { uint32_t _w = bus_read_u32(_ea_080074E4 & ~3u); uint32_t _rot = (_ea_080074E4 & 3u) * 8u; _v_080074E4 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_080074E4;
+    g_cpu.R[15] = 0x080074E6u;
+    runtime_tick(_cyc_080074E4);
+    /* 080074E6  080074e6 T bl.hi 0x080014ea */
+    g_cpu.R[15] = 0x080074E6u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080074E6 = 1u;
+    _cyc_080074E6 = 1u;
+    g_cpu.R[14] = 0x080014EAu;
+    g_cpu.R[15] = 0x080074E8u;
+    runtime_tick(_cyc_080074E6);
+    /* 080074E8  080074e8 T bl.lo 0x00000000 */
+    g_cpu.R[15] = 0x080074E8u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_080074E8 = 1u;
+    _cyc_080074E8 = 3u;
+    uint32_t _blt_080074E8 = (g_cpu.R[14] + 0x0000024Eu) & ~1u;
+    g_cpu.R[14] = 0x080074EBu;
+    g_cpu.R[15] = _blt_080074E8;
+    runtime_call_push_return(0x080074EAu);
+    runtime_tick(_cyc_080074E8);
+    _cyc_080074E8 = 0u;
+    runtime_dispatch(_blt_080074E8);
+    if (g_cpu.R[15] != 0x080074EAu) { runtime_call_cancel_return(0x080074EAu); return; }
+    g_cpu.R[15] = 0x080074EAu;
+    runtime_tick(_cyc_080074E8);
+    /* fall-through to 0x080074EA */
+    g_cpu.R[15] = 0x080074EAu;
+    runtime_dispatch(0x080074EAu);
+    return;
+}
+
+/* 0x080074EA  mode=thumb  end=0x080074F0  branches=24  indirect */
 
 
 /* 0x080074EA thumb */
@@ -47701,7 +63491,7 @@ void gf_tfunc_08007E24(void) {
     return;
 }
 
-/* 0x08007F70  mode=thumb  end=0x08007F9A  branches=6  indirect */
+/* 0x08007ED0  mode=thumb  end=0x08007EEA  branches=0  indirect */
 
 
 /* 0x08007EA8 thumb */
@@ -48008,6 +63798,1153 @@ void gf_tfunc_08007EA8(void) {
 }
 
 /* 0x08007FA6  mode=thumb  end=0x08007FB6  branches=5  indirect */
+
+
+/* 0x08007ED0 thumb */
+void gf_tfunc_08007ED0(void) {
+    if (g_runtime_fn_entry_hook) g_runtime_fn_entry_hook(0x08007ED0u);
+    /* 08007ED0  08007ed0 T sub r13,r13,#0x4 */
+    g_cpu.R[15] = 0x08007ED0u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007ED0 = 1u;
+    _cyc_08007ED0 = 1u;
+    uint32_t _rn_08007ED0 = g_cpu.R[13];
+    uint32_t _r_08007ED0;
+    _r_08007ED0 = _rn_08007ED0 - 0x00000004u;
+    g_cpu.R[13] = _r_08007ED0;
+    g_cpu.R[15] = 0x08007ED2u;
+    runtime_tick(_cyc_08007ED0);
+    /* 08007ED2  08007ed2 T ldr r1,[r15,#0x18] */
+    g_cpu.R[15] = 0x08007ED2u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007ED2 = 1u;
+    _cyc_08007ED2 = 2u;
+    uint32_t _base_08007ED2 = 0x08007ED6u & ~3u;
+    uint32_t _off_08007ED2;
+    _off_08007ED2 = 0x00000018u;
+    uint32_t _ea_08007ED2 = _base_08007ED2 + _off_08007ED2;
+    uint32_t _post_08007ED2 = _base_08007ED2 + _off_08007ED2;
+    _cyc_08007ED2 += runtime_mem_cycles(_ea_08007ED2, 4u, 0u);
+    uint32_t _v_08007ED2;
+    { uint32_t _w = bus_read_u32(_ea_08007ED2 & ~3u); uint32_t _rot = (_ea_08007ED2 & 3u) * 8u; _v_08007ED2 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[1] = _v_08007ED2;
+    g_cpu.R[15] = 0x08007ED4u;
+    runtime_tick(_cyc_08007ED2);
+    /* 08007ED4  08007ed4 T movs r0,#0x0 */
+    g_cpu.R[15] = 0x08007ED4u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007ED4 = 1u;
+    _cyc_08007ED4 = 1u;
+    uint32_t _r_08007ED4;
+    _r_08007ED4 = 0x00000000u;
+    arm_set_nzc_logic(_r_08007ED4, cpsr_c());
+    g_cpu.R[0] = _r_08007ED4;
+    g_cpu.R[15] = 0x08007ED6u;
+    runtime_tick(_cyc_08007ED4);
+    /* 08007ED6  08007ed6 T str r0,[r13] */
+    g_cpu.R[15] = 0x08007ED6u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007ED6 = 1u;
+    _cyc_08007ED6 = 1u;
+    uint32_t _base_08007ED6 = g_cpu.R[13];
+    uint32_t _off_08007ED6;
+    _off_08007ED6 = 0x00000000u;
+    uint32_t _ea_08007ED6 = _base_08007ED6 + _off_08007ED6;
+    uint32_t _post_08007ED6 = _base_08007ED6 + _off_08007ED6;
+    _cyc_08007ED6 += runtime_mem_cycles(_ea_08007ED6, 4u, 0u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x08007ED6u, _ea_08007ED6 & ~3u, g_cpu.R[0], 4u);
+    bus_write_u32(_ea_08007ED6 & ~3u, g_cpu.R[0]);
+    g_cpu.R[15] = 0x08007ED8u;
+    runtime_tick(_cyc_08007ED6);
+    /* 08007ED8  08007ed8 T ldr r0,[r15,#0x14] */
+    g_cpu.R[15] = 0x08007ED8u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007ED8 = 1u;
+    _cyc_08007ED8 = 2u;
+    uint32_t _base_08007ED8 = 0x08007EDCu & ~3u;
+    uint32_t _off_08007ED8;
+    _off_08007ED8 = 0x00000014u;
+    uint32_t _ea_08007ED8 = _base_08007ED8 + _off_08007ED8;
+    uint32_t _post_08007ED8 = _base_08007ED8 + _off_08007ED8;
+    _cyc_08007ED8 += runtime_mem_cycles(_ea_08007ED8, 4u, 0u);
+    uint32_t _v_08007ED8;
+    { uint32_t _w = bus_read_u32(_ea_08007ED8 & ~3u); uint32_t _rot = (_ea_08007ED8 & 3u) * 8u; _v_08007ED8 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_08007ED8;
+    g_cpu.R[15] = 0x08007EDAu;
+    runtime_tick(_cyc_08007ED8);
+    /* 08007EDA  08007eda T mov r2,r13 */
+    g_cpu.R[15] = 0x08007EDAu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007EDA = 1u;
+    _cyc_08007EDA = 1u;
+    uint32_t _rm_08007EDA = g_cpu.R[13];
+    uint32_t _op2_08007EDA;
+    uint32_t _co_08007EDA;
+    _op2_08007EDA = _rm_08007EDA;
+    _co_08007EDA = cpsr_c();
+    uint32_t _r_08007EDA;
+    _r_08007EDA = _op2_08007EDA;
+    g_cpu.R[2] = _r_08007EDA;
+    g_cpu.R[15] = 0x08007EDCu;
+    runtime_tick(_cyc_08007EDA);
+    /* 08007EDC  08007edc T str r2,[r0] */
+    g_cpu.R[15] = 0x08007EDCu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007EDC = 1u;
+    _cyc_08007EDC = 1u;
+    uint32_t _base_08007EDC = g_cpu.R[0];
+    uint32_t _off_08007EDC;
+    _off_08007EDC = 0x00000000u;
+    uint32_t _ea_08007EDC = _base_08007EDC + _off_08007EDC;
+    uint32_t _post_08007EDC = _base_08007EDC + _off_08007EDC;
+    _cyc_08007EDC += runtime_mem_cycles(_ea_08007EDC, 4u, 0u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x08007EDCu, _ea_08007EDC & ~3u, g_cpu.R[2], 4u);
+    bus_write_u32(_ea_08007EDC & ~3u, g_cpu.R[2]);
+    g_cpu.R[15] = 0x08007EDEu;
+    runtime_tick(_cyc_08007EDC);
+    /* 08007EDE  08007ede T str r1,[r0,#0x4] */
+    g_cpu.R[15] = 0x08007EDEu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007EDE = 1u;
+    _cyc_08007EDE = 1u;
+    uint32_t _base_08007EDE = g_cpu.R[0];
+    uint32_t _off_08007EDE;
+    _off_08007EDE = 0x00000004u;
+    uint32_t _ea_08007EDE = _base_08007EDE + _off_08007EDE;
+    uint32_t _post_08007EDE = _base_08007EDE + _off_08007EDE;
+    _cyc_08007EDE += runtime_mem_cycles(_ea_08007EDE, 4u, 0u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x08007EDEu, _ea_08007EDE & ~3u, g_cpu.R[1], 4u);
+    bus_write_u32(_ea_08007EDE & ~3u, g_cpu.R[1]);
+    g_cpu.R[15] = 0x08007EE0u;
+    runtime_tick(_cyc_08007EDE);
+    /* 08007EE0  08007ee0 T ldr r1,[r15,#0x10] */
+    g_cpu.R[15] = 0x08007EE0u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007EE0 = 1u;
+    _cyc_08007EE0 = 2u;
+    uint32_t _base_08007EE0 = 0x08007EE4u & ~3u;
+    uint32_t _off_08007EE0;
+    _off_08007EE0 = 0x00000010u;
+    uint32_t _ea_08007EE0 = _base_08007EE0 + _off_08007EE0;
+    uint32_t _post_08007EE0 = _base_08007EE0 + _off_08007EE0;
+    _cyc_08007EE0 += runtime_mem_cycles(_ea_08007EE0, 4u, 0u);
+    uint32_t _v_08007EE0;
+    { uint32_t _w = bus_read_u32(_ea_08007EE0 & ~3u); uint32_t _rot = (_ea_08007EE0 & 3u) * 8u; _v_08007EE0 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[1] = _v_08007EE0;
+    g_cpu.R[15] = 0x08007EE2u;
+    runtime_tick(_cyc_08007EE0);
+    /* 08007EE2  08007ee2 T str r1,[r0,#0x8] */
+    g_cpu.R[15] = 0x08007EE2u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007EE2 = 1u;
+    _cyc_08007EE2 = 1u;
+    uint32_t _base_08007EE2 = g_cpu.R[0];
+    uint32_t _off_08007EE2;
+    _off_08007EE2 = 0x00000008u;
+    uint32_t _ea_08007EE2 = _base_08007EE2 + _off_08007EE2;
+    uint32_t _post_08007EE2 = _base_08007EE2 + _off_08007EE2;
+    _cyc_08007EE2 += runtime_mem_cycles(_ea_08007EE2, 4u, 0u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x08007EE2u, _ea_08007EE2 & ~3u, g_cpu.R[1], 4u);
+    bus_write_u32(_ea_08007EE2 & ~3u, g_cpu.R[1]);
+    g_cpu.R[15] = 0x08007EE4u;
+    runtime_tick(_cyc_08007EE2);
+    /* 08007EE4  08007ee4 T ldr r0,[r0,#0x8] */
+    g_cpu.R[15] = 0x08007EE4u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007EE4 = 1u;
+    _cyc_08007EE4 = 2u;
+    uint32_t _base_08007EE4 = g_cpu.R[0];
+    uint32_t _off_08007EE4;
+    _off_08007EE4 = 0x00000008u;
+    uint32_t _ea_08007EE4 = _base_08007EE4 + _off_08007EE4;
+    uint32_t _post_08007EE4 = _base_08007EE4 + _off_08007EE4;
+    _cyc_08007EE4 += runtime_mem_cycles(_ea_08007EE4, 4u, 0u);
+    uint32_t _v_08007EE4;
+    { uint32_t _w = bus_read_u32(_ea_08007EE4 & ~3u); uint32_t _rot = (_ea_08007EE4 & 3u) * 8u; _v_08007EE4 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_08007EE4;
+    g_cpu.R[15] = 0x08007EE6u;
+    runtime_tick(_cyc_08007EE4);
+    /* 08007EE6  08007ee6 T add r13,r13,#0x4 */
+    g_cpu.R[15] = 0x08007EE6u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007EE6 = 1u;
+    _cyc_08007EE6 = 1u;
+    uint32_t _rn_08007EE6 = g_cpu.R[13];
+    uint32_t _r_08007EE6;
+    _r_08007EE6 = _rn_08007EE6 + 0x00000004u;
+    g_cpu.R[13] = _r_08007EE6;
+    g_cpu.R[15] = 0x08007EE8u;
+    runtime_tick(_cyc_08007EE6);
+    /* 08007EE8  08007ee8 T bx r14 */
+    g_cpu.R[15] = 0x08007EE8u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007EE8 = 1u;
+    _cyc_08007EE8 = 3u;
+    uint32_t _bxt_08007EE8 = g_cpu.R[14];
+    g_cpu.R[15] = _bxt_08007EE8 & ~1u;
+    if (_bxt_08007EE8 & 1u) g_cpu.cpsr |= CPSR_T_BIT; else g_cpu.cpsr &= ~CPSR_T_BIT;
+    runtime_tick(_cyc_08007EE8);
+    if (runtime_call_should_return(g_cpu.R[15])) return;
+    GBARECOMP_TAIL_DISPATCH_WITH_EXCHANGE(_bxt_08007EE8);
+    g_cpu.R[15] = 0x08007EEAu;
+    runtime_tick(_cyc_08007EE8);
+    /* fall-through to 0x08007EEA */
+    g_cpu.R[15] = 0x08007EEAu;
+    runtime_dispatch(0x08007EEAu);
+    return;
+}
+
+/* 0x08007EF8  mode=thumb  end=0x08007F70  branches=8  indirect */
+
+
+/* 0x08007EF8 thumb */
+void gf_tfunc_08007EF8(void) {
+    if (g_runtime_fn_entry_hook) g_runtime_fn_entry_hook(0x08007EF8u);
+    /* 08007EF8  08007ef8 T stm r13!,{r4,r5,r6,r14} */
+    g_cpu.R[15] = 0x08007EF8u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007EF8 = 1u;
+    _cyc_08007EF8 = 1u;
+    uint32_t _b_08007EF8 = g_cpu.R[13];
+    uint32_t _a_08007EF8 = _b_08007EF8 - 16u;
+    uint32_t _fb_08007EF8 = _b_08007EF8 - 16u;
+    _cyc_08007EF8 += runtime_mem_cycles(_a_08007EF8 & ~3u, 4u, 0u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x08007EF8u, _a_08007EF8 & ~3u, g_cpu.R[4], 4u);
+    bus_write_u32(_a_08007EF8 & ~3u, g_cpu.R[4]);
+    _a_08007EF8 += 4u;
+    _cyc_08007EF8 += runtime_mem_cycles(_a_08007EF8 & ~3u, 4u, 1u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x08007EF8u, _a_08007EF8 & ~3u, g_cpu.R[5], 4u);
+    bus_write_u32(_a_08007EF8 & ~3u, g_cpu.R[5]);
+    _a_08007EF8 += 4u;
+    _cyc_08007EF8 += runtime_mem_cycles(_a_08007EF8 & ~3u, 4u, 1u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x08007EF8u, _a_08007EF8 & ~3u, g_cpu.R[6], 4u);
+    bus_write_u32(_a_08007EF8 & ~3u, g_cpu.R[6]);
+    _a_08007EF8 += 4u;
+    _cyc_08007EF8 += runtime_mem_cycles(_a_08007EF8 & ~3u, 4u, 1u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x08007EF8u, _a_08007EF8 & ~3u, g_cpu.R[14], 4u);
+    bus_write_u32(_a_08007EF8 & ~3u, g_cpu.R[14]);
+    _a_08007EF8 += 4u;
+    g_cpu.R[13] = _fb_08007EF8;
+    g_cpu.R[15] = 0x08007EFAu;
+    runtime_tick(_cyc_08007EF8);
+    /* 08007EFA  08007efa T sub r13,r13,#0x4 */
+    g_cpu.R[15] = 0x08007EFAu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007EFA = 1u;
+    _cyc_08007EFA = 1u;
+    uint32_t _rn_08007EFA = g_cpu.R[13];
+    uint32_t _r_08007EFA;
+    _r_08007EFA = _rn_08007EFA - 0x00000004u;
+    g_cpu.R[13] = _r_08007EFA;
+    g_cpu.R[15] = 0x08007EFCu;
+    runtime_tick(_cyc_08007EFA);
+    /* 08007EFC  08007efc T ldr r6,[r15,#0xc8] */
+    g_cpu.R[15] = 0x08007EFCu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007EFC = 1u;
+    _cyc_08007EFC = 2u;
+    uint32_t _base_08007EFC = 0x08007F00u & ~3u;
+    uint32_t _off_08007EFC;
+    _off_08007EFC = 0x000000C8u;
+    uint32_t _ea_08007EFC = _base_08007EFC + _off_08007EFC;
+    uint32_t _post_08007EFC = _base_08007EFC + _off_08007EFC;
+    _cyc_08007EFC += runtime_mem_cycles(_ea_08007EFC, 4u, 0u);
+    uint32_t _v_08007EFC;
+    { uint32_t _w = bus_read_u32(_ea_08007EFC & ~3u); uint32_t _rot = (_ea_08007EFC & 3u) * 8u; _v_08007EFC = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[6] = _v_08007EFC;
+    g_cpu.R[15] = 0x08007EFEu;
+    runtime_tick(_cyc_08007EFC);
+    /* 08007EFE  08007efe T movs r5,#0x0 */
+    g_cpu.R[15] = 0x08007EFEu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007EFE = 1u;
+    _cyc_08007EFE = 1u;
+    uint32_t _r_08007EFE;
+    _r_08007EFE = 0x00000000u;
+    arm_set_nzc_logic(_r_08007EFE, cpsr_c());
+    g_cpu.R[5] = _r_08007EFE;
+    g_cpu.R[15] = 0x08007F00u;
+    runtime_tick(_cyc_08007EFE);
+    /* 08007F00  08007f00 T str r5,[r13] */
+    g_cpu.R[15] = 0x08007F00u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007F00 = 1u;
+    _cyc_08007F00 = 1u;
+    uint32_t _base_08007F00 = g_cpu.R[13];
+    uint32_t _off_08007F00;
+    _off_08007F00 = 0x00000000u;
+    uint32_t _ea_08007F00 = _base_08007F00 + _off_08007F00;
+    uint32_t _post_08007F00 = _base_08007F00 + _off_08007F00;
+    _cyc_08007F00 += runtime_mem_cycles(_ea_08007F00, 4u, 0u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x08007F00u, _ea_08007F00 & ~3u, g_cpu.R[5], 4u);
+    bus_write_u32(_ea_08007F00 & ~3u, g_cpu.R[5]);
+    g_cpu.R[15] = 0x08007F02u;
+    runtime_tick(_cyc_08007F00);
+    /* 08007F02  08007f02 T ldr r1,[r15,#0xc8] */
+    g_cpu.R[15] = 0x08007F02u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007F02 = 1u;
+    _cyc_08007F02 = 2u;
+    uint32_t _base_08007F02 = 0x08007F06u & ~3u;
+    uint32_t _off_08007F02;
+    _off_08007F02 = 0x000000C8u;
+    uint32_t _ea_08007F02 = _base_08007F02 + _off_08007F02;
+    uint32_t _post_08007F02 = _base_08007F02 + _off_08007F02;
+    _cyc_08007F02 += runtime_mem_cycles(_ea_08007F02, 4u, 0u);
+    uint32_t _v_08007F02;
+    { uint32_t _w = bus_read_u32(_ea_08007F02 & ~3u); uint32_t _rot = (_ea_08007F02 & 3u) * 8u; _v_08007F02 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[1] = _v_08007F02;
+    g_cpu.R[15] = 0x08007F04u;
+    runtime_tick(_cyc_08007F02);
+    /* 08007F04  08007f04 T mov r0,r13 */
+    g_cpu.R[15] = 0x08007F04u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007F04 = 1u;
+    _cyc_08007F04 = 1u;
+    uint32_t _rm_08007F04 = g_cpu.R[13];
+    uint32_t _op2_08007F04;
+    uint32_t _co_08007F04;
+    _op2_08007F04 = _rm_08007F04;
+    _co_08007F04 = cpsr_c();
+    uint32_t _r_08007F04;
+    _r_08007F04 = _op2_08007F04;
+    g_cpu.R[0] = _r_08007F04;
+    g_cpu.R[15] = 0x08007F06u;
+    runtime_tick(_cyc_08007F04);
+    /* 08007F06  08007f06 T str r0,[r1] */
+    g_cpu.R[15] = 0x08007F06u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007F06 = 1u;
+    _cyc_08007F06 = 1u;
+    uint32_t _base_08007F06 = g_cpu.R[1];
+    uint32_t _off_08007F06;
+    _off_08007F06 = 0x00000000u;
+    uint32_t _ea_08007F06 = _base_08007F06 + _off_08007F06;
+    uint32_t _post_08007F06 = _base_08007F06 + _off_08007F06;
+    _cyc_08007F06 += runtime_mem_cycles(_ea_08007F06, 4u, 0u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x08007F06u, _ea_08007F06 & ~3u, g_cpu.R[0], 4u);
+    bus_write_u32(_ea_08007F06 & ~3u, g_cpu.R[0]);
+    g_cpu.R[15] = 0x08007F08u;
+    runtime_tick(_cyc_08007F06);
+    /* 08007F08  08007f08 T ldr r0,[r15,#0xc4] */
+    g_cpu.R[15] = 0x08007F08u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007F08 = 1u;
+    _cyc_08007F08 = 2u;
+    uint32_t _base_08007F08 = 0x08007F0Cu & ~3u;
+    uint32_t _off_08007F08;
+    _off_08007F08 = 0x000000C4u;
+    uint32_t _ea_08007F08 = _base_08007F08 + _off_08007F08;
+    uint32_t _post_08007F08 = _base_08007F08 + _off_08007F08;
+    _cyc_08007F08 += runtime_mem_cycles(_ea_08007F08, 4u, 0u);
+    uint32_t _v_08007F08;
+    { uint32_t _w = bus_read_u32(_ea_08007F08 & ~3u); uint32_t _rot = (_ea_08007F08 & 3u) * 8u; _v_08007F08 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_08007F08;
+    g_cpu.R[15] = 0x08007F0Au;
+    runtime_tick(_cyc_08007F08);
+    /* 08007F0A  08007f0a T str r0,[r1,#0x4] */
+    g_cpu.R[15] = 0x08007F0Au;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007F0A = 1u;
+    _cyc_08007F0A = 1u;
+    uint32_t _base_08007F0A = g_cpu.R[1];
+    uint32_t _off_08007F0A;
+    _off_08007F0A = 0x00000004u;
+    uint32_t _ea_08007F0A = _base_08007F0A + _off_08007F0A;
+    uint32_t _post_08007F0A = _base_08007F0A + _off_08007F0A;
+    _cyc_08007F0A += runtime_mem_cycles(_ea_08007F0A, 4u, 0u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x08007F0Au, _ea_08007F0A & ~3u, g_cpu.R[0], 4u);
+    bus_write_u32(_ea_08007F0A & ~3u, g_cpu.R[0]);
+    g_cpu.R[15] = 0x08007F0Cu;
+    runtime_tick(_cyc_08007F0A);
+    /* 08007F0C  08007f0c T ldr r0,[r15,#0xc4] */
+    g_cpu.R[15] = 0x08007F0Cu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007F0C = 1u;
+    _cyc_08007F0C = 2u;
+    uint32_t _base_08007F0C = 0x08007F10u & ~3u;
+    uint32_t _off_08007F0C;
+    _off_08007F0C = 0x000000C4u;
+    uint32_t _ea_08007F0C = _base_08007F0C + _off_08007F0C;
+    uint32_t _post_08007F0C = _base_08007F0C + _off_08007F0C;
+    _cyc_08007F0C += runtime_mem_cycles(_ea_08007F0C, 4u, 0u);
+    uint32_t _v_08007F0C;
+    { uint32_t _w = bus_read_u32(_ea_08007F0C & ~3u); uint32_t _rot = (_ea_08007F0C & 3u) * 8u; _v_08007F0C = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_08007F0C;
+    g_cpu.R[15] = 0x08007F0Eu;
+    runtime_tick(_cyc_08007F0C);
+    /* 08007F0E  08007f0e T str r0,[r1,#0x8] */
+    g_cpu.R[15] = 0x08007F0Eu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007F0E = 1u;
+    _cyc_08007F0E = 1u;
+    uint32_t _base_08007F0E = g_cpu.R[1];
+    uint32_t _off_08007F0E;
+    _off_08007F0E = 0x00000008u;
+    uint32_t _ea_08007F0E = _base_08007F0E + _off_08007F0E;
+    uint32_t _post_08007F0E = _base_08007F0E + _off_08007F0E;
+    _cyc_08007F0E += runtime_mem_cycles(_ea_08007F0E, 4u, 0u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x08007F0Eu, _ea_08007F0E & ~3u, g_cpu.R[0], 4u);
+    bus_write_u32(_ea_08007F0E & ~3u, g_cpu.R[0]);
+    g_cpu.R[15] = 0x08007F10u;
+    runtime_tick(_cyc_08007F0E);
+    /* 08007F10  08007f10 T ldr r0,[r1,#0x8] */
+    g_cpu.R[15] = 0x08007F10u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007F10 = 1u;
+    _cyc_08007F10 = 2u;
+    uint32_t _base_08007F10 = g_cpu.R[1];
+    uint32_t _off_08007F10;
+    _off_08007F10 = 0x00000008u;
+    uint32_t _ea_08007F10 = _base_08007F10 + _off_08007F10;
+    uint32_t _post_08007F10 = _base_08007F10 + _off_08007F10;
+    _cyc_08007F10 += runtime_mem_cycles(_ea_08007F10, 4u, 0u);
+    uint32_t _v_08007F10;
+    { uint32_t _w = bus_read_u32(_ea_08007F10 & ~3u); uint32_t _rot = (_ea_08007F10 & 3u) * 8u; _v_08007F10 = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_08007F10;
+    g_cpu.R[15] = 0x08007F12u;
+    runtime_tick(_cyc_08007F10);
+    /* 08007F12  08007f12 T movs r0,#0xff */
+    g_cpu.R[15] = 0x08007F12u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007F12 = 1u;
+    _cyc_08007F12 = 1u;
+    uint32_t _r_08007F12;
+    _r_08007F12 = 0x000000FFu;
+    arm_set_nzc_logic(_r_08007F12, cpsr_c());
+    g_cpu.R[0] = _r_08007F12;
+    g_cpu.R[15] = 0x08007F14u;
+    runtime_tick(_cyc_08007F12);
+    /* 08007F14  08007f14 T strb r0,[r6,#0x10] */
+    g_cpu.R[15] = 0x08007F14u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007F14 = 1u;
+    _cyc_08007F14 = 1u;
+    uint32_t _base_08007F14 = g_cpu.R[6];
+    uint32_t _off_08007F14;
+    _off_08007F14 = 0x00000010u;
+    uint32_t _ea_08007F14 = _base_08007F14 + _off_08007F14;
+    uint32_t _post_08007F14 = _base_08007F14 + _off_08007F14;
+    _cyc_08007F14 += runtime_mem_cycles(_ea_08007F14, 1u, 0u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x08007F14u, _ea_08007F14, (uint32_t)(g_cpu.R[0] & 0xFFu), 1u);
+    bus_write_u8(_ea_08007F14, (uint8_t)(g_cpu.R[0] & 0xFFu));
+    g_cpu.R[15] = 0x08007F16u;
+    runtime_tick(_cyc_08007F14);
+    /* 08007F16  08007f16 T ldrb r0,[r6,#0xb] */
+    g_cpu.R[15] = 0x08007F16u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007F16 = 1u;
+    _cyc_08007F16 = 2u;
+    uint32_t _base_08007F16 = g_cpu.R[6];
+    uint32_t _off_08007F16;
+    _off_08007F16 = 0x0000000Bu;
+    uint32_t _ea_08007F16 = _base_08007F16 + _off_08007F16;
+    uint32_t _post_08007F16 = _base_08007F16 + _off_08007F16;
+    _cyc_08007F16 += runtime_mem_cycles(_ea_08007F16, 1u, 0u);
+    uint32_t _v_08007F16;
+    _v_08007F16 = bus_read_u8(_ea_08007F16);
+    g_cpu.R[0] = _v_08007F16;
+    g_cpu.R[15] = 0x08007F18u;
+    runtime_tick(_cyc_08007F16);
+    /* 08007F18  08007f18 T strb r0,[r6,#0x1a] */
+    g_cpu.R[15] = 0x08007F18u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007F18 = 1u;
+    _cyc_08007F18 = 1u;
+    uint32_t _base_08007F18 = g_cpu.R[6];
+    uint32_t _off_08007F18;
+    _off_08007F18 = 0x0000001Au;
+    uint32_t _ea_08007F18 = _base_08007F18 + _off_08007F18;
+    uint32_t _post_08007F18 = _base_08007F18 + _off_08007F18;
+    _cyc_08007F18 += runtime_mem_cycles(_ea_08007F18, 1u, 0u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x08007F18u, _ea_08007F18, (uint32_t)(g_cpu.R[0] & 0xFFu), 1u);
+    bus_write_u8(_ea_08007F18, (uint8_t)(g_cpu.R[0] & 0xFFu));
+    g_cpu.R[15] = 0x08007F1Au;
+    runtime_tick(_cyc_08007F18);
+    /* 08007F1A  08007f1a T adds r0,r6,#0x0 */
+    g_cpu.R[15] = 0x08007F1Au;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007F1A = 1u;
+    _cyc_08007F1A = 1u;
+    uint32_t _rn_08007F1A = g_cpu.R[6];
+    uint32_t _r_08007F1A;
+    _r_08007F1A = _rn_08007F1A + 0x00000000u;
+    arm_set_nzcv_add(_rn_08007F1A, 0x00000000u, _r_08007F1A);
+    g_cpu.R[0] = _r_08007F1A;
+    g_cpu.R[15] = 0x08007F1Cu;
+    runtime_tick(_cyc_08007F1A);
+    /* 08007F1C  08007f1c T adds r0,r0,#0xa6 */
+    g_cpu.R[15] = 0x08007F1Cu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007F1C = 1u;
+    _cyc_08007F1C = 1u;
+    uint32_t _rn_08007F1C = g_cpu.R[0];
+    uint32_t _r_08007F1C;
+    _r_08007F1C = _rn_08007F1C + 0x000000A6u;
+    arm_set_nzcv_add(_rn_08007F1C, 0x000000A6u, _r_08007F1C);
+    g_cpu.R[0] = _r_08007F1C;
+    g_cpu.R[15] = 0x08007F1Eu;
+    runtime_tick(_cyc_08007F1C);
+    /* 08007F1E  08007f1e T movs r2,#0x1 */
+    g_cpu.R[15] = 0x08007F1Eu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007F1E = 1u;
+    _cyc_08007F1E = 1u;
+    uint32_t _r_08007F1E;
+    _r_08007F1E = 0x00000001u;
+    arm_set_nzc_logic(_r_08007F1E, cpsr_c());
+    g_cpu.R[2] = _r_08007F1E;
+    g_cpu.R[15] = 0x08007F20u;
+    runtime_tick(_cyc_08007F1E);
+    /* 08007F20  08007f20 T strb r2,[r0] */
+    g_cpu.R[15] = 0x08007F20u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007F20 = 1u;
+    _cyc_08007F20 = 1u;
+    uint32_t _base_08007F20 = g_cpu.R[0];
+    uint32_t _off_08007F20;
+    _off_08007F20 = 0x00000000u;
+    uint32_t _ea_08007F20 = _base_08007F20 + _off_08007F20;
+    uint32_t _post_08007F20 = _base_08007F20 + _off_08007F20;
+    _cyc_08007F20 += runtime_mem_cycles(_ea_08007F20, 1u, 0u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x08007F20u, _ea_08007F20, (uint32_t)(g_cpu.R[2] & 0xFFu), 1u);
+    bus_write_u8(_ea_08007F20, (uint8_t)(g_cpu.R[2] & 0xFFu));
+    g_cpu.R[15] = 0x08007F22u;
+    runtime_tick(_cyc_08007F20);
+    /* 08007F22  08007f22 T adds r0,r0,#0x5 */
+    g_cpu.R[15] = 0x08007F22u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007F22 = 1u;
+    _cyc_08007F22 = 1u;
+    uint32_t _rn_08007F22 = g_cpu.R[0];
+    uint32_t _r_08007F22;
+    _r_08007F22 = _rn_08007F22 + 0x00000005u;
+    arm_set_nzcv_add(_rn_08007F22, 0x00000005u, _r_08007F22);
+    g_cpu.R[0] = _r_08007F22;
+    g_cpu.R[15] = 0x08007F24u;
+    runtime_tick(_cyc_08007F22);
+    /* 08007F24  08007f24 T strb r2,[r0] */
+    g_cpu.R[15] = 0x08007F24u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007F24 = 1u;
+    _cyc_08007F24 = 1u;
+    uint32_t _base_08007F24 = g_cpu.R[0];
+    uint32_t _off_08007F24;
+    _off_08007F24 = 0x00000000u;
+    uint32_t _ea_08007F24 = _base_08007F24 + _off_08007F24;
+    uint32_t _post_08007F24 = _base_08007F24 + _off_08007F24;
+    _cyc_08007F24 += runtime_mem_cycles(_ea_08007F24, 1u, 0u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x08007F24u, _ea_08007F24, (uint32_t)(g_cpu.R[2] & 0xFFu), 1u);
+    bus_write_u8(_ea_08007F24, (uint8_t)(g_cpu.R[2] & 0xFFu));
+    g_cpu.R[15] = 0x08007F26u;
+    runtime_tick(_cyc_08007F24);
+    /* 08007F26  08007f26 T adds r0,r0,#0xf */
+    g_cpu.R[15] = 0x08007F26u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007F26 = 1u;
+    _cyc_08007F26 = 1u;
+    uint32_t _rn_08007F26 = g_cpu.R[0];
+    uint32_t _r_08007F26;
+    _r_08007F26 = _rn_08007F26 + 0x0000000Fu;
+    arm_set_nzcv_add(_rn_08007F26, 0x0000000Fu, _r_08007F26);
+    g_cpu.R[0] = _r_08007F26;
+    g_cpu.R[15] = 0x08007F28u;
+    runtime_tick(_cyc_08007F26);
+    /* 08007F28  08007f28 T strb r2,[r0] */
+    g_cpu.R[15] = 0x08007F28u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007F28 = 1u;
+    _cyc_08007F28 = 1u;
+    uint32_t _base_08007F28 = g_cpu.R[0];
+    uint32_t _off_08007F28;
+    _off_08007F28 = 0x00000000u;
+    uint32_t _ea_08007F28 = _base_08007F28 + _off_08007F28;
+    uint32_t _post_08007F28 = _base_08007F28 + _off_08007F28;
+    _cyc_08007F28 += runtime_mem_cycles(_ea_08007F28, 1u, 0u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x08007F28u, _ea_08007F28, (uint32_t)(g_cpu.R[2] & 0xFFu), 1u);
+    bus_write_u8(_ea_08007F28, (uint8_t)(g_cpu.R[2] & 0xFFu));
+    g_cpu.R[15] = 0x08007F2Au;
+    runtime_tick(_cyc_08007F28);
+    /* 08007F2A  08007f2a T ldr r1,[r15,#0xac] */
+    g_cpu.R[15] = 0x08007F2Au;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007F2A = 1u;
+    _cyc_08007F2A = 2u;
+    uint32_t _base_08007F2A = 0x08007F2Eu & ~3u;
+    uint32_t _off_08007F2A;
+    _off_08007F2A = 0x000000ACu;
+    uint32_t _ea_08007F2A = _base_08007F2A + _off_08007F2A;
+    uint32_t _post_08007F2A = _base_08007F2A + _off_08007F2A;
+    _cyc_08007F2A += runtime_mem_cycles(_ea_08007F2A, 4u, 0u);
+    uint32_t _v_08007F2A;
+    { uint32_t _w = bus_read_u32(_ea_08007F2A & ~3u); uint32_t _rot = (_ea_08007F2A & 3u) * 8u; _v_08007F2A = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[1] = _v_08007F2A;
+    g_cpu.R[15] = 0x08007F2Cu;
+    runtime_tick(_cyc_08007F2A);
+    /* 08007F2C  08007f2c T adds r0,r6,r1 */
+    g_cpu.R[15] = 0x08007F2Cu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007F2C = 1u;
+    _cyc_08007F2C = 1u;
+    uint32_t _rm_08007F2C = g_cpu.R[1];
+    uint32_t _op2_08007F2C;
+    uint32_t _co_08007F2C;
+    _op2_08007F2C = _rm_08007F2C;
+    _co_08007F2C = cpsr_c();
+    uint32_t _rn_08007F2C = g_cpu.R[6];
+    uint32_t _r_08007F2C;
+    _r_08007F2C = _rn_08007F2C + _op2_08007F2C;
+    arm_set_nzcv_add(_rn_08007F2C, _op2_08007F2C, _r_08007F2C);
+    g_cpu.R[0] = _r_08007F2C;
+    g_cpu.R[15] = 0x08007F2Eu;
+    runtime_tick(_cyc_08007F2C);
+    /* 08007F2E  08007f2e T movs r4,#0x0 */
+    g_cpu.R[15] = 0x08007F2Eu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007F2E = 1u;
+    _cyc_08007F2E = 1u;
+    uint32_t _r_08007F2E;
+    _r_08007F2E = 0x00000000u;
+    arm_set_nzc_logic(_r_08007F2E, cpsr_c());
+    g_cpu.R[4] = _r_08007F2E;
+    g_cpu.R[15] = 0x08007F30u;
+    runtime_tick(_cyc_08007F2E);
+    /* 08007F30  08007f30 T movs r3,#0x1 */
+    g_cpu.R[15] = 0x08007F30u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007F30 = 1u;
+    _cyc_08007F30 = 1u;
+    uint32_t _r_08007F30;
+    _r_08007F30 = 0x00000001u;
+    arm_set_nzc_logic(_r_08007F30, cpsr_c());
+    g_cpu.R[3] = _r_08007F30;
+    g_cpu.R[15] = 0x08007F32u;
+    runtime_tick(_cyc_08007F30);
+    /* 08007F32  08007f32 T strh r2,[r0] */
+    g_cpu.R[15] = 0x08007F32u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007F32 = 1u;
+    _cyc_08007F32 = 1u;
+    uint32_t _base_08007F32 = g_cpu.R[0];
+    uint32_t _off_08007F32;
+    _off_08007F32 = 0x00000000u;
+    uint32_t _ea_08007F32 = _base_08007F32 + _off_08007F32;
+    uint32_t _post_08007F32 = _base_08007F32 + _off_08007F32;
+    _cyc_08007F32 += runtime_mem_cycles(_ea_08007F32, 2u, 0u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x08007F32u, _ea_08007F32 & ~1u, (uint32_t)(g_cpu.R[2] & 0xFFFFu), 2u);
+    bus_write_u16(_ea_08007F32 & ~1u, (uint16_t)(g_cpu.R[2] & 0xFFFFu));
+    g_cpu.R[15] = 0x08007F34u;
+    runtime_tick(_cyc_08007F32);
+    /* 08007F34  08007f34 T movs r0,#0xf3 */
+    g_cpu.R[15] = 0x08007F34u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007F34 = 1u;
+    _cyc_08007F34 = 1u;
+    uint32_t _r_08007F34;
+    _r_08007F34 = 0x000000F3u;
+    arm_set_nzc_logic(_r_08007F34, cpsr_c());
+    g_cpu.R[0] = _r_08007F34;
+    g_cpu.R[15] = 0x08007F36u;
+    runtime_tick(_cyc_08007F34);
+    /* 08007F36  08007f36 T movs r0,r0,lsl #2 */
+    g_cpu.R[15] = 0x08007F36u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007F36 = 1u;
+    _cyc_08007F36 = 1u;
+    uint32_t _rm_08007F36 = g_cpu.R[0];
+    uint32_t _op2_08007F36;
+    uint32_t _co_08007F36;
+    _op2_08007F36 = _rm_08007F36 << 2;
+    _co_08007F36 = (_rm_08007F36 >> 30) & 1u;
+    uint32_t _r_08007F36;
+    _r_08007F36 = _op2_08007F36;
+    arm_set_nzc_logic(_r_08007F36, _co_08007F36);
+    g_cpu.R[0] = _r_08007F36;
+    g_cpu.R[15] = 0x08007F38u;
+    runtime_tick(_cyc_08007F36);
+    /* 08007F38  08007f38 T adds r1,r6,r0 */
+    g_cpu.R[15] = 0x08007F38u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007F38 = 1u;
+    _cyc_08007F38 = 1u;
+    uint32_t _rm_08007F38 = g_cpu.R[0];
+    uint32_t _op2_08007F38;
+    uint32_t _co_08007F38;
+    _op2_08007F38 = _rm_08007F38;
+    _co_08007F38 = cpsr_c();
+    uint32_t _rn_08007F38 = g_cpu.R[6];
+    uint32_t _r_08007F38;
+    _r_08007F38 = _rn_08007F38 + _op2_08007F38;
+    arm_set_nzcv_add(_rn_08007F38, _op2_08007F38, _r_08007F38);
+    g_cpu.R[1] = _r_08007F38;
+    g_cpu.R[15] = 0x08007F3Au;
+    runtime_tick(_cyc_08007F38);
+    /* 08007F3A  08007f3a T movs r0,#0x2 */
+    g_cpu.R[15] = 0x08007F3Au;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007F3A = 1u;
+    _cyc_08007F3A = 1u;
+    uint32_t _r_08007F3A;
+    _r_08007F3A = 0x00000002u;
+    arm_set_nzc_logic(_r_08007F3A, cpsr_c());
+    g_cpu.R[0] = _r_08007F3A;
+    g_cpu.R[15] = 0x08007F3Cu;
+    runtime_tick(_cyc_08007F3A);
+    /* 08007F3C  08007f3c T strh r0,[r1] */
+    g_cpu.R[15] = 0x08007F3Cu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007F3C = 1u;
+    _cyc_08007F3C = 1u;
+    uint32_t _base_08007F3C = g_cpu.R[1];
+    uint32_t _off_08007F3C;
+    _off_08007F3C = 0x00000000u;
+    uint32_t _ea_08007F3C = _base_08007F3C + _off_08007F3C;
+    uint32_t _post_08007F3C = _base_08007F3C + _off_08007F3C;
+    _cyc_08007F3C += runtime_mem_cycles(_ea_08007F3C, 2u, 0u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x08007F3Cu, _ea_08007F3C & ~1u, (uint32_t)(g_cpu.R[0] & 0xFFFFu), 2u);
+    bus_write_u16(_ea_08007F3C & ~1u, (uint16_t)(g_cpu.R[0] & 0xFFFFu));
+    g_cpu.R[15] = 0x08007F3Eu;
+    runtime_tick(_cyc_08007F3C);
+    /* 08007F3E  08007f3e T movs r0,#0xf4 */
+    g_cpu.R[15] = 0x08007F3Eu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007F3E = 1u;
+    _cyc_08007F3E = 1u;
+    uint32_t _r_08007F3E;
+    _r_08007F3E = 0x000000F4u;
+    arm_set_nzc_logic(_r_08007F3E, cpsr_c());
+    g_cpu.R[0] = _r_08007F3E;
+    g_cpu.R[15] = 0x08007F40u;
+    runtime_tick(_cyc_08007F3E);
+    /* 08007F40  08007f40 T movs r0,r0,lsl #2 */
+    g_cpu.R[15] = 0x08007F40u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007F40 = 1u;
+    _cyc_08007F40 = 1u;
+    uint32_t _rm_08007F40 = g_cpu.R[0];
+    uint32_t _op2_08007F40;
+    uint32_t _co_08007F40;
+    _op2_08007F40 = _rm_08007F40 << 2;
+    _co_08007F40 = (_rm_08007F40 >> 30) & 1u;
+    uint32_t _r_08007F40;
+    _r_08007F40 = _op2_08007F40;
+    arm_set_nzc_logic(_r_08007F40, _co_08007F40);
+    g_cpu.R[0] = _r_08007F40;
+    g_cpu.R[15] = 0x08007F42u;
+    runtime_tick(_cyc_08007F40);
+    /* 08007F42  08007f42 T adds r1,r6,r0 */
+    g_cpu.R[15] = 0x08007F42u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007F42 = 1u;
+    _cyc_08007F42 = 1u;
+    uint32_t _rm_08007F42 = g_cpu.R[0];
+    uint32_t _op2_08007F42;
+    uint32_t _co_08007F42;
+    _op2_08007F42 = _rm_08007F42;
+    _co_08007F42 = cpsr_c();
+    uint32_t _rn_08007F42 = g_cpu.R[6];
+    uint32_t _r_08007F42;
+    _r_08007F42 = _rn_08007F42 + _op2_08007F42;
+    arm_set_nzcv_add(_rn_08007F42, _op2_08007F42, _r_08007F42);
+    g_cpu.R[1] = _r_08007F42;
+    g_cpu.R[15] = 0x08007F44u;
+    runtime_tick(_cyc_08007F42);
+    /* 08007F44  08007f44 T movs r0,#0x80 */
+    g_cpu.R[15] = 0x08007F44u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007F44 = 1u;
+    _cyc_08007F44 = 1u;
+    uint32_t _r_08007F44;
+    _r_08007F44 = 0x00000080u;
+    arm_set_nzc_logic(_r_08007F44, cpsr_c());
+    g_cpu.R[0] = _r_08007F44;
+    g_cpu.R[15] = 0x08007F46u;
+    runtime_tick(_cyc_08007F44);
+    /* 08007F46  08007f46 T movs r0,r0,lsl #1 */
+    g_cpu.R[15] = 0x08007F46u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007F46 = 1u;
+    _cyc_08007F46 = 1u;
+    uint32_t _rm_08007F46 = g_cpu.R[0];
+    uint32_t _op2_08007F46;
+    uint32_t _co_08007F46;
+    _op2_08007F46 = _rm_08007F46 << 1;
+    _co_08007F46 = (_rm_08007F46 >> 31) & 1u;
+    uint32_t _r_08007F46;
+    _r_08007F46 = _op2_08007F46;
+    arm_set_nzc_logic(_r_08007F46, _co_08007F46);
+    g_cpu.R[0] = _r_08007F46;
+    g_cpu.R[15] = 0x08007F48u;
+    runtime_tick(_cyc_08007F46);
+    /* 08007F48  08007f48 T strh r0,[r1] */
+    g_cpu.R[15] = 0x08007F48u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007F48 = 1u;
+    _cyc_08007F48 = 1u;
+    uint32_t _base_08007F48 = g_cpu.R[1];
+    uint32_t _off_08007F48;
+    _off_08007F48 = 0x00000000u;
+    uint32_t _ea_08007F48 = _base_08007F48 + _off_08007F48;
+    uint32_t _post_08007F48 = _base_08007F48 + _off_08007F48;
+    _cyc_08007F48 += runtime_mem_cycles(_ea_08007F48, 2u, 0u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x08007F48u, _ea_08007F48 & ~1u, (uint32_t)(g_cpu.R[0] & 0xFFFFu), 2u);
+    bus_write_u16(_ea_08007F48 & ~1u, (uint16_t)(g_cpu.R[0] & 0xFFFFu));
+    g_cpu.R[15] = 0x08007F4Au;
+    runtime_tick(_cyc_08007F48);
+    /* 08007F4A  08007f4a T ldr r0,[r15,#0x90] */
+    g_cpu.R[15] = 0x08007F4Au;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007F4A = 1u;
+    _cyc_08007F4A = 2u;
+    uint32_t _base_08007F4A = 0x08007F4Eu & ~3u;
+    uint32_t _off_08007F4A;
+    _off_08007F4A = 0x00000090u;
+    uint32_t _ea_08007F4A = _base_08007F4A + _off_08007F4A;
+    uint32_t _post_08007F4A = _base_08007F4A + _off_08007F4A;
+    _cyc_08007F4A += runtime_mem_cycles(_ea_08007F4A, 4u, 0u);
+    uint32_t _v_08007F4A;
+    { uint32_t _w = bus_read_u32(_ea_08007F4A & ~3u); uint32_t _rot = (_ea_08007F4A & 3u) * 8u; _v_08007F4A = (_rot == 0u) ? _w : ((_w >> _rot) | (_w << (32u - _rot))); }
+    g_cpu.R[0] = _v_08007F4A;
+    g_cpu.R[15] = 0x08007F4Cu;
+    runtime_tick(_cyc_08007F4A);
+    /* 08007F4C  08007f4c T adds r1,r6,r0 */
+    g_cpu.R[15] = 0x08007F4Cu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007F4C = 1u;
+    _cyc_08007F4C = 1u;
+    uint32_t _rm_08007F4C = g_cpu.R[0];
+    uint32_t _op2_08007F4C;
+    uint32_t _co_08007F4C;
+    _op2_08007F4C = _rm_08007F4C;
+    _co_08007F4C = cpsr_c();
+    uint32_t _rn_08007F4C = g_cpu.R[6];
+    uint32_t _r_08007F4C;
+    _r_08007F4C = _rn_08007F4C + _op2_08007F4C;
+    arm_set_nzcv_add(_rn_08007F4C, _op2_08007F4C, _r_08007F4C);
+    g_cpu.R[1] = _r_08007F4C;
+    g_cpu.R[15] = 0x08007F4Eu;
+    runtime_tick(_cyc_08007F4C);
+    /* 08007F4E  08007f4e T movs r0,#0x80 */
+    g_cpu.R[15] = 0x08007F4Eu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007F4E = 1u;
+    _cyc_08007F4E = 1u;
+    uint32_t _r_08007F4E;
+    _r_08007F4E = 0x00000080u;
+    arm_set_nzc_logic(_r_08007F4E, cpsr_c());
+    g_cpu.R[0] = _r_08007F4E;
+    g_cpu.R[15] = 0x08007F50u;
+    runtime_tick(_cyc_08007F4E);
+    /* 08007F50  08007f50 T movs r0,r0,lsl #2 */
+    g_cpu.R[15] = 0x08007F50u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007F50 = 1u;
+    _cyc_08007F50 = 1u;
+    uint32_t _rm_08007F50 = g_cpu.R[0];
+    uint32_t _op2_08007F50;
+    uint32_t _co_08007F50;
+    _op2_08007F50 = _rm_08007F50 << 2;
+    _co_08007F50 = (_rm_08007F50 >> 30) & 1u;
+    uint32_t _r_08007F50;
+    _r_08007F50 = _op2_08007F50;
+    arm_set_nzc_logic(_r_08007F50, _co_08007F50);
+    g_cpu.R[0] = _r_08007F50;
+    g_cpu.R[15] = 0x08007F52u;
+    runtime_tick(_cyc_08007F50);
+    /* 08007F52  08007f52 T strh r0,[r1] */
+    g_cpu.R[15] = 0x08007F52u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007F52 = 1u;
+    _cyc_08007F52 = 1u;
+    uint32_t _base_08007F52 = g_cpu.R[1];
+    uint32_t _off_08007F52;
+    _off_08007F52 = 0x00000000u;
+    uint32_t _ea_08007F52 = _base_08007F52 + _off_08007F52;
+    uint32_t _post_08007F52 = _base_08007F52 + _off_08007F52;
+    _cyc_08007F52 += runtime_mem_cycles(_ea_08007F52, 2u, 0u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x08007F52u, _ea_08007F52 & ~1u, (uint32_t)(g_cpu.R[0] & 0xFFFFu), 2u);
+    bus_write_u16(_ea_08007F52 & ~1u, (uint16_t)(g_cpu.R[0] & 0xFFFFu));
+    g_cpu.R[15] = 0x08007F54u;
+    runtime_tick(_cyc_08007F52);
+    /* 08007F54  08007f54 T movs r1,#0xc3 */
+    g_cpu.R[15] = 0x08007F54u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007F54 = 1u;
+    _cyc_08007F54 = 1u;
+    uint32_t _r_08007F54;
+    _r_08007F54 = 0x000000C3u;
+    arm_set_nzc_logic(_r_08007F54, cpsr_c());
+    g_cpu.R[1] = _r_08007F54;
+    g_cpu.R[15] = 0x08007F56u;
+    runtime_tick(_cyc_08007F54);
+    /* 08007F56  08007f56 T movs r1,r1,lsl #2 */
+    g_cpu.R[15] = 0x08007F56u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007F56 = 1u;
+    _cyc_08007F56 = 1u;
+    uint32_t _rm_08007F56 = g_cpu.R[1];
+    uint32_t _op2_08007F56;
+    uint32_t _co_08007F56;
+    _op2_08007F56 = _rm_08007F56 << 2;
+    _co_08007F56 = (_rm_08007F56 >> 30) & 1u;
+    uint32_t _r_08007F56;
+    _r_08007F56 = _op2_08007F56;
+    arm_set_nzc_logic(_r_08007F56, _co_08007F56);
+    g_cpu.R[1] = _r_08007F56;
+    g_cpu.R[15] = 0x08007F58u;
+    runtime_tick(_cyc_08007F56);
+    /* 08007F58  08007f58 T adds r0,r6,r1 */
+    g_cpu.R[15] = 0x08007F58u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007F58 = 1u;
+    _cyc_08007F58 = 1u;
+    uint32_t _rm_08007F58 = g_cpu.R[1];
+    uint32_t _op2_08007F58;
+    uint32_t _co_08007F58;
+    _op2_08007F58 = _rm_08007F58;
+    _co_08007F58 = cpsr_c();
+    uint32_t _rn_08007F58 = g_cpu.R[6];
+    uint32_t _r_08007F58;
+    _r_08007F58 = _rn_08007F58 + _op2_08007F58;
+    arm_set_nzcv_add(_rn_08007F58, _op2_08007F58, _r_08007F58);
+    g_cpu.R[0] = _r_08007F58;
+    g_cpu.R[15] = 0x08007F5Au;
+    runtime_tick(_cyc_08007F58);
+    /* 08007F5A  08007f5a T strh r2,[r0] */
+    g_cpu.R[15] = 0x08007F5Au;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007F5A = 1u;
+    _cyc_08007F5A = 1u;
+    uint32_t _base_08007F5A = g_cpu.R[0];
+    uint32_t _off_08007F5A;
+    _off_08007F5A = 0x00000000u;
+    uint32_t _ea_08007F5A = _base_08007F5A + _off_08007F5A;
+    uint32_t _post_08007F5A = _base_08007F5A + _off_08007F5A;
+    _cyc_08007F5A += runtime_mem_cycles(_ea_08007F5A, 2u, 0u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x08007F5Au, _ea_08007F5A & ~1u, (uint32_t)(g_cpu.R[2] & 0xFFFFu), 2u);
+    bus_write_u16(_ea_08007F5A & ~1u, (uint16_t)(g_cpu.R[2] & 0xFFFFu));
+    g_cpu.R[15] = 0x08007F5Cu;
+    runtime_tick(_cyc_08007F5A);
+    /* 08007F5C  08007f5c T adds r1,r1,#0x9 */
+    g_cpu.R[15] = 0x08007F5Cu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007F5C = 1u;
+    _cyc_08007F5C = 1u;
+    uint32_t _rn_08007F5C = g_cpu.R[1];
+    uint32_t _r_08007F5C;
+    _r_08007F5C = _rn_08007F5C + 0x00000009u;
+    arm_set_nzcv_add(_rn_08007F5C, 0x00000009u, _r_08007F5C);
+    g_cpu.R[1] = _r_08007F5C;
+    g_cpu.R[15] = 0x08007F5Eu;
+    runtime_tick(_cyc_08007F5C);
+    /* 08007F5E  08007f5e T adds r0,r6,r1 */
+    g_cpu.R[15] = 0x08007F5Eu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007F5E = 1u;
+    _cyc_08007F5E = 1u;
+    uint32_t _rm_08007F5E = g_cpu.R[1];
+    uint32_t _op2_08007F5E;
+    uint32_t _co_08007F5E;
+    _op2_08007F5E = _rm_08007F5E;
+    _co_08007F5E = cpsr_c();
+    uint32_t _rn_08007F5E = g_cpu.R[6];
+    uint32_t _r_08007F5E;
+    _r_08007F5E = _rn_08007F5E + _op2_08007F5E;
+    arm_set_nzcv_add(_rn_08007F5E, _op2_08007F5E, _r_08007F5E);
+    g_cpu.R[0] = _r_08007F5E;
+    g_cpu.R[15] = 0x08007F60u;
+    runtime_tick(_cyc_08007F5E);
+    /* 08007F60  08007f60 T strb r3,[r0] */
+    g_cpu.R[15] = 0x08007F60u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007F60 = 1u;
+    _cyc_08007F60 = 1u;
+    uint32_t _base_08007F60 = g_cpu.R[0];
+    uint32_t _off_08007F60;
+    _off_08007F60 = 0x00000000u;
+    uint32_t _ea_08007F60 = _base_08007F60 + _off_08007F60;
+    uint32_t _post_08007F60 = _base_08007F60 + _off_08007F60;
+    _cyc_08007F60 += runtime_mem_cycles(_ea_08007F60, 1u, 0u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x08007F60u, _ea_08007F60, (uint32_t)(g_cpu.R[3] & 0xFFu), 1u);
+    bus_write_u8(_ea_08007F60, (uint8_t)(g_cpu.R[3] & 0xFFu));
+    g_cpu.R[15] = 0x08007F62u;
+    runtime_tick(_cyc_08007F60);
+    /* 08007F62  08007f62 T subs r1,r1,#0x1 */
+    g_cpu.R[15] = 0x08007F62u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007F62 = 1u;
+    _cyc_08007F62 = 1u;
+    uint32_t _rn_08007F62 = g_cpu.R[1];
+    uint32_t _r_08007F62;
+    _r_08007F62 = _rn_08007F62 - 0x00000001u;
+    arm_set_nzcv_sub(_rn_08007F62, 0x00000001u, _r_08007F62);
+    g_cpu.R[1] = _r_08007F62;
+    g_cpu.R[15] = 0x08007F64u;
+    runtime_tick(_cyc_08007F62);
+    /* 08007F64  08007f64 T adds r0,r6,r1 */
+    g_cpu.R[15] = 0x08007F64u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007F64 = 1u;
+    _cyc_08007F64 = 1u;
+    uint32_t _rm_08007F64 = g_cpu.R[1];
+    uint32_t _op2_08007F64;
+    uint32_t _co_08007F64;
+    _op2_08007F64 = _rm_08007F64;
+    _co_08007F64 = cpsr_c();
+    uint32_t _rn_08007F64 = g_cpu.R[6];
+    uint32_t _r_08007F64;
+    _r_08007F64 = _rn_08007F64 + _op2_08007F64;
+    arm_set_nzcv_add(_rn_08007F64, _op2_08007F64, _r_08007F64);
+    g_cpu.R[0] = _r_08007F64;
+    g_cpu.R[15] = 0x08007F66u;
+    runtime_tick(_cyc_08007F64);
+    /* 08007F66  08007f66 T strb r3,[r0] */
+    g_cpu.R[15] = 0x08007F66u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007F66 = 1u;
+    _cyc_08007F66 = 1u;
+    uint32_t _base_08007F66 = g_cpu.R[0];
+    uint32_t _off_08007F66;
+    _off_08007F66 = 0x00000000u;
+    uint32_t _ea_08007F66 = _base_08007F66 + _off_08007F66;
+    uint32_t _post_08007F66 = _base_08007F66 + _off_08007F66;
+    _cyc_08007F66 += runtime_mem_cycles(_ea_08007F66, 1u, 0u);
+    if (runtime_trace_enabled()) runtime_trace_event(RUNTIME_TRACE_MEM_WRITE, 0x08007F66u, _ea_08007F66, (uint32_t)(g_cpu.R[3] & 0xFFu), 1u);
+    bus_write_u8(_ea_08007F66, (uint8_t)(g_cpu.R[3] & 0xFFu));
+    g_cpu.R[15] = 0x08007F68u;
+    runtime_tick(_cyc_08007F66);
+    /* 08007F68  08007f68 T subs r1,r1,#0x40 */
+    g_cpu.R[15] = 0x08007F68u;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007F68 = 1u;
+    _cyc_08007F68 = 1u;
+    uint32_t _rn_08007F68 = g_cpu.R[1];
+    uint32_t _r_08007F68;
+    _r_08007F68 = _rn_08007F68 - 0x00000040u;
+    arm_set_nzcv_sub(_rn_08007F68, 0x00000040u, _r_08007F68);
+    g_cpu.R[1] = _r_08007F68;
+    g_cpu.R[15] = 0x08007F6Au;
+    runtime_tick(_cyc_08007F68);
+    /* 08007F6A  08007f6a T adds r0,r6,r1 */
+    g_cpu.R[15] = 0x08007F6Au;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007F6A = 1u;
+    _cyc_08007F6A = 1u;
+    uint32_t _rm_08007F6A = g_cpu.R[1];
+    uint32_t _op2_08007F6A;
+    uint32_t _co_08007F6A;
+    _op2_08007F6A = _rm_08007F6A;
+    _co_08007F6A = cpsr_c();
+    uint32_t _rn_08007F6A = g_cpu.R[6];
+    uint32_t _r_08007F6A;
+    _r_08007F6A = _rn_08007F6A + _op2_08007F6A;
+    arm_set_nzcv_add(_rn_08007F6A, _op2_08007F6A, _r_08007F6A);
+    g_cpu.R[0] = _r_08007F6A;
+    g_cpu.R[15] = 0x08007F6Cu;
+    runtime_tick(_cyc_08007F6A);
+    /* 08007F6C  08007f6c T bl.hi 0x0806cf70 */
+    g_cpu.R[15] = 0x08007F6Cu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007F6C = 1u;
+    _cyc_08007F6C = 1u;
+    g_cpu.R[14] = 0x0806CF70u;
+    g_cpu.R[15] = 0x08007F6Eu;
+    runtime_tick(_cyc_08007F6C);
+    /* 08007F6E  08007f6e T bl.lo 0x00000000 */
+    g_cpu.R[15] = 0x08007F6Eu;
+    if (runtime_should_yield()) return;
+    if (g_runtime_insn_trace) runtime_insn_fp();
+    uint32_t _cyc_08007F6E = 1u;
+    _cyc_08007F6E = 3u;
+    uint32_t _blt_08007F6E = (g_cpu.R[14] + 0x00000974u) & ~1u;
+    g_cpu.R[14] = 0x08007F71u;
+    g_cpu.R[15] = _blt_08007F6E;
+    runtime_call_push_return(0x08007F70u);
+    runtime_tick(_cyc_08007F6E);
+    _cyc_08007F6E = 0u;
+    runtime_dispatch(_blt_08007F6E);
+    if (g_cpu.R[15] != 0x08007F70u) { runtime_call_cancel_return(0x08007F70u); return; }
+    g_cpu.R[15] = 0x08007F70u;
+    runtime_tick(_cyc_08007F6E);
+    /* fall-through to 0x08007F70 */
+    g_cpu.R[15] = 0x08007F70u;
+    runtime_dispatch(0x08007F70u);
+    return;
+}
+
+/* 0x08007F70  mode=thumb  end=0x08007F9A  branches=6  indirect */
 
 
 /* 0x08007F70 thumb */
@@ -48436,7 +65373,7 @@ void gf_tfunc_08007F9A(void) {
     return;
 }
 
-/* 0x080095C0  mode=thumb  end=0x080095DC  branches=25  indirect */
+/* 0x08008014  mode=thumb  end=0x0800801C  branches=8  indirect */
 
 
 /* 0x08007FA6 thumb */
@@ -48708,7 +65645,6 @@ void gf_tfunc_08007FC0(void) {
     return;
 }
 
-/* 0x0800802C  mode=thumb  end=0x08008032  branches=0  indirect */
-
+/* 0x08008020  mode=thumb  end=0x08008024  branches=4  indirect */
 
 

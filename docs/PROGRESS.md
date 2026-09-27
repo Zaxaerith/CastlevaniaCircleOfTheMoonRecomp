@@ -162,3 +162,15 @@ healed_native=warm_loaded=1361  native_calls=47007
 - 新增 README.md / LICENSE / THIRD_PARTY.md / scripts/generate.ps1 / .gitignore
 - git init（main），初始提交 13 文件
 - ROM / BIOS / generated_official 均已 gitignore，不上传
+
+## 里程碑 8：覆盖冲刺（本轮）
+
+静态函数 2893 → 3124 → 4096 → **4125**
+extra_func 136 → 220
+dispatch_misses 深层路径 47 → 16（多为 IWRAM + 少量 cart）
+healed_native=92  warm_loaded=82
+
+画面链：logo(128色) → 标题黄字(44色) → 游戏场景(63色, vram=35601)
+截图：docs/screenshots/{boot_logo,title_screen,gameplay_scene}.bmp
+
+src/game 12 个功能模块（对齐 SMK/YI）。

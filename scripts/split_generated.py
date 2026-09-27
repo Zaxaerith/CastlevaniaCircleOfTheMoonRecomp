@@ -101,7 +101,7 @@ def main() -> int:
             f" * {len(entries)} guest functions. Do not hand-edit function bodies.",
             " */",
             "",
-            '#include "generated/recompiled.h"',
+            '#include "runtime_arm.h"\n#include "recompiled.h"',
             "",
         ]
         for addr, name, mode, chunk in entries:
@@ -126,3 +126,4 @@ def main() -> int:
 
 if __name__ == "__main__":
     sys.exit(main())
+
