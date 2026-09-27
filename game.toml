@@ -1,0 +1,663 @@
+# Castlevania: Circle of the Moon (USA) — static recomp config.
+# ROM: AAME (header) / DRACULA AGB1, 8388608 bytes, CRC32 E310970F, SHA1 d661b01eb94186435723ac03344792c11c20c522
+
+[program]
+name         = "Castlevania: Circle of the Moon (USA)"
+id           = "cotm_usa"
+load_address = 0x08000000
+size         = 0x00800000
+entry_pc     = 0x080000C0
+
+[identity]
+sha1   = "d661b01eb94186435723ac03344792c11c20c522"
+crc32  = 0xE310970F
+
+[game]
+name = "Castlevania: Circle of the Moon (USA)"
+rom_sha1 = "d661b01eb94186435723ac03344792c11c20c522"
+rom_crc32 = 0xE310970F
+
+[bios]
+# Official/open GBA BIOS dump (same hash as the HoD project).
+path = "../gbarecomp-cli-windows-x86_64/gbabios/gba_bios.bin"
+sha1 = "300c20df6731a33952ded8c436f7f186d25d3492"
+
+[display]
+# Native GBA viewport for the first boot milestone.
+width = 240
+height = 160
+
+[save]
+# Circle of the Moon uses SRAM (not Flash / EEPROM).
+type = "sram"
+
+# ── Reviewed dispatch-miss proposals (from recomp_master_misses_AAME.toml.frag) ──
+# Cart PCs only. BIOS PCs go in bios/gba_bios.toml. IWRAM PCs are runtime-installed
+# and stay on the self-heal/interpreter path.
+
+[[extra_func]]
+addr = 0x08000000
+mode = "arm"
+note = "cart reset/entry; bridged x1"
+
+[[extra_func]]
+addr = 0x080007D4
+mode = "thumb"
+note = "miss-log; bridged x1"
+
+[[extra_func]]
+addr = 0x08002C08
+mode = "thumb"
+note = "miss-log; bridged x27"
+
+[[extra_func]]
+addr = 0x08002C56
+mode = "thumb"
+note = "miss-log; bridged x27"
+
+[[extra_func]]
+addr = 0x08005AE8
+mode = "thumb"
+note = "miss-log; bridged x27"
+
+[[extra_func]]
+addr = 0x08005AF8
+mode = "thumb"
+note = "miss-log; bridged x1"
+
+[[extra_func]]
+addr = 0x08005C24
+mode = "thumb"
+note = "miss-log; bridged x10"
+
+[[extra_func]]
+addr = 0x08005CAC
+mode = "thumb"
+note = "miss-log; bridged x16"
+
+[[extra_func]]
+addr = 0x080BFB50
+mode = "thumb"
+note = "miss-log; bridged x9; near gf_tfunc_080BFB42"
+
+
+[[extra_func]]
+addr = 0x08002B38
+mode = "thumb"
+note = "round-2 miss-log merge"
+[[extra_func]]
+addr = 0x08005D28
+mode = "thumb"
+note = "round-2 miss-log merge"
+[[extra_func]]
+addr = 0x08005DC8
+mode = "thumb"
+note = "round-2 miss-log merge"
+[[extra_func]]
+addr = 0x08005E28
+mode = "thumb"
+note = "round-2 miss-log merge"
+[[extra_func]]
+addr = 0x08009524
+mode = "thumb"
+note = "round-2 miss-log merge"
+[[extra_func]]
+addr = 0x08009AE4
+mode = "thumb"
+note = "round-2 miss-log merge"
+[[extra_func]]
+addr = 0x080104C0
+mode = "thumb"
+note = "round-2 miss-log merge"
+[[extra_func]]
+addr = 0x080BFB68
+mode = "thumb"
+note = "round-2 miss-log merge"
+[[extra_func]]
+addr = 0x080BFC84
+mode = "thumb"
+note = "round-2 miss-log merge"
+[[extra_func]]
+addr = 0x080BFC8A
+mode = "thumb"
+note = "round-2 miss-log merge"
+[[extra_func]]
+addr = 0x080BFC98
+mode = "thumb"
+note = "round-2 miss-log merge"
+[[extra_func]]
+addr = 0x080BFC9E
+mode = "thumb"
+note = "round-2 miss-log merge"
+[[extra_func]]
+addr = 0x080BFCAC
+mode = "thumb"
+note = "round-2 miss-log merge"
+[[extra_func]]
+addr = 0x080BFCC6
+mode = "thumb"
+note = "round-2 miss-log merge"
+
+# ── Round-3 cart miss-log merge ──
+[[extra_func]]
+addr = 0x08001884
+mode = "thumb"
+note = "round-3 miss-log; bridged"
+
+[[extra_func]]
+addr = 0x0800223C
+mode = "thumb"
+note = "round-3 miss-log; bridged"
+
+[[extra_func]]
+addr = 0x0800956C
+mode = "thumb"
+note = "round-3 miss-log; bridged"
+
+[[extra_func]]
+addr = 0x08009B2C
+mode = "thumb"
+note = "round-3 miss-log; bridged"
+
+[[extra_func]]
+addr = 0x08009C5C
+mode = "thumb"
+note = "round-3 miss-log; bridged"
+
+[[extra_func]]
+addr = 0x08009C84
+mode = "thumb"
+note = "round-3 miss-log; bridged"
+
+[[extra_func]]
+addr = 0x08010508
+mode = "thumb"
+note = "round-3 miss-log; bridged"
+
+[[extra_func]]
+addr = 0x08010648
+mode = "thumb"
+note = "round-3 miss-log; bridged"
+
+# ── IWRAM code_copy (ROM→RAM copies observed via DMA) ──
+# DMA3: 0x080C39A8 -> 0x03000000 (522 words = 0x828 bytes)
+[[code_copy]]
+runtime_start = 0x03000000
+source_start  = 0x080C39A8
+size          = 0x00000828
+name          = "iwram_init_block"
+note          = "DMA3 clear/copy init; includes IRQ stub region"
+
+# DMA3: 0x080000FC -> 0x03000880 (256 words = 0x400 bytes)
+[[code_copy]]
+runtime_start = 0x03000880
+source_start  = 0x080000FC
+size          = 0x00000400
+name          = "iwram_irq_staging"
+note          = "DMA3 copy to IRQ handler slot 0x03000880"
+
+# ── Round-4: remaining misses ──
+
+# Cart
+[[extra_func]]
+addr = 0x08009BF4
+mode = "thumb"
+note = "round-4 miss-log"
+
+[[extra_func]]
+addr = 0x08010550
+mode = "thumb"
+note = "round-4 miss-log"
+
+[[extra_func]]
+addr = 0x08010690
+mode = "thumb"
+note = "round-4 miss-log"
+
+[[extra_func]]
+addr = 0x08010C2C
+mode = "thumb"
+note = "round-4 miss-log"
+
+[[extra_func]]
+addr = 0x08010C58
+mode = "thumb"
+note = "round-4 miss-log"
+
+# IWRAM entries inside declared code_copy ranges (source_addr = ROM backing)
+# code_copy 0x03000000 <- 0x080C39A8 size 0x828
+[[extra_func]]
+addr = 0x03000000
+source_addr = 0x080C39A8
+mode = "thumb"
+note = "iwram init block entry"
+
+[[extra_func]]
+addr = 0x03000140
+source_addr = 0x080C3AE8
+mode = "thumb"
+note = "iwram init +0x140"
+
+[[extra_func]]
+addr = 0x03000208
+source_addr = 0x080C3BB0
+mode = "thumb"
+note = "iwram init +0x208"
+
+[[extra_func]]
+addr = 0x03000300
+source_addr = 0x080C3CA8
+mode = "thumb"
+note = "iwram init +0x300"
+
+[[extra_func]]
+addr = 0x03000754
+source_addr = 0x080C40FC
+mode = "thumb"
+note = "iwram init +0x754"
+
+[[extra_func]]
+addr = 0x03000794
+source_addr = 0x080C413C
+mode = "thumb"
+note = "iwram init +0x794; hot miss x300+"
+
+[[extra_func]]
+addr = 0x030007E8
+source_addr = 0x080C4190
+mode = "thumb"
+note = "iwram init +0x7E8"
+
+# code_copy 0x03000880 <- 0x080000FC size 0x400
+[[extra_func]]
+addr = 0x03000880
+source_addr = 0x080000FC
+mode = "arm"
+note = "IRQ stub at 0x03000880"
+
+# ── Round-5: final known misses ──
+[[extra_func]]
+addr = 0x08000468
+mode = "thumb"
+note = "VBlank handler entry (push r4,lr); round-5"
+
+[[extra_func]]
+addr = 0x0800050C
+mode = "thumb"
+note = "round-5 miss-log"
+
+[[extra_func]]
+addr = 0x080BFD7C
+mode = "thumb"
+note = "round-5 miss-log; BL target from VBlank"
+
+[[extra_func]]
+addr = 0x080C0430
+mode = "thumb"
+note = "round-5 miss-log"
+
+[[extra_func]]
+addr = 0x03000024
+source_addr = 0x080C39CC
+mode = "thumb"
+note = "iwram init +0x24"
+
+# jump-table candidate around 0x030041D0 (3 consecutive thumb)
+# plus 0x03007D38 — runtime-installed, no known ROM source yet
+[[extra_func]]
+addr = 0x030041D0
+mode = "thumb"
+note = "iwram switch case; JUMP-TABLE CANDIDATE"
+
+[[extra_func]]
+addr = 0x0300421A
+mode = "thumb"
+note = "iwram switch case; JUMP-TABLE CANDIDATE"
+
+[[extra_func]]
+addr = 0x03004222
+mode = "thumb"
+note = "iwram switch case; JUMP-TABLE CANDIDATE"
+
+[[extra_func]]
+addr = 0x03007D38
+mode = "thumb"
+note = "iwram; source unknown"
+
+# ── Round-6: cart misses from 1800-frame run ──
+
+[[extra_func]]
+addr = 0x080008A0
+mode = "thumb"
+note = "round-6 miss-log"
+[[extra_func]]
+addr = 0x080014DC
+mode = "thumb"
+note = "round-6 miss-log"
+[[extra_func]]
+addr = 0x0800382A
+mode = "thumb"
+note = "round-6 miss-log"
+[[extra_func]]
+addr = 0x08003864
+mode = "thumb"
+note = "round-6 miss-log"
+[[extra_func]]
+addr = 0x08006962
+mode = "thumb"
+note = "round-6 miss-log"
+[[extra_func]]
+addr = 0x080069EA
+mode = "thumb"
+note = "round-6 miss-log"
+[[extra_func]]
+addr = 0x08006A90
+mode = "thumb"
+note = "round-6 miss-log"
+[[extra_func]]
+addr = 0x08006D08
+mode = "thumb"
+note = "round-6 miss-log"
+[[extra_func]]
+addr = 0x08006D28
+mode = "thumb"
+note = "round-6 miss-log"
+[[extra_func]]
+addr = 0x080071D4
+mode = "thumb"
+note = "round-6 miss-log"
+[[extra_func]]
+addr = 0x080072F8
+mode = "thumb"
+note = "round-6 miss-log"
+[[extra_func]]
+addr = 0x080074EA
+mode = "thumb"
+note = "round-6 miss-log"
+[[extra_func]]
+addr = 0x08007F70
+mode = "thumb"
+note = "round-6 miss-log"
+[[extra_func]]
+addr = 0x0800802C
+mode = "thumb"
+note = "round-6 miss-log"
+[[extra_func]]
+addr = 0x08009746
+mode = "thumb"
+note = "round-6 miss-log"
+[[extra_func]]
+addr = 0x08010882
+mode = "thumb"
+note = "round-6 miss-log"
+[[extra_func]]
+addr = 0x0801094A
+mode = "thumb"
+note = "round-6 miss-log"
+[[extra_func]]
+addr = 0x08010E40
+mode = "thumb"
+note = "round-6 miss-log"
+[[extra_func]]
+addr = 0x08010E6A
+mode = "thumb"
+note = "round-6 miss-log"
+[[extra_func]]
+addr = 0x080158F4
+mode = "thumb"
+note = "round-6 miss-log"
+[[extra_func]]
+addr = 0x08015A12
+mode = "thumb"
+note = "round-6 miss-log"
+[[extra_func]]
+addr = 0x08015B8C
+mode = "thumb"
+note = "round-6 miss-log"
+[[extra_func]]
+addr = 0x08015BA8
+mode = "thumb"
+note = "round-6 miss-log"
+[[extra_func]]
+addr = 0x0801617A
+mode = "thumb"
+note = "round-6 miss-log"
+[[extra_func]]
+addr = 0x08016198
+mode = "thumb"
+note = "round-6 miss-log"
+[[extra_func]]
+addr = 0x08016270
+mode = "thumb"
+note = "round-6 miss-log"
+[[extra_func]]
+addr = 0x0801636A
+mode = "thumb"
+note = "round-6 miss-log"
+[[extra_func]]
+addr = 0x0801638C
+mode = "thumb"
+note = "round-6 miss-log"
+[[extra_func]]
+addr = 0x080166F8
+mode = "thumb"
+note = "round-6 miss-log"
+[[extra_func]]
+addr = 0x080167D4
+mode = "thumb"
+note = "round-6 miss-log"
+[[extra_func]]
+addr = 0x0802BE64
+mode = "thumb"
+note = "round-6 miss-log"
+[[extra_func]]
+addr = 0x0805CBCE
+mode = "thumb"
+note = "round-6 miss-log"
+[[extra_func]]
+addr = 0x0805CDB6
+mode = "thumb"
+note = "round-6 miss-log"
+[[extra_func]]
+addr = 0x0805F312
+mode = "thumb"
+note = "round-6 miss-log"
+[[extra_func]]
+addr = 0x0805F31C
+mode = "thumb"
+note = "round-6 miss-log"
+[[extra_func]]
+addr = 0x08061F54
+mode = "thumb"
+note = "round-6 miss-log"
+[[extra_func]]
+addr = 0x0806202A
+mode = "thumb"
+note = "round-6 miss-log"
+[[extra_func]]
+addr = 0x08062040
+mode = "thumb"
+note = "round-6 miss-log"
+[[extra_func]]
+addr = 0x0806207C
+mode = "thumb"
+note = "round-6 miss-log"
+[[extra_func]]
+addr = 0x08062842
+mode = "thumb"
+note = "round-6 miss-log"
+[[extra_func]]
+addr = 0x08062A04
+mode = "thumb"
+note = "round-6 miss-log"
+[[extra_func]]
+addr = 0x08062B48
+mode = "thumb"
+note = "round-6 miss-log"
+[[extra_func]]
+addr = 0x08062CCC
+mode = "thumb"
+note = "round-6 miss-log"
+[[extra_func]]
+addr = 0x08062EF0
+mode = "thumb"
+note = "round-6 miss-log"
+[[extra_func]]
+addr = 0x08063062
+mode = "thumb"
+note = "round-6 miss-log"
+[[extra_func]]
+addr = 0x0806310C
+mode = "thumb"
+note = "round-6 miss-log"
+[[extra_func]]
+addr = 0x0806350C
+mode = "thumb"
+note = "round-6 miss-log"
+[[extra_func]]
+addr = 0x0806A7B6
+mode = "thumb"
+note = "round-6 miss-log"
+[[extra_func]]
+addr = 0x0806A7C4
+mode = "thumb"
+note = "round-6 miss-log"
+[[extra_func]]
+addr = 0x0806ABAA
+mode = "thumb"
+note = "round-6 miss-log"
+[[extra_func]]
+addr = 0x0806B208
+mode = "thumb"
+note = "round-6 miss-log"
+[[extra_func]]
+addr = 0x0806B22C
+mode = "thumb"
+note = "round-6 miss-log"
+[[extra_func]]
+addr = 0x0806B2C8
+mode = "thumb"
+note = "round-6 miss-log"
+[[extra_func]]
+addr = 0x0806B810
+mode = "thumb"
+note = "round-6 miss-log"
+[[extra_func]]
+addr = 0x0806C4E0
+mode = "thumb"
+note = "round-6 miss-log"
+[[extra_func]]
+addr = 0x0806D8E4
+mode = "thumb"
+note = "round-6 miss-log"
+[[extra_func]]
+addr = 0x0806DC44
+mode = "thumb"
+note = "round-6 miss-log"
+[[extra_func]]
+addr = 0x08086F30
+mode = "thumb"
+note = "round-6 miss-log"
+[[extra_func]]
+addr = 0x0808B330
+mode = "thumb"
+note = "round-6 miss-log"
+[[extra_func]]
+addr = 0x0808B74E
+mode = "thumb"
+note = "round-6 miss-log"
+[[extra_func]]
+addr = 0x0808BA54
+mode = "thumb"
+note = "round-6 miss-log"
+[[extra_func]]
+addr = 0x0808CBC8
+mode = "thumb"
+note = "round-6 miss-log"
+[[extra_func]]
+addr = 0x0808CC4E
+mode = "thumb"
+note = "round-6 miss-log"
+[[extra_func]]
+addr = 0x08090AD4
+mode = "thumb"
+note = "round-6 miss-log"
+[[extra_func]]
+addr = 0x08090AE4
+mode = "thumb"
+note = "round-6 miss-log"
+[[extra_func]]
+addr = 0x08090C78
+mode = "thumb"
+note = "round-6 miss-log"
+[[extra_func]]
+addr = 0x08095D04
+mode = "thumb"
+note = "round-6 miss-log"
+[[extra_func]]
+addr = 0x08096854
+mode = "thumb"
+note = "round-6 miss-log"
+[[extra_func]]
+addr = 0x080C18AC
+mode = "thumb"
+note = "round-6 miss-log"
+[[extra_func]]
+addr = 0x080C1C74
+mode = "thumb"
+note = "round-6 miss-log"
+[[extra_func]]
+addr = 0x080C23CE
+mode = "thumb"
+note = "round-6 miss-log"
+[[extra_func]]
+addr = 0x080C23F8
+mode = "thumb"
+note = "round-6 miss-log"
+[[extra_func]]
+addr = 0x080C2EC2
+mode = "thumb"
+note = "round-6 miss-log"
+[[extra_func]]
+addr = 0x080C3880
+mode = "thumb"
+note = "round-6 miss-log"
+
+
+# ── Round-7: final cart misses ──
+[[extra_func]]
+addr = 0x08015974
+mode = "thumb"
+note = "round-7 miss-log"
+[[extra_func]]
+addr = 0x0802BF4C
+mode = "thumb"
+note = "round-7 miss-log"
+[[extra_func]]
+addr = 0x0805F61E
+mode = "thumb"
+note = "round-7 miss-log"
+[[extra_func]]
+addr = 0x0805FBA8
+mode = "thumb"
+note = "round-7 miss-log"
+[[extra_func]]
+addr = 0x08095D60
+mode = "thumb"
+note = "round-7 miss-log"
+[[extra_func]]
+addr = 0x080968B2
+mode = "thumb"
+note = "round-7 miss-log"
+[[extra_func]]
+addr = 0x08096ABC
+mode = "thumb"
+note = "round-7 miss-log"
+[[extra_func]]
+addr = 0x08096C18
+mode = "thumb"
+note = "round-7 miss-log"
+[[extra_func]]
+addr = 0x08096EC8
+mode = "thumb"
+note = "round-7 miss-log"

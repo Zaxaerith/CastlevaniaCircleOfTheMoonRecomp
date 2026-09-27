@@ -1,0 +1,72 @@
+# Never commit ROM / BIOS / save data (copyrighted or personal)
+*.gba
+*.gbc
+*.gb
+*.nds
+gba_bios.bin
+*.sav
+*.srm
+*.ss*
+
+# Generated cart code is derived from the game ROM — regenerate locally.
+# See README.md. Do not publish ROM-derived shards.
+recomp/generated/
+recomp/generated_official/
+recomp_cache/
+
+# Build trees and binaries
+build/
+build-*/
+out/
+dist/
+*.exe
+*.dll
+*.a
+*.lib
+*.o
+*.obj
+*.so
+*.dylib
+
+# Toolchain caches
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+compile_commands.json
+.ninja_deps
+.ninja_log
+build.ninja
+
+# Third-party SDKs (fetch locally)
+third_party/
+
+# Debug / scratch
+*.log
+*.tmp
+*.bak
+gxx_invoke.log
+gxx_wrap.bat
+peek_iwram.py
+probe_pc.py
+debug.ini
+iwram_*.bin
+*.bmp
+*.png
+
+# Keep curated screenshots
+!docs/screenshots/
+!docs/screenshots/**
+
+# Editor / OS
+.vscode/
+.idea/
+.vs/
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Personal
+*.pem
+*.key
+.env
+.env.*
