@@ -1,89 +1,193 @@
-# COTMRecomp
+# CastlevaniaCircleOfTheMoonRecomp
 
-Static recompilation of **Castlevania: Circle of the Moon (USA)** for modern
-Windows PCs, built on the [GBARecomp](https://github.com/mstan/gbarecomp)
-framework (ARM7TDMI / ARMv4T → C++).
+[![Platform](https://img.shields.io/badge/platform-Windows-blue)](#building-from-source)
+[![Language](https://img.shields.io/badge/language-C%2B%2B20-orange)](#what-static-recompilation-means-here)
+[![License](https://img.shields.io/badge/license-PolyForm--Noncommercial--1.0.0-blue)](LICENSE)
 
-The original game logic runs as native code against a shared GBA hardware
-runtime (PPU, DMA, timers, IRQ, SRAM, input) instead of inside a full-system
-emulator. Unresolved paths fall back to a loud, self-healing interpreter.
+Native static recompilation of **Castlevania: Circle of the Moon (GBA, USA)** into a standalone Windows executable using the [GBARecomp](https://github.com/mstan/gbarecomp) framework.
 
-## License
+---
 
-**PolyForm Noncommercial License 1.0.0** — see [LICENSE](LICENSE).
+## What "static recompilation" means here
 
-This project links and is built with **GBARecomp** (same license). You may
-use, study, modify, and share it for **noncommercial purposes only**.
-Commercial use requires a separate license from the GBARecomp author
-(https://1379.tech). Details in [THIRD_PARTY.md](THIRD_PARTY.md).
+The ARM7TDMI (ARM/Thumb) machine code from the original cartridge is statically translated to native C++ — every discovered guest function is compiled as a real translation unit in `src/generated/`.
 
-## What this repository contains
+**The rest of the GBA is not recompiled — it is hardware**:
 
-| Path | Contents |
-|------|----------|
-| `src/main.cpp` | Hand-written host: ROM identity + `run_game()` |
-| `src/generated/` | **Recompiled cart C++** (not shipped — regenerate locally) |
-| `symbols/cotm_functions.tsv` | Functional names for known guest functions |
-| `game.toml` | Reviewed recompile config (named seeds, code-copy, save type) |
-| `CMakeLists.txt` | Builds `cotm.exe` against GBARecomp |
-| `scripts/generate.ps1` | Local generator wrapper |
-| `docs/PROGRESS.md` | Development log |
-| `docs/screenshots/` | boot / title / menu frames |
+* **PPU** (text / affine BGs, OBJ, bitmap modes), **DMA**, **timers**, **IRQ**, **SRAM saves**, and **input** run through the GBARecomp hardware runtime (`gbarecomp_runtime`).
+* **BIOS** is recompiled and dispatched LLE (real boot path), not high-level stubbed.
+* Unresolved or RAM-installed code paths fall through to a **self-healing interpreter**, then compile into a persistent native cache.
 
-## What this repository does **not** contain
+This follows the established architecture of modern static recompilation projects: **recompile the CPU, emulate the silicon**.
 
-- Game ROM (`.gba`) — dump your own legally owned cartridge.
-- GBA BIOS — provide your own dump locally.
-- ROM-derived generated C++ (`recomp/generated_official/`) — run the
-  generator locally so this repo never publishes Konami's code.
-- Build trees / prebuilt `cotm.exe` — build locally (see below).
+---
 
-## Requirements
+## Current Status & Features
 
-- CMake ≥ 3.20, Ninja (or Make), C++20 compiler (MSVC or MinGW-w64)
-- SDL2 development package
-- [GBARecomp](https://github.com/mstan/gbarecomp) source tree
-  (default expected at `../gbarecomp-main`)
-- `gba_recompile` tool from that tree (build target `gba_recompile`)
+- [x] **Boot chain verified**: LLE BIOS intro → game cart entry → title / menu frames captured.
+- [x] **SRAM saves**: Auto-detected (`SRAM_V` in ROM), 32 KiB flush on exit.
+- [x] **Native host**: SDL2 window, gamepad + keyboard, native 240×160 GBA viewport.
+- [x] **Self-healing coverage**: Dispatch misses bridge via interpreter and cache as native DLLs.
+- [x] **Reviewed recompile config**: Named guest functions (`gf_vblank_irq_handler`, `gf_game_state_flag_poll`, …), `[[extra_func]]` / `[[code_copy]]` seeds in `game.toml`.
+- [ ] **Full static coverage**: A small set of IWRAM-installed paths still interpret at runtime.
 
-## Build
+---
+
+## Quick Start (ROM Requirement)
+
+> [!IMPORTANT]
+> **Legal Notice**: This repository does **NOT** contain any copyrighted ROM data, BIOS images, game assets, or proprietary Konami / Nintendo code. You must provide your own legally obtained ROM (and optionally a GBA BIOS dump) to build and run the game.
+
+### Verified ROM Information
+
+| Field | Value |
+| :--- | :--- |
+| **Game** | Castlevania: Circle of the Moon (USA) |
+| **Internal title** | `DRACULA AGB1` |
+| **Game code** | `AAME` |
+| **File size** | `8,388,608` bytes (8 MiB) |
+| **SHA-1** | `d661b01eb94186435723ac03344792c11c20c522` |
+| **CRC32** | `E310970F` |
+| **Save type** | SRAM (32 KiB), signature `SRAM_V` |
+
+Place your dump at the project root or pass `--rom` at runtime.
+
+---
+
+## One-click build (bring your own ROM)
+
+### Windows (PowerShell)
 
 ```powershell
-# 1. Generate cart code from YOUR legally dumped ROM
-.\scripts\generate.ps1 -Rom "path\to\Castlevania - Circle of the Moon (USA).gba"
+# From the repository root
+.\build.ps1 -Rom "path\to\Castlevania - Circle of the Moon (USA).gba"
+```
 
-# 2. Configure + build
-cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release -DSDL2_ROOT="C:\path\to\SDL2"
-cmake --build build --config Release
+This will:
 
-# 3. Run (pass ROM/BIOS paths)
+1. Generate ROM-derived C++ into `src/generated/` (not published in git).
+2. Configure and compile `build/cotm.exe` with CMake + Ninja.
+3. Leave `cotm.exe` + `SDL2.dll` under `build/` for you to run.
+
+### Run the game
+
+```powershell
 .\build\cotm.exe --rom "path\to\game.gba" --bios "path\to\gba_bios.bin" --config game.toml
 ```
 
-See `scripts/generate.ps1` and `docs/PROGRESS.md` for reviewed `[[extra_func]]`
-/ `[[code_copy]]` notes used in `game.toml`.
+`--bios` is optional if you rely on GBARecomp’s bundled recompiled BIOS path; a local dump is recommended for full LLE.
+
+---
 
 ## Controls
 
-Standard GBA mapping (see the GBARecomp runtime host window). Native 240×160
-viewport only.
+Default GBARecomp host bindings:
 
-## Save type
+| Action | Keyboard | GBA |
+| :--- | :--- | :--- |
+| **D-Pad** | Arrow keys | D-Pad |
+| **A** | `X` | A |
+| **B** | `Z` | B |
+| **L** | `C` | L |
+| **R** | `V` | R |
+| **Start** | `Enter` | Start |
+| **Select** | `Right Shift` | Select |
+| **Fullscreen** | `F11` / `Alt+Enter` | — |
+| **Quit** | `Esc` | — |
 
-SRAM (`save = "sram"` in `game.toml`). Detected at runtime from the
-`SRAM_V` signature in the ROM.
+Gamepads (Xbox / PlayStation / Switch Pro / generic USB) are supported via SDL2 GameController.
 
-## Legal
+---
 
-- The **game** is © Konami. You must supply your own ROM and BIOS.
-- Generated cart C++ is a derivative of the ROM — **do not publish it**.
-- GBARecomp framework is © Matthew Stanley, PolyForm Noncommercial 1.0.0.
-- “Castlevania”, “Circle of the Moon”, and “Konami” are trademarks of their
-  owners. Unofficial fan project; not affiliated with or endorsed by Konami
-  or Nintendo.
+## Building from Source (manual)
 
-## Credits
+### Prerequisites
 
-- [GBARecomp](https://github.com/mstan/gbarecomp) — Matthew Stanley
-- `arm-recomp-core`, `rbengine`, `recomp-net` — MIT
-- SDL2 — zlib License
+* **CMake** (>= 3.20)
+* **C++20 compiler**: MSVC or MinGW-w64 (GCC/Clang)
+* **Ninja** (recommended) or Make
+* **SDL2** development package
+* **[GBARecomp](https://github.com/mstan/gbarecomp)** source tree (default `../gbarecomp-main`)
+
+### Windows
+
+```powershell
+git clone https://github.com/Zaxaerith/CastlevaniaCircleOfTheMoonRecomp.git
+cd CastlevaniaCircleOfTheMoonRecomp
+
+# 1) Generate cart C++ from YOUR ROM
+.\scripts\generate.ps1 -Rom "path\to\game.gba"
+
+# 2) Configure + build
+cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release -DSDL2_ROOT="C:\path\to\SDL2"
+cmake --build build --target cotm
+
+# 3) Run
+.\build\cotm.exe --rom "path\to\game.gba" --bios "path\to\gba_bios.bin" --config game.toml
+```
+
+Or run the automated helper:
+
+```powershell
+.\build.ps1 -Rom "path\to\game.gba"
+```
+
+### Linux / macOS (host build of the framework + game)
+
+```bash
+# deps (Debian/Ubuntu)
+sudo apt install -y build-essential cmake ninja-build libsdl2-dev
+
+git clone --recurse-submodules https://github.com/mstan/gbarecomp.git ../gbarecomp-main
+./scripts/generate.sh --rom /path/to/game.gba
+cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release
+cmake --build build --target cotm
+```
+
+---
+
+## Repository Structure
+
+```
+CastlevaniaCircleOfTheMoonRecomp/
+├── CMakeLists.txt              # Builds cotm.exe against GBARecomp
+├── README.md                   # This file
+├── LICENSE                     # PolyForm Noncommercial License 1.0.0
+├── THIRD_PARTY.md              # Dependency & legal notes
+├── build.ps1                   # One-click generate + build (BYO ROM)
+├── game.toml                   # Reviewed recompile config (named seeds, code_copy, SRAM)
+├── symbols/
+│   └── cotm_functions.tsv      # Functional names for guest functions
+├── src/
+│   ├── main.cpp                # Host entry (ROM identity + run_game)
+│   └── generated/              # Recompiled cart C++ (local only — regenerate)
+├── scripts/
+│   └── generate.ps1            # gba_recompile wrapper
+└── docs/
+    ├── PROGRESS.md             # Development log
+    └── screenshots/            # Boot / title / menu frames
+```
+
+`src/generated/` is **ROM-derived** and is **not** committed. After cloning you generate it from your own dump (see Quick Start).
+
+---
+
+## License
+
+This project is a recompiled derivative work based on [GBARecomp](https://github.com/mstan/gbarecomp) and is licensed under the **PolyForm Noncommercial License 1.0.0**.
+
+* **Source-available / noncommercial**: personal use, study, research, non-profit testing are permitted.
+* **Commercial use prohibited**: commercial use or monetized distribution is not allowed under the upstream license.
+* **Upstream copyright**: `Copyright (c) 2026 Matthew Stanley` (GBARecomp / SnesRecomp).
+* Full text: [LICENSE](LICENSE). Dependency breakdown: [THIRD_PARTY.md](THIRD_PARTY.md).
+
+---
+
+## Credits & Acknowledgments
+
+* **[Zaxaerith](https://github.com/Zaxaerith)** — project porting, recompilation integration, host runtime, tooling.
+* **Konami** — original creators of *Castlevania: Circle of the Moon* (2001).
+* **[mstan](https://github.com/mstan)** — author of [GBARecomp](https://github.com/mstan/gbarecomp) and pioneer of GBA static recompilation.
+* **arm-recomp-core / rbengine / recomp-net** — MIT-licensed supporting libraries.
+* **SDL2** — zlib License.
+* Everyone in the GBA reverse-engineering and recompilation community.

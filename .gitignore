@@ -70,3 +70,6 @@ Desktop.ini
 .env
 .env.*
 
+
+# Internal project brief (keep local only)
+AGENT_PROMPT.md
