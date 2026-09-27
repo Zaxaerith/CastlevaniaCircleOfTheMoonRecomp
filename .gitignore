@@ -10,8 +10,7 @@ gba_bios.bin
 
 # Generated cart code is derived from the game ROM — regenerate locally.
 # See README.md. Do not publish ROM-derived shards.
-recomp/generated/
-recomp/generated_official/
+src/generated/
 recomp_cache/
 
 # Build trees and binaries
@@ -70,3 +69,4 @@ Desktop.ini
 *.key
 .env
 .env.*
+

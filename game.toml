@@ -38,46 +38,55 @@ type = "sram"
 [[extra_func]]
 addr = 0x08000000
 mode = "arm"
+name = "cart_reset_orphan"
 note = "cart reset/entry; bridged x1"
 
 [[extra_func]]
 addr = 0x080007D4
 mode = "thumb"
+name = "boot_init_step"
 note = "miss-log; bridged x1"
 
 [[extra_func]]
 addr = 0x08002C08
 mode = "thumb"
+name = "ewram_fill_words"
 note = "miss-log; bridged x27"
 
 [[extra_func]]
 addr = 0x08002C56
 mode = "thumb"
+name = "ewram_fill_tail"
 note = "miss-log; bridged x27"
 
 [[extra_func]]
 addr = 0x08005AE8
 mode = "thumb"
+name = "scene_loader_a"
 note = "miss-log; bridged x27"
 
 [[extra_func]]
 addr = 0x08005AF8
 mode = "thumb"
+name = "scene_loader_b"
 note = "miss-log; bridged x1"
 
 [[extra_func]]
 addr = 0x08005C24
 mode = "thumb"
+name = "scene_init_helper"
 note = "miss-log; bridged x10"
 
 [[extra_func]]
 addr = 0x08005CAC
 mode = "thumb"
+name = "scene_init_tail"
 note = "miss-log; bridged x16"
 
 [[extra_func]]
 addr = 0x080BFB50
 mode = "thumb"
+name = "engine_hot_a"
 note = "miss-log; bridged x9; near gf_tfunc_080BFB42"
 
 

@@ -1,0 +1,35 @@
+# COTMRecomp function symbol map (TSV for gba_recompile --symbols)
+# Format: addr<TAB>mode<TAB>name
+# Names become gf_<name> in generated C. Keep names snake_case, descriptive.
+0x080000C0	arm	cart_entry_vector
+0x080000F0	arm	cart_entry_boot
+0x08000468	thumb	vblank_irq_handler
+0x0800050C	thumb	vblank_irq_handler_tail
+0x080007D4	thumb	boot_init_step
+0x08002B38	thumb	ewram_clear_block
+0x08002C08	thumb	ewram_fill_words
+0x08002C56	thumb	ewram_fill_tail
+0x080057C8	thumb	game_state_check
+0x080057D4	thumb	game_state_flag_poll
+0x080057EC	thumb	game_state_flag_apply
+0x08005AE8	thumb	scene_loader_a
+0x08005AF8	thumb	scene_loader_b
+0x08005C24	thumb	scene_init_helper
+0x08005CAC	thumb	scene_init_tail
+0x08005D28	thumb	scene_table_walk
+0x08005DC8	thumb	scene_table_apply
+0x08005E28	thumb	scene_table_tail
+0x08009524	thumb	gfx_decode_stage
+0x08009AE4	thumb	gfx_decode_helper
+0x080104C0	thumb	save_sram_probe
+0x080BFB50	thumb	engine_hot_a
+0x080BFB68	thumb	engine_hot_b
+0x080BFC84	thumb	engine_hot_c
+0x080BFC8A	thumb	engine_hot_d
+0x080BFC98	thumb	engine_hot_e
+0x080BFC9E	thumb	engine_hot_f
+0x080BFCAC	thumb	engine_hot_g
+0x080BFCC6	thumb	engine_hot_h
+0x03000000	thumb	iwram_init_block
+0x03000880	arm	iwram_irq_stub
+0x03000794	thumb	iwram_irq_work

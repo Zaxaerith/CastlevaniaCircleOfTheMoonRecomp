@@ -29,11 +29,11 @@ endif()
 
 add_subdirectory("${GBARECOMP_ROOT}" gbarecomp-build EXCLUDE_FROM_ALL)
 
-set(GENERATED_DIR "${CMAKE_CURRENT_SOURCE_DIR}/recomp/generated_official")
+set(GENERATED_DIR "${CMAKE_CURRENT_SOURCE_DIR}/src/generated")
 if(NOT EXISTS "${GENERATED_DIR}/dispatch_table.cpp")
     message(FATAL_ERROR
         "Generated cart code not found in ${GENERATED_DIR}.\n"
-        "Run: gba_recompile --rom <your.gba> --config game.toml --out recomp/generated_official")
+        "Run: gba_recompile --rom <your.gba> --config game.toml --symbols symbols/cotm_functions.tsv --out src/generated")
 endif()
 file(GLOB COTM_SHARDS CONFIGURE_DEPENDS "${GENERATED_DIR}/recompiled_*.cpp")
 

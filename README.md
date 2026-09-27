@@ -8,17 +8,27 @@ The original game logic runs as native code against a shared GBA hardware
 runtime (PPU, DMA, timers, IRQ, SRAM, input) instead of inside a full-system
 emulator. Unresolved paths fall back to a loud, self-healing interpreter.
 
+## License
+
+**PolyForm Noncommercial License 1.0.0** — see [LICENSE](LICENSE).
+
+This project links and is built with **GBARecomp** (same license). You may
+use, study, modify, and share it for **noncommercial purposes only**.
+Commercial use requires a separate license from the GBARecomp author
+(https://1379.tech). Details in [THIRD_PARTY.md](THIRD_PARTY.md).
+
 ## What this repository contains
 
 | Path | Contents |
 |------|----------|
-| `src/main.cpp` | Host entry: ROM identity + `run_game()` |
-| `game.toml` | Reviewed recompile config (seed functions, code-copy ranges, save type) |
-| `CMakeLists.txt` | Links `cotm.exe` against the GBARecomp framework |
-| `recomp/` | **Generated cart code goes here** (not shipped — see below) |
-| `scripts/` | Generate + build helpers |
+| `src/main.cpp` | Hand-written host: ROM identity + `run_game()` |
+| `src/generated/` | **Recompiled cart C++** (not shipped — regenerate locally) |
+| `symbols/cotm_functions.tsv` | Functional names for known guest functions |
+| `game.toml` | Reviewed recompile config (named seeds, code-copy, save type) |
+| `CMakeLists.txt` | Builds `cotm.exe` against GBARecomp |
+| `scripts/generate.ps1` | Local generator wrapper |
 | `docs/PROGRESS.md` | Development log |
-| `docs/screenshots/` | Captured frames (boot / title / menu) |
+| `docs/screenshots/` | boot / title / menu frames |
 
 ## What this repository does **not** contain
 
@@ -26,6 +36,7 @@ emulator. Unresolved paths fall back to a loud, self-healing interpreter.
 - GBA BIOS — provide your own dump locally.
 - ROM-derived generated C++ (`recomp/generated_official/`) — run the
   generator locally so this repo never publishes Konami's code.
+- Build trees / prebuilt `cotm.exe` — build locally (see below).
 
 ## Requirements
 
@@ -45,7 +56,7 @@ emulator. Unresolved paths fall back to a loud, self-healing interpreter.
 cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release -DSDL2_ROOT="C:\path\to\SDL2"
 cmake --build build --config Release
 
-# 3. Run (pass ROM/BIOS paths; first run asks for them if omitted)
+# 3. Run (pass ROM/BIOS paths)
 .\build\cotm.exe --rom "path\to\game.gba" --bios "path\to\gba_bios.bin" --config game.toml
 ```
 
@@ -62,20 +73,17 @@ viewport only.
 SRAM (`save = "sram"` in `game.toml`). Detected at runtime from the
 `SRAM_V` signature in the ROM.
 
-## License and legal
+## Legal
 
-Read **[THIRD_PARTY.md](THIRD_PARTY.md)** before redistributing builds or
-derivatives. Summary:
-
-- GBARecomp / SnesRecomp framework: **PolyForm Noncommercial 1.0.0** —
-  not OSI open source; commercial use requires a separate license from
-  the author.
-- This repo's host glue: MIT (see `LICENSE`).
 - The **game** is © Konami. You must supply your own ROM and BIOS.
 - Generated cart C++ is a derivative of the ROM — **do not publish it**.
+- GBARecomp framework is © Matthew Stanley, PolyForm Noncommercial 1.0.0.
+- “Castlevania”, “Circle of the Moon”, and “Konami” are trademarks of their
+  owners. Unofficial fan project; not affiliated with or endorsed by Konami
+  or Nintendo.
 
 ## Credits
 
-- [GBARecomp](https://github.com/mstan/gbarecomp) / SnesRecomp — Matthew Stanley
+- [GBARecomp](https://github.com/mstan/gbarecomp) — Matthew Stanley
 - `arm-recomp-core`, `rbengine`, `recomp-net` — MIT
 - SDL2 — zlib License
