@@ -160,15 +160,31 @@ CastlevaniaCircleOfTheMoonRecomp/
 │   └── cotm_functions.tsv      # Functional names for guest functions
 ├── src/
 │   ├── main.cpp                # Host entry (ROM identity + run_game)
-│   └── generated/              # Recompiled cart C++ (local only — regenerate)
+│   └── game/                   # Recompiled native C++ (by function module)
+│       ├── boot_system.cpp             # Cart entry, BIOS handoff, boot init
+│       ├── memory_dma.cpp              # EWRAM clear/fill, DMA helpers
+│       ├── engine_scene.cpp            # Game-state flags, scene loader
+│       ├── gameplay_core.cpp           # Mid-ROM gameplay systems
+│       ├── save_system.cpp             # SRAM / save probing
+│       ├── world_actors.cpp            # World, actors, large ROM mid/late
+│       ├── ui_audio.cpp                # UI, menus, audio drivers
+│       ├── engine_tail.cpp             # Late-ROM engine / tables
+│       ├── iwram_reloc.cpp             # IWRAM-installed code copies
+│       ├── jump_tables.cpp             # Auto-detected jump-table bodies
+│       ├── engine_hot.cpp              # Hot miss-log stubs
+│       ├── recomp_dispatch.cpp         # Function dispatch table
+│       ├── symbol_map.cpp              # PC → name map for debug
+│       ├── modules.h                   # Module index
+│       └── recompiled.h                # Generated prototypes
 ├── scripts/
-│   └── generate.ps1            # gba_recompile wrapper
+│   ├── generate.ps1            # gba_recompile wrapper
+│   └── split_generated.py      # Shards → src/game modules
 └── docs/
     ├── PROGRESS.md             # Development log
     └── screenshots/            # Boot / title / menu frames
 ```
 
-`src/generated/` is **ROM-derived** and is **not** committed. After cloning you generate it from your own dump (see Quick Start).
+Recompiled guest code lives in **`src/game/`** as functionally named modules (SMK-style). Monolithic shards under `src/generated/` are only an intermediate from `gba_recompile` and are not published.
 
 ---
 
@@ -191,3 +207,4 @@ This project is a recompiled derivative work based on [GBARecomp](https://github
 * **arm-recomp-core / rbengine / recomp-net** — MIT-licensed supporting libraries.
 * **SDL2** — zlib License.
 * Everyone in the GBA reverse-engineering and recompilation community.
+

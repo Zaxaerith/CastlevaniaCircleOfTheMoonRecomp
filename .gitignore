@@ -10,6 +10,7 @@ gba_bios.bin
 
 # Generated cart code is derived from the game ROM — regenerate locally.
 # See README.md. Do not publish ROM-derived shards.
+# Monolithic shards only — real source is src/game/
 src/generated/
 recomp_cache/
 
@@ -73,3 +74,5 @@ Desktop.ini
 
 # Internal project brief (keep local only)
 AGENT_PROMPT.md
+
+

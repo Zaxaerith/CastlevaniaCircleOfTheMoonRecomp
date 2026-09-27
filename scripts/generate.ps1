@@ -40,7 +40,15 @@ New-Item -ItemType Directory -Force -Path $Out | Out-Null
 & $Tool --rom $Rom --config $Config --symbols (Join-Path $root "symbols\cotm_functions.tsv") --out $Out
 
 Write-Host ""
+Write-Host "Splitting into src/game modules ..."
+& (Join-Path (Split-Path -Parent (Split-Path -Parent $MyInvocation.MyCommand.Path)) "scripts\split_generated.py")
+# python fallback
+if ($LASTEXITCODE -ne 0) {
+  python (Join-Path $root "scripts\split_generated.py")
+}
+
 Write-Host "Done. Generated shards are local-only (gitignored)."
 Write-Host "Next: cmake -S . -B build -DSDL2_ROOT=<prefix> && cmake --build build"
+
 
 

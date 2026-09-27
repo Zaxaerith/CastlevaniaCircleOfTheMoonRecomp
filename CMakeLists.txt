@@ -29,19 +29,19 @@ endif()
 
 add_subdirectory("${GBARECOMP_ROOT}" gbarecomp-build EXCLUDE_FROM_ALL)
 
-set(GENERATED_DIR "${CMAKE_CURRENT_SOURCE_DIR}/src/generated")
-if(NOT EXISTS "${GENERATED_DIR}/dispatch_table.cpp")
+set(GAME_SRC_DIR "${CMAKE_CURRENT_SOURCE_DIR}/src/game")
+if(NOT EXISTS "${GAME_SRC_DIR}/recomp_dispatch.cpp")
     message(FATAL_ERROR
-        "Generated cart code not found in ${GENERATED_DIR}.\n"
-        "Run: gba_recompile --rom <your.gba> --config game.toml --symbols symbols/cotm_functions.tsv --out src/generated")
+        "Game source not found in ${GAME_SRC_DIR}.\n"
+        "Run: .\build.ps1 -Rom <your.gba>   (or scripts/generate.ps1 + scripts/split_generated.py)")
 endif()
-file(GLOB COTM_SHARDS CONFIGURE_DEPENDS "${GENERATED_DIR}/recompiled_*.cpp")
+file(GLOB COTM_GAME_SOURCES CONFIGURE_DEPENDS "${GAME_SRC_DIR}/*.cpp")
 
 add_executable(cotm
     src/main.cpp
-    ${COTM_SHARDS}
-    "${GENERATED_DIR}/dispatch_table.cpp"
-    "${GENERATED_DIR}/symbol_map.cpp"
+    ${COTM_GAME_SOURCES}
+    "${GAME_SRC_DIR}/recomp_dispatch.cpp"
+    "${GAME_SRC_DIR}/symbol_map.cpp"
 )
 
 target_include_directories(cotm PRIVATE
@@ -49,7 +49,7 @@ target_include_directories(cotm PRIVATE
     "${GBARECOMP_ROOT}/src/gba"
     "${GBARECOMP_ROOT}/src/runtime"
     "${GBARECOMP_ROOT}/src/debug"
-    "${GENERATED_DIR}"
+    "${GAME_SRC_DIR}"
 )
 
 target_compile_definitions(cotm PRIVATE
@@ -78,3 +78,4 @@ if(SDL2_ROOT AND EXISTS "${SDL2_ROOT}/bin/SDL2.dll")
             "$<TARGET_FILE_DIR:cotm>/SDL2.dll"
     )
 endif()
+
