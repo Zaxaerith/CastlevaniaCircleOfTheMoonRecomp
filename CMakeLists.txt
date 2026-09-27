@@ -69,6 +69,8 @@ target_link_libraries(cotm PRIVATE
 
 if(WIN32)
     target_link_options(cotm PRIVATE "LINKER:--stack,16777216")
+    # GUI subsystem: no black console window behind the game.
+    target_link_options(cotm PRIVATE -mwindows)
 endif()
 
 if(SDL2_ROOT AND EXISTS "${SDL2_ROOT}/bin/SDL2.dll")
@@ -78,4 +80,5 @@ if(SDL2_ROOT AND EXISTS "${SDL2_ROOT}/bin/SDL2.dll")
             "$<TARGET_FILE_DIR:cotm>/SDL2.dll"
     )
 endif()
+
 

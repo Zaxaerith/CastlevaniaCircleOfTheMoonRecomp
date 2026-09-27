@@ -76,3 +76,10 @@ Desktop.ini
 AGENT_PROMPT.md
 
 
+
+# Runtime side products (keep out of git)
+recomp_coverage_*.json
+recomp_master_misses_*.toml.frag
+*.sav
+diagnostics/
+
