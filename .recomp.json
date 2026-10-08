@@ -1,0 +1,22 @@
+{
+  "$schema": "https://recomp.fyi/schema/v1.json",
+  "game": "Castlevania: Circle of the Moon",
+  "system": "GBA",
+  "type": "recomp",
+  "project": "Castlevania: Circle of the Moon Recomp",
+  "status": "playable",
+  "targets": [
+    "Windows"
+  ],
+  "toolchain": "GBARecomp",
+  "original": {
+    "region": "USA",
+    "sha1": "d661b01eb94186435723ac03344792c11c20c522"
+  },
+  "maintainers": [
+    {
+      "name": "Zaxaerith",
+      "link": "https://github.com/Zaxaerith"
+    }
+  ]
+}
